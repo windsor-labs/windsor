@@ -10,8 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         /* =========================================================
-           WINDSOR — MANTENIMIENTO
-           VISUAL SYSTEM
+           WINDSOR — MANTENIMIENTO CON SPINNER INFINITO
         ========================================================== */
         :root {
             --black: #0a0a0c;
@@ -20,75 +19,80 @@
             --blue: #006dff;
             --blue-dark: #0050c2;
             --green: #31e083;
-            --purple: #7c5cff;
             --line: rgba(0,0,0,0.18);
             --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
             --body: "Open Sans", "Helvetica Neue", Arial, sans-serif;
             --serif: var(--sans);
-            --max-width: 900px;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border-radius: 0 !important; /* Elimina esquinas redondeadas de contenedores y botones */
+        }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
         body {
             background: var(--cream);
             color: var(--black);
             font-family: var(--body);
             overflow-x: hidden;
             min-width: 320px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
-        a { color: inherit; text-decoration: none; }
-        h1, h2, h3, h4, .logo, .logo-symbol, .logo-name { font-family: var(--sans); }
-        h1, h2, h3, h4 { font-weight: 800; }
-        em { font-style: normal; }
-        button { color: inherit; font: inherit; background: none; border: none; cursor: pointer; }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        h1, h2, h3, h4, .logo, .logo-symbol, .logo-name {
+            font-family: var(--sans);
+        }
+        h1, h2, h3, h4 {
+            font-weight: 800;
+        }
+        em {
+            font-style: normal;
+        }
 
-        /* Preloader */
-        .preloader {
-            position: fixed; inset: 0; z-index: 9999;
-            background: var(--black); color: var(--white);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 0.7s ease, visibility 0.7s ease;
-        }
-        .preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
-        .preloader-logo {
-            font-family: var(--serif); font-size: clamp(52.5px,7.5vw,75px); line-height: 1;
-            color: var(--blue);
-            animation: pulse 1.2s ease infinite alternate;
-        }
-        .preloader-line {
-            width: min(180px,45vw); height: 2px; margin-top: 25px;
-            overflow: hidden; background: rgba(255,255,255,0.15);
-        }
-        .preloader-line span {
-            display: block; width: 100%; height: 100%; background: var(--blue);
-            transform: translateX(-100%);
-            animation: lineLoad 1.4s ease forwards;
-        }
-        .preloader-text { margin-top: 18px; font-size: 9px; letter-spacing: 0.3em; opacity: 0.55; }
-        @keyframes lineLoad { to { transform: translateX(0); } }
-        @keyframes pulse { from { transform: scale(0.95); } to { transform: scale(1.05); } }
-
-        /* Header */
+        /* Header fijo */
         .header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 82px;
-            padding: 0 4vw; display: flex; align-items: center; justify-content: space-between;
-            z-index: 500; color: var(--white);
-            background: rgba(8,8,8,0.86);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 82px;
+            padding: 0 4vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 500;
+            color: var(--white);
+            background: rgba(8, 8, 8, 0.86);
             backdrop-filter: blur(15px);
         }
         .logo {
-            display: flex; align-items: center; gap: 12px;
-            font-size: 13px; font-weight: 700; letter-spacing: 0.16em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
         }
         .logo-symbol {
-            width: 34px; height: 34px; display: grid; place-items: center;
-            border: 1px solid currentColor; font-family: var(--serif); font-size: 20px;
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border: 1px solid currentColor;
+            font-family: var(--serif);
+            font-size: 20px;
         }
 
-        /* Main content */
+        /* Contenido principal */
         .maintenance {
             flex: 1;
             display: flex;
@@ -100,13 +104,24 @@
         .maintenance-content {
             max-width: 700px;
         }
-        .maintenance-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: var(--blue);
+
+        /* Spinner giratorio infinito */
+        .spinner {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 35px;
+            border: 5px solid var(--line);
+            border-top: 5px solid var(--blue);
+            border-radius: 50% !important; /* Forzamos que sea un círculo perfecto para girar */
+            animation: spin 1s linear infinite;
         }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .maintenance h1 {
-            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-size: clamp(2.8rem, 5.5vw, 4.2rem);
             line-height: 0.9;
             letter-spacing: -0.06em;
             margin-bottom: 20px;
@@ -126,7 +141,13 @@
             margin-bottom: 40px;
             line-height: 1.6;
         }
-        .maintenance .btn {
+        .maintenance p strong {
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        /* Botón sin esquinas redondeadas */
+        .btn {
             display: inline-flex;
             align-items: center;
             gap: 15px;
@@ -139,11 +160,11 @@
             text-transform: uppercase;
             transition: background 0.25s, transform 0.25s;
         }
-        .maintenance .btn:hover {
+        .btn:hover {
             background: var(--blue-dark);
             transform: translateX(6px);
         }
-        .maintenance .btn .arrow-icon {
+        .btn .arrow-icon {
             display: inline-flex;
             align-items: center;
         }
@@ -158,32 +179,64 @@
             align-items: center;
             gap: 40px;
         }
-        .footer-logo { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; }
-        .footer-logo small { display: block; margin-top: 5px; color: rgba(255,255,255,0.4); font-size: 7px; letter-spacing: 0.12em; }
-        .footer-links { display: flex; gap: 25px; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-        .footer-links a { opacity: 0.6; transition: opacity 0.25s; }
-        .footer-links a:hover { opacity: 1; }
-        .footer-tagline { justify-self: end; color: var(--green); font-family: var(--serif); font-size: 16px; }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+        }
+        .footer-logo small {
+            display: block;
+            margin-top: 5px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 7px;
+            letter-spacing: 0.12em;
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .footer-links a {
+            opacity: 0.6;
+            transition: opacity 0.25s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        .footer-tagline {
+            justify-self: end;
+            color: var(--green);
+            font-family: var(--serif);
+            font-size: 16px;
+        }
 
+        /* Responsive */
         @media (max-width: 700px) {
-            .footer { grid-template-columns: 1fr; gap: 20px; }
-            .footer-tagline { justify-self: start; }
+            .footer {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .footer-tagline {
+                justify-self: start;
+            }
         }
         @media (prefers-reduced-motion: reduce) {
-            * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+            * {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- PRELOADER -->
-    <div class="preloader">
-        <div class="preloader-logo">W</div>
-        <div class="preloader-line"><span></span></div>
-        <div class="preloader-text">WINDSOR</div>
-    </div>
-
-    <!-- HEADER -->
+    <!-- HEADER FIJO -->
     <header class="header">
         <a href="index.html" class="logo">
             <span class="logo-symbol">W</span>
@@ -191,10 +244,12 @@
         </a>
     </header>
 
-    <!-- MAINTENANCE CONTENT -->
+    <!-- CONTENIDO PRINCIPAL CON SPINNER -->
     <main class="maintenance">
         <div class="maintenance-content">
-            <div class="maintenance-icon">⚙️</div>
+            <!-- Círculo giratorio infinito -->
+            <div class="spinner" aria-label="Cargando, página en mantenimiento"></div>
+
             <h1>
                 Estamos en
                 <em>mantenimiento</em>
@@ -228,14 +283,6 @@
         </div>
         <div class="footer-tagline">Precisión aplicada.</div>
     </footer>
-
-    <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            const p = document.querySelector('.preloader');
-            if (p) setTimeout(() => p.classList.add('loaded'), 1300);
-        });
-    </script>
 
 </body>
 </html>
