@@ -25,12 +25,12 @@
             --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
             --body: "Open Sans", "Helvetica Neue", Arial, sans-serif;
             --serif: var(--sans);
-            --radius: 0px;
-            --radius-sm: 0px;
-            --radius-pill: 0px;
+            --radius: 26px;
+            --radius-sm: 14px;
+            --radius-pill: 999px;
             --max-width: 1200px;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body {
             background: var(--cream);
@@ -103,6 +103,7 @@
         .header-button {
             display: inline-flex; align-items: center; gap: 15px;
             padding: 13px 20px; background: var(--blue); border: 1px solid var(--blue);
+            border-radius: var(--radius-pill);
             font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
             transition: background 0.25s, color 0.25s, transform 0.25s;
         }
@@ -111,6 +112,7 @@
         .menu-button {
             display: none; width: 42px; height: 42px;
             background: transparent; border: 1px solid rgba(255,255,255,0.4);
+            border-radius: var(--radius-pill);
             flex-direction: column; align-items: center; justify-content: center; gap: 6px;
         }
         .menu-button span { display: block; width: 17px; height: 1px; background: currentColor; transition: transform 0.3s, opacity 0.3s; }
@@ -188,6 +190,7 @@
         .areas-grid .area {
             background: var(--white); padding: 24px 20px;
             min-height: 140px;
+            border-radius: 0;
         }
         .areas-grid .area h4 { font-size: 18px; letter-spacing: -0.03em; margin-bottom: 8px; }
         .areas-grid .area p { font-size: 12px; color: #666; line-height: 1.5; }
@@ -370,12 +373,12 @@
                     la carrera o profesión que debes elegir.
                 </p>
             </div>
-            <div style="background:var(--blue); color:var(--white); padding:30px;">
+            <div style="background:var(--blue); color:var(--white); padding:30px; border-radius: var(--radius-sm);">
                 <h3 style="font-size:1.35rem; line-height:1.1;">¿Listo para empezar?</h3>
                 <p style="color:rgba(255,255,255,0.8); margin:15px 0 25px;">
                     El test completo dura unos 30 minutos. Te guiaremos paso a paso.
                 </p>
-                <a href="test-vocacional.html" style="display:inline-block; background:var(--green); color:var(--black); padding:12px 24px; font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.25s;">Ir al test →</a>
+                <a href="test-vocacional.html" style="display:inline-block; background:var(--green); color:var(--black); padding:12px 24px; font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.25s; border-radius: var(--radius-pill);">Ir al test →</a>
             </div>
         </div>
     </section>
