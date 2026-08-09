@@ -26,12 +26,12 @@
             --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
             --body: "Open Sans", "Helvetica Neue", Arial, sans-serif;
             --serif: var(--sans);
-            --radius: 0px;
-            --radius-sm: 0px;
-            --radius-pill: 0px;
+            --radius: 26px;
+            --radius-sm: 14px;
+            --radius-pill: 999px;
             --max-width: 1200px;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body {
             background: var(--cream);
@@ -104,6 +104,7 @@
         .header-button {
             display: inline-flex; align-items: center; gap: 15px;
             padding: 13px 20px; background: var(--blue); border: 1px solid var(--blue);
+            border-radius: var(--radius-pill);
             font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
             transition: background 0.25s, color 0.25s, transform 0.25s;
         }
@@ -112,6 +113,7 @@
         .menu-button {
             display: none; width: 42px; height: 42px;
             background: transparent; border: 1px solid rgba(255,255,255,0.4);
+            border-radius: var(--radius-pill);
             flex-direction: column; align-items: center; justify-content: center; gap: 6px;
         }
         .menu-button span { display: block; width: 17px; height: 1px; background: currentColor; transition: transform 0.3s, opacity 0.3s; }
@@ -204,6 +206,7 @@
             padding: 4px 10px; background: var(--cream); font-size: 8px;
             letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700;
             color: #666;
+            border-radius: var(--radius-pill);
         }
         .proyecto-card .link {
             display: inline-flex; align-items: center; gap: 12px;
@@ -390,8 +393,8 @@
                     <h3>Tu proyecto puede estar aquí.</h3>
                     <p style="color: rgba(255,255,255,0.7);">Trabajemos juntos para construir algo significativo. Cuéntanos tu idea.</p>
                     <div class="tags" style="margin-top: 18px;">
-                        <span style="background: rgba(255,255,255,0.15); color: var(--white);">Colaboración</span>
-                        <span style="background: rgba(255,255,255,0.15); color: var(--white);">Innovación</span>
+                        <span style="background: rgba(255,255,255,0.15); color: var(--white); border-radius: var(--radius-pill);">Colaboración</span>
+                        <span style="background: rgba(255,255,255,0.15); color: var(--white); border-radius: var(--radius-pill);">Innovación</span>
                     </div>
                 </div>
                 <a href="index.html#contacto" class="link" style="color: var(--green); border-color: var(--green);">Iniciar proyecto →</a>
