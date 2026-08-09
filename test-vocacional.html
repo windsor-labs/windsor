@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Windsor — Test Vocacional Integral</title>
+    <meta name="description" content="Test de orientación vocacional con Kuder, Herrera, Razonamiento Abstracto y Personalidad. Perfil integral." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* =========================================================
+           WINDSOR — TEST VOCACIONAL INTEGRAL
+           MISMO ESTILO QUE EL PROYECTO ORIGINAL
+        ========================================================== */
+        :root {
+            --black: #0a0a0c;
+            --cream: #f3f4f2;
+            --white: #ffffff;
+            --blue: #006dff;
+            --blue-dark: #0050c2;
+            --green: #31e083;
+            --purple: #7c5cff;
+            --line: rgba(0,0,0,0.18);
+            --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+            --body: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+            --serif: var(--sans);
+            --radius: 26px;
+            --radius-sm: 14px;
+            --radius-pill: 999px;
+            --max-width: 900px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body {
+            background: var(--cream);
+            color: var(--black);
+            font-family: var(--body);
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+        a { color: inherit; text-decoration: none; }
+        h1, h2, h3, h4, .logo, .logo-symbol, .desktop-nav a, .mobile-menu-label, .logo-name { font-family: var(--sans); }
+        h1, h2, h3, h4 { font-weight: 800; }
+        em { font-style: normal; }
+        button { color: inherit; font: inherit; background: none; border: none; cursor: pointer; }
+
+        /* Preloader (azul) */
+        .preloader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: var(--black); color: var(--white);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.7s ease, visibility 0.7s ease;
+        }
+        .preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+        .preloader-logo {
+            font-family: var(--serif); font-size: clamp(70px,10vw,100px); line-height: 1;
+            color: var(--blue);
+            animation: pulse 1.2s ease infinite alternate;
+        }
+        .preloader-line {
+            width: min(180px,45vw); height: 2px; margin-top: 25px;
+            overflow: hidden; background: rgba(255,255,255,0.15);
+        }
+        .preloader-line span {
+            display: block; width: 100%; height: 100%; background: var(--blue);
+            transform: translateX(-100%);
+            animation: lineLoad 1.4s ease forwards;
+        }
+        .preloader-text { margin-top: 18px; font-size: 9px; letter-spacing: 0.3em; opacity: 0.55; }
+        @keyframes lineLoad { to { transform: translateX(0); } }
+        @keyframes pulse { from { transform: scale(0.95); } to { transform: scale(1.05); } }
+
+        /* Header */
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%; height: 82px;
+            padding: 0 4vw; display: flex; align-items: center; justify-content: space-between;
+            z-index: 500; color: var(--white);
+            transition: background 0.35s, color 0.35s, backdrop-filter 0.35s;
+        }
+        .header.scrolled { background: rgba(8,8,8,0.86); backdrop-filter: blur(15px); }
+        .logo {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 13px; font-weight: 700; letter-spacing: 0.16em;
+        }
+        .logo-symbol {
+            width: 34px; height: 34px; display: grid; place-items: center;
+            border: 1px solid currentColor; font-family: var(--serif); font-size: 20px;
+        }
+        .header-button {
+            display: inline-flex; align-items: center; gap: 15px;
+            padding: 13px 20px; background: var(--blue); border: 1px solid var(--blue); border-radius: var(--radius-pill);
+            font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            transition: background 0.25s, color 0.25s, transform 0.25s;
+        }
+        .header-button:hover { background: var(--green); color: var(--black); border-color: var(--green); transform: translateY(-2px); }
+        .menu-button {
+            display: none; width: 42px; height: 42px;
+            background: transparent; border: 1px solid rgba(255,255,255,0.4);
+            flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+        }
+        .menu-button span { display: block; width: 17px; height: 1px; background: currentColor; }
+
+        /* Main */
+        .test-container {
+            max-width: var(--max-width); margin: 0 auto; padding: 130px 6vw 80px;
+        }
+        .test-header {
+            margin-bottom: 40px;
+        }
+        .test-header h1 {
+            font-size: clamp(2.8rem,6vw,4.5rem); line-height: 0.9; letter-spacing: -0.06em;
+        }
+        .test-header h1 em { display: block; color: var(--blue); font-family: var(--sans); font-weight: 900; text-decoration: underline; text-decoration-thickness: 0.07em; text-underline-offset: 0.1em; }
+        .test-header p { color: #555; margin-top: 15px; font-size: 15px; line-height: 1.7; }
+
+        .progress {
+            display: flex; align-items: center; gap: 20px; margin-bottom: 30px;
+        }
+        .progress-bar {
+            flex: 1; height: 4px; background: var(--line); border-radius: 2px; overflow: hidden;
+        }
+        .progress-bar span {
+            display: block; height: 100%; background: var(--blue); width: 0%; transition: width 0.4s;
+        }
+        .progress-text { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; opacity: 0.6; }
+
+        .question-block {
+            background: var(--white); padding: 30px; border-radius: var(--radius-sm); box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            margin-bottom: 30px;
+        }
+        .question-block .q-type {
+            font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--blue); margin-bottom: 10px;
+        }
+        .question-block .q-text {
+            font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; line-height: 1.4;
+        }
+        .options {
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .options label {
+            display: flex; align-items: center; gap: 14px;
+            padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+            cursor: pointer; transition: border-color 0.2s, background 0.2s;
+            font-size: 14px;
+        }
+        .options label:hover { border-color: var(--blue); background: rgba(49,87,232,0.04); }
+        .options input[type="radio"] {
+            appearance: none; width: 18px; height: 18px; border: 2px solid #ccc; border-radius: 50%;
+            position: relative; flex-shrink: 0; transition: border-color 0.2s;
+        }
+        .options input[type="radio"]:checked { border-color: var(--blue); }
+        .options input[type="radio"]:checked::after {
+            content: ""; position: absolute; inset: 3px; background: var(--blue); border-radius: 50%;
+        }
+
+        .kuder-options {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+        }
+        .kuder-options label {
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            padding: 16px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+            cursor: pointer; transition: border-color 0.2s, background 0.2s;
+            text-align: center; font-size: 13px;
+        }
+        .kuder-options label:hover { border-color: var(--blue); background: rgba(49,87,232,0.04); }
+        .kuder-options input[type="radio"] {
+            appearance: none; width: 20px; height: 20px; border: 2px solid #ccc; border-radius: 50%;
+            position: relative; transition: border-color 0.2s;
+        }
+        .kuder-options input[type="radio"]:checked { border-color: var(--blue); }
+        .kuder-options input[type="radio"]:checked::after {
+            content: ""; position: absolute; inset: 3px; background: var(--blue); border-radius: 50%;
+        }
+        .kuder-options .label-mas { color: var(--blue); font-weight: 700; font-size: 10px; letter-spacing: 0.1em; }
+        .kuder-options .label-menos { color: #999; font-weight: 700; font-size: 10px; letter-spacing: 0.1em; }
+
+        .nav-buttons {
+            display: flex; justify-content: space-between; gap: 20px;
+            margin-top: 20px;
+        }
+        .nav-buttons button {
+            padding: 12px 28px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+            font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+            transition: background 0.25s, color 0.25s, border-color 0.25s;
+        }
+        .nav-buttons button:hover:not(:disabled) { background: var(--black); color: var(--white); border-color: var(--black); }
+        .nav-buttons button:disabled { opacity: 0.3; cursor: not-allowed; }
+        .nav-buttons .btn-primary { background: var(--blue); color: var(--white); border-color: var(--blue); }
+        .nav-buttons .btn-primary:hover:not(:disabled) { background: var(--blue-dark); border-color: var(--blue-dark); }
+
+        /* Resultados finales */
+        #resultadoFinal {
+            display: none; background: var(--white); padding: 30px; border-radius: var(--radius-sm);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        #resultadoFinal h2 { font-size: 2rem; margin-bottom: 10px; }
+        #resultadoFinal h2 em { color: var(--blue); font-family: var(--sans); font-weight: 900; text-decoration: underline; text-decoration-thickness: 0.07em; text-underline-offset: 0.1em; }
+        #resultadoFinal .modulo-resultado {
+            margin: 25px 0; padding: 20px; background: var(--cream); border-radius: var(--radius-sm);
+        }
+        #resultadoFinal .modulo-resultado h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--blue); }
+        #resultadoFinal .modulo-resultado p { color: #444; line-height: 1.6; }
+
+        .chart {
+            display: flex; flex-direction: column; gap: 8px; margin: 15px 0;
+        }
+        .chart-row {
+            display: grid; grid-template-columns: 90px 1fr 40px; align-items: center; gap: 12px;
+        }
+        .chart-row .label { font-size: 12px; font-weight: 600; }
+        .chart-row .bar {
+            height: 12px; background: var(--line); border-radius: 6px; overflow: hidden;
+        }
+        .chart-row .bar span {
+            display: block; height: 100%; background: var(--blue); width: 0%; transition: width 1s ease;
+        }
+        .chart-row .score { font-size: 12px; font-weight: 700; text-align: right; }
+
+        .result-actions {
+            display: flex; gap: 15px; flex-wrap: wrap; margin-top: 25px;
+        }
+        .result-actions a {
+            padding: 12px 24px; background: var(--blue); color: var(--white);
+            font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+            border-radius: var(--radius-sm); transition: background 0.25s;
+        }
+        .result-actions a:hover { background: var(--blue-dark); }
+        .result-actions .secondary { background: var(--green); color: var(--black); }
+        .result-actions .secondary:hover { background: var(--green-dark); }
+
+        .recomendaciones {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+            margin: 15px 0;
+        }
+        .recomendacion-item {
+            display: flex; flex-direction: column; padding: 12px 14px;
+            background: var(--white); border-radius: var(--radius-sm); border-left: 4px solid var(--blue);
+        }
+        .recomendacion-item .top { display: flex; justify-content: space-between; font-weight: 700; }
+        .recomendacion-item .explanation { font-size: 12px; color: #666; margin-top: 5px; }
+
+        /* Matrices SVG */
+        .matrix-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+            max-width: 300px; width: 100%; margin: 0 auto 20px;
+        }
+        .matrix-cell {
+            aspect-ratio: 1; background: var(--cream); border: 1px solid var(--line);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .matrix-cell svg { width: 80%; height: 80%; }
+        .matrix-cell.empty { background: var(--white); border: 2px dashed var(--blue); }
+        .opciones-matriz {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 12px;
+            width: 100%; max-width: 400px; margin: 0 auto;
+        }
+        .opciones-matriz label {
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            padding: 12px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+            cursor: pointer; transition: border-color 0.2s, background 0.2s;
+        }
+        .opciones-matriz label:hover { border-color: var(--blue); background: rgba(49,87,232,0.04); }
+        .opciones-matriz input[type="radio"] {
+            appearance: none; width: 16px; height: 16px; border: 2px solid #ccc; border-radius: 50%;
+            position: relative; transition: border-color 0.2s;
+        }
+        .opciones-matriz input[type="radio"]:checked { border-color: var(--blue); }
+        .opciones-matriz input[type="radio"]:checked::after {
+            content: ""; position: absolute; inset: 3px; background: var(--blue); border-radius: 50%;
+        }
+        .opciones-matriz .opcion-figura svg { width: 40px; height: 40px; }
+
+        /* Personalidad escala */
+        .escala-5 {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+        }
+        .escala-5 label {
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            padding: 8px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+            cursor: pointer; transition: border-color 0.2s, background 0.2s;
+            font-size: 11px; text-align: center;
+        }
+        .escala-5 label:hover { border-color: var(--blue); background: rgba(49,87,232,0.04); }
+        .escala-5 input[type="radio"] {
+            appearance: none; width: 16px; height: 16px; border: 2px solid #ccc; border-radius: 50%;
+            position: relative; transition: border-color 0.2s;
+        }
+        .escala-5 input[type="radio"]:checked { border-color: var(--blue); }
+        .escala-5 input[type="radio"]:checked::after {
+            content: ""; position: absolute; inset: 3px; background: var(--blue); border-radius: 50%;
+        }
+
+        @media (max-width: 700px) {
+            .menu-button { display: flex; }
+            .header-button { display: none; }
+            .kuder-options { grid-template-columns: 1fr; }
+            .chart-row { grid-template-columns: 70px 1fr 30px; gap: 8px; }
+            .chart-row .label { font-size: 11px; }
+            .escala-5 { grid-template-columns: repeat(5, 1fr); }
+            .recomendaciones { grid-template-columns: 1fr; }
+            .matrix-grid { max-width: 220px; }
+            .opciones-matriz { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .test-container { padding: 110px 5vw 60px; }
+            .question-block { padding: 20px; }
+            .question-block .q-text { font-size: 1rem; }
+            .matrix-grid { max-width: 180px; }
+            .opciones-matriz { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="preloader-logo">W</div>
+        <div class="preloader-line"><span></span></div>
+        <div class="preloader-text">WINDSOR</div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <span class="logo-symbol">W</span>
+            <span class="logo-name">WINDSOR</span>
+        </a>
+        <a href="orientacion-vocacional.html" class="header-button">
+            ← Información
+        </a>
+        <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+    </header>
+
+    <div class="test-container">
+        <div class="test-header">
+            <h1>
+                Test de orientación
+                <em>vocacional integral</em>
+            </h1>
+            <p>Completa los cuatro módulos para obtener tu perfil completo. Responde con sinceridad.</p>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar"><span id="progressFill"></span></div>
+            <span class="progress-text" id="progressText">0 / 0</span>
+        </div>
+
+        <div id="questionArea">
+            <!-- Renderizado por JS -->
+        </div>
+
+        <div class="nav-buttons">
+            <button id="prevBtn" disabled>Anterior</button>
+            <button id="nextBtn" class="btn-primary">Siguiente</button>
+        </div>
+
+        <div id="resultadoFinal">
+            <!-- Se llena con JS -->
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer" style="padding:35px 6vw; background:var(--black); color:var(--white); display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:40px;">
+        <div class="footer-logo" style="display:flex; align-items:center; gap:12px; font-size:12px; font-weight:700; letter-spacing:0.15em;">
+            <span style="width:34px; height:34px; display:grid; place-items:center; border:1px solid currentColor; font-family:var(--serif); font-size:20px;">W</span>
+            <span>WINDSOR <small style="display:block; margin-top:5px; color:rgba(255,255,255,0.4); font-size:7px; letter-spacing:0.12em;">LABORATORIO DIGITAL INDEPENDIENTE</small></span>
+        </div>
+        <div style="display:flex; gap:25px; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+            <a href="index.html" style="opacity:0.6; transition:opacity 0.25s;">Inicio</a>
+            <a href="orientacion-vocacional.html" style="opacity:0.6; transition:opacity 0.25s;">Orientación</a>
+        </div>
+        <div style="justify-self:end; color:var(--green); font-family:var(--serif); font-size:16px;">Precisión aplicada.</div>
+    </footer>
+
+    <script>
+        // =========================================================
+        // 1. DATOS DEL TEST — KUDER (12 preguntas)
+        // =========================================================
+        const labels = [
+            "Aire libre", "Mecánico", "Cálculo", "Científico", "Persuasivo",
+            "Artístico", "Literario", "Musical", "Servicio social", "Oficina"
+        ];
+
+        const kuderQuestions = [
+            { text: "En tus viajes, ¿qué prefieres observar?", options: ["Gente", "Paisajes", "Cultivos"], scales: [4,0,1] },
+            { text: "¿Qué actividad te atrae más?", options: ["Ayudar a un ciego", "Llevar estadísticas", "Hacer encuestas"], scales: [8,2,4] },
+            { text: "¿Qué prefieres visitar?", options: ["Feria de pueblo", "Exposición de alimentos", "Exposición de ganado"], scales: [4,8,0] },
+            { text: "¿Qué te gusta hacer?", options: ["Atletismo", "Pescar", "Fútbol"], scales: [0,0,0] },
+            { text: "¿Qué coleccionarías?", options: ["Autógrafos", "Mariposas", "Muestras de madera"], scales: [4,0,1] },
+            { text: "¿Qué exposición te interesa más?", options: ["Cuadros famosos", "Medios de transporte", "Equipo de laboratorio"], scales: [5,1,3] },
+            { text: "¿Qué preferirías ser?", options: ["Vendedor de frutas", "Pianista", "Cultivador"], scales: [4,7,0] },
+            { text: "En una fiesta, ¿qué harías?", options: ["Dirigir la organización", "Decorar el salón", "Repartir invitaciones"], scales: [4,5,9] },
+            { text: "¿Qué tipo de visita te gusta más?", options: ["Museo de ciencias", "Empresa periodística", "Fábrica de máquinas"], scales: [3,6,1] },
+            { text: "¿Qué actividad prefieres?", options: ["Leer a un enfermo", "Enseñar trucos a un perro", "Desarmar un juguete"], scales: [8,0,1] },
+            { text: "¿Qué clase te gusta más?", options: ["Dibujo", "Biología", "Metalistería"], scales: [5,3,1] },
+            { text: "¿Qué harías con aves?", options: ["Construir pajareras", "Escribir artículos", "Dibujarlas"], scales: [1,6,5] },
+        ];
+
+        // =========================================================
+        // 2. HERRERA (10 preguntas)
+        // =========================================================
+        const herreraQuestions = [
+            { text: "Atender y cuidar enfermos", scale: 8 },
+            { text: "Participar en discusiones de clase", scale: 4 },
+            { text: "Escribir cuentos o artículos", scale: 6 },
+            { text: "Dibujar y pintar", scale: 5 },
+            { text: "Cantar en un coro", scale: 7 },
+            { text: "Llevar orden en libros y cuadernos", scale: 9 },
+            { text: "Estudiar la estructura de plantas y animales", scale: 3 },
+            { text: "Resolver operaciones numéricas", scale: 2 },
+            { text: "Armar y desarmar objetos mecánicos", scale: 1 },
+            { text: "Salir de excursión", scale: 0 },
+        ];
+
+        // =========================================================
+        // 3. RAZONAMIENTO ABSTRACTO — 20 ejercicios (revisados y ordenados)
+        //    Cada ejercicio: matriz (9 celdas, la última null), opciones (4), correct (índice), dificultad (1-5)
+        // =========================================================
+
+        // Helper para SVG con rotación
+        function figuraSVG(tipo, params = {}) {
+            const { count = 1, fill = '#006dff', stroke = '#006dff', rot = 0, size = 40 } = params;
+            let elementos = '';
+            for (let i = 0; i < count; i++) {
+                const x = 10 + i * 12;
+                const y = 10 + i * 12;
+                let fig = '';
+                if (tipo === 'circle') {
+                    fig = `<circle cx="${x}" cy="${y}" r="8" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`;
+                } else if (tipo === 'square') {
+                    fig = `<rect x="${x-6}" y="${y-6}" width="12" height="12" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`;
+                } else if (tipo === 'triangle') {
+                    fig = `<polygon points="${x},${y-8} ${x-8},${y+6} ${x+8},${y+6}" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`;
+                } else if (tipo === 'star') {
+                    const pts = [];
+                    for (let j = 0; j < 10; j++) {
+                        const angle = (j * Math.PI / 5) - Math.PI/2;
+                        const r = j % 2 === 0 ? 8 : 4;
+                        pts.push(`${x + r * Math.cos(angle)},${y + r * Math.sin(angle)}`);
+                    }
+                    fig = `<polygon points="${pts.join(' ')}" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`;
+                } else if (tipo === 'diamond') {
+                    fig = `<polygon points="${x},${y-8} ${x+8},${y} ${x},${y+8} ${x-8},${y}" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`;
+                } else if (tipo === 'cross') {
+                    fig = `<rect x="${x-2}" y="${y-8}" width="4" height="16" fill="${fill}"/><rect x="${x-8}" y="${y-2}" width="16" height="4" fill="${fill}"/>`;
+                } else {
+                    fig = `<circle cx="${x}" cy="${y}" r="8" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`;
+                }
+                if (rot !== 0) {
+                    // Aplicar rotación alrededor del centro de la figura (x,y)
+                    fig = `<g transform="rotate(${rot}, ${x}, ${y})">${fig}</g>`;
+                }
+                elementos += fig;
+            }
+            return `<svg viewBox="0 0 40 40" width="40" height="40">${elementos}</svg>`;
+        }
+
+        // Ejercicios ordenados por dificultad (1=básica, 5=avanzada)
+        const ejerciciosRaw = [
+            // Nivel 1 (básico): progresión simple de conteo
+            { dificultad: 1,
+              matriz: [
+                { tipo: 'circle', count: 1 }, { tipo: 'circle', count: 2 }, { tipo: 'circle', count: 3 },
+                { tipo: 'circle', count: 2 }, { tipo: 'circle', count: 3 }, { tipo: 'circle', count: 4 },
+                { tipo: 'circle', count: 3 }, { tipo: 'circle', count: 4 }, null
+              ],
+              opciones: [
+                { tipo: 'circle', count: 5 }, { tipo: 'circle', count: 4 }, { tipo: 'circle', count: 6 }, { tipo: 'square', count: 5 }
+              ],
+              correct: 0,
+              explicacion: "Cada fila y columna aumenta el número de círculos en 1. La última debe tener 5." },
+            { dificultad: 1,
+              matriz: [
+                { tipo: 'star', count: 1 }, { tipo: 'star', count: 2 }, { tipo: 'star', count: 3 },
+                { tipo: 'star', count: 2 }, { tipo: 'star', count: 3 }, { tipo: 'star', count: 4 },
+                { tipo: 'star', count: 3 }, { tipo: 'star', count: 4 }, null
+              ],
+              opciones: [
+                { tipo: 'star', count: 5 }, { tipo: 'star', count: 4 }, { tipo: 'star', count: 6 }, { tipo: 'circle', count: 5 }
+              ],
+              correct: 0,
+              explicacion: "Progresión de estrellas: aumenta en 1 por fila y columna." },
+            { dificultad: 1,
+              matriz: [
+                { tipo: 'square', count: 1 }, { tipo: 'square', count: 2 }, { tipo: 'square', count: 3 },
+                { tipo: 'square', count: 2 }, { tipo: 'square', count: 3 }, { tipo: 'square', count: 4 },
+                { tipo: 'square', count: 3 }, { tipo: 'square', count: 4 }, null
+              ],
+              opciones: [
+                { tipo: 'square', count: 5 }, { tipo: 'square', count: 4 }, { tipo: 'square', count: 6 }, { tipo: 'triangle', count: 5 }
+              ],
+              correct: 0,
+              explicacion: "Progresión de cuadrados: aumenta en 1 por fila y columna." },
+            { dificultad: 1,
+              matriz: [
+                { tipo: 'triangle', count: 1 }, { tipo: 'triangle', count: 2 }, { tipo: 'triangle', count: 3 },
+                { tipo: 'triangle', count: 2 }, { tipo: 'triangle', count: 3 }, { tipo: 'triangle', count: 4 },
+                { tipo: 'triangle', count: 3 }, { tipo: 'triangle', count: 4 }, null
+              ],
+              opciones: [
+                { tipo: 'triangle', count: 5 }, { tipo: 'triangle', count: 4 }, { tipo: 'triangle', count: 6 }, { tipo: 'circle', count: 5 }
+              ],
+              correct: 0,
+              explicacion: "Progresión de triángulos: aumenta en 1 por fila y columna." },
+            { dificultad: 1,
+              matriz: [
+                { tipo: 'diamond', count: 1 }, { tipo: 'diamond', count: 2 }, { tipo: 'diamond', count: 3 },
+                { tipo: 'diamond', count: 2 }, { tipo: 'diamond', count: 3 }, { tipo: 'diamond', count: 4 },
+                { tipo: 'diamond', count: 3 }, { tipo: 'diamond', count: 4 }, null
+              ],
+              opciones: [
+                { tipo: 'diamond', count: 5 }, { tipo: 'diamond', count: 4 }, { tipo: 'diamond', count: 6 }, { tipo: 'circle', count: 5 }
+              ],
+              correct: 0,
+              explicacion: "Progresión de diamantes: aumenta en 1 por fila y columna." },
+            // Nivel 2: alternancia y combinación simple
+            { dificultad: 2,
+              matriz: [
+                { tipo: 'circle', fill: '#006dff' }, { tipo: 'circle', fill: 'white' }, { tipo: 'circle', fill: '#006dff' },
+                { tipo: 'circle', fill: 'white' }, { tipo: 'circle', fill: '#006dff' }, { tipo: 'circle', fill: 'white' },
+                { tipo: 'circle', fill: '#006dff' }, { tipo: 'circle', fill: 'white' }, null
+              ],
+              opciones: [
+                { tipo: 'circle', fill: '#006dff' }, { tipo: 'circle', fill: 'white' },
+                { tipo: 'square', fill: '#006dff' }, { tipo: 'circle', fill: '#999' }
+              ],
+              correct: 0,
+              explicacion: "Patrón de ajedrez: alterna relleno y vacío. La última debe ser rellena." },
+            { dificultad: 2,
+              matriz: [
+                { tipo: 'circle' }, { tipo: 'square' }, { tipo: 'triangle' },
+                { tipo: 'square' }, { tipo: 'triangle' }, { tipo: 'circle' },
+                { tipo: 'triangle' }, { tipo: 'circle' }, null
+              ],
+              opciones: [
+                { tipo: 'square' }, { tipo: 'circle' }, { tipo: 'triangle' }, { tipo: 'star' }
+              ],
+              correct: 0,
+              explicacion: "Cada fila y columna contiene las tres formas en orden cíclico." },
+            { dificultad: 2,
+              matriz: [
+                { tipo: 'circle', fill: '#006dff' }, { tipo: 'square', fill: '#006dff' }, { tipo: 'triangle', fill: '#006dff' },
+                { tipo: 'circle', fill: 'white' }, { tipo: 'square', fill: 'white' }, { tipo: 'triangle', fill: 'white' },
+                { tipo: 'circle', fill: '#006dff' }, { tipo: 'square', fill: '#006dff' }, null
+              ],
+              opciones: [
+                { tipo: 'triangle', fill: '#006dff' }, { tipo: 'triangle', fill: 'white' },
+                { tipo: 'circle', fill: '#006dff' }, { tipo: 'square', fill: '#006dff' }
+              ],
+              correct: 0,
+              explicacion: "Patrón de relleno: cada columna alterna, y cada fila tiene las tres formas." },
+            // Nivel 3: rotaciones
+            { dificultad: 3,
+              matriz: [
+                { tipo: 'triangle', rot: 0 }, { tipo: 'triangle', rot: 90 }, { tipo: 'triangle', rot: 180 },
+                { tipo: 'triangle', rot: 90 }, { tipo: 'triangle', rot: 180 }, { tipo: 'triangle', rot: 270 },
+                { tipo: 'triangle', rot: 180 }, { tipo: 'triangle', rot: 270 }, null
+              ],
+              opciones: [
+                { tipo: 'triangle', rot: 0 }, { tipo: 'triangle', rot: 90 }, { tipo: 'triangle', rot: 270 }, { tipo: 'triangle', rot: 180 }
+              ],
+              correct: 2,
+              explicacion: "Cada fila rota 90° en sentido horario. La última debe estar a 270°." },
+            { dificultad: 3,
+              matriz: [
+                { tipo: 'square', rot: 0 }, { tipo: 'square', rot: 45 }, { tipo: 'square', rot: 90 },
+                { tipo: 'square', rot: 45 }, { tipo: 'square', rot: 90 }, { tipo: 'square', rot: 135 },
+                { tipo: 'square', rot: 90 }, { tipo: 'square', rot: 135 }, null
+              ],
+              opciones: [
+                { tipo: 'square', rot: 180 }, { tipo: 'square', rot: 0 }, { tipo: 'square', rot: 45 }, { tipo: 'triangle', rot: 180 }
+              ],
+              correct: 0,
+              explicacion: "Cada fila rota 45° en sentido horario. La última debe estar a 180°." },
+            { dificultad: 3,
+              matriz: [
+                { tipo: 'circle', rot: 0 }, { tipo: 'circle', rot: 45 }, { tipo: 'circle', rot: 90 },
+                { tipo: 'circle', rot: 45 }, { tipo: 'circle', rot: 90 }, { tipo: 'circle', rot: 135 },
+                { tipo: 'circle', rot: 90 }, { tipo: 'circle', rot: 135 }, null
+              ],
+              opciones: [
+                { tipo: 'circle', rot: 180 }, { tipo: 'circle', rot: 0 }, { tipo: 'circle', rot: 45 }, { tipo: 'square', rot: 180 }
+              ],
+              correct: 0,
+              explicacion: "Cada fila rota 45° en sentido horario." },
+            // Nivel 4: combinación de formas y conteo
+            { dificultad: 4,
+              matriz: [
+                { tipo: 'circle', count: 1 }, { tipo: 'circle', count: 2 }, { tipo: 'circle', count: 3 },
+                { tipo: 'square', count: 1 }, { tipo: 'square', count: 2 }, { tipo: 'square', count: 3 },
+                { tipo: 'triangle', count: 1 }, { tipo: 'triangle', count: 2 }, null
+              ],
+              opciones: [
+                { tipo: 'triangle', count: 3 }, { tipo: 'triangle', count: 4 },
+                { tipo: 'circle', count: 3 }, { tipo: 'square', count: 3 }
+              ],
+              correct: 0,
+              explicacion: "Cada fila tiene la misma forma con conteo creciente. La última debe ser triángulo con 3." },
+            { dificultad: 4,
+              matriz: [
+                { tipo: 'star', count: 1 }, { tipo: 'star', count: 2 }, { tipo: 'star', count: 3 },
+                { tipo: 'star', count: 3 }, { tipo: 'star', count: 4 }, { tipo: 'star', count: 5 },
+                { tipo: 'star', count: 5 }, { tipo: 'star', count: 6 }, null
+              ],
+              opciones: [
+                { tipo: 'star', count: 7 }, { tipo: 'star', count: 6 }, { tipo: 'star', count: 8 }, { tipo: 'circle', count: 7 }
+              ],
+              correct: 0,
+              explicacion: "Cada fila aumenta en 2, y cada columna también. La última debe tener 7 estrellas." },
+            { dificultad: 4,
+              matriz: [
+                { tipo: 'triangle', rot: 0 }, { tipo: 'triangle', rot: 60 }, { tipo: 'triangle', rot: 120 },
+                { tipo: 'triangle', rot: 60 }, { tipo: 'triangle', rot: 120 }, { tipo: 'triangle', rot: 180 },
+                { tipo: 'triangle', rot: 120 }, { tipo: 'triangle', rot: 180 }, null
+              ],
+              opciones: [
+                { tipo: 'triangle', rot: 240 }, { tipo: 'triangle', rot: 0 }, { tipo: 'triangle', rot: 60 }, { tipo: 'square', rot: 240 }
+              ],
+              correct: 0,
+              explicacion: "Cada fila rota 60° en sentido horario. La última debe estar a 240°." },
+            { dificultad: 4,
+              matriz: [
+                { tipo: 'diamond', rot: 0 }, { tipo: 'diamond', rot: 60 }, { tipo: 'diamond', rot: 120 },
+                { tipo: 'diamond', rot: 60 }, { tipo: 'diamond', rot: 120 }, { tipo: 'diamond', rot: 180 },
+                { tipo: 'diamond', rot: 120 }, { tipo: 'diamond', rot: 180 }, null
+              ],
+              opciones: [
+                { tipo: 'diamond', rot: 240 }, { tipo: 'diamond', rot: 0 }, { tipo: 'diamond', rot: 60 }, { tipo: 'circle', rot: 240 }
+              ],
+              correct: 0,
+              explicacion: "Cada fila rota 60° en sentido horario." },
+            // Nivel 5: combinaciones complejas
+            { dificultad: 5,
+              matriz: [
+                { tipo: 'circle' }, { tipo: 'square' }, { tipo: 'circle+square' },
+                { tipo: 'square' }, { tipo: 'circle+square' }, { tipo: 'circle' },
+                { tipo: 'circle+square' }, { tipo: 'circle' }, null
+              ],
+              opciones: [
+                { tipo: 'square' }, { tipo: 'circle' }, { tipo: 'circle+square' }, { tipo: 'triangle' }
+              ],
+              correct: 0,
+              explicacion: "Cada fila y columna contiene las tres combinaciones: círculo solo, cuadrado solo, ambos." },
+            { dificultad: 5,
+              matriz: [
+                { tipo: 'circle', fill: '#006dff' }, { tipo: 'square', fill: '#006dff' }, { tipo: 'triangle', fill: '#006dff' },
+                { tipo: 'square', fill: '#006dff' }, { tipo: 'triangle', fill: '#006dff' }, { tipo: 'circle', fill: '#006dff' },
+                { tipo: 'triangle', fill: '#006dff' }, { tipo: 'circle', fill: '#006dff' }, null
+              ],
+              opciones: [
+                { tipo: 'square', fill: '#006dff' }, { tipo: 'circle', fill: '#006dff' },
+                { tipo: 'triangle', fill: '#006dff' }, { tipo: 'square', fill: 'white' }
+              ],
+              correct: 0,
+              explicacion: "Cada fila y columna contiene las tres formas en orden cíclico." },
+            { dificultad: 5,
+              matriz: [
+                { tipo: 'circle', count: 1 }, { tipo: 'circle', count: 2 }, { tipo: 'circle', count: 3 },
+                { tipo: 'circle', count: 3 }, { tipo: 'circle', count: 4 }, { tipo: 'circle', count: 5 },
+                { tipo: 'circle', count: 5 }, { tipo: 'circle', count: 6 }, null
+              ],
+              opciones: [
+                { tipo: 'circle', count: 7 }, { tipo: 'circle', count: 6 }, { tipo: 'circle', count: 8 }, { tipo: 'square', count: 7 }
+              ],
+              correct: 0,
+              explicacion: "Cada fila aumenta en 2, y cada columna también. La última debe tener 7." },
+            { dificultad: 5,
+              matriz: [
+                { tipo: 'star', rot: 0 }, { tipo: 'star', rot: 45 }, { tipo: 'star', rot: 90 },
+                { tipo: 'star', rot: 45 }, { tipo: 'star', rot: 90 }, { tipo: 'star', rot: 135 },
+                { tipo: 'star', rot: 90 }, { tipo: 'star', rot: 135 }, null
+              ],
+              opciones: [
+                { tipo: 'star', rot: 180 }, { tipo: 'star', rot: 0 }, { tipo: 'star', rot: 45 }, { tipo: 'circle', rot: 180 }
+              ],
+              correct: 0,
+              explicacion: "Cada fila rota 45° en sentido horario. La última debe estar a 180°." }
+        ];
+
+        // Ordenar por dificultad
+        const razonamientoEjercicios = ejerciciosRaw.sort((a,b) => a.dificultad - b.dificultad);
+
+        // =========================================================
+        // 4. PERSONALIDAD — 48 afirmaciones (12 por dimensión)
+        // =========================================================
+        const personalidadAfirmaciones = [];
+        function addP(text, dim, dir) {
+            personalidadAfirmaciones.push({ text, dim, dir });
+        }
+
+        // Dimensión 0: Extroversión (E) vs Introversión (I)
+        addP("Disfruto estar rodeado de mucha gente.", 0, 1);
+        addP("Prefiero actividades en solitario.", 0, -1);
+        addP("En una fiesta, suelo iniciar conversaciones.", 0, 1);
+        addP("Me siento agotado después de una interacción social prolongada.", 0, -1);
+        addP("Me gusta ser el centro de atención.", 0, 1);
+        addP("Evito ser el foco de atención.", 0, -1);
+        addP("Hablo con facilidad con desconocidos.", 0, 1);
+        addP("Me cuesta iniciar una conversación.", 0, -1);
+        addP("Disfruto los eventos sociales con mucha gente.", 0, 1);
+        addP("Prefiero reuniones pequeñas e íntimas.", 0, -1);
+        addP("Me siento con energía cuando estoy con otros.", 0, 1);
+        addP("Necesito tiempo a solas para recargar energías.", 0, -1);
+
+        // Dimensión 1: Sensorio (S) vs Intuitivo (N)
+        addP("Prefiero la información concreta y práctica.", 1, 1);
+        addP("Me interesan las posibilidades y el futuro.", 1, -1);
+        addP("Presto atención a los detalles.", 1, 1);
+        addP("Suelo pensar en el panorama general.", 1, -1);
+        addP("Confío en la experiencia directa.", 1, 1);
+        addP("Confío en mi intuición.", 1, -1);
+        addP("Prefiero instrucciones paso a paso.", 1, 1);
+        addP("Disfruto explorando nuevas ideas abstractas.", 1, -1);
+        addP("Me fijo en hechos y cifras.", 1, 1);
+        addP("Me fijo en patrones y significados.", 1, -1);
+        addP("Soy práctico y realista.", 1, 1);
+        addP("Soy imaginativo y creativo.", 1, -1);
+
+        // Dimensión 2: Lógica (T) vs Sentimiento (F)
+        addP("Tomo decisiones basadas en la lógica.", 2, 1);
+        addP("Tomo decisiones basadas en mis valores personales.", 2, -1);
+        addP("Analizo los pros y contras objetivamente.", 2, 1);
+        addP("Considero el impacto en las personas.", 2, -1);
+        addP("Prefiero la verdad a la armonía.", 2, 1);
+        addP("Prefiero la armonía a la verdad.", 2, -1);
+        addP("Me considero una persona objetiva.", 2, 1);
+        addP("Me considero una persona empática.", 2, -1);
+        addP("Puedo ser crítico con los demás.", 2, 1);
+        addP("Puedo ser compasivo con los demás.", 2, -1);
+        addP("Las reglas y la consistencia son importantes.", 2, 1);
+        addP("Las relaciones y el bienestar son importantes.", 2, -1);
+
+        // Dimensión 3: Planificación (J) vs Flexibilidad (P)
+        addP("Me gusta tener un plan definido.", 3, 1);
+        addP("Prefiero la espontaneidad.", 3, -1);
+        addP("Disfruto cumplir plazos y horarios.", 3, 1);
+        addP("Me siento cómodo con la incertidumbre.", 3, -1);
+        addP("Organizo mi tiempo de antemano.", 3, 1);
+        addP("Dejo abiertas mis opciones.", 3, -1);
+        addP("Soy ordenado y metódico.", 3, 1);
+        addP("Soy flexible y adaptable.", 3, -1);
+        addP("Prefiero la estructura y el orden.", 3, 1);
+        addP("Disfruto la variedad y el cambio.", 3, -1);
+        addP("Tomo decisiones rápidamente.", 3, 1);
+        addP("Prefiero mantener las opciones abiertas.", 3, -1);
+
+        // =========================================================
+        // 5. PERFILES DE PERSONALIDAD (16 combinaciones)
+        // =========================================================
+        const perfiles16 = {
+            "0000": { nombre: "ESTJ", descripcion: "Ejecutivo. Práctico, realista, decidido. Organiza y dirige con eficiencia." },
+            "0001": { nombre: "ESTP", descripcion: "Emprendedor. Enérgico, perceptivo, arriesgado. Actúa rápidamente y se adapta." },
+            "0010": { nombre: "ESFJ", descripcion: "Consul. Solidario, colaborador, amable. Se preocupa por el bienestar de los demás." },
+            "0011": { nombre: "ESFP", descripcion: "Animador. Sociable, entusiasta, optimista. Disfruta la vida y contagia alegría." },
+            "0100": { nombre: "ENTJ", descripcion: "Comandante. Estratégico, visionario, asertivo. Lidera con determinación." },
+            "0101": { nombre: "ENTP", descripcion: "Innovador. Curioso, ingenioso, provocador. Explora ideas y posibilidades." },
+            "0110": { nombre: "ENFJ", descripcion: "Protagonista. Inspirador, carismático, empático. Guía a otros hacia el crecimiento." },
+            "0111": { nombre: "ENFP", descripcion: "Activista. Creativo, entusiasta, abierto. Busca significado y conexión." },
+            "1000": { nombre: "ISTJ", descripcion: "Inspector. Serio, responsable, metódico. Cumple con precisión y deber." },
+            "1001": { nombre: "ISTP", descripcion: "Virtuoso. Práctico, observador, analítico. Resuelve problemas con destreza." },
+            "1010": { nombre: "ISFJ", descripcion: "Protector. Cálido, leal, dedicado. Cuida de los demás con abnegación." },
+            "1011": { nombre: "ISFP", descripcion: "Aventurero. Sensible, artístico, reservado. Expresa su mundo interior." },
+            "1100": { nombre: "INTJ", descripcion: "Arquitecto. Estratégico, independiente, visionario. Diseña planes a largo plazo." },
+            "1101": { nombre: "INTP", descripcion: "Lógico. Analítico, curioso, objetivo. Busca comprensión profunda." },
+            "1110": { nombre: "INFJ", descripcion: "Abogado. Idealista, perspicaz, comprometido. Busca sentido y justicia." },
+            "1111": { nombre: "INFP", descripcion: "Mediador. Idealista, empático, creativo. Valora la autenticidad y la armonía." }
+        };
+
+        // =========================================================
+        // 6. MATRIZ DE COMPATIBILIDAD VOCACIONAL (ÁREAS PROFESIONALES)
+        //    Cada área tiene pesos para las 10 dimensiones de Kuder y Herrera,
+        //    y una lista de perfiles de personalidad con puntuaciones (0-1).
+        // =========================================================
+        const areasVocacionales = [
+            {
+                nombre: "Recursos Humanos",
+                kuder:   [0.1, 0.1, 0.2, 0.1, 0.8, 0.1, 0.2, 0.1, 0.9, 0.7],
+                herrera: [0.1, 0.1, 0.2, 0.1, 0.7, 0.1, 0.2, 0.1, 0.9, 0.6],
+                personalidad: {
+                    "ESFJ": 0.95, "ENFJ": 0.95, "ESTJ": 0.85, "ENTJ": 0.85,
+                    "ISFJ": 0.80, "INFJ": 0.80, "ISTJ": 0.70, "INTJ": 0.70,
+                    "ESFP": 0.60, "ENFP": 0.60, "ESTP": 0.50, "ENTP": 0.50,
+                    "ISFP": 0.40, "INFP": 0.40, "ISTP": 0.30, "INTP": 0.30
+                },
+                razonamiento_min: 40,
+                descripcion: "Área centrada en la gestión de personas, comunicación, organización y toma de decisiones en contextos laborales."
+            },
+            {
+                nombre: "Psicología",
+                kuder:   [0.1, 0.1, 0.3, 0.4, 0.6, 0.1, 0.3, 0.1, 0.9, 0.4],
+                herrera: [0.1, 0.1, 0.3, 0.4, 0.5, 0.1, 0.3, 0.1, 0.9, 0.4],
+                personalidad: {
+                    "ENFJ": 0.95, "INFJ": 0.95, "ESFJ": 0.85, "ISFJ": 0.85,
+                    "ENFP": 0.80, "INFP": 0.80, "ENTJ": 0.60, "INTJ": 0.60,
+                    "ESTJ": 0.50, "ISTJ": 0.50, "ESFP": 0.40, "ISFP": 0.40,
+                    "ESTP": 0.30, "ISTP": 0.30, "ENTP": 0.30, "INTP": 0.30
+                },
+                razonamiento_min: 50,
+                descripcion: "Área dedicada al estudio del comportamiento humano, la salud mental y la intervención psicosocial."
+            },
+            {
+                nombre: "Educación",
+                kuder:   [0.2, 0.1, 0.2, 0.3, 0.7, 0.2, 0.6, 0.2, 0.8, 0.5],
+                herrera: [0.2, 0.1, 0.2, 0.3, 0.6, 0.2, 0.6, 0.2, 0.8, 0.5],
+                personalidad: {
+                    "ENFJ": 0.95, "ESFJ": 0.95, "INFJ": 0.85, "ISFJ": 0.85,
+                    "ENFP": 0.80, "INFP": 0.80, "ENTJ": 0.60, "ESTJ": 0.60,
+                    "INTJ": 0.50, "ISTJ": 0.50, "ESFP": 0.40, "ISFP": 0.40,
+                    "ESTP": 0.30, "ISTP": 0.30, "ENTP": 0.30, "INTP": 0.30
+                },
+                razonamiento_min: 45,
+                descripcion: "Área que abarca la enseñanza, la formación y el desarrollo de programas educativos."
+            },
+            {
+                nombre: "Ingeniería",
+                kuder:   [0.1, 0.9, 0.8, 0.7, 0.2, 0.1, 0.1, 0.1, 0.1, 0.3],
+                herrera: [0.1, 0.9, 0.8, 0.7, 0.2, 0.1, 0.1, 0.1, 0.1, 0.3],
+                personalidad: {
+                    "ISTJ": 0.95, "INTJ": 0.95, "ESTJ": 0.85, "ENTJ": 0.85,
+                    "ISTP": 0.80, "INTP": 0.80, "ESTP": 0.60, "ENTP": 0.60,
+                    "ISFJ": 0.40, "INFJ": 0.40, "ESFJ": 0.30, "ENFJ": 0.30,
+                    "ISFP": 0.20, "INFP": 0.20, "ESFP": 0.10, "ENFP": 0.10
+                },
+                razonamiento_min: 60,
+                descripcion: "Área que aplica conocimientos científicos y técnicos para diseñar, construir y optimizar sistemas y estructuras."
+            },
+            {
+                nombre: "Arquitectura",
+                kuder:   [0.2, 0.7, 0.5, 0.5, 0.3, 0.8, 0.2, 0.1, 0.2, 0.4],
+                herrera: [0.2, 0.7, 0.5, 0.5, 0.3, 0.8, 0.2, 0.1, 0.2, 0.4],
+                personalidad: {
+                    "INTJ": 0.95, "INTP": 0.90, "ISTJ": 0.85, "ISTP": 0.85,
+                    "ENTJ": 0.80, "ENTP": 0.80, "ESTJ": 0.60, "ESTP": 0.60,
+                    "INFJ": 0.50, "INFP": 0.50, "ENFJ": 0.40, "ENFP": 0.40,
+                    "ISFJ": 0.30, "ISFP": 0.30, "ESFJ": 0.20, "ESFP": 0.20
+                },
+                razonamiento_min: 55,
+                descripcion: "Área que combina el diseño, la creatividad y la técnica para proyectar espacios y edificaciones."
+            },
+            {
+                nombre: "Diseño Gráfico",
+                kuder:   [0.1, 0.2, 0.2, 0.2, 0.4, 0.9, 0.4, 0.2, 0.2, 0.3],
+                herrera: [0.1, 0.2, 0.2, 0.2, 0.4, 0.9, 0.4, 0.2, 0.2, 0.3],
+                personalidad: {
+                    "ISFP": 0.95, "INFP": 0.95, "ESFP": 0.85, "ENFP": 0.85,
+                    "ISTP": 0.70, "INTP": 0.70, "ESTP": 0.60, "ENTP": 0.60,
+                    "ISFJ": 0.50, "INFJ": 0.50, "ESFJ": 0.40, "ENFJ": 0.40,
+                    "ISTJ": 0.30, "INTJ": 0.30, "ESTJ": 0.20, "ENTJ": 0.20
+                },
+                razonamiento_min: 40,
+                descripcion: "Área centrada en la comunicación visual, la creación de identidades y la expresión gráfica."
+            },
+            {
+                nombre: "Comunicación",
+                kuder:   [0.2, 0.1, 0.2, 0.2, 0.7, 0.6, 0.9, 0.2, 0.6, 0.5],
+                herrera: [0.2, 0.1, 0.2, 0.2, 0.7, 0.6, 0.9, 0.2, 0.6, 0.5],
+                personalidad: {
+                    "ENFP": 0.95, "ENFJ": 0.90, "ESFP": 0.85, "ESFJ": 0.80,
+                    "INFP": 0.80, "INFJ": 0.75, "ISFP": 0.60, "ISFJ": 0.60,
+                    "ENTP": 0.70, "ENTJ": 0.60, "ESTP": 0.50, "ESTJ": 0.50,
+                    "INTP": 0.40, "INTJ": 0.40, "ISTP": 0.30, "ISTJ": 0.30
+                },
+                razonamiento_min: 45,
+                descripcion: "Área que abarca el periodismo, la publicidad, las relaciones públicas y la producción de contenido."
+            },
+            {
+                nombre: "Música",
+                kuder:   [0.1, 0.1, 0.1, 0.1, 0.3, 0.4, 0.2, 0.9, 0.2, 0.1],
+                herrera: [0.1, 0.1, 0.1, 0.1, 0.3, 0.4, 0.2, 0.9, 0.2, 0.1],
+                personalidad: {
+                    "ISFP": 0.95, "INFP": 0.90, "ESFP": 0.85, "ENFP": 0.80,
+                    "ISTP": 0.60, "INTP": 0.60, "ESTP": 0.50, "ENTP": 0.50,
+                    "ISFJ": 0.40, "INFJ": 0.40, "ESFJ": 0.30, "ENFJ": 0.30,
+                    "ISTJ": 0.20, "INTJ": 0.20, "ESTJ": 0.10, "ENTJ": 0.10
+                },
+                razonamiento_min: 35,
+                descripcion: "Área dedicada a la interpretación, composición, producción y enseñanza musical."
+            },
+            {
+                nombre: "Medicina",
+                kuder:   [0.1, 0.3, 0.6, 0.9, 0.4, 0.1, 0.2, 0.1, 0.7, 0.3],
+                herrera: [0.1, 0.3, 0.6, 0.9, 0.4, 0.1, 0.2, 0.1, 0.7, 0.3],
+                personalidad: {
+                    "ISTJ": 0.90, "INTJ": 0.90, "ISFJ": 0.85, "INFJ": 0.85,
+                    "ESTJ": 0.80, "ENTJ": 0.80, "ESFJ": 0.70, "ENFJ": 0.70,
+                    "ISTP": 0.50, "INTP": 0.50, "ESTP": 0.40, "ENTP": 0.40,
+                    "ISFP": 0.30, "INFP": 0.30, "ESFP": 0.20, "ENFP": 0.20
+                },
+                razonamiento_min: 60,
+                descripcion: "Área que se ocupa de la salud, el diagnóstico, el tratamiento y la prevención de enfermedades."
+            },
+            {
+                nombre: "Derecho",
+                kuder:   [0.1, 0.1, 0.4, 0.3, 0.8, 0.2, 0.7, 0.1, 0.4, 0.5],
+                herrera: [0.1, 0.1, 0.4, 0.3, 0.8, 0.2, 0.7, 0.1, 0.4, 0.5],
+                personalidad: {
+                    "ENTJ": 0.95, "INTJ": 0.90, "ESTJ": 0.85, "ISTJ": 0.80,
+                    "ENTP": 0.80, "INTP": 0.75, "ESTP": 0.70, "ISTP": 0.65,
+                    "ENFJ": 0.50, "INFJ": 0.50, "ESFJ": 0.40, "ISFJ": 0.40,
+                    "ENFP": 0.30, "INFP": 0.30, "ESFP": 0.20, "ISFP": 0.20
+                },
+                razonamiento_min: 55,
+                descripcion: "Área que estudia y aplica las normas jurídicas, la argumentación y la defensa de derechos."
+            },
+            {
+                nombre: "Tecnología de la Información",
+                kuder:   [0.1, 0.8, 0.8, 0.7, 0.3, 0.1, 0.1, 0.1, 0.1, 0.4],
+                herrera: [0.1, 0.8, 0.8, 0.7, 0.3, 0.1, 0.1, 0.1, 0.1, 0.4],
+                personalidad: {
+                    "INTJ": 0.95, "INTP": 0.95, "ISTJ": 0.85, "ISTP": 0.85,
+                    "ENTJ": 0.80, "ENTP": 0.80, "ESTJ": 0.60, "ESTP": 0.60,
+                    "INFJ": 0.40, "INFP": 0.40, "ENFJ": 0.30, "ENFP": 0.30,
+                    "ISFJ": 0.20, "ISFP": 0.20, "ESFJ": 0.10, "ESFP": 0.10
+                },
+                razonamiento_min: 65,
+                descripcion: "Área que abarca el desarrollo de software, la administración de sistemas, la ciberseguridad y la inteligencia artificial."
+            },
+            {
+                nombre: "Biología",
+                kuder:   [0.6, 0.3, 0.5, 0.9, 0.2, 0.2, 0.3, 0.1, 0.4, 0.2],
+                herrera: [0.6, 0.3, 0.5, 0.9, 0.2, 0.2, 0.3, 0.1, 0.4, 0.2],
+                personalidad: {
+                    "ISTJ": 0.90, "INTJ": 0.85, "ISFJ": 0.80, "INFJ": 0.75,
+                    "ISTP": 0.70, "INTP": 0.70, "ESTJ": 0.60, "ENTJ": 0.60,
+                    "ESFJ": 0.50, "ENFJ": 0.50, "ESTP": 0.40, "ENTP": 0.40,
+                    "ISFP": 0.30, "INFP": 0.30, "ESFP": 0.20, "ENFP": 0.20
+                },
+                razonamiento_min: 55,
+                descripcion: "Área que estudia los seres vivos, su estructura, función, evolución y relaciones."
+            }
+        ];
+
+        // =========================================================
+        // 7. COMBINAR TODAS LAS PREGUNTAS EN UN ÚNICO FLUJO
+        // =========================================================
+        const allQuestions = [];
+
+        // Kuder
+        kuderQuestions.forEach((q, i) => {
+            allQuestions.push({
+                type: 'kuder',
+                id: 'k' + i,
+                data: q,
+                section: 'Kuder'
+            });
+        });
+
+        // Herrera
+        herreraQuestions.forEach((q, i) => {
+            allQuestions.push({
+                type: 'herrera',
+                id: 'h' + i,
+                data: q,
+                section: 'Herrera'
+            });
+        });
+
+        // Razonamiento
+        razonamientoEjercicios.forEach((q, i) => {
+            allQuestions.push({
+                type: 'razonamiento',
+                id: 'r' + i,
+                data: q,
+                section: 'Razonamiento'
+            });
+        });
+
+        // Personalidad
+        personalidadAfirmaciones.forEach((q, i) => {
+            allQuestions.push({
+                type: 'personalidad',
+                id: 'p' + i,
+                data: q,
+                section: 'Personalidad'
+            });
+        });
+
+        const total = allQuestions.length;
+        let currentIndex = 0;
+        const answers = {}; // { 'id': value }
+
+        // =========================================================
+        // 8. PERSISTENCIA CON LOCALSTORAGE
+        // =========================================================
+        function loadAnswers() {
+            try {
+                const saved = localStorage.getItem('windsor_test_answers');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    Object.assign(answers, parsed);
+                }
+            } catch(e) {}
+        }
+
+        function saveAnswers() {
+            try {
+                localStorage.setItem('windsor_test_answers', JSON.stringify(answers));
+            } catch(e) {}
+        }
+
+        function loadProgress() {
+            try {
+                const idx = parseInt(localStorage.getItem('windsor_test_index'));
+                if (!isNaN(idx) && idx >= 0 && idx < total) {
+                    currentIndex = idx;
+                }
+            } catch(e) {}
+        }
+
+        function saveProgress() {
+            try {
+                localStorage.setItem('windsor_test_index', String(currentIndex));
+            } catch(e) {}
+        }
+
+        // Cargar respuestas y progreso al inicio
+        loadAnswers();
+        loadProgress();
+
+        // =========================================================
+        // 9. RENDERIZADO DE PREGUNTAS
+        // =========================================================
+        function renderQuestion(index) {
+            const q = allQuestions[index];
+            const area = document.getElementById('questionArea');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+
+            progressFill.style.width = ((index + 1) / total * 100) + '%';
+            progressText.textContent = `${index + 1} / ${total}`;
+
+            let html = '';
+
+            if (q.type === 'kuder') {
+                const data = q.data;
+                const selected = answers[q.id] || { plus: null, minus: null };
+                html = `
+                    <div class="question-block">
+                        <div class="q-type">Kuder — Elige la que más te gusta (+) y la que menos (-)</div>
+                        <div class="q-text">${data.text}</div>
+                        <div class="kuder-options">
+                `;
+                data.options.forEach((opt, i) => {
+                    const plusChecked = selected.plus === i ? 'checked' : '';
+                    const minusChecked = selected.minus === i ? 'checked' : '';
+                    html += `
+                        <label>
+                            <span class="label-mas">+ MÁS</span>
+                            <input type="radio" name="${q.id}_plus" value="${i}" ${plusChecked} data-id="${q.id}" data-type="plus">
+                            <span>${opt}</span>
+                            <input type="radio" name="${q.id}_minus" value="${i}" ${minusChecked} data-id="${q.id}" data-type="minus">
+                            <span class="label-menos">- MENOS</span>
+                        </label>
+                    `;
+                });
+                html += `</div></div>`;
+            } else if (q.type === 'herrera') {
+                const data = q.data;
+                const selected = answers[q.id] !== undefined ? answers[q.id] : null;
+                const labelsEscala = ['0: Me desagrada mucho', '1: Me desagrada algo', '2: Indiferente', '3: Me gusta algo', '4: Me gusta mucho'];
+                html = `
+                    <div class="question-block">
+                        <div class="q-type">Herrera — ¿Qué tanto te gustaría hacer esto?</div>
+                        <div class="q-text">${data.text}</div>
+                        <div class="options">
+                `;
+                for (let i = 0; i <= 4; i++) {
+                    const checked = selected === i ? 'checked' : '';
+                    html += `
+                        <label>
+                            <input type="radio" name="${q.id}" value="${i}" ${checked} data-id="${q.id}">
+                            <span>${labelsEscala[i]}</span>
+                        </label>
+                    `;
+                }
+                html += `</div></div>`;
+            } else if (q.type === 'razonamiento') {
+                const data = q.data;
+                const matriz = data.matriz;
+                let matrixHTML = '<div class="matrix-grid">';
+                for (let i = 0; i < 9; i++) {
+                    const cell = matriz[i];
+                    if (i === 8) {
+                        matrixHTML += `<div class="matrix-cell empty">?</div>`;
+                    } else if (cell) {
+                        const svg = figuraSVG(cell.tipo, { count: cell.count || 1, fill: cell.fill || '#006dff', rot: cell.rot || 0 });
+                        matrixHTML += `<div class="matrix-cell">${svg}</div>`;
+                    } else {
+                        matrixHTML += `<div class="matrix-cell"></div>`;
+                    }
+                }
+                matrixHTML += '</div>';
+
+                const selected = answers[q.id] !== undefined ? answers[q.id] : null;
+                let optionsHTML = '<div class="opciones-matriz">';
+                data.opciones.forEach((opt, i) => {
+                    const checked = selected === i ? 'checked' : '';
+                    const svg = figuraSVG(opt.tipo, { count: opt.count || 1, fill: opt.fill || '#006dff', rot: opt.rot || 0 });
+                    optionsHTML += `
+                        <label>
+                            <input type="radio" name="${q.id}" value="${i}" ${checked} data-id="${q.id}">
+                            <span class="opcion-figura">${svg}</span>
+                        </label>
+                    `;
+                });
+                optionsHTML += '</div>';
+
+                html = `
+                    <div class="question-block">
+                        <div class="q-type">Razonamiento abstracto — Elige la figura que completa el patrón</div>
+                        <div class="q-text">Observa la matriz y selecciona la opción correcta para la celda faltante.</div>
+                        ${matrixHTML}
+                        ${optionsHTML}
+                    </div>
+                `;
+            } else if (q.type === 'personalidad') {
+                const data = q.data;
+                const selected = answers[q.id] !== undefined ? answers[q.id] : null;
+                html = `
+                    <div class="question-block">
+                        <div class="q-type">Personalidad — Indica tu grado de acuerdo</div>
+                        <div class="q-text">${data.text}</div>
+                        <div class="escala-5">
+                `;
+                for (let i = 1; i <= 5; i++) {
+                    const checked = selected === i ? 'checked' : '';
+                    html += `
+                        <label>
+                            <input type="radio" name="${q.id}" value="${i}" ${checked} data-id="${q.id}">
+                            <span>${i}</span>
+                            <span style="font-size:8px; opacity:0.6;">${['TD','D','N','A','TA'][i-1]}</span>
+                        </label>
+                    `;
+                }
+                html += `</div></div>`;
+            }
+
+            area.innerHTML = html;
+
+            // Eventos para guardar respuestas
+            area.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const id = e.target.dataset.id;
+                    const type = e.target.dataset.type;
+                    let val = e.target.value;
+                    if (q.type === 'kuder') {
+                        if (!answers[id]) answers[id] = { plus: null, minus: null };
+                        if (type === 'plus') answers[id].plus = parseInt(val);
+                        else if (type === 'minus') answers[id].minus = parseInt(val);
+                    } else {
+                        answers[id] = parseInt(val);
+                    }
+                    saveAnswers();
+                    updateButtons();
+                });
+            });
+
+            updateButtons();
+            saveProgress();
+        }
+
+        function updateButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            prevBtn.disabled = currentIndex === 0;
+
+            const q = allQuestions[currentIndex];
+            let answered = false;
+            if (q.type === 'kuder') {
+                const a = answers[q.id];
+                answered = a && a.plus !== null && a.minus !== null && a.plus !== a.minus;
+            } else {
+                answered = answers[q.id] !== undefined && answers[q.id] !== null;
+            }
+
+            if (currentIndex === total - 1) {
+                nextBtn.textContent = answered ? 'Ver resultados' : 'Siguiente';
+                nextBtn.disabled = !answered;
+            } else {
+                nextBtn.textContent = 'Siguiente';
+                nextBtn.disabled = !answered;
+            }
+        }
+
+        // =========================================================
+        // 10. NAVEGACIÓN
+        // =========================================================
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentIndex > 0) { currentIndex--; renderQuestion(currentIndex); }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentIndex === total - 1) {
+                calcularResultadosFinales();
+                return;
+            }
+            if (currentIndex < total - 1) {
+                currentIndex++;
+                renderQuestion(currentIndex);
+            }
+        });
+
+        // =========================================================
+        // 11. CÁLCULO DE RESULTADOS FINALES (con matriz de compatibilidad)
+        // =========================================================
+        function calcularResultadosFinales() {
+            // 1. Kuder
+            const kuderScores = Array(10).fill(0);
+            kuderQuestions.forEach((q, idx) => {
+                const id = 'k' + idx;
+                const a = answers[id];
+                if (a && a.plus !== null && a.minus !== null && a.plus !== a.minus) {
+                    const plusScale = q.scales[a.plus];
+                    const minusScale = q.scales[a.minus];
+                    if (plusScale !== undefined) kuderScores[plusScale] += 1;
+                    if (minusScale !== undefined) kuderScores[minusScale] -= 1;
+                }
+            });
+            const minK = -12, maxK = 12;
+            const kuderNorm = kuderScores.map(s => Math.min(100, Math.max(0, Math.round((s - minK) / (maxK - minK) * 100))));
+
+            // 2. Herrera
+            const herreraScores = Array(10).fill(0);
+            herreraQuestions.forEach((q, idx) => {
+                const id = 'h' + idx;
+                const val = answers[id];
+                if (val !== undefined) herreraScores[q.scale] += val;
+            });
+            const minH = 0, maxH = 40;
+            const herreraNorm = herreraScores.map(s => Math.min(100, Math.max(0, Math.round((s - minH) / (maxH - minH) * 100))));
+
+            // 3. Razonamiento
+            let correctas = 0;
+            razonamientoEjercicios.forEach((q, idx) => {
+                const id = 'r' + idx;
+                const val = answers[id];
+                if (val !== undefined && val === q.correct) correctas++;
+            });
+            const totalR = razonamientoEjercicios.length;
+            const pctR = Math.round((correctas / totalR) * 100);
+
+            // 4. Personalidad
+            const dimScores = [0,0,0,0];
+            const dimCounts = [0,0,0,0];
+            personalidadAfirmaciones.forEach((q, idx) => {
+                const id = 'p' + idx;
+                const val = answers[id];
+                if (val !== undefined) {
+                    let score = val;
+                    if (q.dir === -1) score = 6 - val;
+                    dimScores[q.dim] += score;
+                    dimCounts[q.dim]++;
+                }
+            });
+            const dimProm = dimScores.map((s, i) => dimCounts[i] > 0 ? s / dimCounts[i] : 3);
+            const polaridades = dimProm.map(d => d >= 3 ? 0 : 1);
+            const clave = polaridades.join('');
+            const perfil = perfiles16[clave] || perfiles16['0000'];
+
+            // 5. Cálculo de compatibilidad con matriz de áreas
+            const compatibilidades = areasVocacionales.map(area => {
+                // Compatibilidad Kuder: producto punto entre kuderNorm y area.kuder, escalado a 0-100
+                let kuderComp = 0;
+                for (let i = 0; i < 10; i++) {
+                    kuderComp += (kuderNorm[i] / 100) * area.kuder[i];
+                }
+                kuderComp = Math.round(kuderComp * 100);
+
+                // Compatibilidad Herrera: producto punto entre herreraNorm y area.herrera
+                let herreraComp = 0;
+                for (let i = 0; i < 10; i++) {
+                    herreraComp += (herreraNorm[i] / 100) * area.herrera[i];
+                }
+                herreraComp = Math.round(herreraComp * 100);
+
+                // Compatibilidad Personalidad: puntuación del perfil específico
+                const perfilScore = area.personalidad[clave] || 0.5;
+                const personalidadComp = Math.round(perfilScore * 100);
+
+                // Compatibilidad Razonamiento: si pctR >= razonamiento_min, aporta 100, sino 0
+                const razonamientoComp = pctR >= area.razonamiento_min ? 100 : Math.round((pctR / area.razonamiento_min) * 100);
+
+                // Ponderación final: Kuder 40%, Herrera 30%, Personalidad 25%, Razonamiento 5%
+                const finalComp = Math.round(
+                    kuderComp * 0.40 +
+                    herreraComp * 0.30 +
+                    personalidadComp * 0.25 +
+                    razonamientoComp * 0.05
+                );
+
+                // Generar explicación dinámica
+                let expl = [];
+                if (kuderComp > 70) expl.push("intereses alineados");
+                else if (kuderComp > 50) expl.push("intereses moderados");
+                else expl.push("intereses bajos");
+
+                if (herreraComp > 70) expl.push("preferencias profesionales altas");
+                else if (herreraComp > 50) expl.push("preferencias moderadas");
+                else expl.push("preferencias bajas");
+
+                if (perfilScore > 0.7) expl.push("perfil de personalidad compatible");
+                else if (perfilScore > 0.4) expl.push("personalidad parcialmente compatible");
+                else expl.push("perfil de personalidad menos afín");
+
+                if (razonamientoComp >= 80) expl.push("razonamiento adecuado");
+                else if (razonamientoComp >= 50) expl.push("razonamiento aceptable");
+                else expl.push("razonamiento mejorable");
+
+                return {
+                    area: area.nombre,
+                    compat: finalComp,
+                    kuderComp,
+                    herreraComp,
+                    personalidadComp,
+                    razonamientoComp,
+                    explicacion: "Basado en " + expl.join(', ') + "."
+                };
+            });
+
+            // Ordenar por compatibilidad descendente
+            compatibilidades.sort((a,b) => b.compat - a.compat);
+            const top5 = compatibilidades.slice(0,5);
+
+            // Mostrar resultados
+            mostrarResultadosIntegrales(kuderNorm, herreraNorm, correctas, totalR, pctR, perfil, top5);
+        }
+
+        function mostrarResultadosIntegrales(kuder, herrera, correctas, totalR, pctR, perfil, recomendaciones) {
+            document.getElementById('questionArea').style.display = 'none';
+            document.getElementById('prevBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('resultadoFinal').style.display = 'block';
+
+            const container = document.getElementById('resultadoFinal');
+
+            // Kuder chart
+            let kuderHTML = '<div class="chart">';
+            labels.forEach((label, i) => {
+                kuderHTML += `
+                    <div class="chart-row">
+                        <span class="label">${label}</span>
+                        <div class="bar"><span style="width:${kuder[i]}%;"></span></div>
+                        <span class="score">${kuder[i]}</span>
+                    </div>
+                `;
+            });
+            kuderHTML += '</div>';
+
+            // Herrera chart
+            let herreraHTML = '<div class="chart">';
+            labels.forEach((label, i) => {
+                herreraHTML += `
+                    <div class="chart-row">
+                        <span class="label">${label}</span>
+                        <div class="bar"><span style="width:${herrera[i]}%;"></span></div>
+                        <span class="score">${herrera[i]}</span>
+                    </div>
+                `;
+            });
+            herreraHTML += '</div>';
+
+            // Recomendaciones
+            let recHTML = '<div class="recomendaciones">';
+            recomendaciones.forEach((r, i) => {
+                recHTML += `
+                    <div class="recomendacion-item">
+                        <div class="top">
+                            <span>${i+1}. ${r.area}</span>
+                            <span>${r.compat}%</span>
+                        </div>
+                        <div class="explanation">${r.explicacion}</div>
+                    </div>
+                `;
+            });
+            recHTML += '</div>';
+
+            container.innerHTML = `
+                <h2>Perfil vocacional <em>integral</em></h2>
+                <p style="color:#555; margin-bottom:20px;">Resultados basados en tus respuestas. Tienen finalidad orientativa.</p>
+
+                <div class="modulo-resultado">
+                    <h3>Intereses (Kuder)</h3>
+                    ${kuderHTML}
+                </div>
+
+                <div class="modulo-resultado">
+                    <h3>Preferencias (Herrera y Montes)</h3>
+                    ${herreraHTML}
+                </div>
+
+                <div class="modulo-resultado">
+                    <h3>Razonamiento abstracto</h3>
+                    <p>Acertaste <strong>${correctas}</strong> de ${totalR} ejercicios (${pctR}%).</p>
+                    <p style="margin-top:5px; color:#555;">Desempeño: ${pctR >= 80 ? 'Alto' : pctR >= 60 ? 'Medio' : 'Inicial'}.</p>
+                </div>
+
+                <div class="modulo-resultado">
+                    <h3>Personalidad</h3>
+                    <p><strong>${perfil.nombre}</strong> — ${perfil.descripcion}</p>
+                </div>
+
+                <div class="modulo-resultado">
+                    <h3>Áreas profesionales compatibles</h3>
+                    ${recHTML}
+                </div>
+
+                <div style="margin-top:20px; padding:15px; background:var(--cream); border-radius: var(--radius-sm); font-size:13px; color:#666;">
+                    <strong>Nota orientativa:</strong> Estos resultados son una guía para el autoconocimiento. No constituyen un diagnóstico psicológico ni determinan de manera absoluta la carrera o profesión que debes elegir.
+                </div>
+
+                <div class="result-actions">
+                    <a href="orientacion-vocacional.html">← Volver a información</a>
+                    <a href="test-vocacional.html" class="secondary">Reiniciar test</a>
+                </div>
+            `;
+
+            // Animar barras
+            setTimeout(() => {
+                document.querySelectorAll('#resultadoFinal .bar span').forEach(el => {
+                    const w = el.style.width;
+                    el.style.width = '0%';
+                    setTimeout(() => { el.style.width = w; }, 50);
+                });
+            }, 100);
+        }
+
+        // =========================================================
+        // 12. INICIALIZAR
+        // =========================================================
+        renderQuestion(currentIndex);
+
+        // =========================================================
+        // 13. UI: HEADER SCROLL, PRELOADER, MENU
+        // =========================================================
+        window.addEventListener('load', () => {
+            const p = document.querySelector('.preloader');
+            if (p) setTimeout(() => p.classList.add('loaded'), 1300);
+        });
+
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => header?.classList.toggle('scrolled', window.scrollY > 40));
+
+        const menuBtn = document.querySelector('.menu-button');
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                alert('Usa el menú de la página principal o vuelve a orientación.');
+            });
+        }
+    </script>
+
+</body>
+</html>
