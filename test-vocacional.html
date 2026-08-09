@@ -28,7 +28,6 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            border-radius: 0 !important; /* Elimina esquinas redondeadas de contenedores y botones */
         }
         html {
             scroll-behavior: smooth;
@@ -112,7 +111,7 @@
             margin: 0 auto 35px;
             border: 5px solid var(--line);
             border-top: 5px solid var(--blue);
-            border-radius: 50% !important; /* Forzamos que sea un círculo perfecto para girar */
+            border-radius: 50% !important; /* Forzamos que sea un círculo perfecto */
             animation: spin 1s linear infinite;
         }
         @keyframes spin {
@@ -146,7 +145,7 @@
             font-weight: 700;
         }
 
-        /* Botón sin esquinas redondeadas */
+        /* Botón sin esquinas redondeadas (opcional, pero se mantiene estilo) */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -251,7 +250,7 @@
             <div class="spinner" aria-label="Cargando, página en mantenimiento"></div>
 
             <h1>
-                Pagina en
+                Estamos en
                 <em>mantenimiento</em>
             </h1>
             <p>
