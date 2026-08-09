@@ -24,10 +24,11 @@ window.addEventListener("load", () => {
 
 
 /* =========================================================
-   HEADER
+   HEADER — Ocultar al bajar, mostrar al subir
 ========================================================= */
 
 const header = document.querySelector(".header");
+let lastScrollY = window.scrollY;
 
 function updateHeader() {
 
@@ -35,11 +36,25 @@ function updateHeader() {
         return;
     }
 
-    if (window.scrollY > 40) {
-        header.classList.add("scrolled");
-    } else {
+    const currentScrollY = window.scrollY;
+
+    // Si el scroll está en la parte superior, mostrar siempre
+    if (currentScrollY <= 40) {
         header.classList.remove("scrolled");
+        header.classList.remove("hidden");
+        lastScrollY = currentScrollY;
+        return;
     }
+
+    // Si bajamos, ocultar; si subimos, mostrar
+    if (currentScrollY > lastScrollY) {
+        header.classList.add("hidden");
+    } else {
+        header.classList.remove("hidden");
+    }
+
+    header.classList.add("scrolled");
+    lastScrollY = currentScrollY;
 
 }
 
