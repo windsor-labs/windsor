@@ -42,9 +42,9 @@
     /* Se conserva el nombre --serif por compatibilidad, ahora apunta a Montserrat Black */
     --serif: var(--sans);
 
-    --radius: 26px;
-    --radius-sm: 14px;
-    --radius-pill: 999px;
+    --radius: 0px;
+    --radius-sm: 0px;
+    --radius-pill: 0px;
 
     --max-width: 1440px;
 }
@@ -58,6 +58,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    border-radius: 0 !important;
 }
 
 html {
@@ -145,7 +146,7 @@ section {
 .preloader-logo {
     font-family: var(--serif);
     font-weight: 900;
-    font-size: clamp(70px, 10vw, 100px);
+    font-size: clamp(52.5px, 7.5vw, 75px);
     line-height: 1;
     color: var(--blue);
 
@@ -219,9 +220,14 @@ section {
     color: var(--white);
 
     transition:
+        transform 0.35s ease,
         background 0.35s ease,
         color 0.35s ease,
         backdrop-filter 0.35s ease;
+}
+
+.header.hidden {
+    transform: translateY(-100%);
 }
 
 .header {
@@ -331,7 +337,6 @@ section {
 
     background: var(--blue);
     border: 1px solid var(--blue);
-    border-radius: var(--radius-pill);
 
     font-size: 9px;
     font-weight: 700;
@@ -364,7 +369,6 @@ section {
 
     background: transparent;
     border: 1px solid rgba(255,255,255,0.4);
-    border-radius: var(--radius-pill);
 
     cursor: pointer;
 
@@ -441,7 +445,7 @@ section {
 }
 
 .mobile-menu a {
-    font-size: clamp(2rem, 8vw, 4rem);
+    font-size: clamp(1.5rem, 6vw, 3rem);
     line-height: 0.95;
     letter-spacing: -0.06em;
 
@@ -564,7 +568,6 @@ section {
     width: 7px;
     height: 7px;
 
-    border-radius: 50%;
     background: var(--green);
 
     animation: dotPulse 2s ease infinite;
@@ -585,7 +588,7 @@ section {
 .hero h1 {
     max-width: 1150px;
 
-    font-size: clamp(4rem, 10.5vw, 10.5rem);
+    font-size: clamp(3rem, 7.875vw, 7.875rem);
     line-height: 0.8;
 
     letter-spacing: -0.085em;
@@ -628,7 +631,6 @@ section {
     flex: 0 0 auto;
 
     border: 1px solid rgba(255,255,255,0.35);
-    border-radius: 50%;
 
     display: flex;
     flex-direction: column;
@@ -682,7 +684,7 @@ section {
 
 .marquee-track span {
     font-family: var(--sans);
-    font-size: clamp(1.1rem, 2vw, 2rem);
+    font-size: clamp(0.825rem, 1.5vw, 1.5rem);
     font-weight: 800;
     letter-spacing: -0.04em;
 }
@@ -722,7 +724,7 @@ section {
 .intro-layout h2 {
     max-width: 900px;
 
-    font-size: clamp(3.2rem, 7vw, 7rem);
+    font-size: clamp(2.4rem, 5.25vw, 5.25rem);
     line-height: 0.86;
 
     letter-spacing: -0.075em;
@@ -839,7 +841,6 @@ section {
     margin-bottom: 45px;
 
     border: 1px solid var(--green);
-    border-radius: 50%;
 
     color: var(--green);
 
@@ -868,7 +869,7 @@ section {
 .seed-main h2 {
     max-width: 900px;
 
-    font-size: clamp(3.2rem, 8vw, 8rem);
+    font-size: clamp(2.4rem, 6vw, 6rem);
     line-height: 0.83;
 
     letter-spacing: -0.07em;
@@ -929,7 +930,7 @@ section {
 }
 
 .services-heading h2 {
-    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-size: clamp(2.625rem, 5.25vw, 5.25rem);
     line-height: 0.85;
 
     letter-spacing: -0.07em;
@@ -977,8 +978,6 @@ section {
     position: relative;
     overflow: hidden;
 
-    border-radius: var(--radius);
-
     transition:
         transform 0.4s cubic-bezier(.2,.8,.2,1),
         box-shadow 0.4s ease;
@@ -994,7 +993,6 @@ section {
 
     background: currentColor;
     opacity: 0.35;
-    border-radius: var(--radius-pill);
 
     transition: width 0.4s ease, opacity 0.4s ease;
 }
@@ -1016,7 +1014,6 @@ section {
     top: -70px;
 
     border: 1px solid currentColor;
-    border-radius: 50%;
 
     opacity: 0.18;
 
@@ -1073,7 +1070,6 @@ section {
     place-items: center;
 
     border: 1px solid currentColor;
-    border-radius: 50%;
 
     font-family: var(--serif);
     font-size: 42px;
@@ -1091,7 +1087,7 @@ section {
 }
 
 .card-content h3 {
-    font-size: clamp(2.5rem, 4vw, 4.4rem);
+    font-size: clamp(1.875rem, 3vw, 3.3rem);
     line-height: 0.88;
 
     letter-spacing: -0.065em;
@@ -1126,7 +1122,6 @@ section {
     padding: 7px 12px;
 
     border: 1px solid currentColor;
-    border-radius: var(--radius-pill);
 
     font-size: 8px;
     font-weight: 700;
@@ -1175,7 +1170,7 @@ section {
 
 .statement-track span {
     font-family: var(--sans);
-    font-size: clamp(1.7rem, 3vw, 3rem);
+    font-size: clamp(1.275rem, 2.25vw, 2.25rem);
 
     font-weight: 800;
 
@@ -1210,7 +1205,7 @@ section {
 }
 
 .method-heading h2 {
-    font-size: clamp(4rem, 9vw, 9rem);
+    font-size: clamp(3rem, 6.75vw, 6.75rem);
 
     line-height: 0.78;
 
@@ -1272,7 +1267,7 @@ section {
 }
 
 .method-row h3 {
-    font-size: clamp(2rem, 3.5vw, 4rem);
+    font-size: clamp(1.5rem, 2.625vw, 3rem);
 
     line-height: 0.9;
 
@@ -1330,7 +1325,6 @@ section {
     padding: 28px;
 
     background: var(--cream);
-    border-radius: var(--radius-sm);
 }
 
 .principles-grid span {
@@ -1348,7 +1342,7 @@ section {
 .principles-grid h3 {
     margin-bottom: 15px;
 
-    font-size: 28px;
+    font-size: 21px;
 
     letter-spacing: -0.04em;
 }
@@ -1401,7 +1395,7 @@ section {
 }
 
 .extension-heading h2 {
-    font-size: clamp(5rem, 12vw, 12rem);
+    font-size: clamp(3.75rem, 9vw, 9rem);
 
     line-height: 0.72;
 
@@ -1452,7 +1446,6 @@ section {
     padding: 28px;
 
     background: var(--black);
-    border-radius: var(--radius-sm);
 }
 
 .cide-cards article > span {
@@ -1468,7 +1461,7 @@ section {
 
     margin-top: 55px;
 
-    font-size: clamp(1.8rem, 3vw, 3rem);
+    font-size: clamp(1.35rem, 2.25vw, 2.25rem);
 
     line-height: 0.95;
 
@@ -1539,16 +1532,11 @@ section {
     font-weight: 400;
 }
 
-.cide-callout {
-    border-radius: var(--radius);
-}
-
 .cide-callout a {
     padding: 15px 20px;
 
     background: var(--green);
     color: var(--black);
-    border-radius: var(--radius-pill);
 
     font-size: 9px;
     font-weight: 700;
@@ -1596,7 +1584,7 @@ section {
 }
 
 .careers h2 {
-    font-size: clamp(4rem, 9vw, 9rem);
+    font-size: clamp(3rem, 6.75vw, 6.75rem);
 
     line-height: 0.78;
 
@@ -1629,7 +1617,7 @@ section {
 
     font-family: var(--serif);
 
-    font-size: clamp(24px, 3vw, 30px);
+    font-size: clamp(18px, 2.25vw, 22.5px);
 
     line-height: 1.05;
 }
@@ -1682,7 +1670,6 @@ section {
 
     padding: 10px 16px;
     border: 1px solid rgba(0,0,0,0.2);
-    border-radius: var(--radius-pill);
 }
 
 
@@ -1711,7 +1698,7 @@ section {
 }
 
 .hook-content h2 {
-    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-size: clamp(2.25rem, 4.5vw, 4.125rem);
     line-height: 0.85;
     letter-spacing: -0.07em;
 }
@@ -1755,8 +1742,6 @@ section {
     letter-spacing: 0.12em;
     text-transform: uppercase;
 
-    border-radius: var(--radius-pill);
-
     transition: background 0.25s ease, transform 0.25s ease;
 }
 
@@ -1783,7 +1768,6 @@ section {
     gap: 30px;
     padding: 30px;
     border: 1px solid var(--white-line);
-    border-radius: var(--radius);
     width: 100%;
     max-width: 300px;
 }
@@ -1795,7 +1779,7 @@ section {
 .stat-number {
     display: block;
     font-family: var(--serif);
-    font-size: clamp(2.8rem, 4vw, 4rem);
+    font-size: clamp(2.1rem, 3vw, 3rem);
     color: var(--green);
     line-height: 1;
 }
@@ -1833,7 +1817,7 @@ section {
 }
 
 .faq-layout h2 {
-    font-size: clamp(4rem, 8vw, 8rem);
+    font-size: clamp(3rem, 6vw, 6rem);
 
     line-height: 0.78;
 
@@ -1860,7 +1844,6 @@ section {
 
 .faq-item {
     background: var(--cream);
-    border-radius: var(--radius-sm);
     padding: 0 24px;
 
     transition: background 0.3s ease;
@@ -1905,7 +1888,6 @@ section {
     place-items: center;
 
     border: 1px solid var(--line);
-    border-radius: 50%;
 
     font-size: 18px;
     font-weight: 400;
@@ -2007,7 +1989,7 @@ section {
 }
 
 .contact-main h2 {
-    font-size: clamp(4rem, 10vw, 10rem);
+    font-size: clamp(3rem, 7.5vw, 7.5rem);
 
     line-height: 0.78;
 
@@ -2048,7 +2030,6 @@ section {
 
     background: var(--green);
     color: var(--black);
-    border-radius: var(--radius-pill);
 
     font-size: 9px;
     font-weight: 700;
@@ -2224,7 +2205,7 @@ section {
     }
 
     .hero h1 {
-        font-size: clamp(4rem, 17vw, 7rem);
+        font-size: clamp(3rem, 12.75vw, 5.25rem);
     }
 
     .hero-bottom {
@@ -2290,7 +2271,7 @@ section {
     }
 
     .seed-main h2 {
-        font-size: clamp(3.5rem, 15vw, 7rem);
+        font-size: clamp(2.625rem, 11.25vw, 5.25rem);
     }
 
     .seed-main p {
@@ -2428,7 +2409,7 @@ section {
     }
 
     .hero h1 {
-        font-size: clamp(3.6rem, 18vw, 6rem);
+        font-size: clamp(2.7rem, 13.5vw, 4.5rem);
     }
 
     .hero-bottom {
@@ -2456,7 +2437,7 @@ section {
 
     .intro-layout h2,
     .services-heading h2 {
-        font-size: clamp(3rem, 15vw, 5rem);
+        font-size: clamp(2.25rem, 11.25vw, 3.75rem);
     }
 
     .seed-section {
@@ -2478,7 +2459,7 @@ section {
     }
 
     .seed-main h2 {
-        font-size: clamp(3rem, 15vw, 5rem);
+        font-size: clamp(2.25rem, 11.25vw, 3.75rem);
     }
 
     .seed-main p {
@@ -2499,7 +2480,7 @@ section {
     }
 
     .card-content h3 {
-        font-size: clamp(2.3rem, 12vw, 4rem);
+        font-size: clamp(1.725rem, 9vw, 3rem);
     }
 
     .card-content p {
@@ -2521,7 +2502,7 @@ section {
     }
 
     .method-row h3 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .method-row p {
@@ -2531,7 +2512,7 @@ section {
     .extension-heading h2,
     .careers h2,
     .faq-layout h2 {
-        font-size: clamp(4rem, 20vw, 7rem);
+        font-size: clamp(3rem, 15vw, 5.25rem);
     }
 
     .cide-callout {
@@ -2561,7 +2542,7 @@ section {
     }
 
     .contact-main h2 {
-        font-size: clamp(3.8rem, 18vw, 6rem);
+        font-size: clamp(2.85rem, 13.5vw, 4.5rem);
     }
 
     .contact-main p {
