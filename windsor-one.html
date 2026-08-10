@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="styles.css" />
     <style>
         /* =========================================================
-           WINDSOR ONE — ESTILOS EXCLUSIVOS PARA TARJETAS
-           (manteniendo las variables de color de la marca)
+           WINDSOR ONE — TARJETAS ESTILO KEY INSTITUTE
         ========================================================== */
         .one-cards-grid {
             display: grid;
@@ -23,25 +22,31 @@
 
         .one-card {
             background: var(--white);
-            padding: 28px 24px;
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            border-top: 4px solid var(--blue); /* se sobrescribe con la clase de color */
+            padding: 28px 24px 16px 24px;
+            border-top: 4px solid var(--blue); /* se sobrescribe con la clase */
             box-shadow: 0 4px 12px rgba(0,0,0,0.04);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
             position: relative;
         }
 
         .one-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
 
+        .one-card .card-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            flex: 1;
+        }
+
         .one-card .icon-wrap {
-            flex: 0 0 60px;
-            width: 60px;
-            height: 60px;
+            flex: 0 0 56px;
+            width: 56px;
+            height: 56px;
             background: rgba(0,0,0,0.04);
             display: grid;
             place-items: center;
@@ -49,13 +54,17 @@
         }
 
         .one-card .icon-wrap svg {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             stroke: currentColor;
             fill: none;
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
+        }
+
+        .one-card .card-body {
+            flex: 1;
         }
 
         .one-card .card-body h3 {
@@ -69,20 +78,69 @@
             color: #555;
             font-size: 14px;
             line-height: 1.6;
-            margin: 0;
+            margin: 0 0 16px 0;
         }
 
-        /* Colores de marca para los bordes superiores */
+        /* Enlace con flecha (igual que Key Institute) */
+        .one-card .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--blue);
+            transition: gap 0.25s ease, color 0.25s ease;
+        }
+
+        .one-card .card-link:hover {
+            gap: 18px;
+            color: var(--blue-dark);
+        }
+
+        .one-card .card-link .arrow-icon {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* Barra inferior animada (igual que Key Institute) */
+        .one-card .bottom-bar {
+            height: 4px;
+            margin-top: 16px;
+            transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
+            background-color: var(--blue); /* se sobrescribe */
+        }
+
+        .one-card:hover .bottom-bar {
+            width: 100% !important;
+        }
+
+        /* Colores de marca */
         .one-card.border-blue { border-top-color: var(--blue); }
         .one-card.border-green { border-top-color: var(--green); }
         .one-card.border-yellow { border-top-color: var(--yellow); }
         .one-card.border-purple { border-top-color: var(--purple); }
 
-        /* Colores de iconos por defecto (se puede personalizar) */
         .one-card .icon-wrap.blue { color: var(--blue); }
         .one-card .icon-wrap.green { color: var(--green); }
         .one-card .icon-wrap.yellow { color: var(--yellow); }
         .one-card .icon-wrap.purple { color: var(--purple); }
+
+        .one-card .bottom-bar.blue { background-color: var(--blue); }
+        .one-card .bottom-bar.green { background-color: var(--green); }
+        .one-card .bottom-bar.yellow { background-color: var(--yellow); }
+        .one-card .bottom-bar.purple { background-color: var(--purple); }
+
+        .one-card .card-link.blue { color: var(--blue); }
+        .one-card .card-link.green { color: var(--green); }
+        .one-card .card-link.yellow { color: var(--yellow); }
+        .one-card .card-link.purple { color: var(--purple); }
+
+        .one-card .card-link.blue:hover { color: var(--blue-dark); }
+        .one-card .card-link.green:hover { color: var(--green-dark); }
+        .one-card .card-link.yellow:hover { color: #d4a000; }
+        .one-card .card-link.purple:hover { color: #5a3fd4; }
 
         /* Responsive */
         @media (max-width: 800px) {
@@ -90,8 +148,7 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            .one-card {
-                padding: 20px;
+            .one-card .card-inner {
                 gap: 16px;
             }
             .one-card .icon-wrap {
@@ -100,8 +157,11 @@
                 height: 48px;
             }
             .one-card .icon-wrap svg {
-                width: 26px;
-                height: 26px;
+                width: 24px;
+                height: 24px;
+            }
+            .one-card {
+                padding: 20px 20px 12px 20px;
             }
         }
     </style>
@@ -245,7 +305,7 @@
         </section>
 
         <!-- =================================================
-             QUÉ INCLUYE — TARJETAS CON NUEVO ESTILO
+             QUÉ INCLUYE — TARJETAS ESTILO KEY INSTITUTE
         ================================================== -->
         <section class="section" id="que-incluye" style="background:var(--white);">
             <div class="section-meta">
@@ -264,95 +324,167 @@
                     </p>
                 </div>
 
-                <!-- Grid de tarjetas con nuevo estilo -->
+                <!-- Grid de tarjetas -->
                 <div class="one-cards-grid">
 
                     <!-- 1. Diseño personalizado (azul) -->
                     <div class="one-card border-blue" data-reveal>
-                        <div class="icon-wrap blue">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                <path d="M2 17l10 5 10-5"/>
-                                <path d="M2 12l10 5 10-5"/>
-                            </svg>
+                        <div class="card-inner">
+                            <div class="icon-wrap blue">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <h3>Diseño personalizado</h3>
+                                <p>Sin plantillas. Creamos un diseño único que refleja tu estilo y personalidad profesional.</p>
+                                <a href="#" class="card-link blue">
+                                    <span>Ver más</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h3>Diseño personalizado</h3>
-                            <p>Sin plantillas. Creamos un diseño único que refleja tu estilo y personalidad profesional.</p>
-                        </div>
+                        <div class="bottom-bar blue" style="width:40%;"></div>
                     </div>
 
                     <!-- 2. Hasta 10 proyectos (verde) -->
                     <div class="one-card border-green" data-reveal>
-                        <div class="icon-wrap green">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                            </svg>
+                        <div class="card-inner">
+                            <div class="icon-wrap green">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <h3>Hasta 10 proyectos</h3>
+                                <p>Galería con imágenes, videos o descripciones para que muestres tu mejor trabajo.</p>
+                                <a href="#" class="card-link green">
+                                    <span>Ver más</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h3>Hasta 10 proyectos</h3>
-                            <p>Galería con imágenes, videos o descripciones para que muestres tu mejor trabajo.</p>
-                        </div>
+                        <div class="bottom-bar green" style="width:40%;"></div>
                     </div>
 
                     <!-- 3. Optimizado para móvil (amarillo) -->
                     <div class="one-card border-yellow" data-reveal>
-                        <div class="icon-wrap yellow">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                                <line x1="12" y1="18" x2="12.01" y2="18"/>
-                            </svg>
+                        <div class="card-inner">
+                            <div class="icon-wrap yellow">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <h3>Optimizado para móvil</h3>
+                                <p>Tu portafolio se verá impecable en cualquier dispositivo, desde el móvil hasta la pantalla grande.</p>
+                                <a href="#" class="card-link yellow">
+                                    <span>Ver más</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h3>Optimizado para móvil</h3>
-                            <p>Tu portafolio se verá impecable en cualquier dispositivo, desde el móvil hasta la pantalla grande.</p>
-                        </div>
+                        <div class="bottom-bar yellow" style="width:40%;"></div>
                     </div>
 
                     <!-- 4. SEO básico (púrpura) -->
                     <div class="one-card border-purple" data-reveal>
-                        <div class="icon-wrap purple">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="11" cy="11" r="8"/>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                            </svg>
+                        <div class="card-inner">
+                            <div class="icon-wrap purple">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <h3>SEO básico</h3>
+                                <p>Estructura pensada para que los motores de búsqueda encuentren tu trabajo.</p>
+                                <a href="#" class="card-link purple">
+                                    <span>Ver más</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h3>SEO básico</h3>
-                            <p>Estructura pensada para que los motores de búsqueda encuentren tu trabajo.</p>
-                        </div>
+                        <div class="bottom-bar purple" style="width:40%;"></div>
                     </div>
 
                     <!-- 5. Secciones clave (azul) -->
                     <div class="one-card border-blue" data-reveal>
-                        <div class="icon-wrap blue">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14 2 14 8 20 8"/>
-                                <line x1="16" y1="13" x2="8" y2="13"/>
-                                <line x1="16" y1="17" x2="8" y2="17"/>
-                                <polyline points="10 9 9 9 8 9"/>
-                            </svg>
+                        <div class="card-inner">
+                            <div class="icon-wrap blue">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                    <polyline points="10 9 9 9 8 9"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <h3>Secciones clave</h3>
+                                <p>Sobre mí, servicios, testimonios y contacto. Todo lo que un cliente o reclutador necesita saber.</p>
+                                <a href="#" class="card-link blue">
+                                    <span>Ver más</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h3>Secciones clave</h3>
-                            <p>Sobre mí, servicios, testimonios y contacto. Todo lo que un cliente o reclutador necesita saber.</p>
-                        </div>
+                        <div class="bottom-bar blue" style="width:40%;"></div>
                     </div>
 
                     <!-- 6. Rendimiento y velocidad (verde) -->
                     <div class="one-card border-green" data-reveal>
-                        <div class="icon-wrap green">
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                                <polyline points="17 6 23 6 23 12"/>
-                            </svg>
+                        <div class="card-inner">
+                            <div class="icon-wrap green">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                    <polyline points="17 6 23 6 23 12"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <h3>Rendimiento y velocidad</h3>
+                                <p>Código limpio y optimizado para que tu sitio cargue rápido y cause una buena impresión desde el primer segundo.</p>
+                                <a href="#" class="card-link green">
+                                    <span>Ver más</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h3>Rendimiento y velocidad</h3>
-                            <p>Código limpio y optimizado para que tu sitio cargue rápido y cause una buena impresión desde el primer segundo.</p>
-                        </div>
+                        <div class="bottom-bar green" style="width:40%;"></div>
                     </div>
 
                 </div>
