@@ -8,366 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>
-        /* =========================================================
-           WINDSOR ONE — VISUAL SYSTEM (SIN ESQUINAS REDONDEADAS)
-           COLORES DE MARCA: azul, verde, amarillo, púrpura
-        ========================================================== */
-        :root {
-            --black: #0a0a0c;
-            --cream: #f3f4f2;
-            --white: #ffffff;
-            --blue: #006dff;
-            --blue-dark: #0050c2;
-            --green: #31e083;
-            --yellow: #ffc629;
-            --purple: #7c5cff;
-            --line: rgba(0,0,0,0.18);
-            --white-line: rgba(255,255,255,0.2);
-            --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-            --body: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-            --serif: var(--sans);
-            --max-width: 1200px;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
-        body {
-            background: var(--cream);
-            color: var(--black);
-            font-family: var(--body);
-            overflow-x: hidden;
-            min-width: 320px;
-        }
-        a { color: inherit; text-decoration: none; }
-        h1, h2, h3, h4, .logo, .logo-symbol, .desktop-nav a, .mobile-menu-label, .logo-name { font-family: var(--sans); }
-        h1, h2, h3, h4 { font-weight: 800; }
-        em { font-style: normal; }
-        button { color: inherit; font: inherit; background: none; border: none; cursor: pointer; }
-
-        /* Preloader */
-        .preloader {
-            position: fixed; inset: 0; z-index: 9999;
-            background: var(--black); color: var(--white);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 0.7s ease, visibility 0.7s ease;
-        }
-        .preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
-        .preloader-logo {
-            font-family: var(--serif); font-size: clamp(52.5px,7.5vw,75px); line-height: 1;
-            color: var(--blue);
-            animation: pulse 1.2s ease infinite alternate;
-        }
-        .preloader-line {
-            width: min(180px,45vw); height: 2px; margin-top: 25px;
-            overflow: hidden; background: rgba(255,255,255,0.15);
-        }
-        .preloader-line span {
-            display: block; width: 100%; height: 100%; background: var(--blue);
-            transform: translateX(-100%);
-            animation: lineLoad 1.4s ease forwards;
-        }
-        .preloader-text { margin-top: 18px; font-size: 9px; letter-spacing: 0.3em; opacity: 0.55; }
-        @keyframes lineLoad { to { transform: translateX(0); } }
-        @keyframes pulse { from { transform: scale(0.95); } to { transform: scale(1.05); } }
-
-        /* Header */
-        .header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 82px;
-            padding: 0 4vw; display: flex; align-items: center; justify-content: space-between;
-            z-index: 500; color: var(--white);
-            transition: transform 0.35s, background 0.35s, color 0.35s, backdrop-filter 0.35s;
-        }
-        .header.hidden { transform: translateY(-100%); }
-        .header.scrolled { background: rgba(8,8,8,0.86); backdrop-filter: blur(15px); }
-        .logo {
-            display: flex; align-items: center; gap: 12px;
-            font-size: 13px; font-weight: 700; letter-spacing: 0.16em;
-        }
-        .logo-symbol {
-            width: 34px; height: 34px; display: grid; place-items: center;
-            border: 1px solid currentColor;
-            font-family: var(--serif); font-size: 20px;
-        }
-        .desktop-nav {
-            display: flex; align-items: center; gap: 32px;
-            font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em;
-        }
-        .desktop-nav a { position: relative; opacity: 0.75; transition: opacity 0.25s; }
-        .desktop-nav a::after {
-            content: ""; position: absolute; left: 0; bottom: -7px;
-            width: 100%; height: 1px; background: currentColor;
-            transform: scaleX(0); transform-origin: right; transition: transform 0.3s;
-        }
-        .desktop-nav a:hover, .desktop-nav a.active { opacity: 1; }
-        .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); transform-origin: left; }
-        .header-button {
-            display: inline-flex; align-items: center; gap: 15px;
-            padding: 13px 20px; background: var(--blue); border: 1px solid var(--blue);
-            font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-            transition: background 0.25s, color 0.25s, transform 0.25s;
-        }
-        .header-button:hover { background: var(--green); color: var(--black); border-color: var(--green); transform: translateY(-2px); }
-        .header-button .arrow-icon { display: inline-flex; align-items: center; }
-        .menu-button {
-            display: none; width: 42px; height: 42px;
-            background: transparent; border: 1px solid rgba(255,255,255,0.4);
-            flex-direction: column; align-items: center; justify-content: center; gap: 6px;
-        }
-        .menu-button span { display: block; width: 17px; height: 1px; background: currentColor; transition: transform 0.3s, opacity 0.3s; }
-
-        /* Mobile menu */
-        .mobile-menu {
-            position: fixed; inset: 0; z-index: 450;
-            background: var(--black); color: var(--white);
-            opacity: 0; visibility: hidden; pointer-events: none;
-            transform: translateY(-20px);
-            transition: opacity 0.35s, visibility 0.35s, transform 0.35s;
-            overflow-y: auto;
-        }
-        .mobile-menu.active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
-        .mobile-menu-inner {
-            min-height: 100%; padding: 110px 7vw 50px;
-            display: flex; flex-direction: column; justify-content: center; gap: clamp(18px,4vw,30px);
-        }
-        .mobile-menu-label { margin-bottom: 10px; color: var(--green); font-size: 9px; font-weight: 700; letter-spacing: 0.2em; }
-        .mobile-menu a { font-size: clamp(1.5rem,6vw,3rem); line-height: 0.95; letter-spacing: -0.06em; transition: color 0.25s; }
-        .mobile-menu a:hover { color: var(--green); }
-
-        /* Hero */
-        .hero {
-            min-height: max(600px, 75vh);
-            background: var(--black); color: var(--white);
-            display: flex; flex-direction: column; justify-content: center;
-            padding: 120px 6vw 80px;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-noise {
-            position: absolute; inset: 0; opacity: 0.06; pointer-events: none;
-            background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
-            background-size: 5px 5px;
-        }
-        .hero-small {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            color: var(--green);
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-        }
-        .hero-small .dot {
-            width: 7px;
-            height: 7px;
-            background: var(--green);
-            animation: dotPulse 2s ease infinite;
-        }
-        @keyframes dotPulse {
-            0%, 100% { opacity: 0.5; transform: scale(0.85); }
-            50% { opacity: 1; transform: scale(1.15); }
-        }
-        .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 5.5rem); line-height: 0.85; letter-spacing: -0.07em;
-            max-width: 1000px; position: relative;
-        }
-        .hero h1 em {
-            display: block; color: var(--blue); font-family: var(--sans); font-weight: 900;
-            text-decoration: underline; text-decoration-thickness: 0.07em; text-underline-offset: 0.1em;
-        }
-        .hero p {
-            max-width: 580px; margin-top: 30px;
-            color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.7;
-            position: relative;
-        }
-        .hero .cta {
-            display: inline-flex; align-items: center; gap: 15px;
-            margin-top: 40px; padding: 14px 24px;
-            background: var(--blue); color: var(--white);
-            font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-            transition: background 0.25s, transform 0.25s;
-            position: relative;
-        }
-        .hero .cta:hover { background: var(--blue-dark); transform: translateX(6px); }
-
-        /* Content */
-        .section { padding: 90px 6vw; }
-        .section-meta {
-            max-width: var(--max-width); margin: 0 auto;
-            padding-bottom: 18px; border-bottom: 1px solid var(--line);
-            display: flex; justify-content: space-between; gap: 20px;
-            font-size: 9px; font-weight: 700; letter-spacing: 0.16em;
-        }
-        .section-meta span:last-child { opacity: 0.55; }
-        .container { max-width: var(--max-width); margin: 0 auto; }
-
-        .grid-2 {
-            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5vw;
-            margin-top: 60px; align-items: center;
-        }
-        .grid-2 h2 { font-size: clamp(2.1rem,3.75vw,3rem); line-height: 0.9; letter-spacing: -0.06em; }
-        .grid-2 h2 span { display: block; font-family: var(--sans); font-weight: 900; text-decoration: underline; text-decoration-thickness: 0.07em; text-underline-offset: 0.1em; color: var(--blue); }
-        .grid-2 p { color: #555; line-height: 1.8; font-size: 15px; margin-top: 20px; }
-
-        /* Features grid con colores de marca */
-        .features-grid {
-            display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
-            background: var(--line); margin-top: 50px;
-        }
-        .feature {
-            padding: 30px;
-            min-height: 180px;
-            transition: background 0.25s;
-        }
-        .feature .icon {
-            display: inline-block;
-            width: 32px;
-            height: 32px;
-            margin-bottom: 12px;
-            color: currentColor;
-        }
-        .feature .icon svg {
-            width: 100%;
-            height: 100%;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-        .feature h3 { font-size: 1.2rem; letter-spacing: -0.03em; margin-bottom: 8px; }
-        .feature p { line-height: 1.6; font-size: 14px; }
-
-        /* Colores de marca para las tarjetas */
-        .feature-blue {
-            background: var(--blue);
-            color: var(--white);
-        }
-        .feature-green {
-            background: var(--green);
-            color: var(--black);
-        }
-        .feature-yellow {
-            background: var(--yellow);
-            color: var(--black);
-        }
-        .feature-purple {
-            background: var(--purple);
-            color: var(--black);
-        }
-
-        /* Proceso */
-        .process-grid {
-            display: grid; grid-template-columns: repeat(4,1fr); gap: 1px;
-            background: var(--line); margin-top: 50px;
-        }
-        .process-step {
-            background: var(--white); padding: 30px;
-            min-height: 200px;
-            transition: background 0.25s;
-        }
-        .process-step:hover { background: var(--cream); }
-        .process-step .num { font-size: 9px; font-weight: 700; color: var(--blue); opacity: 0.6; display: block; margin-bottom: 12px; }
-        .process-step h3 { font-size: 1.2rem; margin-bottom: 8px; }
-        .process-step p { color: #666; line-height: 1.6; font-size: 14px; }
-
-        /* Call to Action (sin precios) */
-        .cta-box {
-            background: var(--blue); color: var(--white);
-            padding: 40px; margin-top: 60px;
-            display: flex; justify-content: space-between; align-items: center; gap: 30px;
-            flex-wrap: wrap;
-        }
-        .cta-box h3 { font-size: 1.8rem; line-height: 1.1; }
-        .cta-box p { color: rgba(255,255,255,0.85); max-width: 500px; font-size: 14px; line-height: 1.6; }
-        .cta-box .btn {
-            padding: 14px 28px; background: var(--green); color: var(--black);
-            font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-            transition: transform 0.25s;
-            display: inline-flex; align-items: center; gap: 12px;
-        }
-        .cta-box .btn:hover { transform: scale(1.03); }
-
-        /* FAQ */
-        .faq-list {
-            display: flex; flex-direction: column; gap: 12px;
-            margin-top: 50px;
-        }
-        .faq-item {
-            background: var(--white); padding: 0 24px;
-            transition: background 0.3s ease;
-        }
-        .faq-item.active { background: var(--cream); }
-        .faq-question {
-            width: 100%; padding: 22px 0;
-            display: flex; align-items: center; justify-content: space-between;
-            gap: 25px; background: transparent; border: 0;
-            text-align: left; cursor: pointer;
-            font-size: 15px; font-weight: 500;
-        }
-        .faq-question b {
-            flex: 0 0 auto; width: 30px; height: 30px;
-            display: grid; place-items: center;
-            border: 1px solid var(--line);
-            font-size: 18px; font-weight: 400; color: var(--blue);
-            transition: transform 0.3s, background 0.3s, color 0.3s;
-        }
-        .faq-item.active .faq-question b { background: var(--blue); color: var(--white); transform: rotate(45deg); }
-        .faq-answer {
-            display: grid; grid-template-rows: 0fr;
-            transition: grid-template-rows 0.4s ease;
-        }
-        .faq-item.active .faq-answer { grid-template-rows: 1fr; }
-        .faq-answer p {
-            min-height: 0; overflow: hidden;
-            color: #666; font-size: 14px; line-height: 1.7;
-            transition: padding 0.4s ease;
-        }
-        .faq-item.active .faq-answer p { padding-bottom: 25px; }
-
-        /* Footer */
-        .footer {
-            padding: 35px 6vw; background: var(--black); color: var(--white);
-            display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 40px;
-        }
-        .footer-logo { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; }
-        .footer-logo small { display: block; margin-top: 5px; color: rgba(255,255,255,0.4); font-size: 7px; letter-spacing: 0.12em; }
-        .footer-links { display: flex; gap: 25px; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-        .footer-links a { opacity: 0.6; transition: opacity 0.25s; }
-        .footer-links a:hover { opacity: 1; }
-        .footer-tagline { justify-self: end; color: var(--green); font-family: var(--serif); font-size: 16px; }
-
-        /* Scroll reveal */
-        [data-reveal] {
-            opacity: 0; transform: translateY(35px);
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.8,.2,1);
-        }
-        [data-reveal].visible { opacity: 1; transform: translateY(0); }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .grid-2 { grid-template-columns: 1fr; gap: 30px; }
-            .features-grid { grid-template-columns: repeat(2,1fr); }
-            .process-grid { grid-template-columns: repeat(2,1fr); }
-        }
-        @media (max-width: 700px) {
-            .desktop-nav, .header-button { display: none; }
-            .menu-button { display: flex; }
-            .hero { padding: 110px 6vw 60px; min-height: 70vh; }
-            .cta-box { flex-direction: column; align-items: flex-start; }
-            .features-grid { grid-template-columns: 1fr; }
-            .process-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 480px) {
-            .feature, .process-step { padding: 20px; }
-            .cta-box { padding: 25px; }
-            .footer { grid-template-columns: 1fr; gap: 20px; }
-            .footer-tagline { justify-self: start; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
@@ -394,9 +35,10 @@
         </nav>
         <a href="index.html#contacto" class="header-button">
             Hablemos
-            <span class="arrow-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+            <span class="arrow-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
                 </svg>
             </span>
         </a>
@@ -409,255 +51,447 @@
             <div class="mobile-menu-label">NAVEGACIÓN</div>
             <a href="index.html">Inicio</a>
             <a href="index.html#servicios">Servicios</a>
-            <a href="index.html#metodo">Método</a>
+            <a href="index.html#metodo">Método Windsor</a>
             <a href="cide.html">CIDE</a>
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
             <a href="index.html#careers">Careers</a>
-            <a href="index.html#contacto">Contacto</a>
+            <a href="index.html#contacto">Iniciar proyecto</a>
         </div>
     </div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-noise"></div>
-        <div class="hero-small">
-            <span class="dot"></span>
-            WINDSOR ONE
-        </div>
-        <h1>
-            Tu portafolio profesional,
-            <em>hecho a medida.</em>
-        </h1>
-        <p>
-            Sin plantillas genéricas. Diseñamos tu sitio web personal con la misma
-            precisión y sensibilidad que aplicamos a los grandes proyectos.
-        </p>
-        <a href="#contacto" class="cta">Hablemos de tu proyecto →</a>
-    </section>
+    <main id="inicio">
 
-    <!-- PARA QUIÉN -->
-    <section class="section">
-        <div class="section-meta"><span>01</span><span>PARA QUIÉN</span></div>
-        <div class="container grid-2">
-            <div data-reveal>
+        <!-- =================================================
+             HERO (igual que el index, con contenido adaptado)
+        ================================================== -->
+        <section class="hero">
+            <div class="hero-noise"></div>
+            <div class="hero-topline">
+                <span>WINDSOR ONE</span>
+                <span>PORTAFOLIO DIGITAL A MEDIDA</span>
+            </div>
+            <div class="hero-content">
+                <div class="hero-small">
+                    <span class="green-dot"></span>
+                    PROFESIONALES · CREATIVOS · TALENTO
+                </div>
+                <h1>
+                    Tu portafolio
+                    <em>hecho a medida.</em>
+                </h1>
+                <div class="hero-bottom">
+                    <p>
+                        Sin plantillas genéricas. Diseñamos tu sitio web personal con la misma
+                        precisión y sensibilidad que aplicamos a los grandes proyectos.
+                    </p>
+                    <a href="#para-quien" class="circle-button">
+                        <span>Explorar</span>
+                        <strong>↓</strong>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-marquee">
+                <div class="marquee-track">
+                    <span>DISEÑO PERSONALIZADO</span> <b>✦</b>
+                    <span>HASTA 10 PROYECTOS</span> <b>✦</b>
+                    <span>OPTIMIZADO PARA MÓVIL</span> <b>✦</b>
+                    <span>SEO BÁSICO</span> <b>✦</b>
+                    <span>SECCIONES CLAVE</span> <b>✦</b>
+                    <span>RENDIMIENTO Y VELOCIDAD</span> <b>✦</b>
+                    <span>DISEÑO PERSONALIZADO</span> <b>✦</b>
+                    <span>HASTA 10 PROYECTOS</span> <b>✦</b>
+                    <span>OPTIMIZADO PARA MÓVIL</span> <b>✦</b>
+                    <span>SEO BÁSICO</span> <b>✦</b>
+                    <span>SECCIONES CLAVE</span> <b>✦</b>
+                    <span>RENDIMIENTO Y VELOCIDAD</span> <b>✦</b>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             INTRO (adaptada a "Para quién")
+        ================================================== -->
+        <section class="intro section" id="para-quien">
+            <div class="section-meta">
+                <span>01</span>
+                <span>PARA QUIÉN</span>
+            </div>
+            <div class="intro-layout">
                 <h2>
                     Diseñadores, desarrolladores,
                     <span>fotógrafos, arquitectos,</span>
                     escritores y más.
                 </h2>
-                <p>
-                    Windsor One está pensado para cualquier profesional que quiera
-                    mostrar su trabajo con un diseño que esté a la altura de su talento.
-                    No importa tu sector: si necesitas un portafolio digital que te
-                    represente, esto es para ti.
-                </p>
-            </div>
-            <div style="background:var(--purple); color:var(--white); padding:30px;" data-reveal>
-                <h3 style="font-size:1.35rem; line-height:1.1;">No eres una empresa.</h3>
-                <p style="color:rgba(255,255,255,0.8); margin:15px 0 25px;">
-                    No necesitas un sitio corporativo. Necesitas un espacio que hable
-                    de ti, de tu trabajo y de tu manera de hacer las cosas.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- QUÉ INCLUYE -->
-    <section class="section" style="background:var(--white);">
-        <div class="section-meta"><span>02</span><span>QUÉ INCLUYE</span></div>
-        <div class="container">
-            <h2 style="font-size:clamp(1.875rem,3.75vw,3rem); letter-spacing:-0.06em; line-height:0.9;" data-reveal>
-                Todo lo que necesitas
-                <span style="display:block; font-family: var(--sans); font-weight: 900; text-decoration: underline; text-decoration-thickness: 0.07em; text-underline-offset: 0.1em; color:var(--blue);">para destacar.</span>
-            </h2>
-            <div class="features-grid">
-                <!-- 1. Diseño personalizado (azul) -->
-                <div class="feature feature-blue" data-reveal>
-                    <span class="icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5"/>
-                            <path d="M2 12l10 5 10-5"/>
-                        </svg>
-                    </span>
-                    <h3>Diseño personalizado</h3>
-                    <p>Sin plantillas. Creamos un diseño único que refleja tu estilo y personalidad profesional.</p>
-                </div>
-                <!-- 2. Hasta 10 proyectos (verde) -->
-                <div class="feature feature-green" data-reveal>
-                    <span class="icon">
-                        <svg viewBox="0 0 24 24">
-                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                        </svg>
-                    </span>
-                    <h3>Hasta 10 proyectos</h3>
-                    <p>Galería con imágenes, videos o descripciones para que muestres tu mejor trabajo.</p>
-                </div>
-                <!-- 3. Optimizado para móvil (amarillo) -->
-                <div class="feature feature-yellow" data-reveal>
-                    <span class="icon">
-                        <svg viewBox="0 0 24 24">
-                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                            <line x1="12" y1="18" x2="12.01" y2="18"/>
-                        </svg>
-                    </span>
-                    <h3>Optimizado para móvil</h3>
-                    <p>Tu portafolio se verá impecable en cualquier dispositivo, desde el móvil hasta la pantalla grande.</p>
-                </div>
-                <!-- 4. SEO básico (púrpura) -->
-                <div class="feature feature-purple" data-reveal>
-                    <span class="icon">
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="8"/>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                        </svg>
-                    </span>
-                    <h3>SEO básico</h3>
-                    <p>Estructura pensada para que los motores de búsqueda encuentren tu trabajo.</p>
-                </div>
-                <!-- 5. Secciones clave (azul) -->
-                <div class="feature feature-blue" data-reveal>
-                    <span class="icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </span>
-                    <h3>Secciones clave</h3>
-                    <p>Sobre mí, servicios, testimonios y contacto. Todo lo que un cliente o reclutador necesita saber.</p>
-                </div>
-                <!-- 6. Rendimiento y velocidad (verde) -->
-                <div class="feature feature-green" data-reveal>
-                    <span class="icon">
-                        <svg viewBox="0 0 24 24">
-                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                            <polyline points="17 6 23 6 23 12"/>
-                        </svg>
-                    </span>
-                    <h3>Rendimiento y velocidad</h3>
-                    <p>Código limpio y optimizado para que tu sitio cargue rápido y cause una buena impresión desde el primer segundo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESO -->
-    <section class="section">
-        <div class="section-meta"><span>03</span><span>PROCESO WINDSOR</span></div>
-        <div class="container">
-            <h2 style="font-size:clamp(1.875rem,3.75vw,3rem); letter-spacing:-0.06em; line-height:0.9;" data-reveal>
-                Cuatro pasos,
-                <span style="display:block; font-family: var(--sans); font-weight: 900; text-decoration: underline; text-decoration-thickness: 0.07em; text-underline-offset: 0.1em; color:var(--blue);">un portafolio tuyo.</span>
-            </h2>
-            <div class="process-grid">
-                <div class="process-step" data-reveal>
-                    <span class="num">01</span>
-                    <h3>Entender</h3>
-                    <p>Hablamos sobre tu trabajo, tu estilo y a quién quieres llegar. Definimos juntos el enfoque.</p>
-                </div>
-                <div class="process-step" data-reveal>
-                    <span class="num">02</span>
-                    <h3>Definir</h3>
-                    <p>Elegimos paleta de color, tipografía y estructura. Decidimos cómo contar tu historia profesional.</p>
-                </div>
-                <div class="process-step" data-reveal>
-                    <span class="num">03</span>
-                    <h3>Construir</h3>
-                    <p>Desarrollamos el sitio con código limpio y personalizado. Te mostramos avances para que lo veas crecer.</p>
-                </div>
-                <div class="process-step" data-reveal>
-                    <span class="num">04</span>
-                    <h3>Refinar</h3>
-                    <p>Probamos, ajustamos detalles y pulimos hasta que quede perfecto. Entonces lo lanzamos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACTO / LLAMADA A LA ACCIÓN (sin precios) -->
-    <section class="section" id="contacto" style="background:var(--cream);">
-        <div class="section-meta"><span>04</span><span>CONTACTO</span></div>
-        <div class="container">
-            <div class="cta-box" data-reveal>
-                <div>
-                    <h3>¿Listo para tener tu portafolio?</h3>
+                <div class="intro-copy">
                     <p>
-                        Cuéntanos tu idea, tu trabajo y lo que necesitas. Te escuchamos,
-                        te entendemos y construimos algo que te represente.
+                        Windsor One está pensado para cualquier profesional que quiera
+                        mostrar su trabajo con un diseño que esté a la altura de su talento.
+                        No importa tu sector: si necesitas un portafolio digital que te
+                        represente, esto es para ti.
                     </p>
+                    <p>
+                        No eres una empresa. No necesitas un sitio corporativo. Necesitas
+                        un espacio que hable de ti, de tu trabajo y de tu manera de hacer
+                        las cosas.
+                    </p>
+                    <a href="#que-incluye" class="underlined-link">
+                        Ver qué incluye
+                        <span class="arrow-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" />
+                                <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </a>
                 </div>
-                <a href="index.html#contacto" class="btn">
-                    Iniciar conversación →
+            </div>
+        </section>
+
+        <!-- =================================================
+             SEMILLA (mantenemos la sección como recordatorio visual)
+        ================================================== -->
+        <section class="seed-section">
+            <div class="seed-side">
+                <span>LA SEMILLA</span>
+                <span>WINDSOR ONE / 01</span>
+            </div>
+            <div class="seed-main">
+                <div class="seed-circle">
+                    <span>✦</span>
+                </div>
+                <h2>
+                    Tu historia
+                    <br />
+                    empieza con un
+                    <em>portafolio.</em>
+                </h2>
+                <p>
+                    Un portafolio no es solo una colección de trabajos. Es tu carta de
+                    presentación, tu identidad profesional y la primera impresión que
+                    causas. Windsor One te ayuda a construirla.
+                </p>
+            </div>
+            <div class="seed-number">01</div>
+        </section>
+
+        <!-- =================================================
+             SERVICIOS (adaptados a "Qué incluye")
+        ================================================== -->
+        <section class="services section" id="que-incluye">
+            <div class="section-meta">
+                <span>02</span>
+                <span>QUÉ INCLUYE</span>
+            </div>
+            <div class="services-heading">
+                <h2>
+                    Todo lo que necesitas
+                    <span>para destacar.</span>
+                </h2>
+                <p>
+                    Un portafolio profesional completo, diseñado y desarrollado
+                    con la misma calidad que aplicamos a cualquier proyecto de marca.
+                </p>
+            </div>
+            <div class="service-cards">
+                <!-- 1. Diseño personalizado (azul) -->
+                <article class="service-card service-blue">
+                    <div class="card-top">
+                        <span>01</span>
+                        <span>DISEÑO</span>
+                    </div>
+                    <div class="card-icon"><span>◎</span></div>
+                    <div class="card-content">
+                        <h3>Diseño <br />personalizado</h3>
+                        <p>Sin plantillas. Creamos un diseño único que refleja tu estilo y personalidad profesional.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-tags">
+                            <span>Único</span><span>Personalidad</span><span>Estilo</span>
+                        </div>
+                        <span class="card-arrow" aria-hidden="true">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- 2. Hasta 10 proyectos (verde) -->
+                <article class="service-card service-green">
+                    <div class="card-top">
+                        <span>02</span>
+                        <span>PROYECTOS</span>
+                    </div>
+                    <div class="card-icon"><span>W</span></div>
+                    <div class="card-content">
+                        <h3>Hasta 10 <br />proyectos</h3>
+                        <p>Galería con imágenes, videos o descripciones para que muestres tu mejor trabajo.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-tags">
+                            <span>Galería</span><span>Imágenes</span><span>Videos</span>
+                        </div>
+                        <span class="card-arrow" aria-hidden="true">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- 3. Optimizado para móvil (amarillo) -->
+                <article class="service-card service-yellow">
+                    <div class="card-top">
+                        <span>03</span>
+                        <span>MÓVIL</span>
+                    </div>
+                    <div class="card-icon"><span>⌁</span></div>
+                    <div class="card-content">
+                        <h3>Optimizado <br />para móvil</h3>
+                        <p>Tu portafolio se verá impecable en cualquier dispositivo, desde el móvil hasta la pantalla grande.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-tags">
+                            <span>Responsive</span><span>Dispositivos</span><span>UX</span>
+                        </div>
+                        <span class="card-arrow" aria-hidden="true">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- 4. SEO básico (púrpura) -->
+                <article class="service-card service-purple">
+                    <div class="card-top">
+                        <span>04</span>
+                        <span>SEO</span>
+                    </div>
+                    <div class="card-icon"><span>⌘</span></div>
+                    <div class="card-content">
+                        <h3>SEO <br />básico</h3>
+                        <p>Estructura pensada para que los motores de búsqueda encuentren tu trabajo.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-tags">
+                            <span>Visibilidad</span><span>Búsqueda</span><span>Posicionamiento</span>
+                        </div>
+                        <span class="card-arrow" aria-hidden="true">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- 5. Secciones clave (azul) -->
+                <article class="service-card service-blue">
+                    <div class="card-top">
+                        <span>05</span>
+                        <span>CONTENIDO</span>
+                    </div>
+                    <div class="card-icon"><span>◎</span></div>
+                    <div class="card-content">
+                        <h3>Secciones <br />clave</h3>
+                        <p>Sobre mí, servicios, testimonios y contacto. Todo lo que un cliente o reclutador necesita saber.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-tags">
+                            <span>Biografía</span><span>Testimonios</span><span>Contacto</span>
+                        </div>
+                        <span class="card-arrow" aria-hidden="true">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- 6. Rendimiento y velocidad (verde) -->
+                <article class="service-card service-green">
+                    <div class="card-top">
+                        <span>06</span>
+                        <span>VELOCIDAD</span>
+                    </div>
+                    <div class="card-icon"><span>W</span></div>
+                    <div class="card-content">
+                        <h3>Rendimiento <br />y velocidad</h3>
+                        <p>Código limpio y optimizado para que tu sitio cargue rápido y cause una buena impresión desde el primer segundo.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-tags">
+                            <span>Rápido</span><span>Optimizado</span><span>Eficiente</span>
+                        </div>
+                        <span class="card-arrow" aria-hidden="true">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- =================================================
+             STATEMENT (mantenemos el mismo marquee)
+        ================================================== -->
+        <div class="statement-marquee">
+            <div class="statement-track">
+                <span>PRECISIÓN APLICADA.</span> <b>✦</b>
+                <span>ARTESANÍA DIGITAL.</span> <b>✦</b>
+                <span>SIN PLANTILLAS.</span> <b>✦</b>
+                <span>PRECISIÓN APLICADA.</span> <b>✦</b>
+                <span>ARTESANÍA DIGITAL.</span> <b>✦</b>
+                <span>SIN PLANTILLAS.</span> <b>✦</b>
+            </div>
+        </div>
+
+        <!-- =================================================
+             MÉTODO (adaptado a "Proceso Windsor")
+        ================================================== -->
+        <section class="method section" id="metodo">
+            <div class="section-meta">
+                <span>03</span>
+                <span>PROCESO WINDSOR</span>
+            </div>
+            <div class="method-heading">
+                <h2>Cuatro pasos, <em>un portafolio tuyo.</em></h2>
+                <p>Nuestro método adaptado para construir tu presencia digital personal.</p>
+            </div>
+            <div class="method-list">
+                <div class="method-row">
+                    <span>01</span>
+                    <div><h3>Entender</h3><p>Hablamos sobre tu trabajo, tu estilo y a quién quieres llegar. Definimos juntos el enfoque.</p></div>
+                    <b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b>
+                </div>
+                <div class="method-row">
+                    <span>02</span>
+                    <div><h3>Definir</h3><p>Elegimos paleta de color, tipografía y estructura. Decidimos cómo contar tu historia profesional.</p></div>
+                    <b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b>
+                </div>
+                <div class="method-row">
+                    <span>03</span>
+                    <div><h3>Construir</h3><p>Desarrollamos el sitio con código limpio y personalizado. Te mostramos avances para que lo veas crecer.</p></div>
+                    <b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b>
+                </div>
+                <div class="method-row">
+                    <span>04</span>
+                    <div><h3>Refinar</h3><p>Probamos, ajustamos detalles y pulimos hasta que quede perfecto. Entonces lo lanzamos.</p></div>
+                    <b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             PRINCIPIOS (adaptados a Windsor One)
+        ================================================== -->
+        <section class="principles section">
+            <div class="section-meta">
+                <span>04</span>
+                <span>NUESTRA FILOSOFÍA</span>
+            </div>
+            <div class="principles-grid">
+                <div><span>01</span><h3>Método</h3><p>No usamos plantillas. Cada portafolio se construye desde cero, entendiendo primero tu trabajo y tu audiencia.</p></div>
+                <div><span>02</span><h3>Artesanía</h3><p>Preferimos soluciones pensadas para cada profesional antes que genéricas. Tu portafolio es único.</p></div>
+                <div><span>03</span><h3>Sensibilidad</h3><p>El diseño y el contenido trabajan juntos para contar tu historia de manera coherente y atractiva.</p></div>
+                <div><span>04</span><h3>IA + criterio</h3><p>Utilizamos inteligencia artificial para acelerar el desarrollo, pero siempre con supervisión humana para mantener la calidad.</p></div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             CONTACTO (sección de llamada a la acción)
+        ================================================== -->
+        <section class="contact" id="contacto">
+            <div class="contact-top">
+                <span>05 / CONTACTO</span>
+                <span>WINDSOR ONE</span>
+            </div>
+            <div class="contact-main">
+                <h2>¿Listo para tener <em>tu portafolio?</em></h2>
+                <p>Cuéntanos tu idea, tu trabajo y lo que necesitas. Te escuchamos, te entendemos y construimos algo que te represente.</p>
+                <a href="mailto:hello@windsor-labs.com" class="contact-button">
+                    Iniciar conversación
+                    <span class="arrow-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7" />
+                            <polyline points="7 7 17 7 17 17" />
+                        </svg>
+                    </span>
                 </a>
             </div>
-        </div>
-    </section>
-
-    <!-- PREGUNTAS FRECUENTES -->
-    <section class="section" style="background:var(--white);">
-        <div class="section-meta"><span>05</span><span>PREGUNTAS</span></div>
-        <div class="container">
-            <h2 style="font-size:clamp(1.875rem,3.75vw,3rem); letter-spacing:-0.06em; line-height:0.9;" data-reveal>
-                Lo que quieres saber
-                <span style="display:block; font-family: var(--sans); font-weight: 900; text-decoration: underline; text-decoration-thickness: 0.07em; text-underline-offset: 0.1em; color:var(--blue);">antes de empezar.</span>
-            </h2>
-            <div class="faq-list">
-                <article class="faq-item" data-reveal>
-                    <button class="faq-question">
-                        <span>¿Necesito saber programar para tener mi portafolio?</span>
-                        <b>+</b>
-                    </button>
-                    <div class="faq-answer"><p>No. Nosotros nos encargamos de todo el desarrollo. Tú solo necesitas proporcionarnos el contenido (textos, imágenes, proyectos) y nosotros construimos el sitio.</p></div>
-                </article>
-                <article class="faq-item" data-reveal>
-                    <button class="faq-question">
-                        <span>¿Puedo actualizar el contenido después de lanzado?</span>
-                        <b>+</b>
-                    </button>
-                    <div class="faq-answer"><p>Sí. Te entregamos instrucciones claras para que puedas hacer cambios menores por tu cuenta. Si necesitas modificaciones más complejas, podemos ayudarte con un costo adicional.</p></div>
-                </article>
-                <article class="faq-item" data-reveal>
-                    <button class="faq-question">
-                        <span>¿Incluye dominio y hosting?</span>
-                        <b>+</b>
-                    </button>
-                    <div class="faq-answer"><p>No está incluido en el servicio base, pero podemos recomendarte proveedores y ayudarte a configurarlo. También podemos gestionarlo por ti si lo prefieres.</p></div>
-                </article>
-                <article class="faq-item" data-reveal>
-                    <button class="faq-question">
-                        <span>¿Cuánto tiempo tarda el proceso?</span>
-                        <b>+</b>
-                    </button>
-                    <div class="faq-answer"><p>El proceso completo suele tomar entre 5 y 7 días hábiles, dependiendo de la complejidad y de la rapidez con que nos entregues el contenido.</p></div>
-                </article>
-                <article class="faq-item" data-reveal>
-                    <button class="faq-question">
-                        <span>¿Puedo ver ejemplos de portafolios que han hecho?</span>
-                        <b>+</b>
-                    </button>
-                    <div class="faq-answer"><p>Por supuesto. Contáctanos y te mostraremos algunos de nuestros trabajos anteriores para que veas la calidad de nuestro diseño y desarrollo.</p></div>
-                </article>
+            <div class="contact-bottom">
+                <span>PRECISIÓN APLICADA.</span>
+                <span>© 2026 WINDSOR</span>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA FINAL (sin precios) -->
-    <div class="container" style="margin-bottom:60px;">
-        <div class="cta-box" style="background:var(--black); color:var(--white);" data-reveal>
-            <div>
-                <h3 style="color:var(--green);">Empieza a construir tu presencia digital.</h3>
-                <p style="color:rgba(255,255,255,0.7);">Hablemos sobre tu proyecto. Sin compromiso, solo una conversación para entender qué necesitas.</p>
+        <!-- =================================================
+             FAQ (mantenemos el mismo acordeón)
+        ================================================== -->
+        <section class="faq section">
+            <div class="section-meta">
+                <span>06</span>
+                <span>PREGUNTAS</span>
             </div>
-            <a href="index.html#contacto" class="btn" style="background:var(--blue); color:var(--white);">Solicitar información →</a>
-        </div>
-    </div>
+            <div class="faq-layout">
+                <h2>Lo que <em>quieres saber.</em></h2>
+                <div class="faq-list">
+                    <article class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Necesito saber programar para tener mi portafolio?</span>
+                            <b>+</b>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No. Nosotros nos encargamos de todo el desarrollo. Tú solo necesitas proporcionarnos el contenido (textos, imágenes, proyectos) y nosotros construimos el sitio.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Puedo actualizar el contenido después de lanzado?</span>
+                            <b>+</b>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí. Te entregamos instrucciones claras para que puedas hacer cambios menores por tu cuenta. Si necesitas modificaciones más complejas, podemos ayudarte con un costo adicional.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Incluye dominio y hosting?</span>
+                            <b>+</b>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No está incluido en el servicio base, pero podemos recomendarte proveedores y ayudarte a configurarlo. También podemos gestionarlo por ti si lo prefieres.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Cuánto tiempo tarda el proceso?</span>
+                            <b>+</b>
+                        </button>
+                        <div class="faq-answer">
+                            <p>El proceso completo suele tomar entre 5 y 7 días hábiles, dependiendo de la complejidad y de la rapidez con que nos entregues el contenido.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Puedo ver ejemplos de portafolios que han hecho?</span>
+                            <b>+</b>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Por supuesto. Contáctanos y te mostraremos algunos de nuestros trabajos anteriores para que veas la calidad de nuestro diseño y desarrollo.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    <!-- FOOTER -->
+    </main>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
     <footer class="footer">
         <div class="footer-logo">
             <span class="logo-symbol">W</span>
@@ -666,90 +500,16 @@
         <div class="footer-links">
             <a href="index.html">Inicio</a>
             <a href="index.html#servicios">Servicios</a>
+            <a href="index.html#metodo">Método</a>
             <a href="cide.html">CIDE</a>
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
+            <a href="index.html#careers">Careers</a>
         </div>
         <div class="footer-tagline">Precisión aplicada.</div>
     </footer>
 
-    <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            const p = document.querySelector('.preloader');
-            if (p) setTimeout(() => p.classList.add('loaded'), 1300);
-        });
-
-        // Header scroll + hide
-        const header = document.querySelector('.header');
-        let lastScrollY = window.scrollY;
-        function handleHeader() {
-            if (!header) return;
-            const currentScrollY = window.scrollY;
-            if (currentScrollY <= 40) {
-                header.classList.remove('scrolled', 'hidden');
-                lastScrollY = currentScrollY;
-                return;
-            }
-            if (currentScrollY > lastScrollY) header.classList.add('hidden');
-            else header.classList.remove('hidden');
-            header.classList.add('scrolled');
-            lastScrollY = currentScrollY;
-        }
-        window.addEventListener('scroll', handleHeader, { passive: true });
-        handleHeader();
-
-        // Mobile menu
-        const menuBtn = document.querySelector('.menu-button');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        menuBtn?.addEventListener('click', () => {
-            const active = mobileMenu.classList.toggle('active');
-            document.body.classList.toggle('menu-active', active);
-            menuBtn.setAttribute('aria-expanded', active);
-            menuBtn.setAttribute('aria-label', active ? 'Cerrar menú' : 'Abrir menú');
-        });
-        document.querySelectorAll('.mobile-menu a').forEach(l => l.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            document.body.classList.remove('menu-active');
-        }));
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') { mobileMenu?.classList.remove('active'); document.body.classList.remove('menu-active'); } });
-
-        // Scroll reveal
-        const revealElements = document.querySelectorAll('[data-reveal]');
-        if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-            revealElements.forEach(el => observer.observe(el));
-        } else {
-            revealElements.forEach(el => el.classList.add('visible'));
-        }
-
-        // FAQ accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            if (!question) return;
-            question.setAttribute('aria-expanded', 'false');
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                faqItems.forEach(other => {
-                    other.classList.remove('active');
-                    const q = other.querySelector('.faq-question');
-                    if (q) q.setAttribute('aria-expanded', 'false');
-                });
-                if (!isActive) {
-                    item.classList.add('active');
-                    question.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
