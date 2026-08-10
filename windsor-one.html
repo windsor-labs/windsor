@@ -9,6 +9,102 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* =========================================================
+           WINDSOR ONE — ESTILOS EXCLUSIVOS PARA TARJETAS
+           (manteniendo las variables de color de la marca)
+        ========================================================== */
+        .one-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .one-card {
+            background: var(--white);
+            padding: 28px 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            border-top: 4px solid var(--blue); /* se sobrescribe con la clase de color */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .one-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+
+        .one-card .icon-wrap {
+            flex: 0 0 60px;
+            width: 60px;
+            height: 60px;
+            background: rgba(0,0,0,0.04);
+            display: grid;
+            place-items: center;
+            color: var(--blue);
+        }
+
+        .one-card .icon-wrap svg {
+            width: 32px;
+            height: 32px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .one-card .card-body h3 {
+            font-size: 1.2rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+
+        .one-card .card-body p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Colores de marca para los bordes superiores */
+        .one-card.border-blue { border-top-color: var(--blue); }
+        .one-card.border-green { border-top-color: var(--green); }
+        .one-card.border-yellow { border-top-color: var(--yellow); }
+        .one-card.border-purple { border-top-color: var(--purple); }
+
+        /* Colores de iconos por defecto (se puede personalizar) */
+        .one-card .icon-wrap.blue { color: var(--blue); }
+        .one-card .icon-wrap.green { color: var(--green); }
+        .one-card .icon-wrap.yellow { color: var(--yellow); }
+        .one-card .icon-wrap.purple { color: var(--purple); }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .one-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .one-card {
+                padding: 20px;
+                gap: 16px;
+            }
+            .one-card .icon-wrap {
+                flex: 0 0 48px;
+                width: 48px;
+                height: 48px;
+            }
+            .one-card .icon-wrap svg {
+                width: 26px;
+                height: 26px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -149,161 +245,117 @@
         </section>
 
         <!-- =================================================
-             QUÉ INCLUYE (usando .service-cards)
+             QUÉ INCLUYE — TARJETAS CON NUEVO ESTILO
         ================================================== -->
-        <section class="services section" id="que-incluye">
+        <section class="section" id="que-incluye" style="background:var(--white);">
             <div class="section-meta">
                 <span>02</span>
                 <span>QUÉ INCLUYE</span>
             </div>
-            <div class="services-heading">
-                <h2>
-                    Todo lo que necesitas
-                    <span>para destacar.</span>
-                </h2>
-                <p>
-                    Un portafolio profesional completo, diseñado y desarrollado
-                    con la misma calidad que aplicamos a cualquier proyecto de marca.
-                </p>
-            </div>
-            <div class="service-cards">
-                <!-- 1. Diseño personalizado (azul) -->
-                <article class="service-card service-blue">
-                    <div class="card-top">
-                        <span>01</span>
-                        <span>DISEÑO</span>
-                    </div>
-                    <div class="card-icon"><span>◎</span></div>
-                    <div class="card-content">
-                        <h3>Diseño <br />personalizado</h3>
-                        <p>Sin plantillas. Creamos un diseño único que refleja tu estilo y personalidad profesional.</p>
-                    </div>
-                    <div class="card-bottom">
-                        <div class="card-tags">
-                            <span>Único</span><span>Personalidad</span><span>Estilo</span>
-                        </div>
-                        <span class="card-arrow" aria-hidden="true">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
-                            </svg>
-                        </span>
-                    </div>
-                </article>
+            <div class="container">
+                <div class="services-heading" style="padding-top:0;">
+                    <h2>
+                        Todo lo que necesitas
+                        <span>para destacar.</span>
+                    </h2>
+                    <p>
+                        Un portafolio profesional completo, diseñado y desarrollado
+                        con la misma calidad que aplicamos a cualquier proyecto de marca.
+                    </p>
+                </div>
 
-                <!-- 2. Hasta 10 proyectos (verde) -->
-                <article class="service-card service-green">
-                    <div class="card-top">
-                        <span>02</span>
-                        <span>PROYECTOS</span>
-                    </div>
-                    <div class="card-icon"><span>W</span></div>
-                    <div class="card-content">
-                        <h3>Hasta 10 <br />proyectos</h3>
-                        <p>Galería con imágenes, videos o descripciones para que muestres tu mejor trabajo.</p>
-                    </div>
-                    <div class="card-bottom">
-                        <div class="card-tags">
-                            <span>Galería</span><span>Imágenes</span><span>Videos</span>
-                        </div>
-                        <span class="card-arrow" aria-hidden="true">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
-                            </svg>
-                        </span>
-                    </div>
-                </article>
+                <!-- Grid de tarjetas con nuevo estilo -->
+                <div class="one-cards-grid">
 
-                <!-- 3. Optimizado para móvil (amarillo) -->
-                <article class="service-card service-yellow">
-                    <div class="card-top">
-                        <span>03</span>
-                        <span>MÓVIL</span>
-                    </div>
-                    <div class="card-icon"><span>⌁</span></div>
-                    <div class="card-content">
-                        <h3>Optimizado <br />para móvil</h3>
-                        <p>Tu portafolio se verá impecable en cualquier dispositivo, desde el móvil hasta la pantalla grande.</p>
-                    </div>
-                    <div class="card-bottom">
-                        <div class="card-tags">
-                            <span>Responsive</span><span>Dispositivos</span><span>UX</span>
-                        </div>
-                        <span class="card-arrow" aria-hidden="true">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                    <!-- 1. Diseño personalizado (azul) -->
+                    <div class="one-card border-blue" data-reveal>
+                        <div class="icon-wrap blue">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
                             </svg>
-                        </span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Diseño personalizado</h3>
+                            <p>Sin plantillas. Creamos un diseño único que refleja tu estilo y personalidad profesional.</p>
+                        </div>
                     </div>
-                </article>
 
-                <!-- 4. SEO básico (púrpura) -->
-                <article class="service-card service-purple">
-                    <div class="card-top">
-                        <span>04</span>
-                        <span>SEO</span>
-                    </div>
-                    <div class="card-icon"><span>⌘</span></div>
-                    <div class="card-content">
-                        <h3>SEO <br />básico</h3>
-                        <p>Estructura pensada para que los motores de búsqueda encuentren tu trabajo.</p>
-                    </div>
-                    <div class="card-bottom">
-                        <div class="card-tags">
-                            <span>Visibilidad</span><span>Búsqueda</span><span>Posicionamiento</span>
-                        </div>
-                        <span class="card-arrow" aria-hidden="true">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                    <!-- 2. Hasta 10 proyectos (verde) -->
+                    <div class="one-card border-green" data-reveal>
+                        <div class="icon-wrap green">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                             </svg>
-                        </span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Hasta 10 proyectos</h3>
+                            <p>Galería con imágenes, videos o descripciones para que muestres tu mejor trabajo.</p>
+                        </div>
                     </div>
-                </article>
 
-                <!-- 5. Secciones clave (azul) -->
-                <article class="service-card service-blue">
-                    <div class="card-top">
-                        <span>05</span>
-                        <span>CONTENIDO</span>
-                    </div>
-                    <div class="card-icon"><span>◎</span></div>
-                    <div class="card-content">
-                        <h3>Secciones <br />clave</h3>
-                        <p>Sobre mí, servicios, testimonios y contacto. Todo lo que un cliente o reclutador necesita saber.</p>
-                    </div>
-                    <div class="card-bottom">
-                        <div class="card-tags">
-                            <span>Biografía</span><span>Testimonios</span><span>Contacto</span>
-                        </div>
-                        <span class="card-arrow" aria-hidden="true">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                    <!-- 3. Optimizado para móvil (amarillo) -->
+                    <div class="one-card border-yellow" data-reveal>
+                        <div class="icon-wrap yellow">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                <line x1="12" y1="18" x2="12.01" y2="18"/>
                             </svg>
-                        </span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Optimizado para móvil</h3>
+                            <p>Tu portafolio se verá impecable en cualquier dispositivo, desde el móvil hasta la pantalla grande.</p>
+                        </div>
                     </div>
-                </article>
 
-                <!-- 6. Rendimiento y velocidad (verde) -->
-                <article class="service-card service-green">
-                    <div class="card-top">
-                        <span>06</span>
-                        <span>VELOCIDAD</span>
-                    </div>
-                    <div class="card-icon"><span>W</span></div>
-                    <div class="card-content">
-                        <h3>Rendimiento <br />y velocidad</h3>
-                        <p>Código limpio y optimizado para que tu sitio cargue rápido y cause una buena impresión desde el primer segundo.</p>
-                    </div>
-                    <div class="card-bottom">
-                        <div class="card-tags">
-                            <span>Rápido</span><span>Optimizado</span><span>Eficiente</span>
-                        </div>
-                        <span class="card-arrow" aria-hidden="true">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                    <!-- 4. SEO básico (púrpura) -->
+                    <div class="one-card border-purple" data-reveal>
+                        <div class="icon-wrap purple">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
                             </svg>
-                        </span>
+                        </div>
+                        <div class="card-body">
+                            <h3>SEO básico</h3>
+                            <p>Estructura pensada para que los motores de búsqueda encuentren tu trabajo.</p>
+                        </div>
                     </div>
-                </article>
+
+                    <!-- 5. Secciones clave (azul) -->
+                    <div class="one-card border-blue" data-reveal>
+                        <div class="icon-wrap blue">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </div>
+                        <div class="card-body">
+                            <h3>Secciones clave</h3>
+                            <p>Sobre mí, servicios, testimonios y contacto. Todo lo que un cliente o reclutador necesita saber.</p>
+                        </div>
+                    </div>
+
+                    <!-- 6. Rendimiento y velocidad (verde) -->
+                    <div class="one-card border-green" data-reveal>
+                        <div class="icon-wrap green">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                <polyline points="17 6 23 6 23 12"/>
+                            </svg>
+                        </div>
+                        <div class="card-body">
+                            <h3>Rendimiento y velocidad</h3>
+                            <p>Código limpio y optimizado para que tu sitio cargue rápido y cause una buena impresión desde el primer segundo.</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
 
