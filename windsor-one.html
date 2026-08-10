@@ -23,7 +23,6 @@
         .one-card {
             background: var(--white);
             padding: 28px 24px 16px 24px;
-            border-top: 4px solid var(--blue); /* se sobrescribe con la clase */
             box-shadow: 0 4px 12px rgba(0,0,0,0.04);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
@@ -90,18 +89,21 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--blue);
             transition: gap 0.25s ease, color 0.25s ease;
-        }
-
-        .one-card .card-link:hover {
-            gap: 18px;
-            color: var(--blue-dark);
         }
 
         .one-card .card-link .arrow-icon {
             display: inline-flex;
             align-items: center;
+            transition: transform 0.25s ease;
+        }
+
+        .one-card:hover .card-link .arrow-icon {
+            transform: translateX(6px);
+        }
+
+        .one-card:hover .card-link {
+            gap: 18px;
         }
 
         /* Barra inferior animada (igual que Key Institute) */
@@ -109,28 +111,18 @@
             height: 4px;
             margin-top: 16px;
             transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
-            background-color: var(--blue); /* se sobrescribe */
+            background-color: var(--blue);
         }
 
         .one-card:hover .bottom-bar {
             width: 100% !important;
         }
 
-        /* Colores de marca */
-        .one-card.border-blue { border-top-color: var(--blue); }
-        .one-card.border-green { border-top-color: var(--green); }
-        .one-card.border-yellow { border-top-color: var(--yellow); }
-        .one-card.border-purple { border-top-color: var(--purple); }
-
+        /* Colores de marca para iconos, enlaces y barra */
         .one-card .icon-wrap.blue { color: var(--blue); }
         .one-card .icon-wrap.green { color: var(--green); }
         .one-card .icon-wrap.yellow { color: var(--yellow); }
         .one-card .icon-wrap.purple { color: var(--purple); }
-
-        .one-card .bottom-bar.blue { background-color: var(--blue); }
-        .one-card .bottom-bar.green { background-color: var(--green); }
-        .one-card .bottom-bar.yellow { background-color: var(--yellow); }
-        .one-card .bottom-bar.purple { background-color: var(--purple); }
 
         .one-card .card-link.blue { color: var(--blue); }
         .one-card .card-link.green { color: var(--green); }
@@ -141,6 +133,11 @@
         .one-card .card-link.green:hover { color: var(--green-dark); }
         .one-card .card-link.yellow:hover { color: #d4a000; }
         .one-card .card-link.purple:hover { color: #5a3fd4; }
+
+        .one-card .bottom-bar.blue { background-color: var(--blue); }
+        .one-card .bottom-bar.green { background-color: var(--green); }
+        .one-card .bottom-bar.yellow { background-color: var(--yellow); }
+        .one-card .bottom-bar.purple { background-color: var(--purple); }
 
         /* Responsive */
         @media (max-width: 800px) {
@@ -328,7 +325,7 @@
                 <div class="one-cards-grid">
 
                     <!-- 1. Diseño personalizado (azul) -->
-                    <div class="one-card border-blue" data-reveal>
+                    <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap blue">
                                 <svg viewBox="0 0 24 24">
@@ -341,7 +338,7 @@
                                 <h3>Diseño personalizado</h3>
                                 <p>Sin plantillas. Creamos un diseño único que refleja tu estilo y personalidad profesional.</p>
                                 <a href="#" class="card-link blue">
-                                    <span>Ver más</span>
+                                    <span class="link-text">Ver más</span>
                                     <span class="arrow-icon">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <line x1="7" y1="17" x2="17" y2="7" />
@@ -349,13 +346,13 @@
                                         </svg>
                                     </span>
                                 </a>
+                                <div class="bottom-bar blue" style="width:40%;"></div>
                             </div>
                         </div>
-                        <div class="bottom-bar blue" style="width:40%;"></div>
                     </div>
 
                     <!-- 2. Hasta 10 proyectos (verde) -->
-                    <div class="one-card border-green" data-reveal>
+                    <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap green">
                                 <svg viewBox="0 0 24 24">
@@ -367,7 +364,7 @@
                                 <h3>Hasta 10 proyectos</h3>
                                 <p>Galería con imágenes, videos o descripciones para que muestres tu mejor trabajo.</p>
                                 <a href="#" class="card-link green">
-                                    <span>Ver más</span>
+                                    <span class="link-text">Ver más</span>
                                     <span class="arrow-icon">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <line x1="7" y1="17" x2="17" y2="7" />
@@ -375,13 +372,13 @@
                                         </svg>
                                     </span>
                                 </a>
+                                <div class="bottom-bar green" style="width:40%;"></div>
                             </div>
                         </div>
-                        <div class="bottom-bar green" style="width:40%;"></div>
                     </div>
 
                     <!-- 3. Optimizado para móvil (amarillo) -->
-                    <div class="one-card border-yellow" data-reveal>
+                    <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap yellow">
                                 <svg viewBox="0 0 24 24">
@@ -393,7 +390,7 @@
                                 <h3>Optimizado para móvil</h3>
                                 <p>Tu portafolio se verá impecable en cualquier dispositivo, desde el móvil hasta la pantalla grande.</p>
                                 <a href="#" class="card-link yellow">
-                                    <span>Ver más</span>
+                                    <span class="link-text">Ver más</span>
                                     <span class="arrow-icon">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <line x1="7" y1="17" x2="17" y2="7" />
@@ -401,13 +398,13 @@
                                         </svg>
                                     </span>
                                 </a>
+                                <div class="bottom-bar yellow" style="width:40%;"></div>
                             </div>
                         </div>
-                        <div class="bottom-bar yellow" style="width:40%;"></div>
                     </div>
 
                     <!-- 4. SEO básico (púrpura) -->
-                    <div class="one-card border-purple" data-reveal>
+                    <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap purple">
                                 <svg viewBox="0 0 24 24">
@@ -419,7 +416,7 @@
                                 <h3>SEO básico</h3>
                                 <p>Estructura pensada para que los motores de búsqueda encuentren tu trabajo.</p>
                                 <a href="#" class="card-link purple">
-                                    <span>Ver más</span>
+                                    <span class="link-text">Ver más</span>
                                     <span class="arrow-icon">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <line x1="7" y1="17" x2="17" y2="7" />
@@ -427,13 +424,13 @@
                                         </svg>
                                     </span>
                                 </a>
+                                <div class="bottom-bar purple" style="width:40%;"></div>
                             </div>
                         </div>
-                        <div class="bottom-bar purple" style="width:40%;"></div>
                     </div>
 
                     <!-- 5. Secciones clave (azul) -->
-                    <div class="one-card border-blue" data-reveal>
+                    <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap blue">
                                 <svg viewBox="0 0 24 24">
@@ -448,7 +445,7 @@
                                 <h3>Secciones clave</h3>
                                 <p>Sobre mí, servicios, testimonios y contacto. Todo lo que un cliente o reclutador necesita saber.</p>
                                 <a href="#" class="card-link blue">
-                                    <span>Ver más</span>
+                                    <span class="link-text">Ver más</span>
                                     <span class="arrow-icon">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <line x1="7" y1="17" x2="17" y2="7" />
@@ -456,13 +453,13 @@
                                         </svg>
                                     </span>
                                 </a>
+                                <div class="bottom-bar blue" style="width:40%;"></div>
                             </div>
                         </div>
-                        <div class="bottom-bar blue" style="width:40%;"></div>
                     </div>
 
                     <!-- 6. Rendimiento y velocidad (verde) -->
-                    <div class="one-card border-green" data-reveal>
+                    <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap green">
                                 <svg viewBox="0 0 24 24">
@@ -474,7 +471,7 @@
                                 <h3>Rendimiento y velocidad</h3>
                                 <p>Código limpio y optimizado para que tu sitio cargue rápido y cause una buena impresión desde el primer segundo.</p>
                                 <a href="#" class="card-link green">
-                                    <span>Ver más</span>
+                                    <span class="link-text">Ver más</span>
                                     <span class="arrow-icon">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <line x1="7" y1="17" x2="17" y2="7" />
@@ -482,9 +479,9 @@
                                         </svg>
                                     </span>
                                 </a>
+                                <div class="bottom-bar green" style="width:40%;"></div>
                             </div>
                         </div>
-                        <div class="bottom-bar green" style="width:40%;"></div>
                     </div>
 
                 </div>
