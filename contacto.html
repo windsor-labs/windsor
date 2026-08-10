@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Windsor — Contacto</title>
+    <meta name="description" content="Ponte en contacto con Windsor. Cuéntanos tu proyecto, idea o consulta." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* =========================================================
+           CONTACTO — ESTILOS (estilo Outlook + Windsor)
+        ========================================================== */
+        .contact-page-wrapper {
+            padding: 120px 6vw 80px;
+            background: var(--cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .contact-form h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            letter-spacing: -0.06em;
+            line-height: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .contact-form h2 em {
+            display: block;
+            color: var(--blue);
+            font-family: var(--sans);
+            font-weight: 900;
+            text-decoration: underline;
+            text-decoration-thickness: 0.07em;
+            text-underline-offset: 0.1em;
+        }
+
+        .contact-form .subtitle {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* Estilo campos tipo Outlook */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--line);
+            font-family: var(--body);
+            font-size: 15px;
+            color: var(--black);
+            transition: border-color 0.25s ease;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-bottom-color: var(--blue);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+            border-bottom: 2px solid var(--line);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #aaa;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 28px;
+            background: var(--blue);
+            color: var(--white);
+            border: none;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: background 0.25s, transform 0.25s;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: var(--blue-dark);
+            transform: translateX(6px);
+        }
+
+        .submit-btn .arrow-icon {
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.25s;
+        }
+
+        .submit-btn:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+
+        /* Mensaje de éxito */
+        .success-message {
+            display: none;
+            background: var(--green);
+            color: var(--black);
+            padding: 16px 20px;
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Info de contacto lateral (estilo Outlook) */
+        .contact-info h3 {
+            font-size: 1.2rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 18px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .contact-info-item .icon {
+            flex: 0 0 24px;
+            width: 24px;
+            height: 24px;
+            color: var(--blue);
+            margin-top: 2px;
+        }
+
+        .contact-info-item .icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-info-item a {
+            color: var(--blue);
+            transition: color 0.25s;
+        }
+        .contact-info-item a:hover {
+            color: var(--blue-dark);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--line);
+            color: var(--black);
+            transition: background 0.25s, color 0.25s, transform 0.25s;
+        }
+
+        .social-links a:hover {
+            background: var(--blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .social-links a svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .contact-page-wrapper {
+                padding: 100px 5vw 60px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-form h2 {
+                font-size: 1.8rem;
+            }
+            .contact-info-item {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="preloader-logo">W</div>
+        <div class="preloader-line"><span></span></div>
+        <div class="preloader-text">WINDSOR</div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <span class="logo-symbol">W</span>
+            <span class="logo-name">WINDSOR</span>
+        </a>
+        <nav class="desktop-nav">
+            <a href="index.html#servicios">Servicios</a>
+            <a href="index.html#metodo">Método</a>
+            <a href="cide.html">CIDE</a>
+            <a href="orientacion-vocacional.html">Orientación</a>
+            <a href="windsor-one.html">One</a>
+            <a href="index.html#careers">Careers</a>
+            <a href="contacto.html" class="active">Contacto</a>
+        </nav>
+        <a href="contacto.html" class="header-button">
+            Hablemos
+            <span class="arrow-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                </svg>
+            </span>
+        </a>
+        <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-menu-label">NAVEGACIÓN</div>
+            <a href="index.html">Inicio</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="index.html#metodo">Método Windsor</a>
+            <a href="cide.html">CIDE</a>
+            <a href="orientacion-vocacional.html">Orientación</a>
+            <a href="windsor-one.html">One</a>
+            <a href="index.html#careers">Careers</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+    </div>
+
+    <!-- =====================================================
+         CONTACTO — FORMULARIO ESTILO OUTLOOK
+    ====================================================== -->
+    <main class="contact-page-wrapper">
+
+        <div class="contact-grid">
+
+            <!-- FORMULARIO -->
+            <div class="contact-form">
+                <h2>
+                    Escribinos
+                    <em>un mensaje.</em>
+                </h2>
+                <p class="subtitle">
+                    Completá el formulario y te responderemos a la brevedad.
+                    También podés escribirnos directamente a <strong>hello@windsor-labs.com</strong>.
+                </p>
+
+                <form id="contactForm" action="#" method="POST">
+                    <!-- Para (destinatario fijo) -->
+                    <div class="form-group">
+                        <label for="para">Para</label>
+                        <input type="email" id="para" name="para" value="hello@windsor-labs.com" readonly style="color: var(--blue); font-weight: 600; cursor: default;" />
+                    </div>
+
+                    <!-- De (nombre + correo) -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Tu nombre</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="ej. María González" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Tu correo</label>
+                            <input type="email" id="email" name="email" placeholder="ej. maria@ejemplo.com" required />
+                        </div>
+                    </div>
+
+                    <!-- Asunto -->
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" id="asunto" name="asunto" placeholder="¿Sobre qué querés hablar?" required />
+                    </div>
+
+                    <!-- Mensaje -->
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Contanos tu idea, proyecto o consulta..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Enviar mensaje
+                        <span class="arrow-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" />
+                                <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </button>
+                </form>
+
+                <div id="successMessage" class="success-message">
+                    ✅ ¡Mensaje enviado! Te responderemos pronto.
+                </div>
+            </div>
+
+            <!-- INFORMACIÓN DE CONTACTO (lateral) -->
+            <div class="contact-info">
+                <h3>Información de contacto</h3>
+
+                <div class="contact-info-item">
+                    <span class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </span>
+                    <div>
+                        <a href="mailto:hello@windsor-labs.com">hello@windsor-labs.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <span class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </span>
+                    <div>
+                        <a href="tel:+50312345678">+503 1234 5678</a>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <span class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </span>
+                    <div>
+                        El Salvador · Latinoamérica
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="X (Twitter)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768M19.5 4l-6.768 6.768" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <span class="logo-symbol">W</span>
+            <span>WINDSOR <small>LABORATORIO DIGITAL INDEPENDIENTE</small></span>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="index.html#metodo">Método</a>
+            <a href="cide.html">CIDE</a>
+            <a href="orientacion-vocacional.html">Orientación</a>
+            <a href="windsor-one.html">One</a>
+            <a href="index.html#careers">Careers</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-tagline">Precisión aplicada.</div>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const p = document.querySelector('.preloader');
+            if (p) setTimeout(() => p.classList.add('loaded'), 1300);
+        });
+
+        // Header scroll + hide (mismo que en el resto del sitio)
+        const header = document.querySelector('.header');
+        let lastScrollY = window.scrollY;
+        function handleHeader() {
+            if (!header) return;
+            const currentScrollY = window.scrollY;
+            if (currentScrollY <= 40) {
+                header.classList.remove('scrolled', 'hidden');
+                lastScrollY = currentScrollY;
+                return;
+            }
+            if (currentScrollY > lastScrollY) header.classList.add('hidden');
+            else header.classList.remove('hidden');
+            header.classList.add('scrolled');
+            lastScrollY = currentScrollY;
+        }
+        window.addEventListener('scroll', handleHeader, { passive: true });
+        handleHeader();
+
+        // Mobile menu
+        const menuBtn = document.querySelector('.menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        menuBtn?.addEventListener('click', () => {
+            const active = mobileMenu.classList.toggle('active');
+            document.body.classList.toggle('menu-active', active);
+            menuBtn.setAttribute('aria-expanded', active);
+            menuBtn.setAttribute('aria-label', active ? 'Cerrar menú' : 'Abrir menú');
+        });
+        document.querySelectorAll('.mobile-menu a').forEach(l => l.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('menu-active');
+        }));
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') { mobileMenu?.classList.remove('active'); document.body.classList.remove('menu-active'); } });
+
+        // FORMULARIO
+        const form = document.getElementById('contactForm');
+        const successMsg = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Obtener datos
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const asunto = document.getElementById('asunto').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+
+            // Validación simple
+            if (!nombre || !email || !asunto || !mensaje) {
+                alert('Por favor, completá todos los campos.');
+                return;
+            }
+
+            // Construir cuerpo del correo para mailto
+            const destinatario = 'hello@windsor-labs.com';
+            const subject = encodeURIComponent(asunto);
+            const body = encodeURIComponent(
+                `Nombre: ${nombre}\n` +
+                `Correo: ${email}\n\n` +
+                `Mensaje:\n${mensaje}`
+            );
+
+            // Abrir cliente de correo
+            window.location.href = `mailto:${destinatario}?subject=${subject}&body=${body}`;
+
+            // Mostrar mensaje de éxito
+            successMsg.classList.add('show');
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 6000);
+
+            // Limpiar campos (opcional)
+            // form.reset();
+        });
+    </script>
+
+</body>
+</html>
