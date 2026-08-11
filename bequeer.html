@@ -36,7 +36,6 @@
             display: inline-block;
         }
 
-        /* Texto arcoíris para títulos */
         .rainbow-title {
             background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
             -webkit-background-clip: text;
@@ -45,7 +44,7 @@
             display: inline-block;
         }
 
-        /* Tarjetas de servicios — SIN barra superior fija */
+        /* Tarjetas con animación estilo Windsor One */
         .bequeer-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -55,51 +54,101 @@
 
         .bequeer-card {
             background: var(--white);
-            padding: 30px;
-            min-height: 220px;
+            padding: 28px 24px 16px 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
             position: relative;
-            overflow: hidden;
-            /* Se eliminó border-top */
         }
 
         .bequeer-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
 
-        .bequeer-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .bequeer-card .card-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            flex: 1;
         }
 
-        .bequeer-card:hover::after {
-            opacity: 1;
+        .bequeer-card .icon-wrap {
+            flex: 0 0 56px;
+            width: 56px;
+            height: 56px;
+            background: rgba(0,0,0,0.04);
+            display: grid;
+            place-items: center;
+            color: var(--blue);
         }
 
-        .bequeer-card .icon {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-            display: inline-block;
+        .bequeer-card .icon-wrap svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
-        .bequeer-card h3 {
-            font-size: 1.3rem;
+        .bequeer-card .card-body {
+            flex: 1;
+        }
+
+        .bequeer-card .card-body h3 {
+            font-size: 1.2rem;
             letter-spacing: -0.03em;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-weight: 800;
         }
 
-        .bequeer-card p {
+        .bequeer-card .card-body p {
             color: #555;
-            line-height: 1.6;
             font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 16px 0;
+        }
+
+        /* Enlace con flecha (igual que Windsor One) */
+        .bequeer-card .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: gap 0.25s ease, color 0.25s ease;
+            color: var(--blue);
+        }
+
+        .bequeer-card .card-link .arrow-icon {
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.25s ease;
+        }
+
+        .bequeer-card:hover .card-link .arrow-icon {
+            transform: translateX(6px);
+        }
+
+        .bequeer-card:hover .card-link {
+            gap: 18px;
+        }
+
+        /* Barra inferior animada (gradiente arcoíris) */
+        .bequeer-card .bottom-bar {
+            height: 4px;
+            margin-top: 16px;
+            transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
+            background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
+        }
+
+        .bequeer-card:hover .bottom-bar {
+            width: 100% !important;
         }
 
         /* CTA con borde arcoíris izquierdo */
@@ -155,9 +204,20 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+            .bequeer-card .card-inner {
+                gap: 16px;
+            }
+            .bequeer-card .icon-wrap {
+                flex: 0 0 48px;
+                width: 48px;
+                height: 48px;
+            }
+            .bequeer-card .icon-wrap svg {
+                width: 24px;
+                height: 24px;
+            }
             .bequeer-card {
-                padding: 20px;
-                min-height: auto;
+                padding: 20px 20px 12px 20px;
             }
             .cta-rainbow {
                 flex-direction: column;
@@ -195,7 +255,7 @@
         </a>
         <nav class="desktop-nav">
             <a href="index.html#servicios">Servicios</a>
-            <a href="index.html#metodo">Método</a>
+            <a href="metodologia.html">Metodología</a>
             <a href="cide.html">CIDE</a>
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
@@ -221,7 +281,7 @@
             <div class="mobile-menu-label">NAVEGACIÓN</div>
             <a href="index.html">Inicio</a>
             <a href="index.html#servicios">Servicios</a>
-            <a href="index.html#metodo">Método Windsor</a>
+            <a href="metodologia.html">Metodología</a>
             <a href="cide.html">CIDE</a>
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
@@ -233,9 +293,7 @@
 
     <main>
 
-        <!-- =================================================
-             HERO CON ARCOÍRIS
-        ================================================== -->
+        <!-- HERO CON ARCOÍRIS -->
         <section class="hero hero-rainbow">
             <div class="hero-noise"></div>
             <div class="hero-topline">
@@ -267,9 +325,7 @@
             <div class="rainbow-bar"></div>
         </section>
 
-        <!-- =================================================
-             INTRO
-        ================================================== -->
+        <!-- INTRO -->
         <section class="intro section" id="intro">
             <div class="section-meta">
                 <span>01</span>
@@ -305,9 +361,7 @@
             </div>
         </section>
 
-        <!-- =================================================
-             SERVICIOS
-        ================================================== -->
+        <!-- SERVICIOS CON TARJETAS ESTILO WINDSOR ONE -->
         <section class="section" id="servicios" style="background:var(--white);">
             <div class="section-meta">
                 <span>02</span>
@@ -326,37 +380,116 @@
                 </div>
 
                 <div class="bequeer-grid">
-                    <!-- 1 -->
+                    <!-- 1. Branding inclusivo -->
                     <div class="bequeer-card" data-reveal>
-                        <div class="icon">🏳️‍🌈</div>
-                        <h3>Branding inclusivo</h3>
-                        <p>Construimos identidades visuales que reflejan la autenticidad de organizaciones, colectivos y emprendedores LGBTQ+.</p>
+                        <div class="card-inner">
+                            <div class="icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <h3>Branding inclusivo</h3>
+                                <p>Construimos identidades visuales que reflejan la autenticidad de organizaciones, colectivos y emprendedores LGBTQ+.</p>
+                                <a href="#" class="card-link">
+                                    <span class="link-text">Ver más</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="bottom-bar" style="width:40%;"></div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- 2 -->
+
+                    <!-- 2. Sitios web seguros -->
                     <div class="bequeer-card" data-reveal>
-                        <div class="icon">🛡️</div>
-                        <h3>Sitios web seguros</h3>
-                        <p>Desarrollamos plataformas digitales con altos estándares de seguridad y privacidad para proteger a tu comunidad.</p>
+                        <div class="card-inner">
+                            <div class="icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <h3>Sitios web seguros</h3>
+                                <p>Desarrollamos plataformas digitales con altos estándares de seguridad y privacidad para proteger a tu comunidad.</p>
+                                <a href="#" class="card-link">
+                                    <span class="link-text">Ver más</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="bottom-bar" style="width:40%;"></div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- 3 -->
+
+                    <!-- 3. Comunicación con perspectiva -->
                     <div class="bequeer-card" data-reveal>
-                        <div class="icon">📢</div>
-                        <h3>Comunicación con perspectiva</h3>
-                        <p>Estrategias de contenido y redes sociales que visibilizan tu mensaje desde el respeto y la diversidad.</p>
+                        <div class="card-inner">
+                            <div class="icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <h3>Comunicación con perspectiva</h3>
+                                <p>Estrategias de contenido y redes sociales que visibilizan tu mensaje desde el respeto y la diversidad.</p>
+                                <a href="#" class="card-link">
+                                    <span class="link-text">Ver más</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="bottom-bar" style="width:40%;"></div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- 4 -->
+
+                    <!-- 4. Consultoría en diversidad -->
                     <div class="bequeer-card" data-reveal>
-                        <div class="icon">🤝</div>
-                        <h3>Consultoría en diversidad</h3>
-                        <p>Acompañamos a empresas y organizaciones a construir espacios digitales más inclusivos y auténticos.</p>
+                        <div class="card-inner">
+                            <div class="icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <h3>Consultoría en diversidad</h3>
+                                <p>Acompañamos a empresas y organizaciones a construir espacios digitales más inclusivos y auténticos.</p>
+                                <a href="#" class="card-link">
+                                    <span class="link-text">Ver más</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="bottom-bar" style="width:40%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- =================================================
-             STATEMENT
-        ================================================== -->
+        <!-- STATEMENT -->
         <div class="statement-marquee" style="background:var(--black); color:var(--white);">
             <div class="statement-track">
                 <span>VISIBILIDAD</span> <b>✦</b>
@@ -370,9 +503,7 @@
             </div>
         </div>
 
-        <!-- =================================================
-             PRINCIPIOS
-        ================================================== -->
+        <!-- FILOSOFÍA -->
         <section class="principles section">
             <div class="section-meta">
                 <span>03</span>
@@ -386,9 +517,7 @@
             </div>
         </section>
 
-        <!-- =================================================
-             CTA
-        ================================================== -->
+        <!-- CTA -->
         <div class="container" style="margin-bottom:60px;">
             <div class="cta-rainbow" data-reveal>
                 <div>
@@ -409,9 +538,7 @@
 
     </main>
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-logo">
             <span class="logo-symbol">W</span>
@@ -420,7 +547,7 @@
         <div class="footer-links">
             <a href="index.html">Inicio</a>
             <a href="index.html#servicios">Servicios</a>
-            <a href="index.html#metodo">Método</a>
+            <a href="metodologia.html">Metodología</a>
             <a href="cide.html">CIDE</a>
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
