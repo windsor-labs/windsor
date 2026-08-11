@@ -13,7 +13,7 @@
         /* =========================================================
            RECOMENDADOS — ESTILOS ADICIONALES
         ========================================================== */
-        /* HERO SOLO CON VIDEO (sin texto encima) */
+        /* HERO SOLO CON VIDEO */
         .recomendados-hero {
             height: 100vh;
             min-height: 500px;
@@ -46,7 +46,23 @@
             z-index: 2;
         }
 
-        /* SECCIÓN INTRO (debajo del video) */
+        /* CRÉDITOS DEL VIDEO */
+        .video-credits {
+            background: var(--black);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 8px 6vw;
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            font-weight: 400;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .video-credits strong {
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+        }
+
+        /* INTRO (debajo del video y créditos) */
         .intro-recomendados {
             padding: 80px 6vw;
             background: var(--cream);
@@ -238,6 +254,10 @@
             .intro-recomendados h2 {
                 font-size: clamp(2.5rem, 8vw, 4rem);
             }
+            .video-credits {
+                font-size: 8px;
+                padding: 6px 6vw;
+            }
         }
     </style>
 </head>
@@ -306,6 +326,11 @@
             <div class="hero-overlay"></div>
             <div class="hero-noise"></div>
         </section>
+
+        <!-- CRÉDITOS DEL VIDEO -->
+        <div class="video-credits">
+            Video: <strong>Instituto Kriete de ingeniería y ciencias</strong>
+        </div>
 
         <!-- INTRO: TEXTO DEBAJO DEL VIDEO -->
         <section class="intro-recomendados">
