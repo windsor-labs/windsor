@@ -36,13 +36,13 @@
         .recomendados-hero .hero-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(10, 10, 12, 0.75); /* overlay oscuro */
+            background: rgba(10, 10, 12, 0.3); /* overlay muy sutil */
             z-index: 1;
         }
         .recomendados-hero .hero-noise {
             position: absolute;
             inset: 0;
-            opacity: 0.06;
+            opacity: 0.04;
             pointer-events: none;
             background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
             background-size: 5px 5px;
@@ -52,6 +52,7 @@
         .recomendados-hero p {
             position: relative;
             z-index: 3;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.6);
         }
         .recomendados-hero h1 {
             font-size: clamp(3rem, 6vw, 5.5rem);
@@ -67,11 +68,12 @@
             text-decoration: underline;
             text-decoration-thickness: 0.07em;
             text-underline-offset: 0.1em;
+            text-shadow: 0 0 30px rgba(0, 109, 255, 0.3);
         }
         .recomendados-hero p {
             max-width: 580px;
             margin-top: 25px;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.9);
             font-size: 16px;
             line-height: 1.7;
         }
@@ -290,13 +292,13 @@
 
     <main>
 
-        <!-- HERO CON VIDEO DE FONDO -->
+        <!-- HERO CON VIDEO DE FONDO (overlay sutil) -->
         <section class="recomendados-hero">
             <!-- Video de fondo -->
             <video autoplay muted loop playsinline class="hero-video">
                 <source src="Recursos/video1.mp4" type="video/mp4">
             </video>
-            <!-- Overlay oscuro -->
+            <!-- Overlay muy sutil -->
             <div class="hero-overlay"></div>
             <!-- Ruido (opcional) -->
             <div class="hero-noise"></div>
