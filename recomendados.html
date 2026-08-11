@@ -1,1 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Windsor — Recomendados</title>
+    <meta name="description" content="Recursos seleccionados por Windsor para tu desarrollo laboral y académico. Herramientas, plataformas y referencias útiles." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* =========================================================
+           RECOMENDADOS — ESTILOS ADICIONALES
+        ========================================================== */
+        .recomendados-hero {
+            min-height: max(400px, 60vh);
+            background: var(--black);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 6vw 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .recomendados-hero .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .recomendados-hero .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 12, 0.75); /* overlay oscuro */
+            z-index: 1;
+        }
+        .recomendados-hero .hero-noise {
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            pointer-events: none;
+            background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
+            background-size: 5px 5px;
+            z-index: 2;
+        }
+        .recomendados-hero h1,
+        .recomendados-hero p {
+            position: relative;
+            z-index: 3;
+        }
+        .recomendados-hero h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 0.85;
+            letter-spacing: -0.07em;
+            max-width: 900px;
+        }
+        .recomendados-hero h1 em {
+            display: block;
+            color: var(--blue);
+            font-family: var(--sans);
+            font-weight: 900;
+            text-decoration: underline;
+            text-decoration-thickness: 0.07em;
+            text-underline-offset: 0.1em;
+        }
+        .recomendados-hero p {
+            max-width: 580px;
+            margin-top: 25px;
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
+            line-height: 1.7;
+        }
 
+        /* Grid de recursos */
+        .recursos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .recurso-item {
+            background: var(--white);
+            padding: 28px 24px 16px 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .recurso-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+
+        .recurso-item .card-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .recurso-item .icon-wrap {
+            flex: 0 0 56px;
+            width: 56px;
+            height: 56px;
+            background: rgba(0,0,0,0.04);
+            display: grid;
+            place-items: center;
+            color: var(--blue);
+        }
+
+        .recurso-item .icon-wrap svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .recurso-item .card-body {
+            flex: 1;
+        }
+
+        .recurso-item .card-body .tag {
+            display: inline-block;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--blue);
+            opacity: 0.6;
+            margin-bottom: 4px;
+        }
+
+        .recurso-item .card-body h3 {
+            font-size: 1.3rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 4px;
+        }
+
+        .recurso-item .card-body p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 16px 0;
+        }
+
+        .recurso-item .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: gap 0.25s ease, color 0.25s ease;
+            color: var(--blue);
+        }
+
+        .recurso-item .card-link .arrow-icon {
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.25s ease;
+        }
+
+        .recurso-item:hover .card-link .arrow-icon {
+            transform: translateX(6px);
+        }
+
+        .recurso-item:hover .card-link {
+            gap: 18px;
+        }
+
+        .recurso-item .bottom-bar {
+            height: 4px;
+            margin-top: 16px;
+            transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
+            background-color: var(--blue);
+        }
+
+        .recurso-item:hover .bottom-bar {
+            width: 100% !important;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: var(--cream);
+            padding: 30px;
+            margin-top: 50px;
+            font-size: 13px;
+            color: #777;
+            line-height: 1.7;
+            border-left: 4px solid var(--blue);
+        }
+
+        .disclaimer strong {
+            color: var(--black);
+        }
+
+        @media (max-width: 800px) {
+            .recursos-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .recurso-item .card-inner {
+                gap: 16px;
+            }
+            .recurso-item .icon-wrap {
+                flex: 0 0 48px;
+                width: 48px;
+                height: 48px;
+            }
+            .recurso-item .icon-wrap svg {
+                width: 24px;
+                height: 24px;
+            }
+            .recurso-item {
+                padding: 20px 20px 12px 20px;
+            }
+            .recomendados-hero {
+                padding: 110px 6vw 60px;
+                min-height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="preloader-logo">W</div>
+        <div class="preloader-line"><span></span></div>
+        <div class="preloader-text">WINDSOR</div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <span class="logo-symbol">W</span>
+            <span class="logo-name">WINDSOR</span>
+        </a>
+        <nav class="desktop-nav">
+            <a href="index.html#servicios">Servicios</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="cide.html">CIDE</a>
+            <a href="orientacion-vocacional.html">Orientación</a>
+            <a href="windsor-one.html">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html" class="active">Recomendados</a>
+            <a href="index.html#careers">Careers</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+        <a href="contacto.html" class="header-button">
+            Hablemos
+            <span class="arrow-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                </svg>
+            </span>
+        </a>
+        <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-menu-label">NAVEGACIÓN</div>
+            <a href="index.html">Inicio</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="cide.html">CIDE</a>
+            <a href="orientacion-vocacional.html">Orientación</a>
+            <a href="windsor-one.html">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html">Recomendados</a>
+            <a href="index.html#careers">Careers</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- HERO CON VIDEO DE FONDO -->
+        <section class="recomendados-hero">
+            <!-- Video de fondo -->
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="Recursos/video1.mp4" type="video/mp4">
+            </video>
+            <!-- Overlay oscuro -->
+            <div class="hero-overlay"></div>
+            <!-- Ruido (opcional) -->
+            <div class="hero-noise"></div>
+
+            <h1>
+                Recursos que
+                <em>recomendamos.</em>
+            </h1>
+            <p>
+                Una selección curada por Windsor de herramientas, plataformas y referencias
+                útiles para tu desarrollo laboral y académico. Sin afiliaciones, solo
+                recursos que consideramos valiosos.
+            </p>
+        </section>
+
+        <!-- SECCIÓN RECURSOS -->
+        <section class="section" style="background:var(--white);">
+            <div class="section-meta">
+                <span>01</span>
+                <span>RECURSOS DESTACADOS</span>
+            </div>
+            <div class="container">
+                <h2 style="font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-0.06em; line-height:0.9; margin-bottom:20px;">
+                    Para tu desarrollo
+                    <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">laboral y académico.</span>
+                </h2>
+                <p style="color:#555; max-width:600px; font-size:15px; line-height:1.7; margin-bottom:40px;">
+                    Estas son algunas de las plataformas y recursos que utilizamos o
+                    recomendamos en Windsor. Están agrupadas por área de interés.
+                </p>
+
+                <div class="recursos-grid">
+
+                    <!-- 1. Área laboral -->
+                    <div class="recurso-item" data-reveal>
+                        <div class="card-inner">
+                            <div class="icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <span class="tag">Laboral</span>
+                                <h3>Plataforma de empleo tech</h3>
+                                <p>El mercado laboral para perfiles tecnológicos más grande de la región. Ideal para encontrar oportunidades en startups y empresas digitales.</p>
+                                <a href="#" class="card-link">
+                                    <span class="link-text">Visitar</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="bottom-bar" style="width:40%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Académico -->
+                    <div class="recurso-item" data-reveal>
+                        <div class="card-inner">
+                            <div class="icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 6h16M4 10h16M4 14h10"/>
+                                    <path d="M14 18h6"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <span class="tag">Académico</span>
+                                <h3>Biblioteca digital especializada</h3>
+                                <p>Acceso a miles de libros, artículos y publicaciones científicas en áreas de ingeniería, diseño y tecnología.</p>
+                                <a href="#" class="card-link">
+                                    <span class="link-text">Visitar</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="bottom-bar" style="width:40%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Herramientas digitales -->
+                    <div class="recurso-item" data-reveal>
+                        <div class="card-inner">
+                            <div class="icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="16 18 22 12 16 6"/>
+                                    <polyline points="8 6 2 12 8 18"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <span class="tag">Herramientas</span>
+                                <h3>Suite de diseño colaborativo</h3>
+                                <p>Herramientas para diseñar interfaces, prototipos y flujos de trabajo en equipo. Utilizada por equipos de producto en todo el mundo.</p>
+                                <a href="#" class="card-link">
+                                    <span class="link-text">Visitar</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="bottom-bar" style="width:40%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Inspiración -->
+                    <div class="recurso-item" data-reveal>
+                        <div class="card-inner">
+                            <div class="icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <span class="tag">Inspiración</span>
+                                <h3>Galería de referencias visuales</h3>
+                                <p>Una colección curada de proyectos de diseño, arquitectura, arte y tecnología para alimentar tu creatividad.</p>
+                                <a href="#" class="card-link">
+                                    <span class="link-text">Visitar</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="bottom-bar" style="width:40%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Académico (cursos) -->
+                    <div class="recurso-item" data-reveal>
+                        <div class="card-inner">
+                            <div class="icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <span class="tag">Académico</span>
+                                <h3>Plataforma de cursos especializados</h3>
+                                <p>Formación en áreas como inteligencia artificial, ciencia de datos, diseño UX y desarrollo de software. Certificaciones reconocidas.</p>
+                                <a href="#" class="card-link">
+                                    <span class="link-text">Visitar</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="bottom-bar" style="width:40%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Laboral (networking) -->
+                    <div class="recurso-item" data-reveal>
+                        <div class="card-inner">
+                            <div class="icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <span class="tag">Laboral</span>
+                                <h3>Red profesional para creativos</h3>
+                                <p>Comunidad de diseñadores, artistas y creativos donde compartir proyectos, encontrar colaboradores y acceder a oportunidades.</p>
+                                <a href="#" class="card-link">
+                                    <span class="link-text">Visitar</span>
+                                    <span class="arrow-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="bottom-bar" style="width:40%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="disclaimer">
+                    <strong>⚠️ Nota importante:</strong>
+                    Estos recursos son recomendaciones personales de Windsor.
+                    No tenemos afiliación oficial, patrocinio ni autorización de uso de marca con las plataformas mencionadas.
+                    Las recomendaciones se basan en nuestra experiencia y criterio profesional.
+                </div>
+            </div>
+        </section>
+
+        <!-- MARQUEE -->
+        <div class="statement-marquee" style="background:var(--black); color:var(--white);">
+            <div class="statement-track">
+                <span>RECURSOS</span> <b>✦</b>
+                <span>HERRAMIENTAS</span> <b>✦</b>
+                <span>INSPIRACIÓN</span> <b>✦</b>
+                <span>APRENDIZAJE</span> <b>✦</b>
+                <span>RECURSOS</span> <b>✦</b>
+                <span>HERRAMIENTAS</span> <b>✦</b>
+                <span>INSPIRACIÓN</span> <b>✦</b>
+                <span>APRENDIZAJE</span> <b>✦</b>
+            </div>
+        </div>
+
+        <!-- CTA FINAL -->
+        <div class="container" style="margin:60px auto;">
+            <div style="background:var(--blue); color:var(--white); padding:40px; display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;">
+                <div>
+                    <h3 style="font-size:1.8rem; line-height:1.1;">¿Conoces algún recurso que deberíamos recomendar?</h3>
+                    <p style="color:rgba(255,255,255,0.8); max-width:500px; font-size:14px; line-height:1.6;">
+                        Si tienes una herramienta, plataforma o referencia que crees que debería estar aquí, cuéntanos.
+                    </p>
+                </div>
+                <a href="contacto.html" style="padding:14px 28px; background:var(--green); color:var(--black); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.25s; display:inline-flex; align-items:center; gap:12px;">
+                    Sugerir recurso →
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <span class="logo-symbol">W</span>
+            <span>WINDSOR <small>LABORATORIO DIGITAL INDEPENDIENTE</small></span>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="cide.html">CIDE</a>
+            <a href="orientacion-vocacional.html">Orientación</a>
+            <a href="windsor-one.html">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html">Recomendados</a>
+            <a href="index.html#careers">Careers</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-tagline">Precisión aplicada.</div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
