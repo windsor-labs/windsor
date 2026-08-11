@@ -36,7 +36,16 @@
             display: inline-block;
         }
 
-        /* Tarjetas de servicios con borde arcoíris en hover */
+        /* Texto arcoíris para títulos */
+        .rainbow-title {
+            background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        /* Tarjetas de servicios — SIN barra superior fija */
         .bequeer-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -49,9 +58,9 @@
             padding: 30px;
             min-height: 220px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid var(--blue);
             position: relative;
             overflow: hidden;
+            /* Se eliminó border-top */
         }
 
         .bequeer-card:hover {
@@ -269,7 +278,7 @@
             <div class="intro-layout">
                 <h2>
                     Un espacio para
-                    <span>proyectos con orgullo.</span>
+                    <span class="rainbow-title">proyectos con orgullo.</span>
                 </h2>
                 <div class="intro-copy">
                     <p>
@@ -308,7 +317,7 @@
                 <div class="services-heading" style="padding-top:0;">
                     <h2>
                         Lo que hacemos
-                        <span>por y para la comunidad.</span>
+                        <span class="rainbow-title">por y para la comunidad.</span>
                     </h2>
                     <p>
                         Ofrecemos soluciones digitales diseñadas con sensibilidad, inclusión
