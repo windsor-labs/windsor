@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Windsor — Metodología: Break The Rules</title>
+    <meta name="description" content="Conoce la metodología Windsor: Entender, Definir, Construir, Refinar. Precisión aplicada en cada proyecto." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* =========================================================
+           METODOLOGÍA — ESTILOS ADICIONALES
+        ========================================================== */
+        .metodologia-hero {
+            min-height: max(500px, 70vh);
+            background: var(--black);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 6vw 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .metodologia-hero .hero-noise {
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            pointer-events: none;
+            background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
+            background-size: 5px 5px;
+        }
+        .metodologia-hero h1 {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            line-height: 0.85;
+            letter-spacing: -0.07em;
+            max-width: 1000px;
+            position: relative;
+        }
+        .metodologia-hero h1 em {
+            display: block;
+            color: var(--blue);
+            font-family: var(--sans);
+            font-weight: 900;
+            text-decoration: underline;
+            text-decoration-thickness: 0.07em;
+            text-underline-offset: 0.1em;
+        }
+        .metodologia-hero p {
+            max-width: 580px;
+            margin-top: 30px;
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+            line-height: 1.7;
+            position: relative;
+        }
+        .metodologia-hero .sub {
+            display: inline-block;
+            background: var(--green);
+            color: var(--black);
+            padding: 6px 16px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .metodologia-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .metodologia-item {
+            background: var(--white);
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--blue);
+            position: relative;
+        }
+        .metodologia-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+        .metodologia-item .num {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--blue);
+            opacity: 0.6;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .metodologia-item h3 {
+            font-size: 1.6rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+        }
+        .metodologia-item p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        .metodologia-item .arrow {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--blue);
+            transition: gap 0.25s;
+        }
+        .metodologia-item .arrow svg {
+            margin-left: 6px;
+            transition: transform 0.25s;
+        }
+        .metodologia-item:hover .arrow svg {
+            transform: translateX(6px);
+        }
+        @media (max-width: 800px) {
+            .metodologia-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .metodologia-item {
+                padding: 20px;
+            }
+            .metodologia-hero {
+                padding: 110px 6vw 60px;
+                min-height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="preloader-logo">W</div>
+        <div class="preloader-line"><span></span></div>
+        <div class="preloader-text">WINDSOR</div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <span class="logo-symbol">W</span>
+            <span class="logo-name">WINDSOR</span>
+        </a>
+        <nav class="desktop-nav">
+            <a href="index.html#servicios">Servicios</a>
+            <a href="metodologia.html" class="active">Metodología</a>
+            <a href="cide.html">CIDE</a>
+            <a href="orientacion-vocacional.html">Orientación</a>
+            <a href="windsor-one.html">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="index.html#careers">Careers</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+        <a href="contacto.html" class="header-button">
+            Hablemos
+            <span class="arrow-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                </svg>
+            </span>
+        </a>
+        <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-menu-label">NAVEGACIÓN</div>
+            <a href="index.html">Inicio</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="cide.html">CIDE</a>
+            <a href="orientacion-vocacional.html">Orientación</a>
+            <a href="windsor-one.html">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="index.html#careers">Careers</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="metodologia-hero">
+            <div class="hero-noise"></div>
+            <span class="sub">Break The Rules</span>
+            <h1>
+                Método Windsor
+                <em>Precisión aplicada.</em>
+            </h1>
+            <p>
+                Cada proyecto se aborda con método, investigación y sensibilidad estética.
+            </p>
+        </section>
+
+        <!-- PASOS -->
+        <section class="section" style="background:var(--white);">
+            <div class="section-meta">
+                <span>01</span>
+                <span>NUESTRO PROCESO</span>
+            </div>
+            <div class="container">
+                <h2 style="font-size:clamp(2.5rem,5vw,4rem); letter-spacing:-0.06em; line-height:0.9; margin-bottom:20px;">
+                    Cuatro pasos,
+                    <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">resultados concretos.</span>
+                </h2>
+                <p style="color:#555; max-width:600px; font-size:15px; line-height:1.7; margin-bottom:40px;">
+                    Nuestra metodología es flexible pero rigurosa. Cada fase está diseñada para
+                    reducir la incertidumbre y aumentar la claridad.
+                </p>
+
+                <div class="metodologia-grid">
+                    <!-- 1 -->
+                    <div class="metodologia-item" data-reveal>
+                        <span class="num">01</span>
+                        <h3>Entender</h3>
+                        <p>Investigamos el contexto, el problema, el mercado y las personas involucradas.</p>
+                        <span class="arrow">
+                            Conocer más
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </div>
+                    <!-- 2 -->
+                    <div class="metodologia-item" data-reveal>
+                        <span class="num">02</span>
+                        <h3>Definir</h3>
+                        <p>Convertimos información en una dirección estratégica clara.</p>
+                        <span class="arrow">
+                            Conocer más
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </div>
+                    <!-- 3 -->
+                    <div class="metodologia-item" data-reveal>
+                        <span class="num">03</span>
+                        <h3>Construir</h3>
+                        <p>Diseñamos y desarrollamos soluciones específicas para cada proyecto.</p>
+                        <span class="arrow">
+                            Conocer más
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </div>
+                    <!-- 4 -->
+                    <div class="metodologia-item" data-reveal>
+                        <span class="num">04</span>
+                        <h3>Refinar</h3>
+                        <p>Revisamos, probamos y mejoramos antes de considerar el proyecto terminado.</p>
+                        <span class="arrow">
+                            Conocer más
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MARQUEE DE REAFIRMACIÓN -->
+        <div class="statement-marquee" style="background:var(--black); color:var(--white);">
+            <div class="statement-track">
+                <span>MÉTODO</span> <b>✦</b>
+                <span>INVESTIGACIÓN</span> <b>✦</b>
+                <span>PRECISIÓN</span> <b>✦</b>
+                <span>SENSIBILIDAD</span> <b>✦</b>
+                <span>MÉTODO</span> <b>✦</b>
+                <span>INVESTIGACIÓN</span> <b>✦</b>
+                <span>PRECISIÓN</span> <b>✦</b>
+                <span>SENSIBILIDAD</span> <b>✦</b>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="container" style="margin:60px auto;">
+            <div style="background:var(--blue); color:var(--white); padding:40px; display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;">
+                <div>
+                    <h3 style="font-size:1.8rem; line-height:1.1;">¿Listo para aplicar el método?</h3>
+                    <p style="color:rgba(255,255,255,0.8); max-width:500px; font-size:14px; line-height:1.6;">
+                        Contanos tu proyecto y empecemos a trabajar con nuestra metodología.
+                    </p>
+                </div>
+                <a href="contacto.html" style="padding:14px 28px; background:var(--green); color:var(--black); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.25s; display:inline-flex; align-items:center; gap:12px;">
+                    Iniciar proyecto →
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <span class="logo-symbol">W</span>
+            <span>WINDSOR <small>LABORATORIO DIGITAL INDEPENDIENTE</small></span>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="cide.html">CIDE</a>
+            <a href="orientacion-vocacional.html">Orientación</a>
+            <a href="windsor-one.html">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="index.html#careers">Careers</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-tagline">Precisión aplicada.</div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
