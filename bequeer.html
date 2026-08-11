@@ -112,7 +112,6 @@
             margin: 0 0 16px 0;
         }
 
-        /* Enlace con flecha (igual que Windsor One) */
         .bequeer-card .card-link {
             display: inline-flex;
             align-items: center;
@@ -139,7 +138,6 @@
             gap: 18px;
         }
 
-        /* Barra inferior animada (gradiente arcoíris) */
         .bequeer-card .bottom-bar {
             height: 4px;
             margin-top: 16px;
@@ -149,6 +147,20 @@
 
         .bequeer-card:hover .bottom-bar {
             width: 100% !important;
+        }
+
+        /* MARQUEE ARCOÍRIS */
+        .statement-marquee .statement-track span {
+            background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .statement-marquee .statement-track b {
+            color: rgba(255, 255, 255, 0.25);
+            font-weight: 400;
         }
 
         /* CTA con borde arcoíris izquierdo */
@@ -489,7 +501,7 @@
             </div>
         </section>
 
-        <!-- STATEMENT -->
+        <!-- MARQUEE ARCOÍRIS (fondo negro, texto arcoíris) -->
         <div class="statement-marquee" style="background:var(--black); color:var(--white);">
             <div class="statement-track">
                 <span>VISIBILIDAD</span> <b>✦</b>
