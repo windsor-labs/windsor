@@ -13,15 +13,11 @@
         /* =========================================================
            RECOMENDADOS — ESTILOS ADICIONALES
         ========================================================== */
+        /* HERO SOLO CON VIDEO (sin texto encima) */
         .recomendados-hero {
-            height: 100vh; /* Ocupa toda la altura de la ventana */
-            min-height: 500px; /* Fallback para pantallas muy pequeñas */
+            height: 100vh;
+            min-height: 500px;
             background: var(--black);
-            color: var(--white);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 120px 6vw 80px;
             position: relative;
             overflow: hidden;
         }
@@ -30,14 +26,14 @@
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ajusta el video sin deformarlo */
+            object-fit: cover;
             z-index: 0;
             pointer-events: none;
         }
         .recomendados-hero .hero-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(10, 10, 12, 0.25); /* Overlay muy sutil */
+            background: rgba(10, 10, 12, 0.2);
             z-index: 1;
         }
         .recomendados-hero .hero-noise {
@@ -49,19 +45,23 @@
             background-size: 5px 5px;
             z-index: 2;
         }
-        .recomendados-hero h1,
-        .recomendados-hero p {
-            position: relative;
-            z-index: 3;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+
+        /* SECCIÓN INTRO (debajo del video) */
+        .intro-recomendados {
+            padding: 80px 6vw;
+            background: var(--cream);
         }
-        .recomendados-hero h1 {
+        .intro-recomendados .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .intro-recomendados h2 {
             font-size: clamp(3rem, 6vw, 5.5rem);
             line-height: 0.85;
             letter-spacing: -0.07em;
             max-width: 900px;
         }
-        .recomendados-hero h1 em {
+        .intro-recomendados h2 em {
             display: block;
             color: var(--blue);
             font-family: var(--sans);
@@ -69,12 +69,11 @@
             text-decoration: underline;
             text-decoration-thickness: 0.07em;
             text-underline-offset: 0.1em;
-            text-shadow: 0 0 30px rgba(0, 109, 255, 0.3);
         }
-        .recomendados-hero p {
-            max-width: 580px;
+        .intro-recomendados p {
+            max-width: 600px;
             margin-top: 25px;
-            color: rgba(255,255,255,0.9);
+            color: #555;
             font-size: 16px;
             line-height: 1.7;
         }
@@ -232,7 +231,12 @@
             .recomendados-hero {
                 height: 100vh;
                 min-height: 400px;
-                padding: 110px 6vw 60px;
+            }
+            .intro-recomendados {
+                padding: 60px 6vw;
+            }
+            .intro-recomendados h2 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
             }
         }
     </style>
@@ -294,26 +298,28 @@
 
     <main>
 
-        <!-- HERO CON VIDEO DE FONDO A PANTALLA COMPLETA -->
+        <!-- HERO: SOLO VIDEO A PANTALLA COMPLETA -->
         <section class="recomendados-hero">
-            <!-- Video de fondo -->
             <video autoplay muted loop playsinline class="hero-video">
                 <source src="Recursos/video1.mp4" type="video/mp4">
             </video>
-            <!-- Overlay muy sutil -->
             <div class="hero-overlay"></div>
-            <!-- Ruido (opcional) -->
             <div class="hero-noise"></div>
+        </section>
 
-            <h1>
-                Recursos que
-                <em>recomendamos.</em>
-            </h1>
-            <p>
-                Una selección curada por Windsor de herramientas, plataformas y referencias
-                útiles para tu desarrollo laboral y académico. Sin afiliaciones, solo
-                recursos que consideramos valiosos.
-            </p>
+        <!-- INTRO: TEXTO DEBAJO DEL VIDEO -->
+        <section class="intro-recomendados">
+            <div class="container">
+                <h2>
+                    Recursos que
+                    <em>recomendamos.</em>
+                </h2>
+                <p>
+                    Una selección curada por Windsor de herramientas, plataformas y referencias
+                    útiles para tu desarrollo laboral y académico. Sin afiliaciones, solo
+                    recursos que consideramos valiosos.
+                </p>
+            </div>
         </section>
 
         <!-- SECCIÓN RECURSOS -->
