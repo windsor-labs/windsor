@@ -33,11 +33,12 @@
             background-size: 5px 5px;
         }
         .bk2-hero h1 {
-            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-size: clamp(3.5rem, 7vw, 6rem);
             line-height: 0.85;
             letter-spacing: -0.07em;
             max-width: 900px;
             position: relative;
+            margin-bottom: 20px;
         }
         .bk2-hero h1 em {
             display: block;
@@ -59,19 +60,20 @@
             text-transform: uppercase;
             margin-bottom: 20px;
         }
-        .bk2-hero p {
-            max-width: 580px;
-            margin-top: 20px;
+        .bk2-hero .hero-content {
+            max-width: 700px;
+        }
+        .bk2-hero .hero-content h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.1;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+        }
+        .bk2-hero .hero-content p {
             color: rgba(255,255,255,0.7);
             font-size: 16px;
             line-height: 1.7;
-            position: relative;
-        }
-        .bk2-hero .hero-desc {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.85);
-            margin-top: 5px;
         }
 
         /* Grid de recursos */
@@ -227,6 +229,9 @@
                 padding: 110px 6vw 60px;
                 min-height: 60vh;
             }
+            .bk2-hero .hero-content h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
@@ -292,16 +297,18 @@
         <!-- HERO BK2 -->
         <section class="bk2-hero">
             <div class="hero-noise"></div>
+            <span class="sub">Programa BK2</span>
             <h1>
-                Programa BK2
-                <em>Desarrollo humano.</em>
+                Desarrollo humano.
+                <em>Oportunidades académicas.</em>
             </h1>
-            <p class="hero-desc">Oportunidades académicas para jóvenes.</p>
-            <p>
-                En Windsor creemos en el potencial de los jóvenes. BK2 es nuestra iniciativa
-                para conectar a estudiantes con becas, portales educativos y recursos que
-                impulsen su formación y desarrollo.
-            </p>
+            <div class="hero-content">
+                <h2>En Windsor creemos en el potencial de los jóvenes.</h2>
+                <p>
+                    BK2 es nuestra iniciativa para conectar a estudiantes con becas,
+                    portales educativos y recursos que impulsen su formación y desarrollo.
+                </p>
+            </div>
         </section>
 
         <!-- INTRO -->
