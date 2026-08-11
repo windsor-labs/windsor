@@ -13,8 +13,6 @@
         /* =========================================================
            METODOLOGÍA — ESTILOS ADICIONALES
         ========================================================== */
-
-        /* Hero con fondo negro y marquee de "Break The Rules" */
         .metodologia-hero {
             min-height: max(500px, 70vh);
             background: var(--black);
@@ -35,58 +33,94 @@
             background-size: 5px 5px;
         }
 
-        /* Marquee de "Break The Rules" con animación infinita */
-        .break-rules-marquee {
-            overflow: hidden;
-            white-space: nowrap;
-            margin-bottom: 20px;
-            border: 2px solid var(--blue);
-            padding: 12px 0;
-            background: rgba(0,109,255,0.05);
-        }
-        .break-rules-marquee .track {
-            display: inline-block;
-            font-family: var(--sans);
-            font-size: clamp(1.2rem, 3vw, 2.5rem);
-            font-weight: 900;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--blue);
-            animation: marqueeBreak 20s linear infinite;
-        }
-        @keyframes marqueeBreak {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .metodologia-hero h1 {
-            font-size: clamp(3.5rem, 8vw, 7rem);
+        /* Título "Break The Rules" con animación de quiebre */
+        .metodologia-hero .break-title {
+            font-size: clamp(3.5rem, 10vw, 8rem);
             line-height: 0.85;
             letter-spacing: -0.07em;
-            max-width: 1000px;
-            position: relative;
-            margin-top: 10px;
-        }
-        .metodologia-hero h1 em {
-            display: block;
+            font-weight: 900;
+            font-family: var(--sans);
             color: var(--blue);
+            position: relative;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: breakReveal 2s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        .metodologia-hero .break-title .char {
+            display: inline-block;
+            animation: breakChar 1.2s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes breakChar {
+            0% {
+                transform: translateY(60px) rotate(20deg) scale(0.8);
+                opacity: 0;
+                color: #ff0000;
+            }
+            30% {
+                transform: translateY(-20px) rotate(-10deg) scale(1.1);
+                opacity: 1;
+                color: #ff8800;
+            }
+            60% {
+                transform: translateY(10px) rotate(5deg) scale(0.95);
+                color: #00cc00;
+            }
+            100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+                color: var(--blue);
+            }
+        }
+
+        @keyframes breakReveal {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .metodologia-hero .sub-method {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: rgba(255,255,255,0.8);
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeUp 1.2s ease forwards;
+            animation-delay: 1.2s;
+        }
+
+        .metodologia-hero .sub-method em {
+            display: block;
+            color: var(--green);
             font-family: var(--sans);
             font-weight: 900;
             text-decoration: underline;
             text-decoration-thickness: 0.07em;
             text-underline-offset: 0.1em;
-        }
-        .metodologia-hero .sub {
-            display: inline-block;
-            color: rgba(255,255,255,0.6);
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-top: 10px;
+            margin-top: 4px;
         }
 
-        /* Grid de tarjetas con animación estilo Windsor One */
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .metodologia-hero p {
+            max-width: 580px;
+            margin-top: 30px;
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            line-height: 1.7;
+            position: relative;
+            opacity: 0;
+            animation: fadeUp 1.2s ease forwards;
+            animation-delay: 1.8s;
+        }
+
+        /* Tarjetas estilo Windsor One */
         .metodologia-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -140,21 +174,29 @@
             flex: 1;
         }
 
+        .metodologia-item .card-body .num {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--blue);
+            opacity: 0.6;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 4px;
+        }
+
         .metodologia-item .card-body h3 {
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             letter-spacing: -0.03em;
             margin-bottom: 6px;
-            font-weight: 800;
         }
 
         .metodologia-item .card-body p {
             color: #555;
-            font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 15px;
             margin: 0 0 16px 0;
         }
 
-        /* Enlace con flecha (igual que Windsor One) */
         .metodologia-item .card-link {
             display: inline-flex;
             align-items: center;
@@ -181,7 +223,6 @@
             gap: 18px;
         }
 
-        /* Barra inferior animada */
         .metodologia-item .bottom-bar {
             height: 4px;
             margin-top: 16px;
@@ -217,6 +258,9 @@
             .metodologia-hero {
                 padding: 110px 6vw 60px;
                 min-height: 60vh;
+            }
+            .metodologia-hero .break-title {
+                font-size: clamp(2.8rem, 10vw, 5rem);
             }
         }
     </style>
@@ -279,23 +323,36 @@
         <!-- HERO CON "BREAK THE RULES" ANIMADO -->
         <section class="metodologia-hero">
             <div class="hero-noise"></div>
-            <!-- Marquee de "Break The Rules" con animación infinita -->
-            <div class="break-rules-marquee">
-                <div class="track">
-                    BREAK THE RULES ✦ BREAK THE RULES ✦ BREAK THE RULES ✦ BREAK THE RULES ✦
-                    BREAK THE RULES ✦ BREAK THE RULES ✦ BREAK THE RULES ✦ BREAK THE RULES ✦
-                    BREAK THE RULES ✦ BREAK THE RULES ✦ BREAK THE RULES ✦ BREAK THE RULES ✦
-                </div>
+
+            <!-- Título "Break The Rules" con letras animadas -->
+            <div class="break-title" id="breakTitle">
+                <span class="char">B</span>
+                <span class="char">r</span>
+                <span class="char">e</span>
+                <span class="char">a</span>
+                <span class="char">k</span>
+                <span class="char" style="margin-left:0.2em;">T</span>
+                <span class="char">h</span>
+                <span class="char">e</span>
+                <span class="char" style="margin-left:0.2em;">R</span>
+                <span class="char">u</span>
+                <span class="char">l</span>
+                <span class="char">e</span>
+                <span class="char">s</span>
             </div>
-            <!-- Título principal -->
-            <h1>
+
+            <!-- Subtítulo: Método Windsor / Precisión aplicada. -->
+            <div class="sub-method">
                 Método Windsor
                 <em>Precisión aplicada.</em>
-            </h1>
-            <p class="sub">Cada proyecto se aborda con método, investigación y sensibilidad estética.</p>
+            </div>
+
+            <p>
+                Cada proyecto se aborda con método, investigación y sensibilidad estética.
+            </p>
         </section>
 
-        <!-- PASOS (tarjetas con animación estilo Windsor One) -->
+        <!-- PASOS -->
         <section class="section" style="background:var(--white);">
             <div class="section-meta">
                 <span>01</span>
@@ -317,10 +374,13 @@
                         <div class="card-inner">
                             <div class="icon-wrap">
                                 <svg viewBox="0 0 24 24">
-                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
                                 </svg>
                             </div>
                             <div class="card-body">
+                                <span class="num">01</span>
                                 <h3>Entender</h3>
                                 <p>Investigamos el contexto, el problema, el mercado y las personas involucradas.</p>
                                 <a href="#" class="card-link">
@@ -342,10 +402,15 @@
                         <div class="card-inner">
                             <div class="icon-wrap">
                                 <svg viewBox="0 0 24 24">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                    <polyline points="10 9 9 9 8 9"/>
                                 </svg>
                             </div>
                             <div class="card-body">
+                                <span class="num">02</span>
                                 <h3>Definir</h3>
                                 <p>Convertimos información en una dirección estratégica clara.</p>
                                 <a href="#" class="card-link">
@@ -367,14 +432,12 @@
                         <div class="card-inner">
                             <div class="icon-wrap">
                                 <svg viewBox="0 0 24 24">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                    <polyline points="14 2 14 8 20 8"/>
-                                    <line x1="16" y1="13" x2="8" y2="13"/>
-                                    <line x1="16" y1="17" x2="8" y2="17"/>
-                                    <polyline points="10 9 9 9 8 9"/>
+                                    <polyline points="16 18 22 12 16 6"/>
+                                    <polyline points="8 6 2 12 8 18"/>
                                 </svg>
                             </div>
                             <div class="card-body">
+                                <span class="num">03</span>
                                 <h3>Construir</h3>
                                 <p>Diseñamos y desarrollamos soluciones específicas para cada proyecto.</p>
                                 <a href="#" class="card-link">
@@ -396,15 +459,12 @@
                         <div class="card-inner">
                             <div class="icon-wrap">
                                 <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="3"/>
-                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33-1.82 8 8 0 0 0-14.46 0A1.65 1.65 0 0 0 4.6 15"/>
-                                    <path d="M12 2v2"/>
-                                    <path d="M12 20v2"/>
-                                    <path d="M4.6 15l1.3 1.4"/>
-                                    <path d="M18.1 15l-1.3 1.4"/>
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
                                 </svg>
                             </div>
                             <div class="card-body">
+                                <span class="num">04</span>
                                 <h3>Refinar</h3>
                                 <p>Revisamos, probamos y mejoramos antes de considerar el proyecto terminado.</p>
                                 <a href="#" class="card-link">
