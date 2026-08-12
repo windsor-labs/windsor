@@ -10,16 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <style>
-        /* =========================================================
-           WINDSOR ONE — TARJETAS ESTILO KEY INSTITUTE
-        ========================================================== */
         .one-cards-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             margin-top: 50px;
         }
-
         .one-card {
             background: var(--white);
             padding: 28px 24px 16px 24px;
@@ -29,19 +25,16 @@
             flex-direction: column;
             position: relative;
         }
-
         .one-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
-
         .one-card .card-inner {
             display: flex;
             align-items: flex-start;
             gap: 20px;
             flex: 1;
         }
-
         .one-card .icon-wrap {
             flex: 0 0 56px;
             width: 56px;
@@ -51,7 +44,6 @@
             place-items: center;
             color: var(--blue);
         }
-
         .one-card .icon-wrap svg {
             width: 28px;
             height: 28px;
@@ -61,26 +53,9 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-
-        .one-card .card-body {
-            flex: 1;
-        }
-
-        .one-card .card-body h3 {
-            font-size: 1.2rem;
-            letter-spacing: -0.03em;
-            margin-bottom: 6px;
-            font-weight: 800;
-        }
-
-        .one-card .card-body p {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.6;
-            margin: 0 0 16px 0;
-        }
-
-        /* Enlace con flecha (igual que Key Institute) */
+        .one-card .card-body { flex:1; }
+        .one-card .card-body h3 { font-size:1.2rem; letter-spacing:-0.03em; margin-bottom:6px; font-weight:800; }
+        .one-card .card-body p { color:#555; font-size:14px; line-height:1.6; margin:0 0 16px 0; }
         .one-card .card-link {
             display: inline-flex;
             align-items: center;
@@ -91,75 +66,42 @@
             text-transform: uppercase;
             transition: gap 0.25s ease, color 0.25s ease;
         }
-
         .one-card .card-link .arrow-icon {
             display: inline-flex;
             align-items: center;
             transition: transform 0.25s ease;
         }
-
-        .one-card:hover .card-link .arrow-icon {
-            transform: translateX(6px);
-        }
-
-        .one-card:hover .card-link {
-            gap: 18px;
-        }
-
-        /* Barra inferior animada (igual que Key Institute) */
+        .one-card:hover .card-link .arrow-icon { transform: translateX(6px); }
+        .one-card:hover .card-link { gap: 18px; }
         .one-card .bottom-bar {
             height: 4px;
             margin-top: 16px;
             transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
             background-color: var(--blue);
         }
-
-        .one-card:hover .bottom-bar {
-            width: 100% !important;
-        }
-
-        /* Colores de marca para iconos, enlaces y barra */
+        .one-card:hover .bottom-bar { width: 100% !important; }
         .one-card .icon-wrap.blue { color: var(--blue); }
         .one-card .icon-wrap.green { color: var(--green); }
         .one-card .icon-wrap.yellow { color: var(--yellow); }
         .one-card .icon-wrap.purple { color: var(--purple); }
-
         .one-card .card-link.blue { color: var(--blue); }
         .one-card .card-link.green { color: var(--green); }
         .one-card .card-link.yellow { color: var(--yellow); }
         .one-card .card-link.purple { color: var(--purple); }
-
         .one-card .card-link.blue:hover { color: var(--blue-dark); }
         .one-card .card-link.green:hover { color: var(--green-dark); }
         .one-card .card-link.yellow:hover { color: #d4a000; }
         .one-card .card-link.purple:hover { color: #5a3fd4; }
-
         .one-card .bottom-bar.blue { background-color: var(--blue); }
         .one-card .bottom-bar.green { background-color: var(--green); }
         .one-card .bottom-bar.yellow { background-color: var(--yellow); }
         .one-card .bottom-bar.purple { background-color: var(--purple); }
-
-        /* Responsive */
         @media (max-width: 800px) {
-            .one-cards-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .one-card .card-inner {
-                gap: 16px;
-            }
-            .one-card .icon-wrap {
-                flex: 0 0 48px;
-                width: 48px;
-                height: 48px;
-            }
-            .one-card .icon-wrap svg {
-                width: 24px;
-                height: 24px;
-            }
-            .one-card {
-                padding: 20px 20px 12px 20px;
-            }
+            .one-cards-grid { grid-template-columns: 1fr; gap:20px; }
+            .one-card .card-inner { gap:16px; }
+            .one-card .icon-wrap { flex:0 0 48px; width:48px; height:48px; }
+            .one-card .icon-wrap svg { width:24px; height:24px; }
+            .one-card { padding:20px 20px 12px 20px; }
         }
     </style>
 </head>
@@ -180,13 +122,17 @@
         </a>
         <nav class="desktop-nav">
             <a href="index.html#servicios">Servicios</a>
-            <a href="index.html#metodo">Método</a>
+            <a href="metodologia.html">Metodología</a>
             <a href="cide.html">CIDE</a>
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html" class="active">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html">Recomendados</a>
+            <a href="becas.html">BK2</a>
             <a href="index.html#careers">Careers</a>
+            <a href="contacto.html">Contacto</a>
         </nav>
-        <a href="index.html#contacto" class="header-button">
+        <a href="contacto.html" class="header-button">
             Hablemos
             <span class="arrow-icon" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -204,334 +150,145 @@
             <div class="mobile-menu-label">NAVEGACIÓN</div>
             <a href="index.html">Inicio</a>
             <a href="index.html#servicios">Servicios</a>
-            <a href="index.html#metodo">Método Windsor</a>
+            <a href="metodologia.html">Metodología</a>
             <a href="cide.html">CIDE</a>
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html">Recomendados</a>
+            <a href="becas.html">BK2</a>
             <a href="index.html#careers">Careers</a>
-            <a href="index.html#contacto">Iniciar proyecto</a>
+            <a href="contacto.html">Contacto</a>
         </div>
     </div>
 
-    <main id="inicio">
-
-        <!-- =================================================
-             HERO
-        ================================================== -->
+    <main>
+        <!-- HERO (reutilizamos el estilo de .hero) -->
         <section class="hero">
             <div class="hero-noise"></div>
-            <div class="hero-topline">
-                <span>WINDSOR ONE</span>
-                <span>PORTAFOLIO DIGITAL A MEDIDA</span>
-            </div>
+            <div class="hero-topline"><span>WINDSOR ONE</span><span>PORTAFOLIO DIGITAL A MEDIDA</span></div>
             <div class="hero-content">
-                <div class="hero-small">
-                    <span class="green-dot"></span>
-                    PROFESIONALES · CREATIVOS · TALENTO
-                </div>
-                <h1>
-                    Tu portafolio
-                    <em>hecho a medida.</em>
-                </h1>
+                <div class="hero-small"><span class="green-dot"></span>PROFESIONALES · CREATIVOS · TALENTO</div>
+                <h1>Tu portafolio <em>hecho a medida.</em></h1>
                 <div class="hero-bottom">
-                    <p>
-                        Sin plantillas genéricas. Diseñamos tu sitio web personal con la misma
-                        precisión y sensibilidad que aplicamos a los grandes proyectos.
-                    </p>
-                    <a href="#para-quien" class="circle-button">
-                        <span>Explorar</span>
-                        <strong>↓</strong>
-                    </a>
+                    <p>Sin plantillas genéricas. Diseñamos tu sitio web personal con la misma precisión y sensibilidad que aplicamos a los grandes proyectos.</p>
+                    <a href="#para-quien" class="circle-button"><span>Explorar</span><strong>↓</strong></a>
                 </div>
             </div>
             <div class="hero-marquee">
                 <div class="marquee-track">
-                    <span>DISEÑO PERSONALIZADO</span> <b>✦</b>
-                    <span>HASTA 10 PROYECTOS</span> <b>✦</b>
-                    <span>OPTIMIZADO PARA MÓVIL</span> <b>✦</b>
-                    <span>SEO BÁSICO</span> <b>✦</b>
-                    <span>SECCIONES CLAVE</span> <b>✦</b>
-                    <span>RENDIMIENTO Y VELOCIDAD</span> <b>✦</b>
-                    <span>DISEÑO PERSONALIZADO</span> <b>✦</b>
-                    <span>HASTA 10 PROYECTOS</span> <b>✦</b>
-                    <span>OPTIMIZADO PARA MÓVIL</span> <b>✦</b>
-                    <span>SEO BÁSICO</span> <b>✦</b>
-                    <span>SECCIONES CLAVE</span> <b>✦</b>
-                    <span>RENDIMIENTO Y VELOCIDAD</span> <b>✦</b>
+                    <span>DISEÑO PERSONALIZADO</span> <b>✦</b><span>HASTA 10 PROYECTOS</span> <b>✦</b><span>OPTIMIZADO PARA MÓVIL</span> <b>✦</b><span>SEO BÁSICO</span> <b>✦</b>
+                    <span>SECCIONES CLAVE</span> <b>✦</b><span>RENDIMIENTO Y VELOCIDAD</span> <b>✦</b>
+                    <span>DISEÑO PERSONALIZADO</span> <b>✦</b><span>HASTA 10 PROYECTOS</span> <b>✦</b><span>OPTIMIZADO PARA MÓVIL</span> <b>✦</b><span>SEO BÁSICO</span> <b>✦</b>
+                    <span>SECCIONES CLAVE</span> <b>✦</b><span>RENDIMIENTO Y VELOCIDAD</span> <b>✦</b>
                 </div>
             </div>
         </section>
 
-        <!-- =================================================
-             PARA QUIÉN (usando .intro-layout)
-        ================================================== -->
+        <!-- PARA QUIÉN -->
         <section class="intro section" id="para-quien">
-            <div class="section-meta">
-                <span>01</span>
-                <span>PARA QUIÉN</span>
-            </div>
+            <div class="section-meta"><span>01</span><span>PARA QUIÉN</span></div>
             <div class="intro-layout">
-                <h2>
-                    Diseñadores, desarrolladores,
-                    <span>fotógrafos, arquitectos,</span>
-                    escritores y más.
-                </h2>
+                <h2>Diseñadores, desarrolladores, <span>fotógrafos, arquitectos,</span> escritores y más.</h2>
                 <div class="intro-copy">
-                    <p>
-                        Windsor One está pensado para cualquier profesional que quiera
-                        mostrar su trabajo con un diseño que esté a la altura de su talento.
-                        No importa tu sector: si necesitas un portafolio digital que te
-                        represente, esto es para ti.
-                    </p>
-                    <p>
-                        No eres una empresa. No necesitas un sitio corporativo. Necesitas
-                        un espacio que hable de ti, de tu trabajo y de tu manera de hacer
-                        las cosas.
-                    </p>
-                    <a href="#que-incluye" class="underlined-link">
-                        Ver qué incluye
-                        <span class="arrow-icon" aria-hidden="true">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="7" y1="17" x2="17" y2="7" />
-                                <polyline points="7 7 17 7 17 17" />
-                            </svg>
-                        </span>
-                    </a>
+                    <p>Windsor One está pensado para cualquier profesional que quiera mostrar su trabajo con un diseño que esté a la altura de su talento. No importa tu sector: si necesitas un portafolio digital que te represente, esto es para ti.</p>
+                    <p>No eres una empresa. No necesitas un sitio corporativo. Necesitas un espacio que hable de ti, de tu trabajo y de tu manera de hacer las cosas.</p>
+                    <a href="#que-incluye" class="underlined-link">Ver qué incluye <span class="arrow-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
                 </div>
             </div>
         </section>
 
-        <!-- =================================================
-             QUÉ INCLUYE — TARJETAS ESTILO KEY INSTITUTE
-        ================================================== -->
+        <!-- QUÉ INCLUYE -->
         <section class="section" id="que-incluye" style="background:var(--white);">
-            <div class="section-meta">
-                <span>02</span>
-                <span>QUÉ INCLUYE</span>
-            </div>
+            <div class="section-meta"><span>02</span><span>QUÉ INCLUYE</span></div>
             <div class="container">
                 <div class="services-heading" style="padding-top:0;">
-                    <h2>
-                        Todo lo que necesitas
-                        <span>para destacar.</span>
-                    </h2>
-                    <p>
-                        Un portafolio profesional completo, diseñado y desarrollado
-                        con la misma calidad que aplicamos a cualquier proyecto de marca.
-                    </p>
+                    <h2>Todo lo que necesitas <span>para destacar.</span></h2>
+                    <p>Un portafolio profesional completo, diseñado y desarrollado con la misma calidad que aplicamos a cualquier proyecto de marca.</p>
                 </div>
-
-                <!-- Grid de tarjetas -->
                 <div class="one-cards-grid">
-
-                    <!-- 1. Diseño personalizado (azul) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
-                            <div class="icon-wrap blue">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                    <path d="M2 17l10 5 10-5"/>
-                                    <path d="M2 12l10 5 10-5"/>
-                                </svg>
-                            </div>
+                            <div class="icon-wrap blue"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
                             <div class="card-body">
-                                <h3>Diseño personalizado</h3>
-                                <p>Sin plantillas. Creamos un diseño único que refleja tu estilo y personalidad profesional.</p>
-                                <a href="#" class="card-link blue">
-                                    <span class="link-text">Ver más</span>
-                                    <span class="arrow-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7" />
-                                            <polyline points="7 7 17 7 17 17" />
-                                        </svg>
-                                    </span>
-                                </a>
+                                <h3>Diseño personalizado</h3><p>Sin plantillas. Creamos un diseño único que refleja tu estilo y personalidad profesional.</p>
+                                <a href="#" class="card-link blue"><span class="link-text">Ver más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
                                 <div class="bottom-bar blue" style="width:40%;"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 2. Hasta 10 proyectos (verde) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
-                            <div class="icon-wrap green">
-                                <svg viewBox="0 0 24 24">
-                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                                </svg>
-                            </div>
+                            <div class="icon-wrap green"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
                             <div class="card-body">
-                                <h3>Hasta 10 proyectos</h3>
-                                <p>Galería con imágenes, videos o descripciones para que muestres tu mejor trabajo.</p>
-                                <a href="#" class="card-link green">
-                                    <span class="link-text">Ver más</span>
-                                    <span class="arrow-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7" />
-                                            <polyline points="7 7 17 7 17 17" />
-                                        </svg>
-                                    </span>
-                                </a>
+                                <h3>Hasta 10 proyectos</h3><p>Galería con imágenes, videos o descripciones para que muestres tu mejor trabajo.</p>
+                                <a href="#" class="card-link green"><span class="link-text">Ver más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
                                 <div class="bottom-bar green" style="width:40%;"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 3. Optimizado para móvil (amarillo) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
-                            <div class="icon-wrap yellow">
-                                <svg viewBox="0 0 24 24">
-                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                                    <line x1="12" y1="18" x2="12.01" y2="18"/>
-                                </svg>
-                            </div>
+                            <div class="icon-wrap yellow"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
                             <div class="card-body">
-                                <h3>Optimizado para móvil</h3>
-                                <p>Tu portafolio se verá impecable en cualquier dispositivo, desde el móvil hasta la pantalla grande.</p>
-                                <a href="#" class="card-link yellow">
-                                    <span class="link-text">Ver más</span>
-                                    <span class="arrow-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7" />
-                                            <polyline points="7 7 17 7 17 17" />
-                                        </svg>
-                                    </span>
-                                </a>
+                                <h3>Optimizado para móvil</h3><p>Tu portafolio se verá impecable en cualquier dispositivo, desde el móvil hasta la pantalla grande.</p>
+                                <a href="#" class="card-link yellow"><span class="link-text">Ver más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
                                 <div class="bottom-bar yellow" style="width:40%;"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 4. SEO básico (púrpura) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
-                            <div class="icon-wrap purple">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="11" cy="11" r="8"/>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                                </svg>
-                            </div>
+                            <div class="icon-wrap purple"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
                             <div class="card-body">
-                                <h3>SEO básico</h3>
-                                <p>Estructura pensada para que los motores de búsqueda encuentren tu trabajo.</p>
-                                <a href="#" class="card-link purple">
-                                    <span class="link-text">Ver más</span>
-                                    <span class="arrow-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7" />
-                                            <polyline points="7 7 17 7 17 17" />
-                                        </svg>
-                                    </span>
-                                </a>
+                                <h3>SEO básico</h3><p>Estructura pensada para que los motores de búsqueda encuentren tu trabajo.</p>
+                                <a href="#" class="card-link purple"><span class="link-text">Ver más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
                                 <div class="bottom-bar purple" style="width:40%;"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 5. Secciones clave (azul) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
-                            <div class="icon-wrap blue">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                    <polyline points="14 2 14 8 20 8"/>
-                                    <line x1="16" y1="13" x2="8" y2="13"/>
-                                    <line x1="16" y1="17" x2="8" y2="17"/>
-                                    <polyline points="10 9 9 9 8 9"/>
-                                </svg>
-                            </div>
+                            <div class="icon-wrap blue"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
                             <div class="card-body">
-                                <h3>Secciones clave</h3>
-                                <p>Sobre mí, servicios, testimonios y contacto. Todo lo que un cliente o reclutador necesita saber.</p>
-                                <a href="#" class="card-link blue">
-                                    <span class="link-text">Ver más</span>
-                                    <span class="arrow-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7" />
-                                            <polyline points="7 7 17 7 17 17" />
-                                        </svg>
-                                    </span>
-                                </a>
+                                <h3>Secciones clave</h3><p>Sobre mí, servicios, testimonios y contacto. Todo lo que un cliente o reclutador necesita saber.</p>
+                                <a href="#" class="card-link blue"><span class="link-text">Ver más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
                                 <div class="bottom-bar blue" style="width:40%;"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 6. Rendimiento y velocidad (verde) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
-                            <div class="icon-wrap green">
-                                <svg viewBox="0 0 24 24">
-                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                                    <polyline points="17 6 23 6 23 12"/>
-                                </svg>
-                            </div>
+                            <div class="icon-wrap green"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
                             <div class="card-body">
-                                <h3>Rendimiento y velocidad</h3>
-                                <p>Código limpio y optimizado para que tu sitio cargue rápido y cause una buena impresión desde el primer segundo.</p>
-                                <a href="#" class="card-link green">
-                                    <span class="link-text">Ver más</span>
-                                    <span class="arrow-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7" />
-                                            <polyline points="7 7 17 7 17 17" />
-                                        </svg>
-                                    </span>
-                                </a>
+                                <h3>Rendimiento y velocidad</h3><p>Código limpio y optimizado para que tu sitio cargue rápido y cause una buena impresión desde el primer segundo.</p>
+                                <a href="#" class="card-link green"><span class="link-text">Ver más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
                                 <div class="bottom-bar green" style="width:40%;"></div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- =================================================
-             PROCESO (usando .method)
-        ================================================== -->
+        <!-- PROCESO -->
         <section class="method section" id="proceso">
-            <div class="section-meta">
-                <span>03</span>
-                <span>PROCESO WINDSOR</span>
-            </div>
+            <div class="section-meta"><span>03</span><span>PROCESO WINDSOR</span></div>
             <div class="method-heading">
                 <h2>Cuatro pasos, <em>un portafolio tuyo.</em></h2>
                 <p>Nuestro método adaptado para construir tu presencia digital personal.</p>
             </div>
             <div class="method-list">
-                <div class="method-row">
-                    <span>01</span>
-                    <div><h3>Entender</h3><p>Hablamos sobre tu trabajo, tu estilo y a quién quieres llegar. Definimos juntos el enfoque.</p></div>
-                    <b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b>
-                </div>
-                <div class="method-row">
-                    <span>02</span>
-                    <div><h3>Definir</h3><p>Elegimos paleta de color, tipografía y estructura. Decidimos cómo contar tu historia profesional.</p></div>
-                    <b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b>
-                </div>
-                <div class="method-row">
-                    <span>03</span>
-                    <div><h3>Construir</h3><p>Desarrollamos el sitio con código limpio y personalizado. Te mostramos avances para que lo veas crecer.</p></div>
-                    <b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b>
-                </div>
-                <div class="method-row">
-                    <span>04</span>
-                    <div><h3>Refinar</h3><p>Probamos, ajustamos detalles y pulimos hasta que quede perfecto. Entonces lo lanzamos.</p></div>
-                    <b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b>
-                </div>
+                <div class="method-row"><span>01</span><div><h3>Entender</h3><p>Hablamos sobre tu trabajo, tu estilo y a quién quieres llegar. Definimos juntos el enfoque.</p></div><b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b></div>
+                <div class="method-row"><span>02</span><div><h3>Definir</h3><p>Elegimos paleta de color, tipografía y estructura. Decidimos cómo contar tu historia profesional.</p></div><b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b></div>
+                <div class="method-row"><span>03</span><div><h3>Construir</h3><p>Desarrollamos el sitio con código limpio y personalizado. Te mostramos avances para que lo veas crecer.</p></div><b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b></div>
+                <div class="method-row"><span>04</span><div><h3>Refinar</h3><p>Probamos, ajustamos detalles y pulimos hasta que quede perfecto. Entonces lo lanzamos.</p></div><b class="arrow-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></b></div>
             </div>
         </section>
 
-        <!-- =================================================
-             FILOSOFÍA (usando .principles-grid)
-        ================================================== -->
+        <!-- FILOSOFÍA -->
         <section class="principles section">
-            <div class="section-meta">
-                <span>04</span>
-                <span>FILOSOFÍA</span>
-            </div>
+            <div class="section-meta"><span>04</span><span>FILOSOFÍA</span></div>
             <div class="principles-grid">
                 <div><span>01</span><h3>Método</h3><p>No usamos plantillas. Cada portafolio se construye desde cero, entendiendo primero tu trabajo y tu audiencia.</p></div>
                 <div><span>02</span><h3>Artesanía</h3><p>Preferimos soluciones pensadas para cada profesional antes que genéricas. Tu portafolio es único.</p></div>
@@ -540,19 +297,14 @@
             </div>
         </section>
 
-        <!-- =================================================
-             CONTACTO (llamada a la acción)
-        ================================================== -->
+        <!-- CONTACTO -->
         <section class="contact" id="contacto">
-            <div class="contact-top">
-                <span>05 / CONTACTO</span>
-                <span>WINDSOR ONE</span>
-            </div>
+            <div class="contact-top"><span>05 / CONTACTO</span><span>WINDSOR ONE</span></div>
             <div class="contact-main">
                 <h2>¿Listo para tener <em>tu portafolio?</em></h2>
                 <p>Cuéntanos tu idea, tu trabajo y lo que necesitas. Te escuchamos, te entendemos y construimos algo que te represente.</p>
-                <a href="mailto:hello@windsor-labs.com" class="contact-button">
-                    Iniciar conversación
+                <a href="contacto.html" class="contact-button">
+                    Ir al formulario
                     <span class="arrow-icon" aria-hidden="true">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="7" y1="17" x2="17" y2="7" />
@@ -561,77 +313,26 @@
                     </span>
                 </a>
             </div>
-            <div class="contact-bottom">
-                <span>PRECISIÓN APLICADA.</span>
-                <span>© 2026 WINDSOR</span>
-            </div>
+            <div class="contact-bottom"><span>PRECISIÓN APLICADA.</span><span>© 2026 WINDSOR</span></div>
         </section>
 
-        <!-- =================================================
-             FAQ (usando .faq-layout)
-        ================================================== -->
+        <!-- FAQ -->
         <section class="faq section">
-            <div class="section-meta">
-                <span>06</span>
-                <span>PREGUNTAS</span>
-            </div>
+            <div class="section-meta"><span>06</span><span>PREGUNTAS</span></div>
             <div class="faq-layout">
                 <h2>Lo que <em>quieres saber.</em></h2>
                 <div class="faq-list">
-                    <article class="faq-item">
-                        <button class="faq-question">
-                            <span>¿Necesito saber programar para tener mi portafolio?</span>
-                            <b>+</b>
-                        </button>
-                        <div class="faq-answer">
-                            <p>No. Nosotros nos encargamos de todo el desarrollo. Tú solo necesitas proporcionarnos el contenido (textos, imágenes, proyectos) y nosotros construimos el sitio.</p>
-                        </div>
-                    </article>
-                    <article class="faq-item">
-                        <button class="faq-question">
-                            <span>¿Puedo actualizar el contenido después de lanzado?</span>
-                            <b>+</b>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Sí. Te entregamos instrucciones claras para que puedas hacer cambios menores por tu cuenta. Si necesitas modificaciones más complejas, podemos ayudarte con un costo adicional.</p>
-                        </div>
-                    </article>
-                    <article class="faq-item">
-                        <button class="faq-question">
-                            <span>¿Incluye dominio y hosting?</span>
-                            <b>+</b>
-                        </button>
-                        <div class="faq-answer">
-                            <p>No está incluido en el servicio base, pero podemos recomendarte proveedores y ayudarte a configurarlo. También podemos gestionarlo por ti si lo prefieres.</p>
-                        </div>
-                    </article>
-                    <article class="faq-item">
-                        <button class="faq-question">
-                            <span>¿Cuánto tiempo tarda el proceso?</span>
-                            <b>+</b>
-                        </button>
-                        <div class="faq-answer">
-                            <p>El proceso completo suele tomar entre 5 y 7 días hábiles, dependiendo de la complejidad y de la rapidez con que nos entregues el contenido.</p>
-                        </div>
-                    </article>
-                    <article class="faq-item">
-                        <button class="faq-question">
-                            <span>¿Puedo ver ejemplos de portafolios que han hecho?</span>
-                            <b>+</b>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Por supuesto. Contáctanos y te mostraremos algunos de nuestros trabajos anteriores para que veas la calidad de nuestro diseño y desarrollo.</p>
-                        </div>
-                    </article>
+                    <article class="faq-item"><button class="faq-question"><span>¿Necesito saber programar para tener mi portafolio?</span><b>+</b></button><div class="faq-answer"><p>No. Nosotros nos encargamos de todo el desarrollo. Tú solo necesitas proporcionarnos el contenido (textos, imágenes, proyectos) y nosotros construimos el sitio.</p></div></article>
+                    <article class="faq-item"><button class="faq-question"><span>¿Puedo actualizar el contenido después de lanzado?</span><b>+</b></button><div class="faq-answer"><p>Sí. Te entregamos instrucciones claras para que puedas hacer cambios menores por tu cuenta. Si necesitas modificaciones más complejas, podemos ayudarte con un costo adicional.</p></div></article>
+                    <article class="faq-item"><button class="faq-question"><span>¿Incluye dominio y hosting?</span><b>+</b></button><div class="faq-answer"><p>No está incluido en el servicio base, pero podemos recomendarte proveedores y ayudarte a configurarlo. También podemos gestionarlo por ti si lo prefieres.</p></div></article>
+                    <article class="faq-item"><button class="faq-question"><span>¿Cuánto tiempo tarda el proceso?</span><b>+</b></button><div class="faq-answer"><p>El proceso completo suele tomar entre 5 y 7 días hábiles, dependiendo de la complejidad y de la rapidez con que nos entregues el contenido.</p></div></article>
+                    <article class="faq-item"><button class="faq-question"><span>¿Puedo ver ejemplos de portafolios que han hecho?</span><b>+</b></button><div class="faq-answer"><p>Por supuesto. Contáctanos y te mostraremos algunos de nuestros trabajos anteriores para que veas la calidad de nuestro diseño y desarrollo.</p></div></article>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-logo">
             <span class="logo-symbol">W</span>
@@ -640,16 +341,19 @@
         <div class="footer-links">
             <a href="index.html">Inicio</a>
             <a href="index.html#servicios">Servicios</a>
-            <a href="index.html#metodo">Método</a>
+            <a href="metodologia.html">Metodología</a>
             <a href="cide.html">CIDE</a>
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html">Recomendados</a>
+            <a href="becas.html">BK2</a>
             <a href="index.html#careers">Careers</a>
+            <a href="contacto.html">Contacto</a>
         </div>
         <div class="footer-tagline">Precisión aplicada.</div>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>
