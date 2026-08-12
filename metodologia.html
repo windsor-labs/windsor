@@ -11,15 +11,12 @@
     <link rel="stylesheet" href="styles.css" />
     <style>
         .metodologia-hero {
-            min-height: max(500px, 70vh);
             background: var(--black);
             color: var(--white);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 120px 6vw 80px;
+            padding: 140px 6vw 80px;
             position: relative;
             overflow: hidden;
+            min-height: auto;
         }
         .metodologia-hero .hero-noise {
             position: absolute;
@@ -128,9 +125,7 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-        .metodologia-item .card-body {
-            flex: 1;
-        }
+        .metodologia-item .card-body { flex:1; }
         .metodologia-item .card-body .num {
             font-size: 9px;
             font-weight: 700;
@@ -167,48 +162,23 @@
             align-items: center;
             transition: transform 0.25s ease;
         }
-        .metodologia-item:hover .card-link .arrow-icon {
-            transform: translateX(6px);
-        }
-        .metodologia-item:hover .card-link {
-            gap: 18px;
-        }
+        .metodologia-item:hover .card-link .arrow-icon { transform: translateX(6px); }
+        .metodologia-item:hover .card-link { gap: 18px; }
         .metodologia-item .bottom-bar {
             height: 4px;
             margin-top: 16px;
             transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
             background-color: var(--blue);
         }
-        .metodologia-item:hover .bottom-bar {
-            width: 100% !important;
-        }
+        .metodologia-item:hover .bottom-bar { width: 100% !important; }
         @media (max-width: 800px) {
-            .metodologia-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .metodologia-item .card-inner {
-                gap: 16px;
-            }
-            .metodologia-item .icon-wrap {
-                flex: 0 0 48px;
-                width: 48px;
-                height: 48px;
-            }
-            .metodologia-item .icon-wrap svg {
-                width: 24px;
-                height: 24px;
-            }
-            .metodologia-item {
-                padding: 20px 20px 12px 20px;
-            }
-            .metodologia-hero {
-                padding: 110px 6vw 60px;
-                min-height: 60vh;
-            }
-            .metodologia-hero .break-title {
-                font-size: clamp(2.8rem, 10vw, 5rem);
-            }
+            .metodologia-grid { grid-template-columns:1fr; gap:20px; }
+            .metodologia-item .card-inner { gap:16px; }
+            .metodologia-item .icon-wrap { flex:0 0 48px; width:48px; height:48px; }
+            .metodologia-item .icon-wrap svg { width:24px; height:24px; }
+            .metodologia-item { padding:20px 20px 12px 20px; }
+            .metodologia-hero { padding:120px 6vw 60px; }
+            .metodologia-hero .break-title { font-size:clamp(2.8rem, 10vw, 5rem); }
         }
     </style>
 </head>
@@ -236,7 +206,7 @@
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
             <a href="becas.html">BK2</a>
-            <a href="index.html#careers">Careers</a>
+            <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
         </nav>
         <a href="contacto.html" class="header-button">
@@ -377,7 +347,7 @@
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
             <a href="becas.html">BK2</a>
-            <a href="index.html#careers">Careers</a>
+            <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
         </div>
         <div class="footer-tagline">Precisión aplicada.</div>
