@@ -11,15 +11,12 @@
     <link rel="stylesheet" href="styles.css" />
     <style>
         .cide-hero {
-            min-height: max(600px, 75vh);
             background: var(--black);
             color: var(--white);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 120px 6vw 80px;
+            padding: 140px 6vw 80px;
             position: relative;
             overflow: hidden;
+            min-height: auto;
         }
         .cide-hero .hero-noise {
             position: absolute;
@@ -35,6 +32,7 @@
             letter-spacing: -0.07em;
             max-width: 1000px;
             position: relative;
+            z-index: 2;
         }
         .cide-hero h1 em {
             display: block;
@@ -52,6 +50,7 @@
             font-size: 16px;
             line-height: 1.7;
             position: relative;
+            z-index: 2;
         }
         .cide-hero .cta {
             display: inline-flex;
@@ -66,11 +65,10 @@
             letter-spacing: 0.12em;
             text-transform: uppercase;
             transition: background 0.25s, transform 0.25s;
+            position: relative;
+            z-index: 2;
         }
-        .cide-hero .cta:hover {
-            background: var(--blue-dark);
-            transform: translateX(6px);
-        }
+        .cide-hero .cta:hover { background: var(--blue-dark); transform: translateX(6px); }
         .grid-2 {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
@@ -78,29 +76,12 @@
             margin-top: 60px;
             align-items: center;
         }
-        .grid-2 h2 {
-            font-size: clamp(2.1rem, 3.75vw, 3rem);
-            line-height: 0.9;
-            letter-spacing: -0.06em;
-        }
-        .grid-2 h2 span {
-            display: block;
-            font-family: var(--sans);
-            font-weight: 900;
-            text-decoration: underline;
-            text-decoration-thickness: 0.07em;
-            text-underline-offset: 0.1em;
-            color: var(--blue);
-        }
-        .grid-2 p {
-            color: #555;
-            line-height: 1.8;
-            font-size: 15px;
-            margin-top: 20px;
-        }
+        .grid-2 h2 { font-size: clamp(2.1rem,3.75vw,3rem); line-height:0.9; letter-spacing:-0.06em; }
+        .grid-2 h2 span { display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue); }
+        .grid-2 p { color:#555; line-height:1.8; font-size:15px; margin-top:20px; }
         .programas-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2,1fr);
             gap: 1px;
             background: var(--line);
             margin-top: 50px;
@@ -111,27 +92,10 @@
             min-height: 200px;
             transition: background 0.25s;
         }
-        .programa:hover {
-            background: var(--cream);
-        }
-        .programa .num {
-            font-size: 9px;
-            font-weight: 700;
-            color: var(--blue);
-            opacity: 0.6;
-            display: block;
-            margin-bottom: 12px;
-        }
-        .programa h3 {
-            font-size: 1.35rem;
-            letter-spacing: -0.03em;
-            margin-bottom: 10px;
-        }
-        .programa p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 14px;
-        }
+        .programa:hover { background: var(--cream); }
+        .programa .num { font-size:9px; font-weight:700; color:var(--blue); opacity:0.6; display:block; margin-bottom:12px; }
+        .programa h3 { font-size:1.35rem; letter-spacing:-0.03em; margin-bottom:10px; }
+        .programa p { color:#666; line-height:1.6; font-size:14px; }
         .callout {
             background: var(--blue);
             color: var(--white);
@@ -143,14 +107,8 @@
             gap: 30px;
             flex-wrap: wrap;
         }
-        .callout h3 {
-            font-size: 1.5rem;
-            line-height: 1.1;
-        }
-        .callout p {
-            color: rgba(255,255,255,0.8);
-            max-width: 500px;
-        }
+        .callout h3 { font-size:1.5rem; line-height:1.1; }
+        .callout p { color:rgba(255,255,255,0.8); max-width:500px; }
         .callout .btn {
             padding: 14px 28px;
             background: var(--green);
@@ -164,19 +122,17 @@
             align-items: center;
             gap: 12px;
         }
-        .callout .btn:hover {
-            transform: scale(1.03);
-        }
+        .callout .btn:hover { transform: scale(1.03); }
         .testimonios {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3,1fr);
             gap: 30px;
             margin-top: 50px;
         }
         .testimonio {
             background: var(--white);
             padding: 25px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
         }
         .testimonio blockquote {
             font-family: var(--serif);
@@ -191,49 +147,21 @@
             font-weight: 700;
             color: var(--blue);
         }
-        .testimonio .cargo {
-            font-size: 11px;
-            color: #888;
-            font-weight: 400;
-        }
-        [data-reveal] {
-            opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        [data-reveal].visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .testimonio .cargo { font-size:11px; color:#888; font-weight:400; }
+        [data-reveal] { opacity:0; transform:translateY(35px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.8,.2,1); }
+        [data-reveal].visible { opacity:1; transform:translateY(0); }
         @media (max-width: 900px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .testimonios {
-                grid-template-columns: 1fr;
-            }
-            .programas-grid {
-                grid-template-columns: 1fr;
-            }
+            .grid-2 { grid-template-columns:1fr; gap:30px; }
+            .testimonios { grid-template-columns:1fr; }
+            .programas-grid { grid-template-columns:1fr; }
         }
         @media (max-width: 700px) {
-            .cide-hero {
-                padding: 110px 6vw 60px;
-                min-height: 70vh;
-            }
-            .callout {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+            .cide-hero { padding:120px 6vw 60px; }
+            .callout { flex-direction: column; align-items: flex-start; }
         }
         @media (max-width: 480px) {
-            .programa {
-                padding: 20px;
-            }
-            .callout {
-                padding: 25px;
-            }
+            .programa { padding:20px; }
+            .callout { padding:25px; }
         }
     </style>
 </head>
@@ -289,13 +217,12 @@
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
             <a href="becas.html">BK2</a>
-            <a href="index.html#careers">Careers</a>
+            <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
         </div>
     </div>
 
     <main>
-        <!-- HERO -->
         <section class="cide-hero">
             <div class="hero-noise"></div>
             <h1>Centro de Innovación <em>y Desarrollo Empresarial</em></h1>
@@ -303,7 +230,6 @@
             <a href="#programas" class="cta">Conocer programas →</a>
         </section>
 
-        <!-- QUÉ ES -->
         <section class="section" id="que-es">
             <div class="section-meta"><span>01</span><span>QUÉ ES</span></div>
             <div class="container grid-2">
@@ -320,7 +246,6 @@
             </div>
         </section>
 
-        <!-- PROGRAMAS -->
         <section class="section" id="programas" style="background:var(--white);">
             <div class="section-meta"><span>02</span><span>PROGRAMAS</span></div>
             <div class="container">
@@ -329,46 +254,27 @@
                     <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">acompañamiento empresarial.</span>
                 </h2>
                 <div class="programas-grid">
-                    <div class="programa" data-reveal>
-                        <span class="num">01</span>
-                        <h3>Programas de emprendimiento</h3>
-                        <p>Formación práctica para desarrollar y validar proyectos empresariales desde la idea hasta el modelo de negocio.</p>
-                    </div>
-                    <div class="programa" data-reveal>
-                        <span class="num">02</span>
-                        <h3>Mentoría para PYMEs</h3>
-                        <p>Acompañamiento personalizado para empresas que buscan mejorar procesos, estrategia o presencia digital.</p>
-                    </div>
-                    <div class="programa" data-reveal>
-                        <span class="num">03</span>
-                        <h3>Consultoría en innovación</h3>
-                        <p>Análisis y acompañamiento para identificar nuevas oportunidades de negocio y formas de generar valor.</p>
-                    </div>
-                    <div class="programa" data-reveal>
-                        <span class="num">04</span>
-                        <h3>Formación corporativa</h3>
-                        <p>Programas adaptados a las necesidades de equipos y organizaciones, con foco en innovación y desarrollo.</p>
-                    </div>
+                    <div class="programa" data-reveal><span class="num">01</span><h3>Programas de emprendimiento</h3><p>Formación práctica para desarrollar y validar proyectos empresariales desde la idea hasta el modelo de negocio.</p></div>
+                    <div class="programa" data-reveal><span class="num">02</span><h3>Mentoría para PYMEs</h3><p>Acompañamiento personalizado para empresas que buscan mejorar procesos, estrategia o presencia digital.</p></div>
+                    <div class="programa" data-reveal><span class="num">03</span><h3>Consultoría en innovación</h3><p>Análisis y acompañamiento para identificar nuevas oportunidades de negocio y formas de generar valor.</p></div>
+                    <div class="programa" data-reveal><span class="num">04</span><h3>Formación corporativa</h3><p>Programas adaptados a las necesidades de equipos y organizaciones, con foco en innovación y desarrollo.</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- CONVOCATORIA -->
         <section class="section" style="background:var(--cream);">
             <div class="section-meta"><span>03</span><span>CONVOCATORIA</span></div>
             <div class="container">
                 <div class="callout" data-reveal>
                     <div>
                         <h3>Convocatoria actual</h3>
-                        <p><strong style="color:var(--green);">Abierta hasta el 29 de agosto de 2026.</strong><br />
-                        Postula a nuestros programas de emprendimiento y mentoría. Cupos limitados.</p>
+                        <p><strong style="color:var(--green);">Abierta hasta el 29 de agosto de 2026.</strong><br />Postula a nuestros programas de emprendimiento y mentoría. Cupos limitados.</p>
                     </div>
                     <a href="contacto.html" class="btn">Aplicar ahora →</a>
                 </div>
             </div>
         </section>
 
-        <!-- TESTIMONIOS -->
         <section class="section" style="background:var(--white);">
             <div class="section-meta"><span>04</span><span>TESTIMONIOS</span></div>
             <div class="container">
@@ -377,26 +283,13 @@
                     <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">quienes ya han participado.</span>
                 </h2>
                 <div class="testimonios">
-                    <div class="testimonio" data-reveal>
-                        <blockquote>“El programa de mentoría nos ayudó a redefinir nuestra estrategia digital. El enfoque práctico y el acompañamiento hicieron la diferencia.”</blockquote>
-                        <div class="autor">María González</div>
-                        <div class="cargo">Fundadora, Café Origen</div>
-                    </div>
-                    <div class="testimonio" data-reveal>
-                        <blockquote>“La consultoría en innovación nos abrió los ojos a nuevas líneas de negocio. Windsor no solo da respuestas, enseña a preguntar.”</blockquote>
-                        <div class="autor">Carlos Méndez</div>
-                        <div class="cargo">Gerente, Grupo Nova</div>
-                    </div>
-                    <div class="testimonio" data-reveal>
-                        <blockquote>“Los programas de formación corporativa transformaron la manera en que nuestro equipo aborda los proyectos. Metodología clara y resultados tangibles.”</blockquote>
-                        <div class="autor">Laura Flores</div>
-                        <div class="cargo">Directora de RRHH, Inversiones El Sol</div>
-                    </div>
+                    <div class="testimonio" data-reveal><blockquote>“El programa de mentoría nos ayudó a redefinir nuestra estrategia digital. El enfoque práctico y el acompañamiento hicieron la diferencia.”</blockquote><div class="autor">María González</div><div class="cargo">Fundadora, Café Origen</div></div>
+                    <div class="testimonio" data-reveal><blockquote>“La consultoría en innovación nos abrió los ojos a nuevas líneas de negocio. Windsor no solo da respuestas, enseña a preguntar.”</blockquote><div class="autor">Carlos Méndez</div><div class="cargo">Gerente, Grupo Nova</div></div>
+                    <div class="testimonio" data-reveal><blockquote>“Los programas de formación corporativa transformaron la manera en que nuestro equipo aborda los proyectos. Metodología clara y resultados tangibles.”</blockquote><div class="autor">Laura Flores</div><div class="cargo">Directora de RRHH, Inversiones El Sol</div></div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA FINAL -->
         <div class="container" style="margin-bottom:60px;">
             <div class="callout" style="background:var(--black); color:var(--white);" data-reveal>
                 <div>
@@ -424,7 +317,7 @@
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
             <a href="becas.html">BK2</a>
-            <a href="index.html#careers">Careers</a>
+            <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
         </div>
         <div class="footer-tagline">Precisión aplicada.</div>
