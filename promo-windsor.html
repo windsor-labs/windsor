@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windsor — Precisión aplicada</title>
+    <title>Windsor — Spot promocional</title>
     <style>
         /* =========================================================
-           WINDSOR PROMO — SPOT PUBLICITARIO (100% autónomo)
-           Sin fuentes externas, sin imágenes, sin dependencias.
+           WINDSOR PROMO — SPOT PUBLICITARIO AUTOMÁTICO
+           Sin dependencias externas. Múltiples cortes y animaciones.
         ========================================================== */
         * {
             margin: 0;
@@ -28,14 +28,11 @@
             position: relative;
             width: 100vw;
             height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
             overflow: hidden;
+            background: #0a0a0c;
         }
 
-        /* Video de fondo (solo si existe el archivo) */
+        /* Video de fondo (opcional, se puede añadir pero no es obligatorio) */
         .spot-video {
             position: absolute;
             top: 50%;
@@ -50,55 +47,74 @@
             pointer-events: none;
         }
 
-        /* Fallback: animación de gradiente si no hay video */
+        /* Fallback: gradiente animado */
         .spot-fallback {
             position: absolute;
             inset: 0;
             z-index: 0;
-            background: linear-gradient(135deg, #0a0a0c 0%, #002244 40%, #0a0a0c 100%);
-            background-size: 300% 300%;
-            animation: gradiente 12s ease-in-out infinite alternate;
+            background: radial-gradient(circle at 30% 40%, #001a3a, #0a0a0c 80%);
+            background-size: 200% 200%;
+            animation: gradienteFondo 10s ease-in-out infinite alternate;
         }
 
-        @keyframes gradiente {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+        @keyframes gradienteFondo {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
         }
 
-        /* Overlay oscuro */
+        /* Overlay sutil */
         .spot-overlay {
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: rgba(10, 10, 12, 0.5);
+            background: rgba(10, 10, 12, 0.35);
             backdrop-filter: blur(1px);
         }
 
-        /* Contenido central */
-        .spot-content {
+        /* =========================================================
+           SLIDES — cada corte es un slide
+        ========================================================== */
+        .slides {
             position: relative;
             z-index: 2;
-            max-width: 820px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             padding: 2rem;
-            animation: fadeUp 1.6s ease-out;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            will-change: transform, opacity;
         }
 
-        @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(30px) scale(0.96); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        /* Logotipo W */
-        .spot-logo {
-            display: inline-block;
-            font-size: 5rem;
+        /* Cada slide tiene su propio estilo de contenido */
+        .slide-content {
+            max-width: 800px;
+            padding: 0 1.5rem;
+        }
+
+        /* Slide 0: Logo + entrada */
+        .slide-0 .slide-logo {
+            font-size: clamp(5rem, 15vw, 10rem);
             font-weight: 900;
             color: #006dff;
             letter-spacing: -0.06em;
             line-height: 1;
-            margin-bottom: 0.25rem;
-            text-shadow: 0 0 70px rgba(0, 109, 255, 0.3);
-            animation: pulseLogo 3s ease-in-out infinite;
+            text-shadow: 0 0 80px rgba(0, 109, 255, 0.25);
+            animation: pulseLogo 2.5s ease-in-out infinite;
         }
 
         @keyframes pulseLogo {
@@ -106,116 +122,194 @@
             50% { transform: scale(1.05); }
         }
 
-        .spot-label {
-            font-size: clamp(0.75rem, 2vw, 1.1rem);
-            font-weight: 400;
+        .slide-0 .slide-sub {
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.45);
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 0.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 0.8rem;
             display: inline-block;
-            padding: 0.5rem 1.2rem;
-            margin-bottom: 1rem;
         }
 
-        .spot-headline {
-            font-size: clamp(2.8rem, 12vw, 7rem);
+        /* Slide 1: Eslogan principal */
+        .slide-1 .slide-headline {
+            font-size: clamp(3rem, 12vw, 7rem);
             font-weight: 900;
             line-height: 0.88;
-            letter-spacing: -0.03em;
-            margin: 0.3rem 0 0.6rem;
+            letter-spacing: -0.04em;
         }
 
-        .spot-headline em {
+        .slide-1 .slide-headline em {
             display: block;
             color: #31e083;
             font-style: normal;
             text-decoration: underline;
-            text-decoration-thickness: 0.08em;
+            text-decoration-thickness: 0.07em;
             text-underline-offset: 0.1em;
         }
 
-        .spot-desc {
-            font-size: clamp(1rem, 1.6vw, 1.3rem);
+        .slide-1 .slide-desc {
+            font-size: clamp(1rem, 1.6vw, 1.4rem);
             font-weight: 300;
             color: rgba(255, 255, 255, 0.7);
-            max-width: 540px;
-            margin: 1.2rem auto 2.2rem;
+            max-width: 550px;
+            margin: 1.2rem auto 0;
             line-height: 1.6;
-            letter-spacing: 0.02em;
         }
 
-        /* Botón CTA — estilo Windsor */
-        .spot-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            padding: 15px 32px;
-            background: #006dff;
-            color: #ffffff;
-            border: none;
-            font-family: inherit;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-            box-shadow: 0 0 30px rgba(0, 109, 255, 0.15);
+        /* Slide 2: Método (4 pasos) */
+        .slide-2 .slide-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
-        .spot-btn:hover {
-            background: #31e083;
-            color: #0a0a0c;
-            transform: scale(1.04);
-            box-shadow: 0 0 50px rgba(49, 224, 131, 0.25);
+        .slide-2 .step {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 1.2rem 0.8rem;
+            transition: border-color 0.3s ease;
         }
 
-        .spot-btn .arrow {
-            display: inline-block;
-            transition: transform 0.25s ease;
-        }
-
-        .spot-btn:hover .arrow {
-            transform: translateX(5px);
-        }
-
-        /* Indicador inferior (estético) */
-        .spot-footer {
-            position: absolute;
-            bottom: 2rem;
-            left: 0;
-            width: 100%;
-            z-index: 2;
-            text-align: center;
+        .slide-2 .step .num {
             font-size: 0.7rem;
+            font-weight: 700;
             letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.15);
+            color: #006dff;
+            opacity: 0.6;
+            display: block;
+            margin-bottom: 0.3rem;
         }
 
-        .spot-footer .line {
-            width: 40px;
-            height: 1px;
-            margin: 8px auto 0;
-            background: rgba(255, 255, 255, 0.1);
+        .slide-2 .step h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .spot-logo { font-size: 3.6rem; }
-            .spot-headline { font-size: 2.4rem; }
-            .spot-desc { font-size: 0.95rem; }
-            .spot-btn { padding: 13px 22px; font-size: 0.75rem; }
-            .spot-footer { display: none; }
+        .slide-2 .step p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.4;
+        }
+
+        /* Slide 3: Cierre */
+        .slide-3 .slide-close {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .slide-3 .slide-close em {
+            display: block;
+            color: #006dff;
+            font-style: normal;
+            text-decoration: underline;
+            text-decoration-thickness: 0.07em;
+            text-underline-offset: 0.1em;
+        }
+
+        .slide-3 .slide-tag {
+            font-size: clamp(1rem, 2vw, 1.6rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 1rem;
+            letter-spacing: 0.15em;
+        }
+
+        /* =========================================================
+           ANIMACIONES DE ENTRADA POR SLIDE
+        ========================================================== */
+        .slide .slide-content {
+            opacity: 0;
+            transform: translateY(30px) scale(0.97);
+            transition: opacity 1s ease, transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .slide.active .slide-content {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Retrasos para elementos internos (efecto cascada) */
+        .slide-1 .slide-headline {
+            transition-delay: 0.1s;
+        }
+        .slide-1 .slide-desc {
+            transition-delay: 0.3s;
+        }
+        .slide-2 .step {
+            transition-delay: 0.15s;
+        }
+        .slide-2 .step:nth-child(2) { transition-delay: 0.25s; }
+        .slide-2 .step:nth-child(3) { transition-delay: 0.35s; }
+        .slide-2 .step:nth-child(4) { transition-delay: 0.45s; }
+        .slide-3 .slide-close {
+            transition-delay: 0.1s;
+        }
+        .slide-3 .slide-tag {
+            transition-delay: 0.3s;
+        }
+
+        /* =========================================================
+           INDICADOR DE PROGRESO (barra inferior)
+        ========================================================== */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .progress-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: #006dff;
+            transition: width 0.3s linear;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================== */
+        @media (max-width: 700px) {
+            .slide-2 .slide-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            .slide-2 .step {
+                padding: 0.8rem 0.6rem;
+            }
+            .slide-2 .step h4 {
+                font-size: 1rem;
+            }
+            .slide-2 .step p {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide-0 .slide-logo {
+                font-size: 4rem;
+            }
+            .slide-1 .slide-headline {
+                font-size: 2.2rem;
+            }
+            .slide-3 .slide-close {
+                font-size: 2.2rem;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .spot-fallback { animation: none; }
-            .spot-content { animation: none; }
-            .spot-logo { animation: none; }
+            * {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
         }
     </style>
 </head>
@@ -223,63 +317,182 @@
 
     <div class="spot">
 
-        <!-- VIDEO DE FONDO (opcional) -->
-        <!--
-          Para usar tu propio video, reemplaza "video.mp4" por la ruta de tu archivo.
-          Si no existe, se mostrará el fallback con gradiente animado.
-        -->
-        <video autoplay muted loop playsinline class="spot-video" poster="">
-            <source src="video.mp4" type="video/mp4">
-            <!-- Si no hay video, el fallback se muestra debajo -->
-        </video>
-
-        <!-- Fallback visual (gradiente animado) -->
+        <!-- Fondo (video opcional o fallback) -->
         <div class="spot-fallback"></div>
-
-        <!-- Overlay oscuro -->
         <div class="spot-overlay"></div>
 
-        <!-- Contenido principal -->
-        <div class="spot-content">
-            <div class="spot-logo">W</div>
-            <div class="spot-label">Laboratorio digital independiente</div>
-            <h1 class="spot-headline">
-                Precisión <em>aplicada.</em>
-            </h1>
-            <p class="spot-desc">
-                Evaluamos ideas, construimos marcas y desarrollamos productos digitales
-                con método, investigación y sensibilidad estética.
-            </p>
-            <a href="index.html" class="spot-btn">
-                Iniciar proyecto
-                <span class="arrow">→</span>
-            </a>
+        <!-- =====================================================
+             SLIDES
+        ====================================================== -->
+        <div class="slides" id="slides">
+
+            <!-- SLIDE 0: Logo Windsor -->
+            <div class="slide slide-0 active" data-slide="0">
+                <div class="slide-content">
+                    <div class="slide-logo">W</div>
+                    <div class="slide-sub">Laboratorio digital independiente</div>
+                </div>
+            </div>
+
+            <!-- SLIDE 1: Eslogan -->
+            <div class="slide slide-1" data-slide="1">
+                <div class="slide-content">
+                    <h2 class="slide-headline">
+                        Precisión <em>aplicada.</em>
+                    </h2>
+                    <p class="slide-desc">
+                        Evaluamos ideas, construimos marcas y desarrollamos productos digitales
+                        con método, investigación y sensibilidad estética.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: Método (4 pasos) -->
+            <div class="slide slide-2" data-slide="2">
+                <div class="slide-content">
+                    <h3 style="font-size:clamp(1.5rem,4vw,2.8rem); font-weight:800; letter-spacing:-0.03em; margin-bottom:0.2rem;">
+                        Cuatro pasos
+                    </h3>
+                    <p style="font-weight:300; color:rgba(255,255,255,0.5); font-size:0.9rem; letter-spacing:0.1em; text-transform:uppercase;">
+                        Metodología Windsor
+                    </p>
+                    <div class="slide-grid">
+                        <div class="step">
+                            <span class="num">01</span>
+                            <h4>Entender</h4>
+                            <p>Investigamos el contexto, el problema y las personas.</p>
+                        </div>
+                        <div class="step">
+                            <span class="num">02</span>
+                            <h4>Definir</h4>
+                            <p>Convertimos información en dirección estratégica.</p>
+                        </div>
+                        <div class="step">
+                            <span class="num">03</span>
+                            <h4>Construir</h4>
+                            <p>Diseñamos y desarrollamos soluciones específicas.</p>
+                        </div>
+                        <div class="step">
+                            <span class="num">04</span>
+                            <h4>Refinar</h4>
+                            <p>Probamos, mejoramos y entregamos con precisión.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: Cierre -->
+            <div class="slide slide-3" data-slide="3">
+                <div class="slide-content">
+                    <div class="slide-close">
+                        Ideas que <em>construyen futuro.</em>
+                    </div>
+                    <div class="slide-tag">Windsor · Precisión aplicada</div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Pie decorativo -->
-        <div class="spot-footer">
-            <span>Windsor · 2026</span>
-            <div class="line"></div>
+        <!-- =====================================================
+             BARRA DE PROGRESO
+        ====================================================== -->
+        <div class="progress-bar">
+            <div class="fill" id="progressFill"></div>
         </div>
 
     </div>
 
-    <!-- Script ligero (solo para ocultar video si falla) -->
+    <!-- =========================================================
+         SCRIPT: CONTROL DE SLIDES Y PROGRESO
+    ========================================================== -->
     <script>
         (function() {
-            const video = document.querySelector('.spot-video');
-            if (video) {
-                // Si el video no se carga, lo ocultamos para ver el fallback
-                video.addEventListener('error', function() {
-                    this.style.display = 'none';
-                });
-                // En algunos navegadores el evento 'error' no se dispara si el src está vacío
-                // Por si acaso, comprobamos si el video tiene src válido
-                const src = video.querySelector('source');
-                if (src && !src.src) {
-                    video.style.display = 'none';
-                }
+            'use strict';
+
+            const slides = document.querySelectorAll('.slide');
+            const total = slides.length;
+            let current = 0;
+            let isTransitioning = false;
+
+            const progressFill = document.getElementById('progressFill');
+
+            // Duración por slide (en milisegundos)
+            const DURATION = 4000; // 4 segundos
+
+            // Función para cambiar a un slide específico
+            function goToSlide(index) {
+                if (isTransitioning) return;
+                if (index === current) return;
+                if (index < 0 || index >= total) return;
+
+                isTransitioning = true;
+
+                // Quitar active del actual
+                slides[current].classList.remove('active');
+
+                // Activar el nuevo
+                current = index;
+                slides[current].classList.add('active');
+
+                // Actualizar barra de progreso
+                updateProgress();
+
+                // Desbloquear después de la transición
+                setTimeout(function() {
+                    isTransitioning = false;
+                }, 900);
             }
+
+            // Actualizar barra de progreso
+            function updateProgress() {
+                const progress = ((current + 1) / total) * 100;
+                progressFill.style.width = progress + '%';
+            }
+
+            // Avanzar al siguiente slide automáticamente
+            function nextSlide() {
+                const next = (current + 1) % total;
+                goToSlide(next);
+            }
+
+            // Iniciar el bucle automático
+            let interval = setInterval(nextSlide, DURATION);
+
+            // Si el usuario interactúa (click/touch), reiniciamos el temporizador
+            function resetTimer() {
+                clearInterval(interval);
+                interval = setInterval(nextSlide, DURATION);
+            }
+
+            // Detectar cualquier interacción para reiniciar el cronómetro
+            document.addEventListener('click', resetTimer);
+            document.addEventListener('touchstart', resetTimer);
+            document.addEventListener('keydown', resetTimer);
+
+            // Inicializar barra de progreso
+            updateProgress();
+
+            // Pequeña mejora: si el usuario quiere navegar manualmente con teclado
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    e.preventDefault();
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    const prev = (current - 1 + total) % total;
+                    goToSlide(prev);
+                }
+            });
+
+            // Exponer funciones para depuración (opcional)
+            window.spot = {
+                goToSlide: goToSlide,
+                nextSlide: nextSlide,
+                current: function() { return current; },
+                total: total
+            };
+
+            console.log('🎬 Windsor Spot — Reproduciendo automáticamente');
         })();
     </script>
 
