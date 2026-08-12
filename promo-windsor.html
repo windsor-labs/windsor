@@ -6,8 +6,9 @@
     <title>Windsor — Spot</title>
     <style>
         /* =========================================================
-           WINDSOR SPOT — CADA ELEMENTO TIENE SU PROPIA ANIMACIÓN
-           Sin dependencias externas. Bucle infinito.
+           WINDSOR SPOT — TODOS LOS SERVICIOS
+           Cada elemento tiene su propia animación única
+           Sin dependencias externas
         ========================================================== */
         * {
             margin: 0;
@@ -86,7 +87,7 @@
         }
 
         /* =========================================================
-           ELEMENTOS ANIMABLES (cada uno tiene su propia transición)
+           ELEMENTOS ANIMABLES
         ========================================================== */
         .anim-item {
             opacity: 0;
@@ -100,7 +101,7 @@
             filter: blur(0px) !important;
         }
 
-        /* Estilos específicos de contenido */
+        /* Estilos de contenido */
         .slide-icon {
             font-size: clamp(3.5rem, 10vw, 6rem);
             line-height: 1;
@@ -129,6 +130,14 @@
             letter-spacing: 0.04em;
         }
 
+        .slide-meta {
+            font-size: clamp(0.7rem, 1.2vw, 0.95rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.08em;
+            margin-top: 0.1rem;
+        }
+
         /* Slide 0: Logo especial */
         .slide-0 .slide-logo {
             font-size: clamp(6rem, 18vw, 12rem);
@@ -150,13 +159,13 @@
         }
 
         /* Slide final */
-        .slide-7 .slide-title {
+        .slide-final .slide-title {
             font-size: clamp(3rem, 10vw, 6rem);
         }
-        .slide-7 .slide-title em {
+        .slide-final .slide-title em {
             color: #006dff;
         }
-        .slide-7 .slide-subtitle {
+        .slide-final .slide-subtitle {
             font-size: clamp(1rem, 2vw, 1.6rem);
             font-weight: 300;
             color: rgba(255, 255, 255, 0.3);
@@ -196,7 +205,7 @@
             .slide-0 .slide-logo {
                 font-size: 4.5rem;
             }
-            .slide-7 .slide-title {
+            .slide-final .slide-title {
                 font-size: 2.4rem;
             }
             .slide-content {
@@ -220,7 +229,7 @@
         <div class="spot-overlay" id="overlay"></div>
 
         <!-- =====================================================
-             SLIDES (8 cortes)
+             SLIDES — TODOS LOS SERVICIOS DE WINDSOR
         ====================================================== -->
         <div class="slides" id="slides">
 
@@ -232,67 +241,131 @@
                 </div>
             </div>
 
-            <!-- 1. Evaluamos ideas -->
+            <!-- 1. Evaluación de proyectos -->
             <div class="slide slide-1" data-slide="1">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">💡</span>
-                    <div class="slide-title anim-item" data-element="title">Evaluamos <em>ideas</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Investigación, mercado, viabilidad</div>
+                    <span class="slide-icon anim-item" data-element="icon">🔍</span>
+                    <div class="slide-title anim-item" data-element="title">Evaluación <em>de proyectos</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Ideas · Mercado · Competencia</div>
                 </div>
             </div>
 
-            <!-- 2. Construimos marcas -->
+            <!-- 2. Arquitectura de marca -->
             <div class="slide slide-2" data-slide="2">
                 <div class="slide-content">
                     <span class="slide-icon anim-item" data-element="icon">◆</span>
-                    <div class="slide-title anim-item" data-element="title">Construimos <em>marcas</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Identidad, posicionamiento, personalidad</div>
+                    <div class="slide-title anim-item" data-element="title">Arquitectura <em>de marca</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Naming · Identidad · Posicionamiento</div>
                 </div>
             </div>
 
-            <!-- 3. Productos digitales -->
+            <!-- 3. Auditorías digitales -->
             <div class="slide slide-3" data-slide="3">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">⌘</span>
-                    <div class="slide-title anim-item" data-element="title">Productos <em>digitales</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Web, apps, experiencias interactivas</div>
+                    <span class="slide-icon anim-item" data-element="icon">📊</span>
+                    <div class="slide-title anim-item" data-element="title">Auditorías <em>digitales</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Redes · Web · UX · Presencia</div>
                 </div>
             </div>
 
-            <!-- 4. Orientación vocacional -->
+            <!-- 4. Desarrollo digital -->
             <div class="slide slide-4" data-slide="4">
+                <div class="slide-content">
+                    <span class="slide-icon anim-item" data-element="icon">⌘</span>
+                    <div class="slide-title anim-item" data-element="title">Desarrollo <em>digital</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Web · Apps · IA</div>
+                </div>
+            </div>
+
+            <!-- 5. Orientación vocacional -->
+            <div class="slide slide-5" data-slide="5">
                 <div class="slide-content">
                     <span class="slide-icon anim-item" data-element="icon">🎯</span>
                     <div class="slide-title anim-item" data-element="title">Orientación <em>vocacional</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Descubre tu perfil profesional</div>
+                    <div class="slide-sub anim-item" data-element="sub">Kuder · Herrera · Personalidad</div>
                 </div>
             </div>
 
-            <!-- 5. Talento -->
-            <div class="slide slide-5" data-slide="5">
+            <!-- 6. Windsor One -->
+            <div class="slide slide-6" data-slide="6">
+                <div class="slide-content">
+                    <span class="slide-icon anim-item" data-element="icon">1️⃣</span>
+                    <div class="slide-title anim-item" data-element="title">Windsor <em>One</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Portafolios profesionales a medida</div>
+                </div>
+            </div>
+
+            <!-- 7. BeQueer -->
+            <div class="slide slide-7" data-slide="7">
+                <div class="slide-content">
+                    <span class="slide-icon anim-item" data-element="icon">🏳️‍🌈</span>
+                    <div class="slide-title anim-item" data-element="title">BeQueer</div>
+                    <div class="slide-sub anim-item" data-element="sub">Diseño y tecnología con identidad</div>
+                </div>
+            </div>
+
+            <!-- 8. CIDE -->
+            <div class="slide slide-8" data-slide="8">
+                <div class="slide-content">
+                    <span class="slide-icon anim-item" data-element="icon">🚀</span>
+                    <div class="slide-title anim-item" data-element="title">CIDE</div>
+                    <div class="slide-sub anim-item" data-element="sub">Emprendimiento · Mentoría · Consultoría</div>
+                </div>
+            </div>
+
+            <!-- 9. BK2 -->
+            <div class="slide slide-9" data-slide="9">
+                <div class="slide-content">
+                    <span class="slide-icon anim-item" data-element="icon">📚</span>
+                    <div class="slide-title anim-item" data-element="title">BK2</div>
+                    <div class="slide-sub anim-item" data-element="sub">Becas · Formación · Recursos</div>
+                </div>
+            </div>
+
+            <!-- 10. Windsor Careers -->
+            <div class="slide slide-10" data-slide="10">
                 <div class="slide-content">
                     <span class="slide-icon anim-item" data-element="icon">⚡</span>
-                    <div class="slide-title anim-item" data-element="title">Talento <em>latinoamericano</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Formación y desarrollo de profesionales</div>
+                    <div class="slide-title anim-item" data-element="title">Windsor <em>Careers</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Pasantías · Talento latinoamericano</div>
                 </div>
             </div>
 
-            <!-- 6. Proyectos reales -->
-            <div class="slide slide-6" data-slide="6">
+            <!-- 11. Recomendados -->
+            <div class="slide slide-11" data-slide="11">
+                <div class="slide-content">
+                    <span class="slide-icon anim-item" data-element="icon">⭐</span>
+                    <div class="slide-title anim-item" data-element="title">Recomendados</div>
+                    <div class="slide-sub anim-item" data-element="sub">Recursos curados para tu desarrollo</div>
+                </div>
+            </div>
+
+            <!-- 12. Metodología -->
+            <div class="slide slide-12" data-slide="12">
+                <div class="slide-content">
+                    <span class="slide-icon anim-item" data-element="icon">◇</span>
+                    <div class="slide-title anim-item" data-element="title">Metodología <em>Windsor</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Entender · Definir · Construir · Refinar</div>
+                </div>
+            </div>
+
+            <!-- 13. Proyectos reales -->
+            <div class="slide slide-13" data-slide="13">
                 <div class="slide-content">
                     <span class="slide-icon anim-item" data-element="icon">🔧</span>
                     <div class="slide-title anim-item" data-element="title">Proyectos <em>reales</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Colaboración, estrategia, ejecución</div>
+                    <div class="slide-sub anim-item" data-element="sub">Colaboración · Estrategia · Ejecución</div>
                 </div>
             </div>
 
-            <!-- 7. Cierre -->
-            <div class="slide slide-7" data-slide="7">
+            <!-- 14. Cierre -->
+            <div class="slide slide-final" data-slide="14">
                 <div class="slide-content">
                     <div class="slide-title anim-item" data-element="title">
                         <em>Windsor</em>
                     </div>
                     <div class="slide-subtitle anim-item" data-element="sub">Precisión aplicada</div>
+                    <div class="slide-meta anim-item" data-element="meta">Laboratorio digital independiente</div>
                 </div>
             </div>
 
@@ -308,7 +381,7 @@
     </div>
 
     <!-- =========================================================
-         SCRIPT — ASIGNACIÓN ÚNICA DE ANIMACIONES POR ELEMENTO
+         SCRIPT — ANIMACIONES ÚNICAS POR ELEMENTO
     ========================================================== -->
     <script>
         (function() {
@@ -322,14 +395,13 @@
             const PROGRESS_FILL = document.getElementById('progressFill');
             const OVERLAY = document.getElementById('overlay');
 
-            // Duración base por slide (ms) — variará ligeramente cada ciclo
-            const BASE_DURATION = 3200;
+            // Duración base por slide (ms)
+            const BASE_DURATION = 2800;
 
             // =====================================================
             // EFECTOS DISPONIBLES (para combinar)
             // =====================================================
             const EFFECT_TYPES = [
-                // Tipo: transform inicial, clase CSS
                 { name: 'fade', transform: 'none', filter: 'none' },
                 { name: 'scale', transform: 'scale(0.7)', filter: 'none' },
                 { name: 'scale-up', transform: 'scale(0.5)', filter: 'none' },
@@ -354,7 +426,7 @@
             let isTransitioning = false;
             let intervalId = null;
             let cycleCount = 0;
-            let allItems = []; // se llena al inicio
+            let allItems = [];
 
             // =====================================================
             // FUNCIONES
@@ -364,17 +436,14 @@
             function collectItems() {
                 const items = [];
                 document.querySelectorAll('.anim-item').forEach(el => {
-                    // Determinar el slide padre
                     const slide = el.closest('.slide');
                     const slideIndex = parseInt(slide.dataset.slide);
-                    // Generar un ID único para este elemento
                     const elementType = el.dataset.element || 'unknown';
                     const id = `slide-${slideIndex}-${elementType}`;
                     items.push({
                         element: el,
                         slideIndex: slideIndex,
                         id: id,
-                        // Guardar el estado inicial de transform y filter para poder resetear
                         initialTransform: el.style.transform || 'none',
                         initialFilter: el.style.filter || 'none',
                     });
@@ -384,21 +453,18 @@
 
             // Asignar efectos únicos a cada elemento (sin repetir en el ciclo)
             function assignUniqueEffects() {
-                // Barajar la lista de efectos
                 const shuffled = [...EFFECT_TYPES];
                 for (let i = shuffled.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
                 }
 
-                // Si hay más elementos que efectos, repetimos la lista barajada
                 const totalItems = allItems.length;
                 const assigned = [];
                 for (let i = 0; i < totalItems; i++) {
                     const effect = shuffled[i % shuffled.length];
-                    // Añadir variación de duración y retraso
-                    const duration = 0.6 + Math.random() * 0.8; // 0.6s a 1.4s
-                    const delay = Math.random() * 0.4; // 0 a 0.4s
+                    const duration = 0.6 + Math.random() * 0.8;
+                    const delay = Math.random() * 0.4;
                     assigned.push({
                         ...effect,
                         duration: duration,
@@ -406,45 +472,34 @@
                     });
                 }
 
-                // Barajar la asignación para que no sea secuencial
+                // Barajar asignación
                 for (let i = assigned.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [assigned[i], assigned[j]] = [assigned[j], assigned[i]];
                 }
 
-                // Aplicar a cada elemento
                 allItems.forEach((item, index) => {
                     const config = assigned[index % assigned.length];
                     const el = item.element;
 
-                    // Resetear estilos inline previos
                     el.style.transition = '';
                     el.style.transform = '';
                     el.style.filter = '';
                     el.style.opacity = '';
                     el.style.transitionDelay = '';
 
-                    // Configurar la transición con duración y retraso personalizados
                     el.style.transition =
                         `opacity ${config.duration}s cubic-bezier(0.22,0.61,0.36,1), ` +
                         `transform ${config.duration}s cubic-bezier(0.22,0.61,0.36,1), ` +
                         `filter ${config.duration}s cubic-bezier(0.22,0.61,0.36,1)`;
                     el.style.transitionDelay = config.delay + 's';
 
-                    // Almacenar el efecto en el elemento para usarlo al activar
                     el.dataset.effectTransform = config.transform;
                     el.dataset.effectFilter = config.filter;
                     el.dataset.effectDuration = config.duration;
                     el.dataset.effectDelay = config.delay;
 
-                    // Inicialmente, aplicamos el estado oculto con la transformación/filtro
-                    // pero no lo activamos hasta que el slide se vuelva activo
-                    // Para evitar que se vea antes de tiempo, lo dejamos en opacidad 0 y su transformación inicial.
-                    // Pero la clase .visible se aplicará cuando el slide esté activo.
-                    // Aquí solo preparamos el estado inicial.
-                    // La clase .visible se añadirá cuando el slide se active.
                     el.classList.remove('visible');
-                    // Aplicamos el estado inicial (oculto)
                     el.style.opacity = '0';
                     if (config.transform !== 'none') {
                         el.style.transform = config.transform;
@@ -459,22 +514,16 @@
                 });
             }
 
-            // Activar un slide (mostrar sus elementos con sus animaciones)
+            // Activar un slide (mostrar sus elementos con animaciones)
             function activateSlide(index) {
                 const slide = SLIDES[index];
                 const items = slide.querySelectorAll('.anim-item');
 
-                // Pequeño retraso escalonado para cada elemento (ya tienen su propio delay)
-                // Pero necesitamos añadir la clase 'visible' después de que el slide sea visible
-                // El slide ya tiene la clase 'active' para ser visible (opacidad 1)
-                // Ahora activamos los elementos con un pequeño retraso base (0.1s) para que no sean instantáneos
                 items.forEach((el, i) => {
-                    // El retraso ya está en el style, pero añadimos un pequeño offset adicional
                     const baseDelay = 0.1;
                     const extraDelay = parseFloat(el.dataset.effectDelay) || 0;
                     const totalDelay = baseDelay + extraDelay;
 
-                    // Aplicamos la clase 'visible' después del retraso
                     setTimeout(() => {
                         el.classList.add('visible');
                     }, totalDelay * 1000);
@@ -487,7 +536,6 @@
                 const items = slide.querySelectorAll('.anim-item');
                 items.forEach(el => {
                     el.classList.remove('visible');
-                    // Forzar a estado oculto
                     const transform = el.dataset.effectTransform || 'none';
                     const filter = el.dataset.effectFilter || 'none';
                     el.style.opacity = '0';
@@ -512,27 +560,18 @@
 
                 isTransitioning = true;
 
-                // Desactivar slide actual
                 deactivateSlide(current);
-
-                // Quitar active del actual
                 SLIDES[current].classList.remove('active');
 
-                // Activar nuevo slide
                 current = index;
                 SLIDES[current].classList.add('active');
-
-                // Activar elementos del nuevo slide (con animaciones)
                 activateSlide(current);
 
-                // Actualizar barra
                 updateProgress();
 
-                // Overlay: color sutil
                 const alpha = 0.2 + Math.random() * 0.25;
                 OVERLAY.style.background = `rgba(10,10,12,${alpha})`;
 
-                // Desbloquear tras transición
                 setTimeout(() => {
                     isTransitioning = false;
                 }, 1200);
@@ -542,48 +581,44 @@
             function nextSlide() {
                 const next = (current + 1) % TOTAL;
                 goToSlide(next);
-                // Si completamos un ciclo, regeneramos todas las animaciones
                 if (next === 0) {
                     cycleCount++;
-                    // Esperar a que termine la transición del último slide antes de regenerar
                     setTimeout(() => {
-                        // Recolectar elementos nuevamente (por si cambia el DOM)
                         allItems = collectItems();
-                        // Asignar nuevos efectos únicos
                         assignUniqueEffects();
-                        // Re-aplicar el estado inicial al slide actual (que es el 0)
-                        // Pero como el slide 0 ya está activo, necesitamos re-aplicar sus animaciones
-                        // Desactivar y reactivar el slide 0 para que los elementos se animen con los nuevos efectos
-                        // Sin embargo, el slide 0 ya está activo. Lo que hacemos es forzar la actualización.
-                        // Una opción: desactivar y activar nuevamente el slide 0.
-                        // Pero mejor, simplemente re-aplicamos las animaciones a los elementos del slide 0.
-                        // Para simplificar, desactivamos y activamos el slide 0.
+                        // Re-aplicar estado al slide 0
                         deactivateSlide(0);
-                        // Pequeña espera para que se resetee
                         setTimeout(() => {
-                            // Aplicar los nuevos estados ocultos (ya están en assignUniqueEffects)
-                            // Pero necesitamos asegurar que el slide 0 tenga sus elementos en estado oculto
-                            // y luego activarlos con las nuevas animaciones.
-                            // activateSlide(0) se encarga de eso, pero primero debemos asegurar que los elementos
-                            // tengan los estilos iniciales correctos.
-                            // Ya están aplicados en assignUniqueEffects.
-                            // Ahora activamos el slide 0 nuevamente
+                            // Asegurar que los elementos del slide 0 tengan los estilos iniciales correctos
+                            const slide0Items = SLIDES[0].querySelectorAll('.anim-item');
+                            slide0Items.forEach(el => {
+                                const transform = el.dataset.effectTransform || 'none';
+                                const filter = el.dataset.effectFilter || 'none';
+                                el.style.opacity = '0';
+                                if (transform !== 'none') {
+                                    el.style.transform = transform;
+                                } else {
+                                    el.style.transform = 'none';
+                                }
+                                if (filter !== 'none') {
+                                    el.style.filter = filter;
+                                } else {
+                                    el.style.filter = 'none';
+                                }
+                            });
                             activateSlide(0);
                         }, 50);
                     }, 500);
                 }
             }
 
-            // Actualizar barra de progreso
             function updateProgress() {
                 const progress = ((current + 1) / TOTAL) * 100;
                 PROGRESS_FILL.style.width = progress + '%';
             }
 
-            // Reiniciar temporizador con duración variable
             function resetTimer() {
                 if (intervalId) clearInterval(intervalId);
-                // Duración con variación aleatoria
                 const variation = 400 + Math.random() * 600;
                 const duration = BASE_DURATION + variation;
                 intervalId = setInterval(nextSlide, duration);
@@ -593,30 +628,23 @@
             // INICIALIZACIÓN
             // =====================================================
             function init() {
-                // Recolectar todos los elementos animables
                 allItems = collectItems();
-
-                // Asignar efectos únicos
                 assignUniqueEffects();
 
-                // Poner primer slide activo
                 SLIDES[0].classList.add('active');
-                // Activar elementos del primer slide
                 activateSlide(0);
                 updateProgress();
-
-                // Iniciar temporizador
                 resetTimer();
 
-                // Overlay inicial
                 OVERLAY.style.background = 'rgba(10,10,12,0.25)';
 
-                console.log('🎬 Spot Windsor — Animaciones únicas por elemento');
-                console.log(`   ${allItems.length} elementos animables · ${TOTAL} slides`);
+                console.log('🎬 Windsor Spot — ' + TOTAL + ' slides');
+                console.log('   ' + allItems.length + ' elementos animables');
+                console.log('   Cada elemento tiene su propia animación única');
             }
 
             // =====================================================
-            // INTERACCIÓN DEL USUARIO
+            // INTERACCIÓN
             // =====================================================
             function handleInteraction() {
                 resetTimer();
@@ -640,10 +668,8 @@
                 }
             });
 
-            // Arrancar
             init();
 
-            // Exponer para depuración
             window.spot = {
                 next: nextSlide,
                 goTo: goToSlide,
