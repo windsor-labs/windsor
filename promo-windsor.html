@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UNIVO - INICIO</title>
+    <title>Windsor — Spot</title>
     <style>
         /* =========================================================
-           WINDSOR SPOT — LARGO, SIN REPETICIÓN
-           Mínimo texto, máximo impacto visual.
+           WINDSOR SPOT — INFINITO CON ANIMACIONES VARIABLES
+           Sin dependencias externas. Cada ciclo es único.
         ========================================================== */
         * {
             margin: 0;
@@ -32,7 +32,7 @@
             background: #0a0a0c;
         }
 
-        /* Fondo con textura sutil de ruido (efecto cinematográfico) */
+        /* Ruido de fondo (cinematográfico) */
         .spot-noise {
             position: absolute;
             inset: 0;
@@ -43,17 +43,16 @@
             background-size: 256px 256px;
         }
 
-        /* Overlay dinámico (color que cambia sutilmente) */
+        /* Overlay dinámico (color cambia) */
         .spot-overlay {
             position: absolute;
             inset: 0;
             z-index: 1;
             background: rgba(10, 10, 12, 0.3);
-            backdrop-filter: blur(1px);
             transition: background 1.2s ease;
         }
 
-        /* Slides container */
+        /* Slides */
         .slides {
             position: relative;
             z-index: 2;
@@ -71,7 +70,6 @@
             padding: 2rem;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 1s ease, visibility 1s ease, transform 1s ease;
             will-change: transform, opacity;
         }
 
@@ -84,17 +82,90 @@
             max-width: 720px;
             padding: 0 1.5rem;
             opacity: 0;
-            transform: scale(0.94) translateY(20px);
-            transition: opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
-                        transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+            will-change: transform, opacity;
         }
 
         .slide.active .slide-content {
             opacity: 1;
-            transform: scale(1) translateY(0);
         }
 
-        /* Estilos de cada slide */
+        /* =========================================================
+           ANIMACIONES DE ENTRADA (se asignan dinámicamente)
+        ========================================================== */
+        .anim-fade .slide-content {
+            transition: opacity 0.9s ease;
+            transform: none;
+        }
+        .anim-fade.active .slide-content {
+            opacity: 1;
+        }
+
+        .anim-scale .slide-content {
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transform: scale(0.8);
+        }
+        .anim-scale.active .slide-content {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .anim-slide-up .slide-content {
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transform: translateY(40px);
+        }
+        .anim-slide-up.active .slide-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .anim-slide-down .slide-content {
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transform: translateY(-40px);
+        }
+        .anim-slide-down.active .slide-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .anim-slide-left .slide-content {
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transform: translateX(40px);
+        }
+        .anim-slide-left.active .slide-content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .anim-slide-right .slide-content {
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transform: translateX(-40px);
+        }
+        .anim-slide-right.active .slide-content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .anim-rotate .slide-content {
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transform: rotate(-6deg) scale(0.9);
+        }
+        .anim-rotate.active .slide-content {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .anim-blur .slide-content {
+            transition: opacity 0.9s ease, filter 0.9s ease;
+            filter: blur(8px);
+        }
+        .anim-blur.active .slide-content {
+            opacity: 1;
+            filter: blur(0);
+        }
+
+        /* =========================================================
+           ESTILOS DE CONTENIDO (fijos)
+        ========================================================== */
         .slide-icon {
             font-size: clamp(3.5rem, 10vw, 6rem);
             line-height: 1;
@@ -125,7 +196,7 @@
             letter-spacing: 0.04em;
         }
 
-        /* Slide 0: Logo W */
+        /* Slide 0: Logo especial */
         .slide-0 .slide-logo {
             font-size: clamp(6rem, 18vw, 12rem);
             font-weight: 900;
@@ -152,17 +223,7 @@
             display: inline-block;
         }
 
-        /* Colores de fondo por slide (cambian sutilmente) */
-        .slide-0 { background: #0a0a0c; }
-        .slide-1 { background: #0d1420; }
-        .slide-2 { background: #0f1a2a; }
-        .slide-3 { background: #0d1825; }
-        .slide-4 { background: #111a28; }
-        .slide-5 { background: #0e1724; }
-        .slide-6 { background: #0c1622; }
-        .slide-7 { background: #0a0a0c; }
-
-        /* Slide final: sin icono, solo mensaje */
+        /* Slide final: sin icono */
         .slide-7 .slide-title {
             font-size: clamp(3rem, 10vw, 6rem);
         }
@@ -220,19 +281,16 @@
 
     <div class="spot">
 
-        <!-- Ruido de fondo -->
         <div class="spot-noise"></div>
-
-        <!-- Overlay dinámico -->
         <div class="spot-overlay" id="overlay"></div>
 
         <!-- =====================================================
-             SLIDES (8 cortes)
+             SLIDES (8 cortes, contenido fijo)
         ====================================================== -->
         <div class="slides" id="slides">
 
             <!-- 0. LOGO -->
-            <div class="slide slide-0 active" data-slide="0">
+            <div class="slide slide-0" data-slide="0">
                 <div class="slide-content">
                     <div class="slide-logo">W</div>
                     <div class="slide-tag">Precisión aplicada</div>
@@ -257,7 +315,7 @@
                 </div>
             </div>
 
-            <!-- 3. Desarrollamos productos digitales -->
+            <!-- 3. Productos digitales -->
             <div class="slide slide-3" data-slide="3">
                 <div class="slide-content">
                     <span class="slide-icon">⌘</span>
@@ -275,7 +333,7 @@
                 </div>
             </div>
 
-            <!-- 5. Talento y formación -->
+            <!-- 5. Talento -->
             <div class="slide slide-5" data-slide="5">
                 <div class="slide-content">
                     <span class="slide-icon">⚡</span>
@@ -315,129 +373,214 @@
     </div>
 
     <!-- =========================================================
-         SCRIPT — CONTROL DE SLIDES SIN REPETICIÓN
+         SCRIPT — BUCLE INFINITO CON ANIMACIONES VARIABLES
     ========================================================== -->
     <script>
         (function() {
             'use strict';
 
-            const slides = document.querySelectorAll('.slide');
-            const total = slides.length;
+            // =====================================================
+            // CONFIGURACIÓN
+            // =====================================================
+            const SLIDES = document.querySelectorAll('.slide');
+            const TOTAL = SLIDES.length;
+            const PROGRESS_FILL = document.getElementById('progressFill');
+            const OVERLAY = document.getElementById('overlay');
+
+            // Duración por slide (ms) — se puede variar aleatoriamente
+            const BASE_DURATION = 3200;
+            const VARIATION = 600; // ±600ms
+
+            // Lista de animaciones disponibles
+            const ANIMATIONS = [
+                'anim-fade',
+                'anim-scale',
+                'anim-slide-up',
+                'anim-slide-down',
+                'anim-slide-left',
+                'anim-slide-right',
+                'anim-rotate',
+                'anim-blur'
+            ];
+
+            // Paleta de colores de fondo (se asignan aleatoriamente a cada slide en cada ciclo)
+            const BG_COLORS = [
+                '#0a0a0c',
+                '#0d1420',
+                '#0f1a2a',
+                '#0d1825',
+                '#111a28',
+                '#0e1724',
+                '#0c1622',
+                '#0a0a0c'
+            ];
+
+            // =====================================================
+            // ESTADO
+            // =====================================================
             let current = 0;
             let isTransitioning = false;
-            let finished = false;
+            let intervalId = null;
+            let cycleCount = 0;
 
-            const progressFill = document.getElementById('progressFill');
-            const overlay = document.getElementById('overlay');
+            // =====================================================
+            // FUNCIONES
+            // =====================================================
 
-            // Duración por slide (milisegundos) — 3.5 segundos cada uno = ~28 segundos total
-            const DURATION = 3500;
+            // Asignar animaciones aleatorias a cada slide
+            function randomizeAnimations() {
+                const available = [...ANIMATIONS];
+                // Barajar
+                for (let i = available.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [available[i], available[j]] = [available[j], available[i]];
+                }
 
-            // Función para cambiar a un slide específico
+                SLIDES.forEach((slide, index) => {
+                    // Quitar todas las clases de animación
+                    ANIMATIONS.forEach(cls => slide.classList.remove(cls));
+                    // Asignar una animación (rotando por la lista barajada)
+                    const animIndex = index % available.length;
+                    slide.classList.add(available[animIndex]);
+                    // Añadir un retraso aleatorio a los elementos internos (efecto cascada variable)
+                    const content = slide.querySelector('.slide-content');
+                    if (content) {
+                        const delay = Math.random() * 0.3 + 0.05; // entre 0.05s y 0.35s
+                        content.style.transitionDelay = delay + 's';
+                    }
+                });
+            }
+
+            // Asignar colores de fondo aleatorios a cada slide
+            function randomizeColors() {
+                const shuffled = [...BG_COLORS];
+                for (let i = shuffled.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                }
+                SLIDES.forEach((slide, index) => {
+                    const color = shuffled[index % shuffled.length];
+                    slide.style.background = color;
+                });
+            }
+
+            // Cambiar al slide indicado
             function goToSlide(index) {
                 if (isTransitioning) return;
                 if (index === current) return;
-                if (index < 0 || index >= total) return;
-                if (finished) return;
+                if (index < 0 || index >= TOTAL) return;
 
                 isTransitioning = true;
 
                 // Quitar active del actual
-                slides[current].classList.remove('active');
+                SLIDES[current].classList.remove('active');
 
-                // Activar el nuevo
+                // Activar nuevo
                 current = index;
-                slides[current].classList.add('active');
+                SLIDES[current].classList.add('active');
 
-                // Actualizar barra de progreso
+                // Actualizar barra
                 updateProgress();
 
-                // Cambiar overlay de color (sutil)
-                if (current === 0) {
-                    overlay.style.background = 'rgba(10,10,12,0.3)';
-                } else if (current === total - 1) {
-                    overlay.style.background = 'rgba(10,10,12,0.5)';
-                } else {
-                    overlay.style.background = 'rgba(10,10,12,0.25)';
-                }
+                // Overlay: color sutil
+                const alpha = 0.2 + Math.random() * 0.25;
+                OVERLAY.style.background = `rgba(10,10,12,${alpha})`;
 
-                // Desbloquear después de la transición
-                setTimeout(function() {
+                // Desbloquear tras transición
+                setTimeout(() => {
                     isTransitioning = false;
                 }, 1000);
             }
 
-            // Actualizar barra de progreso
-            function updateProgress() {
-                const progress = ((current + 1) / total) * 100;
-                progressFill.style.width = progress + '%';
-            }
-
             // Avanzar al siguiente slide
             function nextSlide() {
-                if (finished) return;
-                const next = current + 1;
-                if (next < total) {
-                    goToSlide(next);
-                } else {
-                    // Último slide: terminamos el spot
-                    finishSpot();
+                const next = (current + 1) % TOTAL;
+                goToSlide(next);
+                // Si completamos un ciclo, regeneramos las animaciones para el próximo
+                if (next === 0) {
+                    cycleCount++;
+                    // Cambiamos animaciones y colores para el nuevo ciclo
+                    setTimeout(() => {
+                        randomizeAnimations();
+                        randomizeColors();
+                        // También variamos la duración del intervalo
+                        resetTimer();
+                    }, 500);
                 }
             }
 
-            // Finalizar el spot (se desvanece y se queda en negro)
-            function finishSpot() {
-                if (finished) return;
-                finished = true;
-                clearInterval(interval);
-
-                // Desvanecer todo hacia negro
-                overlay.style.background = 'rgba(10,10,12,1)';
-                overlay.style.transition = 'background 1.8s ease';
-
-                // Ocultar barra de progreso
-                document.querySelector('.progress-bar').style.opacity = '0';
-
-                // Después de 2 segundos, mostrar mensaje final o reiniciar (opcional)
-                // Aquí solo se queda en negro.
-                console.log('🏁 Spot finalizado.');
+            // Actualizar barra de progreso
+            function updateProgress() {
+                const progress = ((current + 1) / TOTAL) * 100;
+                PROGRESS_FILL.style.width = progress + '%';
             }
 
-            // Iniciar bucle automático
-            let interval = setInterval(nextSlide, DURATION);
-
-            // Reiniciar temporizador si el usuario interactúa
+            // Reiniciar el temporizador con duración variable
             function resetTimer() {
-                if (finished) return;
-                clearInterval(interval);
-                interval = setInterval(nextSlide, DURATION);
+                if (intervalId) clearInterval(intervalId);
+                // Duración con variación aleatoria
+                const duration = BASE_DURATION + (Math.random() * VARIATION * 2 - VARIATION);
+                intervalId = setInterval(nextSlide, duration);
             }
 
-            // Detectar interacción (click, touch, tecla)
-            document.addEventListener('click', resetTimer);
-            document.addEventListener('touchstart', resetTimer);
+            // Inicializar todo
+            function init() {
+                // Asignar animaciones y colores aleatorios iniciales
+                randomizeAnimations();
+                randomizeColors();
+
+                // Poner primer slide activo
+                SLIDES[0].classList.add('active');
+                updateProgress();
+
+                // Iniciar temporizador
+                resetTimer();
+
+                // Overlay inicial
+                OVERLAY.style.background = 'rgba(10,10,12,0.3)';
+
+                console.log('🎬 Spot Windsor — Bucle infinito con animaciones variables');
+                console.log(`   ${TOTAL} slides · duración base ${BASE_DURATION}ms · cada ciclo es único`);
+            }
+
+            // =====================================================
+            // INTERACCIÓN DEL USUARIO (reinicia el temporizador)
+            // =====================================================
+            function handleInteraction() {
+                resetTimer();
+            }
+
+            document.addEventListener('click', handleInteraction);
+            document.addEventListener('touchstart', handleInteraction);
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowRight' || e.key === ' ') {
                     e.preventDefault();
                     resetTimer();
-                    // Avanzar manualmente
-                    if (!finished) nextSlide();
+                    nextSlide();
                 } else if (e.key === 'ArrowLeft') {
                     e.preventDefault();
                     resetTimer();
-                    if (!finished && current > 0) {
+                    if (current > 0) {
                         goToSlide(current - 1);
+                    } else {
+                        // Si estamos en el primero, ir al último
+                        goToSlide(TOTAL - 1);
                     }
                 }
             });
 
-            // Inicializar barra
-            updateProgress();
+            // Arrancar
+            init();
 
-            // Si se desea reiniciar automáticamente al terminar, se puede añadir un evento
-            // pero por ahora se queda en negro.
+            // Exponer para depuración
+            window.spot = {
+                next: nextSlide,
+                goTo: goToSlide,
+                current: () => current,
+                cycle: () => cycleCount,
+                randomize: randomizeAnimations
+            };
 
-            console.log('🎬 Spot Windsor — ' + total + ' cortes, duración aprox. ' + (total * DURATION / 1000) + 's');
         })();
     </script>
 
