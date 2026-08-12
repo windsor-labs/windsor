@@ -6,8 +6,8 @@
     <title>Windsor — Spot</title>
     <style>
         /* =========================================================
-           WINDSOR SPOT — INFINITO CON ANIMACIONES VARIABLES
-           Sin dependencias externas. Cada ciclo es único.
+           WINDSOR SPOT — CADA ELEMENTO TIENE SU PROPIA ANIMACIÓN
+           Sin dependencias externas. Bucle infinito.
         ========================================================== */
         * {
             margin: 0;
@@ -32,7 +32,6 @@
             background: #0a0a0c;
         }
 
-        /* Ruido de fondo (cinematográfico) */
         .spot-noise {
             position: absolute;
             inset: 0;
@@ -43,16 +42,14 @@
             background-size: 256px 256px;
         }
 
-        /* Overlay dinámico (color cambia) */
         .spot-overlay {
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: rgba(10, 10, 12, 0.3);
+            background: rgba(10, 10, 12, 0.25);
             transition: background 1.2s ease;
         }
 
-        /* Slides */
         .slides {
             position: relative;
             z-index: 2;
@@ -70,6 +67,7 @@
             padding: 2rem;
             opacity: 0;
             visibility: hidden;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
             will-change: transform, opacity;
         }
 
@@ -81,95 +79,31 @@
         .slide-content {
             max-width: 720px;
             padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* =========================================================
+           ELEMENTOS ANIMABLES (cada uno tiene su propia transición)
+        ========================================================== */
+        .anim-item {
             opacity: 0;
-            will-change: transform, opacity;
+            will-change: transform, opacity, filter;
+            transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
         }
 
-        .slide.active .slide-content {
-            opacity: 1;
+        .anim-item.visible {
+            opacity: 1 !important;
+            transform: translate(0, 0) scale(1) rotate(0deg) !important;
+            filter: blur(0px) !important;
         }
 
-        /* =========================================================
-           ANIMACIONES DE ENTRADA (se asignan dinámicamente)
-        ========================================================== */
-        .anim-fade .slide-content {
-            transition: opacity 0.9s ease;
-            transform: none;
-        }
-        .anim-fade.active .slide-content {
-            opacity: 1;
-        }
-
-        .anim-scale .slide-content {
-            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
-            transform: scale(0.8);
-        }
-        .anim-scale.active .slide-content {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .anim-slide-up .slide-content {
-            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
-            transform: translateY(40px);
-        }
-        .anim-slide-up.active .slide-content {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .anim-slide-down .slide-content {
-            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
-            transform: translateY(-40px);
-        }
-        .anim-slide-down.active .slide-content {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .anim-slide-left .slide-content {
-            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
-            transform: translateX(40px);
-        }
-        .anim-slide-left.active .slide-content {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .anim-slide-right .slide-content {
-            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
-            transform: translateX(-40px);
-        }
-        .anim-slide-right.active .slide-content {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .anim-rotate .slide-content {
-            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
-            transform: rotate(-6deg) scale(0.9);
-        }
-        .anim-rotate.active .slide-content {
-            opacity: 1;
-            transform: rotate(0deg) scale(1);
-        }
-
-        .anim-blur .slide-content {
-            transition: opacity 0.9s ease, filter 0.9s ease;
-            filter: blur(8px);
-        }
-        .anim-blur.active .slide-content {
-            opacity: 1;
-            filter: blur(0);
-        }
-
-        /* =========================================================
-           ESTILOS DE CONTENIDO (fijos)
-        ========================================================== */
+        /* Estilos específicos de contenido */
         .slide-icon {
             font-size: clamp(3.5rem, 10vw, 6rem);
             line-height: 1;
-            margin-bottom: 0.4rem;
             display: block;
         }
 
@@ -192,7 +126,6 @@
             font-size: clamp(0.9rem, 1.8vw, 1.3rem);
             font-weight: 300;
             color: rgba(255, 255, 255, 0.55);
-            margin-top: 0.3rem;
             letter-spacing: 0.04em;
         }
 
@@ -204,12 +137,6 @@
             letter-spacing: -0.06em;
             line-height: 1;
             text-shadow: 0 0 80px rgba(0, 109, 255, 0.15);
-            animation: pulseW 3s ease-in-out infinite;
-        }
-
-        @keyframes pulseW {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.04); }
         }
 
         .slide-0 .slide-tag {
@@ -217,18 +144,23 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.3);
-            margin-top: 0.3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
             padding-top: 0.6rem;
             display: inline-block;
         }
 
-        /* Slide final: sin icono */
+        /* Slide final */
         .slide-7 .slide-title {
             font-size: clamp(3rem, 10vw, 6rem);
         }
         .slide-7 .slide-title em {
             color: #006dff;
+        }
+        .slide-7 .slide-subtitle {
+            font-size: clamp(1rem, 2vw, 1.6rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.15em;
         }
 
         /* =========================================================
@@ -267,12 +199,15 @@
             .slide-7 .slide-title {
                 font-size: 2.4rem;
             }
+            .slide-content {
+                gap: 0.2rem;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.001ms !important;
+            .anim-item {
                 transition-duration: 0.001ms !important;
+                transition-delay: 0s !important;
             }
         }
     </style>
@@ -285,79 +220,79 @@
         <div class="spot-overlay" id="overlay"></div>
 
         <!-- =====================================================
-             SLIDES (8 cortes, contenido fijo)
+             SLIDES (8 cortes)
         ====================================================== -->
         <div class="slides" id="slides">
 
             <!-- 0. LOGO -->
             <div class="slide slide-0" data-slide="0">
                 <div class="slide-content">
-                    <div class="slide-logo">W</div>
-                    <div class="slide-tag">Precisión aplicada</div>
+                    <div class="slide-logo anim-item" data-element="logo">W</div>
+                    <div class="slide-tag anim-item" data-element="tag">Precisión aplicada</div>
                 </div>
             </div>
 
             <!-- 1. Evaluamos ideas -->
             <div class="slide slide-1" data-slide="1">
                 <div class="slide-content">
-                    <span class="slide-icon">💡</span>
-                    <div class="slide-title">Evaluamos <em>ideas</em></div>
-                    <div class="slide-sub">Investigación, mercado, viabilidad</div>
+                    <span class="slide-icon anim-item" data-element="icon">💡</span>
+                    <div class="slide-title anim-item" data-element="title">Evaluamos <em>ideas</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Investigación, mercado, viabilidad</div>
                 </div>
             </div>
 
             <!-- 2. Construimos marcas -->
             <div class="slide slide-2" data-slide="2">
                 <div class="slide-content">
-                    <span class="slide-icon">◆</span>
-                    <div class="slide-title">Construimos <em>marcas</em></div>
-                    <div class="slide-sub">Identidad, posicionamiento, personalidad</div>
+                    <span class="slide-icon anim-item" data-element="icon">◆</span>
+                    <div class="slide-title anim-item" data-element="title">Construimos <em>marcas</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Identidad, posicionamiento, personalidad</div>
                 </div>
             </div>
 
             <!-- 3. Productos digitales -->
             <div class="slide slide-3" data-slide="3">
                 <div class="slide-content">
-                    <span class="slide-icon">⌘</span>
-                    <div class="slide-title">Productos <em>digitales</em></div>
-                    <div class="slide-sub">Web, apps, experiencias interactivas</div>
+                    <span class="slide-icon anim-item" data-element="icon">⌘</span>
+                    <div class="slide-title anim-item" data-element="title">Productos <em>digitales</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Web, apps, experiencias interactivas</div>
                 </div>
             </div>
 
             <!-- 4. Orientación vocacional -->
             <div class="slide slide-4" data-slide="4">
                 <div class="slide-content">
-                    <span class="slide-icon">🎯</span>
-                    <div class="slide-title">Orientación <em>vocacional</em></div>
-                    <div class="slide-sub">Descubre tu perfil profesional</div>
+                    <span class="slide-icon anim-item" data-element="icon">🎯</span>
+                    <div class="slide-title anim-item" data-element="title">Orientación <em>vocacional</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Descubre tu perfil profesional</div>
                 </div>
             </div>
 
             <!-- 5. Talento -->
             <div class="slide slide-5" data-slide="5">
                 <div class="slide-content">
-                    <span class="slide-icon">⚡</span>
-                    <div class="slide-title">Talento <em>latinoamericano</em></div>
-                    <div class="slide-sub">Formación y desarrollo de profesionales</div>
+                    <span class="slide-icon anim-item" data-element="icon">⚡</span>
+                    <div class="slide-title anim-item" data-element="title">Talento <em>latinoamericano</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Formación y desarrollo de profesionales</div>
                 </div>
             </div>
 
             <!-- 6. Proyectos reales -->
             <div class="slide slide-6" data-slide="6">
                 <div class="slide-content">
-                    <span class="slide-icon">🔧</span>
-                    <div class="slide-title">Proyectos <em>reales</em></div>
-                    <div class="slide-sub">Colaboración, estrategia, ejecución</div>
+                    <span class="slide-icon anim-item" data-element="icon">🔧</span>
+                    <div class="slide-title anim-item" data-element="title">Proyectos <em>reales</em></div>
+                    <div class="slide-sub anim-item" data-element="sub">Colaboración, estrategia, ejecución</div>
                 </div>
             </div>
 
             <!-- 7. Cierre -->
             <div class="slide slide-7" data-slide="7">
                 <div class="slide-content">
-                    <div class="slide-title">
-                        <em>Windsor</em><br />
-                        <span style="font-size:0.6em; font-weight:300; color:rgba(255,255,255,0.4);">Precisión aplicada</span>
+                    <div class="slide-title anim-item" data-element="title">
+                        <em>Windsor</em>
                     </div>
+                    <div class="slide-subtitle anim-item" data-element="sub">Precisión aplicada</div>
                 </div>
             </div>
 
@@ -373,7 +308,7 @@
     </div>
 
     <!-- =========================================================
-         SCRIPT — BUCLE INFINITO CON ANIMACIONES VARIABLES
+         SCRIPT — ASIGNACIÓN ÚNICA DE ANIMACIONES POR ELEMENTO
     ========================================================== -->
     <script>
         (function() {
@@ -387,32 +322,29 @@
             const PROGRESS_FILL = document.getElementById('progressFill');
             const OVERLAY = document.getElementById('overlay');
 
-            // Duración por slide (ms) — se puede variar aleatoriamente
+            // Duración base por slide (ms) — variará ligeramente cada ciclo
             const BASE_DURATION = 3200;
-            const VARIATION = 600; // ±600ms
 
-            // Lista de animaciones disponibles
-            const ANIMATIONS = [
-                'anim-fade',
-                'anim-scale',
-                'anim-slide-up',
-                'anim-slide-down',
-                'anim-slide-left',
-                'anim-slide-right',
-                'anim-rotate',
-                'anim-blur'
-            ];
-
-            // Paleta de colores de fondo (se asignan aleatoriamente a cada slide en cada ciclo)
-            const BG_COLORS = [
-                '#0a0a0c',
-                '#0d1420',
-                '#0f1a2a',
-                '#0d1825',
-                '#111a28',
-                '#0e1724',
-                '#0c1622',
-                '#0a0a0c'
+            // =====================================================
+            // EFECTOS DISPONIBLES (para combinar)
+            // =====================================================
+            const EFFECT_TYPES = [
+                // Tipo: transform inicial, clase CSS
+                { name: 'fade', transform: 'none', filter: 'none' },
+                { name: 'scale', transform: 'scale(0.7)', filter: 'none' },
+                { name: 'scale-up', transform: 'scale(0.5)', filter: 'none' },
+                { name: 'slide-up', transform: 'translateY(50px)', filter: 'none' },
+                { name: 'slide-down', transform: 'translateY(-50px)', filter: 'none' },
+                { name: 'slide-left', transform: 'translateX(50px)', filter: 'none' },
+                { name: 'slide-right', transform: 'translateX(-50px)', filter: 'none' },
+                { name: 'rotate', transform: 'rotate(-8deg) scale(0.9)', filter: 'none' },
+                { name: 'rotate-alt', transform: 'rotate(8deg) scale(0.9)', filter: 'none' },
+                { name: 'blur', transform: 'none', filter: 'blur(8px)' },
+                { name: 'blur-scale', transform: 'scale(0.8)', filter: 'blur(6px)' },
+                { name: 'fade-up', transform: 'translateY(30px)', filter: 'none' },
+                { name: 'fade-down', transform: 'translateY(-30px)', filter: 'none' },
+                { name: 'zoom', transform: 'scale(1.2)', filter: 'none' },
+                { name: 'zoom-blur', transform: 'scale(1.3)', filter: 'blur(4px)' },
             ];
 
             // =====================================================
@@ -422,45 +354,153 @@
             let isTransitioning = false;
             let intervalId = null;
             let cycleCount = 0;
+            let allItems = []; // se llena al inicio
 
             // =====================================================
             // FUNCIONES
             // =====================================================
 
-            // Asignar animaciones aleatorias a cada slide
-            function randomizeAnimations() {
-                const available = [...ANIMATIONS];
-                // Barajar
-                for (let i = available.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [available[i], available[j]] = [available[j], available[i]];
-                }
-
-                SLIDES.forEach((slide, index) => {
-                    // Quitar todas las clases de animación
-                    ANIMATIONS.forEach(cls => slide.classList.remove(cls));
-                    // Asignar una animación (rotando por la lista barajada)
-                    const animIndex = index % available.length;
-                    slide.classList.add(available[animIndex]);
-                    // Añadir un retraso aleatorio a los elementos internos (efecto cascada variable)
-                    const content = slide.querySelector('.slide-content');
-                    if (content) {
-                        const delay = Math.random() * 0.3 + 0.05; // entre 0.05s y 0.35s
-                        content.style.transitionDelay = delay + 's';
-                    }
+            // Recoger todos los elementos animables
+            function collectItems() {
+                const items = [];
+                document.querySelectorAll('.anim-item').forEach(el => {
+                    // Determinar el slide padre
+                    const slide = el.closest('.slide');
+                    const slideIndex = parseInt(slide.dataset.slide);
+                    // Generar un ID único para este elemento
+                    const elementType = el.dataset.element || 'unknown';
+                    const id = `slide-${slideIndex}-${elementType}`;
+                    items.push({
+                        element: el,
+                        slideIndex: slideIndex,
+                        id: id,
+                        // Guardar el estado inicial de transform y filter para poder resetear
+                        initialTransform: el.style.transform || 'none',
+                        initialFilter: el.style.filter || 'none',
+                    });
                 });
+                return items;
             }
 
-            // Asignar colores de fondo aleatorios a cada slide
-            function randomizeColors() {
-                const shuffled = [...BG_COLORS];
+            // Asignar efectos únicos a cada elemento (sin repetir en el ciclo)
+            function assignUniqueEffects() {
+                // Barajar la lista de efectos
+                const shuffled = [...EFFECT_TYPES];
                 for (let i = shuffled.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
                 }
-                SLIDES.forEach((slide, index) => {
-                    const color = shuffled[index % shuffled.length];
-                    slide.style.background = color;
+
+                // Si hay más elementos que efectos, repetimos la lista barajada
+                const totalItems = allItems.length;
+                const assigned = [];
+                for (let i = 0; i < totalItems; i++) {
+                    const effect = shuffled[i % shuffled.length];
+                    // Añadir variación de duración y retraso
+                    const duration = 0.6 + Math.random() * 0.8; // 0.6s a 1.4s
+                    const delay = Math.random() * 0.4; // 0 a 0.4s
+                    assigned.push({
+                        ...effect,
+                        duration: duration,
+                        delay: delay,
+                    });
+                }
+
+                // Barajar la asignación para que no sea secuencial
+                for (let i = assigned.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [assigned[i], assigned[j]] = [assigned[j], assigned[i]];
+                }
+
+                // Aplicar a cada elemento
+                allItems.forEach((item, index) => {
+                    const config = assigned[index % assigned.length];
+                    const el = item.element;
+
+                    // Resetear estilos inline previos
+                    el.style.transition = '';
+                    el.style.transform = '';
+                    el.style.filter = '';
+                    el.style.opacity = '';
+                    el.style.transitionDelay = '';
+
+                    // Configurar la transición con duración y retraso personalizados
+                    el.style.transition =
+                        `opacity ${config.duration}s cubic-bezier(0.22,0.61,0.36,1), ` +
+                        `transform ${config.duration}s cubic-bezier(0.22,0.61,0.36,1), ` +
+                        `filter ${config.duration}s cubic-bezier(0.22,0.61,0.36,1)`;
+                    el.style.transitionDelay = config.delay + 's';
+
+                    // Almacenar el efecto en el elemento para usarlo al activar
+                    el.dataset.effectTransform = config.transform;
+                    el.dataset.effectFilter = config.filter;
+                    el.dataset.effectDuration = config.duration;
+                    el.dataset.effectDelay = config.delay;
+
+                    // Inicialmente, aplicamos el estado oculto con la transformación/filtro
+                    // pero no lo activamos hasta que el slide se vuelva activo
+                    // Para evitar que se vea antes de tiempo, lo dejamos en opacidad 0 y su transformación inicial.
+                    // Pero la clase .visible se aplicará cuando el slide esté activo.
+                    // Aquí solo preparamos el estado inicial.
+                    // La clase .visible se añadirá cuando el slide se active.
+                    el.classList.remove('visible');
+                    // Aplicamos el estado inicial (oculto)
+                    el.style.opacity = '0';
+                    if (config.transform !== 'none') {
+                        el.style.transform = config.transform;
+                    } else {
+                        el.style.transform = 'none';
+                    }
+                    if (config.filter !== 'none') {
+                        el.style.filter = config.filter;
+                    } else {
+                        el.style.filter = 'none';
+                    }
+                });
+            }
+
+            // Activar un slide (mostrar sus elementos con sus animaciones)
+            function activateSlide(index) {
+                const slide = SLIDES[index];
+                const items = slide.querySelectorAll('.anim-item');
+
+                // Pequeño retraso escalonado para cada elemento (ya tienen su propio delay)
+                // Pero necesitamos añadir la clase 'visible' después de que el slide sea visible
+                // El slide ya tiene la clase 'active' para ser visible (opacidad 1)
+                // Ahora activamos los elementos con un pequeño retraso base (0.1s) para que no sean instantáneos
+                items.forEach((el, i) => {
+                    // El retraso ya está en el style, pero añadimos un pequeño offset adicional
+                    const baseDelay = 0.1;
+                    const extraDelay = parseFloat(el.dataset.effectDelay) || 0;
+                    const totalDelay = baseDelay + extraDelay;
+
+                    // Aplicamos la clase 'visible' después del retraso
+                    setTimeout(() => {
+                        el.classList.add('visible');
+                    }, totalDelay * 1000);
+                });
+            }
+
+            // Desactivar un slide (ocultar elementos)
+            function deactivateSlide(index) {
+                const slide = SLIDES[index];
+                const items = slide.querySelectorAll('.anim-item');
+                items.forEach(el => {
+                    el.classList.remove('visible');
+                    // Forzar a estado oculto
+                    const transform = el.dataset.effectTransform || 'none';
+                    const filter = el.dataset.effectFilter || 'none';
+                    el.style.opacity = '0';
+                    if (transform !== 'none') {
+                        el.style.transform = transform;
+                    } else {
+                        el.style.transform = 'none';
+                    }
+                    if (filter !== 'none') {
+                        el.style.filter = filter;
+                    } else {
+                        el.style.filter = 'none';
+                    }
                 });
             }
 
@@ -472,12 +512,18 @@
 
                 isTransitioning = true;
 
+                // Desactivar slide actual
+                deactivateSlide(current);
+
                 // Quitar active del actual
                 SLIDES[current].classList.remove('active');
 
-                // Activar nuevo
+                // Activar nuevo slide
                 current = index;
                 SLIDES[current].classList.add('active');
+
+                // Activar elementos del nuevo slide (con animaciones)
+                activateSlide(current);
 
                 // Actualizar barra
                 updateProgress();
@@ -489,22 +535,41 @@
                 // Desbloquear tras transición
                 setTimeout(() => {
                     isTransitioning = false;
-                }, 1000);
+                }, 1200);
             }
 
             // Avanzar al siguiente slide
             function nextSlide() {
                 const next = (current + 1) % TOTAL;
                 goToSlide(next);
-                // Si completamos un ciclo, regeneramos las animaciones para el próximo
+                // Si completamos un ciclo, regeneramos todas las animaciones
                 if (next === 0) {
                     cycleCount++;
-                    // Cambiamos animaciones y colores para el nuevo ciclo
+                    // Esperar a que termine la transición del último slide antes de regenerar
                     setTimeout(() => {
-                        randomizeAnimations();
-                        randomizeColors();
-                        // También variamos la duración del intervalo
-                        resetTimer();
+                        // Recolectar elementos nuevamente (por si cambia el DOM)
+                        allItems = collectItems();
+                        // Asignar nuevos efectos únicos
+                        assignUniqueEffects();
+                        // Re-aplicar el estado inicial al slide actual (que es el 0)
+                        // Pero como el slide 0 ya está activo, necesitamos re-aplicar sus animaciones
+                        // Desactivar y reactivar el slide 0 para que los elementos se animen con los nuevos efectos
+                        // Sin embargo, el slide 0 ya está activo. Lo que hacemos es forzar la actualización.
+                        // Una opción: desactivar y activar nuevamente el slide 0.
+                        // Pero mejor, simplemente re-aplicamos las animaciones a los elementos del slide 0.
+                        // Para simplificar, desactivamos y activamos el slide 0.
+                        deactivateSlide(0);
+                        // Pequeña espera para que se resetee
+                        setTimeout(() => {
+                            // Aplicar los nuevos estados ocultos (ya están en assignUniqueEffects)
+                            // Pero necesitamos asegurar que el slide 0 tenga sus elementos en estado oculto
+                            // y luego activarlos con las nuevas animaciones.
+                            // activateSlide(0) se encarga de eso, pero primero debemos asegurar que los elementos
+                            // tengan los estilos iniciales correctos.
+                            // Ya están aplicados en assignUniqueEffects.
+                            // Ahora activamos el slide 0 nuevamente
+                            activateSlide(0);
+                        }, 50);
                     }, 500);
                 }
             }
@@ -515,36 +580,43 @@
                 PROGRESS_FILL.style.width = progress + '%';
             }
 
-            // Reiniciar el temporizador con duración variable
+            // Reiniciar temporizador con duración variable
             function resetTimer() {
                 if (intervalId) clearInterval(intervalId);
                 // Duración con variación aleatoria
-                const duration = BASE_DURATION + (Math.random() * VARIATION * 2 - VARIATION);
+                const variation = 400 + Math.random() * 600;
+                const duration = BASE_DURATION + variation;
                 intervalId = setInterval(nextSlide, duration);
             }
 
-            // Inicializar todo
+            // =====================================================
+            // INICIALIZACIÓN
+            // =====================================================
             function init() {
-                // Asignar animaciones y colores aleatorios iniciales
-                randomizeAnimations();
-                randomizeColors();
+                // Recolectar todos los elementos animables
+                allItems = collectItems();
+
+                // Asignar efectos únicos
+                assignUniqueEffects();
 
                 // Poner primer slide activo
                 SLIDES[0].classList.add('active');
+                // Activar elementos del primer slide
+                activateSlide(0);
                 updateProgress();
 
                 // Iniciar temporizador
                 resetTimer();
 
                 // Overlay inicial
-                OVERLAY.style.background = 'rgba(10,10,12,0.3)';
+                OVERLAY.style.background = 'rgba(10,10,12,0.25)';
 
-                console.log('🎬 Spot Windsor — Bucle infinito con animaciones variables');
-                console.log(`   ${TOTAL} slides · duración base ${BASE_DURATION}ms · cada ciclo es único`);
+                console.log('🎬 Spot Windsor — Animaciones únicas por elemento');
+                console.log(`   ${allItems.length} elementos animables · ${TOTAL} slides`);
             }
 
             // =====================================================
-            // INTERACCIÓN DEL USUARIO (reinicia el temporizador)
+            // INTERACCIÓN DEL USUARIO
             // =====================================================
             function handleInteraction() {
                 resetTimer();
@@ -563,7 +635,6 @@
                     if (current > 0) {
                         goToSlide(current - 1);
                     } else {
-                        // Si estamos en el primero, ir al último
                         goToSlide(TOTAL - 1);
                     }
                 }
@@ -578,7 +649,7 @@
                 goTo: goToSlide,
                 current: () => current,
                 cycle: () => cycleCount,
-                randomize: randomizeAnimations
+                reAssign: assignUniqueEffects
             };
 
         })();
