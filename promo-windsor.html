@@ -6,9 +6,8 @@
     <title>Windsor — Spot</title>
     <style>
         /* =========================================================
-           WINDSOR SPOT — TODOS LOS SERVICIOS
-           Cada elemento tiene su propia animación única
-           Sin dependencias externas
+           WINDSOR SPOT — NARRATIVA COMPLETA
+           Sin emojis · Colores por contexto · Iconos SVG
         ========================================================== */
         * {
             margin: 0;
@@ -30,7 +29,6 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
-            background: #0a0a0c;
         }
 
         .spot-noise {
@@ -47,7 +45,7 @@
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: rgba(10, 10, 12, 0.25);
+            background: rgba(10, 10, 12, 0.15);
             transition: background 1.2s ease;
         }
 
@@ -68,7 +66,7 @@
             padding: 2rem;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            transition: opacity 0.9s ease, visibility 0.9s ease;
             will-change: transform, opacity;
         }
 
@@ -83,7 +81,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.4rem;
         }
 
         /* =========================================================
@@ -101,13 +99,30 @@
             filter: blur(0px) !important;
         }
 
-        /* Estilos de contenido */
+        /* =========================================================
+           ICONOS SVG
+        ========================================================== */
         .slide-icon {
-            font-size: clamp(3.5rem, 10vw, 6rem);
-            line-height: 1;
             display: block;
+            width: clamp(64px, 12vw, 96px);
+            height: clamp(64px, 12vw, 96px);
+            margin-bottom: 0.2rem;
         }
 
+        .slide-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .slide-icon .fill-none { fill: none; }
+        .slide-icon .fill-current { fill: currentColor; }
+
+        /* =========================================================
+           TIPOGRAFÍA
+        ========================================================== */
         .slide-title {
             font-size: clamp(2rem, 6vw, 3.8rem);
             font-weight: 800;
@@ -116,7 +131,6 @@
         }
 
         .slide-title em {
-            color: #31e083;
             font-style: normal;
             text-decoration: underline;
             text-decoration-thickness: 0.06em;
@@ -126,51 +140,33 @@
         .slide-sub {
             font-size: clamp(0.9rem, 1.8vw, 1.3rem);
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.55);
             letter-spacing: 0.04em;
+            opacity: 0.75;
         }
 
         .slide-meta {
             font-size: clamp(0.7rem, 1.2vw, 0.95rem);
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.3);
             letter-spacing: 0.08em;
-            margin-top: 0.1rem;
+            opacity: 0.4;
+            margin-top: 0.2rem;
         }
 
-        /* Slide 0: Logo especial */
-        .slide-0 .slide-logo {
-            font-size: clamp(6rem, 18vw, 12rem);
-            font-weight: 900;
-            color: #006dff;
-            letter-spacing: -0.06em;
-            line-height: 1;
-            text-shadow: 0 0 80px rgba(0, 109, 255, 0.15);
-        }
-
-        .slide-0 .slide-tag {
-            font-size: clamp(0.7rem, 1.5vw, 1rem);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.3);
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding-top: 0.6rem;
-            display: inline-block;
-        }
-
-        /* Slide final */
-        .slide-final .slide-title {
-            font-size: clamp(3rem, 10vw, 6rem);
-        }
-        .slide-final .slide-title em {
-            color: #006dff;
-        }
-        .slide-final .slide-subtitle {
-            font-size: clamp(1rem, 2vw, 1.6rem);
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.3);
+        .slide-badge {
+            font-size: clamp(0.6rem, 1vw, 0.8rem);
+            font-weight: 600;
             letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.3rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            margin-bottom: 0.3rem;
         }
+
+        /* =========================================================
+           COLORES POR CONTEXTO (se asignan a cada slide)
+        ========================================================== */
+        /* Los colores se aplican directamente al estilo inline de cada slide */
 
         /* =========================================================
            BARRA DE PROGRESO
@@ -200,13 +196,8 @@
                 font-size: 2rem;
             }
             .slide-icon {
-                font-size: 3rem;
-            }
-            .slide-0 .slide-logo {
-                font-size: 4.5rem;
-            }
-            .slide-final .slide-title {
-                font-size: 2.4rem;
+                width: 48px;
+                height: 48px;
             }
             .slide-content {
                 gap: 0.2rem;
@@ -229,143 +220,237 @@
         <div class="spot-overlay" id="overlay"></div>
 
         <!-- =====================================================
-             SLIDES — TODOS LOS SERVICIOS DE WINDSOR
+             SLIDES — NARRATIVA COMPLETA DE WINDSOR
         ====================================================== -->
         <div class="slides" id="slides">
 
-            <!-- 0. LOGO -->
-            <div class="slide slide-0" data-slide="0">
+            <!-- 0. LOGO (fondo negro) -->
+            <div class="slide slide-0" data-slide="0" style="background:#0a0a0c;">
                 <div class="slide-content">
-                    <div class="slide-logo anim-item" data-element="logo">W</div>
-                    <div class="slide-tag anim-item" data-element="tag">Precisión aplicada</div>
+                    <div class="slide-logo anim-item" data-element="logo" style="font-size:clamp(6rem,18vw,12rem); font-weight:900; color:#006dff; letter-spacing:-0.06em; line-height:1; text-shadow:0 0 80px rgba(0,109,255,0.15);">W</div>
+                    <div class="slide-badge anim-item" data-element="badge" style="color:rgba(255,255,255,0.3); border-color:rgba(255,255,255,0.08);">Precisión aplicada</div>
                 </div>
             </div>
 
-            <!-- 1. Evaluación de proyectos -->
-            <div class="slide slide-1" data-slide="1">
+            <!-- 1. Evaluación de proyectos (azul profundo) -->
+            <div class="slide slide-1" data-slide="1" style="background:#0d1a2e;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">🔍</span>
-                    <div class="slide-title anim-item" data-element="title">Evaluación <em>de proyectos</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Ideas · Mercado · Competencia</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#4a9eff;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <circle cx="32" cy="32" r="24" stroke-width="1.5"/>
+                            <path d="M32 8v6M32 50v6M8 32h6M50 32h6M12 12l4 4M48 48l-4-4M12 52l4-4M48 16l-4 4" stroke-width="1.2"/>
+                            <circle cx="32" cy="32" r="8" stroke-width="1.5"/>
+                            <path d="M32 24v16M24 32h16" stroke-width="1.5"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#4a9eff;">Evaluación <em style="color:#31e083;">de proyectos</em></div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Ideas · Mercado · Viabilidad</div>
                 </div>
             </div>
 
-            <!-- 2. Arquitectura de marca -->
-            <div class="slide slide-2" data-slide="2">
+            <!-- 2. Arquitectura de marca (púrpura) -->
+            <div class="slide slide-2" data-slide="2" style="background:#1a0d2e;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">◆</span>
-                    <div class="slide-title anim-item" data-element="title">Arquitectura <em>de marca</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Naming · Identidad · Posicionamiento</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#a78bfa;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <path d="M8 56L56 8" stroke-width="1.5"/>
+                            <path d="M8 8L56 56" stroke-width="1.5"/>
+                            <circle cx="32" cy="32" r="8" stroke-width="1.5"/>
+                            <path d="M32 12v40M12 32h40" stroke-width="1.2" opacity="0.4"/>
+                            <path d="M20 20l8 12M44 44l-8-12M20 44l8-12M44 20l-8 12" stroke-width="1.2" opacity="0.4"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#a78bfa;">Arquitectura <em style="color:#31e083;">de marca</em></div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Naming · Identidad · Posicionamiento</div>
                 </div>
             </div>
 
-            <!-- 3. Auditorías digitales -->
-            <div class="slide slide-3" data-slide="3">
+            <!-- 3. Auditorías digitales (verde azulado) -->
+            <div class="slide slide-3" data-slide="3" style="background:#0d1f1a;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">📊</span>
-                    <div class="slide-title anim-item" data-element="title">Auditorías <em>digitales</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Redes · Web · UX · Presencia</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#34d399;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <rect x="8" y="12" width="48" height="40" rx="4" stroke-width="1.5"/>
+                            <path d="M8 28h48M8 40h48" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="20" cy="20" r="2" fill="currentColor" stroke="none"/>
+                            <circle cx="20" cy="32" r="2" fill="currentColor" stroke="none"/>
+                            <circle cx="20" cy="44" r="2" fill="currentColor" stroke="none"/>
+                            <path d="M32 20h18M32 32h18M32 44h12" stroke-width="1.2" opacity="0.4"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#34d399;">Auditorías <em style="color:#31e083;">digitales</em></div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Redes · Web · UX · Presencia</div>
                 </div>
             </div>
 
-            <!-- 4. Desarrollo digital -->
-            <div class="slide slide-4" data-slide="4">
+            <!-- 4. Desarrollo digital (azul brillante) -->
+            <div class="slide slide-4" data-slide="4" style="background:#0a1a2e;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">⌘</span>
-                    <div class="slide-title anim-item" data-element="title">Desarrollo <em>digital</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Web · Apps · IA</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#60a5fa;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <polyline points="24 16 8 32 24 48" stroke-width="1.5"/>
+                            <polyline points="40 16 56 32 40 48" stroke-width="1.5"/>
+                            <line x1="28" y1="12" x2="36" y2="52" stroke-width="1.5" opacity="0.4"/>
+                            <circle cx="32" cy="32" r="4" stroke-width="1.2"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#60a5fa;">Desarrollo <em style="color:#31e083;">digital</em></div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Web · Apps · IA · Experiencias</div>
                 </div>
             </div>
 
-            <!-- 5. Orientación vocacional -->
-            <div class="slide slide-5" data-slide="5">
+            <!-- 5. Orientación vocacional (naranja) -->
+            <div class="slide slide-5" data-slide="5" style="background:#2e1a0d;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">🎯</span>
-                    <div class="slide-title anim-item" data-element="title">Orientación <em>vocacional</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Kuder · Herrera · Personalidad</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#fbbf24;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <circle cx="32" cy="28" r="12" stroke-width="1.5"/>
+                            <path d="M20 40l-8 16M44 40l8 16M24 40l-4 16M40 40l4 16" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="32" cy="28" r="4" stroke-width="1.2"/>
+                            <path d="M28 22l8 12M36 22l-8 12" stroke-width="1.2" opacity="0.4"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#fbbf24;">Orientación <em style="color:#31e083;">vocacional</em></div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Intereses · Perfil · Futuro</div>
                 </div>
             </div>
 
-            <!-- 6. Windsor One -->
-            <div class="slide slide-6" data-slide="6">
+            <!-- 6. Windsor One (azul medio) -->
+            <div class="slide slide-6" data-slide="6" style="background:#0d1a2e;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">1️⃣</span>
-                    <div class="slide-title anim-item" data-element="title">Windsor <em>One</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Portafolios profesionales a medida</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#3b82f6;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <rect x="12" y="16" width="40" height="32" rx="2" stroke-width="1.5"/>
+                            <path d="M20 48v8M44 48v8" stroke-width="1.2" opacity="0.4"/>
+                            <path d="M12 28h40M12 36h40" stroke-width="1.2" opacity="0.3"/>
+                            <circle cx="32" cy="20" r="4" stroke-width="1.2"/>
+                            <path d="M28 20l8 8M36 20l-8 8" stroke-width="1.2" opacity="0.4"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#3b82f6;">Windsor <em style="color:#31e083;">One</em></div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Portafolios profesionales a medida</div>
                 </div>
             </div>
 
-            <!-- 7. BeQueer -->
-            <div class="slide slide-7" data-slide="7">
+            <!-- 7. BeQueer (arcoíris) -->
+            <div class="slide slide-7" data-slide="7" style="background:#1a0d0d;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">🏳️‍🌈</span>
-                    <div class="slide-title anim-item" data-element="title">BeQueer</div>
-                    <div class="slide-sub anim-item" data-element="sub">Diseño y tecnología con identidad</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#ec4899;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <path d="M32 8c-8 0-16 6-16 16 0 12 16 24 16 24s16-12 16-24c0-10-8-16-16-16z" stroke-width="1.5"/>
+                            <path d="M32 8c8 0 16 6 16 16 0 12-16 24-16 24s-16-12-16-24c0-10 8-16 16-16z" stroke-width="1.5" opacity="0.3"/>
+                            <circle cx="32" cy="24" r="4" stroke-width="1.2"/>
+                            <path d="M28 20l8 8M36 20l-8 8" stroke-width="1.2" opacity="0.4"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#ec4899;">BeQueer</div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Diseño y tecnología con identidad</div>
                 </div>
             </div>
 
-            <!-- 8. CIDE -->
-            <div class="slide slide-8" data-slide="8">
+            <!-- 8. CIDE (verde oscuro) -->
+            <div class="slide slide-8" data-slide="8" style="background:#0d1a1a;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">🚀</span>
-                    <div class="slide-title anim-item" data-element="title">CIDE</div>
-                    <div class="slide-sub anim-item" data-element="sub">Emprendimiento · Mentoría · Consultoría</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#10b981;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <path d="M32 12l20 12v16l-20 12-20-12V24l20-12z" stroke-width="1.5"/>
+                            <path d="M32 24v16M24 32h16" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="32" cy="32" r="4" stroke-width="1.2"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#10b981;">CIDE</div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Emprendimiento · Mentoría · Consultoría</div>
                 </div>
             </div>
 
-            <!-- 9. BK2 -->
-            <div class="slide slide-9" data-slide="9">
+            <!-- 9. BK2 (azul marino) -->
+            <div class="slide slide-9" data-slide="9" style="background:#0a1428;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">📚</span>
-                    <div class="slide-title anim-item" data-element="title">BK2</div>
-                    <div class="slide-sub anim-item" data-element="sub">Becas · Formación · Recursos</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#60a5fa;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <rect x="12" y="16" width="40" height="32" rx="2" stroke-width="1.5"/>
+                            <path d="M12 24h40M12 40h40" stroke-width="1.2" opacity="0.3"/>
+                            <line x1="32" y1="16" x2="32" y2="48" stroke-width="1.2" opacity="0.3"/>
+                            <circle cx="32" cy="32" r="4" stroke-width="1.2"/>
+                            <path d="M28 28l8 8M36 28l-8 8" stroke-width="1.2" opacity="0.4"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#60a5fa;">BK2</div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Becas · Formación · Recursos</div>
                 </div>
             </div>
 
-            <!-- 10. Windsor Careers -->
-            <div class="slide slide-10" data-slide="10">
+            <!-- 10. Windsor Careers (amarillo) -->
+            <div class="slide slide-10" data-slide="10" style="background:#1a1a0d;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">⚡</span>
-                    <div class="slide-title anim-item" data-element="title">Windsor <em>Careers</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Pasantías · Talento latinoamericano</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#f59e0b;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <circle cx="32" cy="32" r="20" stroke-width="1.5"/>
+                            <path d="M32 12v8M32 44v8M12 32h8M44 32h8M18 18l6 6M40 40l-6-6M18 46l6-6M40 18l-6 6" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="32" cy="32" r="4" stroke-width="1.2"/>
+                            <path d="M28 28l8 8M36 28l-8 8" stroke-width="1.2" opacity="0.4"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#f59e0b;">Windsor <em style="color:#31e083;">Careers</em></div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Pasantías · Talento latinoamericano</div>
                 </div>
             </div>
 
-            <!-- 11. Recomendados -->
-            <div class="slide slide-11" data-slide="11">
+            <!-- 11. Recomendados (púrpura claro) -->
+            <div class="slide slide-11" data-slide="11" style="background:#1a0d2e;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">⭐</span>
-                    <div class="slide-title anim-item" data-element="title">Recomendados</div>
-                    <div class="slide-sub anim-item" data-element="sub">Recursos curados para tu desarrollo</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#a78bfa;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <path d="M32 8l4 12 12 2-8 10 2 12-10-6-10 6 2-12-8-10 12-2 4-12z" stroke-width="1.5"/>
+                            <path d="M32 20v16M24 28h16" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="32" cy="32" r="3" stroke-width="1.2"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#a78bfa;">Recomendados</div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Recursos curados para tu desarrollo</div>
                 </div>
             </div>
 
-            <!-- 12. Metodología -->
-            <div class="slide slide-12" data-slide="12">
+            <!-- 12. Metodología (azul eléctrico) -->
+            <div class="slide slide-12" data-slide="12" style="background:#0a1a2e;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">◇</span>
-                    <div class="slide-title anim-item" data-element="title">Metodología <em>Windsor</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Entender · Definir · Construir · Refinar</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#3b82f6;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <polygon points="32 8 56 24 56 40 32 56 8 40 8 24 32 8" stroke-width="1.5"/>
+                            <circle cx="32" cy="32" r="10" stroke-width="1.2"/>
+                            <path d="M22 28l8 8M42 28l-8 8" stroke-width="1.2" opacity="0.4"/>
+                            <line x1="32" y1="22" x2="32" y2="42" stroke-width="1.2" opacity="0.3"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#3b82f6;">Metodología <em style="color:#31e083;">Windsor</em></div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Entender · Definir · Construir · Refinar</div>
                 </div>
             </div>
 
-            <!-- 13. Proyectos reales -->
-            <div class="slide slide-13" data-slide="13">
+            <!-- 13. Proyectos reales (verde) -->
+            <div class="slide slide-13" data-slide="13" style="background:#0d1f1a;">
                 <div class="slide-content">
-                    <span class="slide-icon anim-item" data-element="icon">🔧</span>
-                    <div class="slide-title anim-item" data-element="title">Proyectos <em>reales</em></div>
-                    <div class="slide-sub anim-item" data-element="sub">Colaboración · Estrategia · Ejecución</div>
+                    <span class="slide-icon anim-item" data-element="icon" style="color:#34d399;">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                            <rect x="12" y="20" width="40" height="32" rx="2" stroke-width="1.5"/>
+                            <path d="M24 20v-8a4 4 0 0 1 8 0v8M40 20v-8a4 4 0 0 0-8 0" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="32" cy="36" r="6" stroke-width="1.2"/>
+                            <path d="M26 36l4 4 8-8" stroke-width="1.5" opacity="0.6"/>
+                        </svg>
+                    </span>
+                    <div class="slide-title anim-item" data-element="title" style="color:#34d399;">Proyectos <em style="color:#31e083;">reales</em></div>
+                    <div class="slide-sub anim-item" data-element="sub" style="color:rgba(255,255,255,0.6);">Colaboración · Estrategia · Ejecución</div>
                 </div>
             </div>
 
-            <!-- 14. Cierre -->
-            <div class="slide slide-final" data-slide="14">
+            <!-- 14. Cierre (negro) -->
+            <div class="slide slide-14" data-slide="14" style="background:#0a0a0c;">
                 <div class="slide-content">
-                    <div class="slide-title anim-item" data-element="title">
-                        <em>Windsor</em>
+                    <div class="slide-title anim-item" data-element="title" style="font-size:clamp(3rem,10vw,6rem);">
+                        <em style="color:#006dff;">Windsor</em>
                     </div>
-                    <div class="slide-subtitle anim-item" data-element="sub">Precisión aplicada</div>
-                    <div class="slide-meta anim-item" data-element="meta">Laboratorio digital independiente</div>
+                    <div class="slide-sub anim-item" data-element="sub" style="font-size:clamp(1rem,2vw,1.6rem); color:rgba(255,255,255,0.3); letter-spacing:0.15em;">Precisión aplicada</div>
+                    <div class="slide-meta anim-item" data-element="meta">Espacio digital independiente</div>
                 </div>
             </div>
 
@@ -381,106 +466,64 @@
     </div>
 
     <!-- =========================================================
-         SCRIPT — ANIMACIONES ÚNICAS POR ELEMENTO
+         SCRIPT — CONTROL DE SLIDES
     ========================================================== -->
     <script>
         (function() {
             'use strict';
 
-            // =====================================================
-            // CONFIGURACIÓN
-            // =====================================================
             const SLIDES = document.querySelectorAll('.slide');
             const TOTAL = SLIDES.length;
             const PROGRESS_FILL = document.getElementById('progressFill');
             const OVERLAY = document.getElementById('overlay');
 
-            // Duración base por slide (ms)
-            const BASE_DURATION = 2800;
-
-            // =====================================================
-            // EFECTOS DISPONIBLES (para combinar)
-            // =====================================================
-            const EFFECT_TYPES = [
-                { name: 'fade', transform: 'none', filter: 'none' },
-                { name: 'scale', transform: 'scale(0.7)', filter: 'none' },
-                { name: 'scale-up', transform: 'scale(0.5)', filter: 'none' },
-                { name: 'slide-up', transform: 'translateY(50px)', filter: 'none' },
-                { name: 'slide-down', transform: 'translateY(-50px)', filter: 'none' },
-                { name: 'slide-left', transform: 'translateX(50px)', filter: 'none' },
-                { name: 'slide-right', transform: 'translateX(-50px)', filter: 'none' },
-                { name: 'rotate', transform: 'rotate(-8deg) scale(0.9)', filter: 'none' },
-                { name: 'rotate-alt', transform: 'rotate(8deg) scale(0.9)', filter: 'none' },
-                { name: 'blur', transform: 'none', filter: 'blur(8px)' },
-                { name: 'blur-scale', transform: 'scale(0.8)', filter: 'blur(6px)' },
-                { name: 'fade-up', transform: 'translateY(30px)', filter: 'none' },
-                { name: 'fade-down', transform: 'translateY(-30px)', filter: 'none' },
-                { name: 'zoom', transform: 'scale(1.2)', filter: 'none' },
-                { name: 'zoom-blur', transform: 'scale(1.3)', filter: 'blur(4px)' },
-            ];
-
-            // =====================================================
-            // ESTADO
-            // =====================================================
             let current = 0;
             let isTransitioning = false;
             let intervalId = null;
             let cycleCount = 0;
             let allItems = [];
 
-            // =====================================================
-            // FUNCIONES
-            // =====================================================
+            // Efectos disponibles
+            const EFFECTS = [
+                { transform: 'none', filter: 'none' },
+                { transform: 'scale(0.7)', filter: 'none' },
+                { transform: 'scale(0.5)', filter: 'none' },
+                { transform: 'translateY(50px)', filter: 'none' },
+                { transform: 'translateY(-50px)', filter: 'none' },
+                { transform: 'translateX(50px)', filter: 'none' },
+                { transform: 'translateX(-50px)', filter: 'none' },
+                { transform: 'rotate(-8deg) scale(0.9)', filter: 'none' },
+                { transform: 'rotate(8deg) scale(0.9)', filter: 'none' },
+                { transform: 'none', filter: 'blur(8px)' },
+                { transform: 'scale(0.8)', filter: 'blur(6px)' },
+                { transform: 'translateY(30px)', filter: 'none' },
+                { transform: 'translateY(-30px)', filter: 'none' },
+                { transform: 'scale(1.2)', filter: 'none' },
+                { transform: 'scale(1.3)', filter: 'blur(4px)' },
+            ];
 
-            // Recoger todos los elementos animables
             function collectItems() {
                 const items = [];
                 document.querySelectorAll('.anim-item').forEach(el => {
                     const slide = el.closest('.slide');
                     const slideIndex = parseInt(slide.dataset.slide);
-                    const elementType = el.dataset.element || 'unknown';
-                    const id = `slide-${slideIndex}-${elementType}`;
-                    items.push({
-                        element: el,
-                        slideIndex: slideIndex,
-                        id: id,
-                        initialTransform: el.style.transform || 'none',
-                        initialFilter: el.style.filter || 'none',
-                    });
+                    items.push({ element: el, slideIndex: slideIndex });
                 });
                 return items;
             }
 
-            // Asignar efectos únicos a cada elemento (sin repetir en el ciclo)
-            function assignUniqueEffects() {
-                const shuffled = [...EFFECT_TYPES];
+            function assignEffects() {
+                const shuffled = [...EFFECTS];
                 for (let i = shuffled.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
                 }
 
-                const totalItems = allItems.length;
-                const assigned = [];
-                for (let i = 0; i < totalItems; i++) {
-                    const effect = shuffled[i % shuffled.length];
+                allItems.forEach((item, index) => {
+                    const effect = shuffled[index % shuffled.length];
+                    const el = item.element;
                     const duration = 0.6 + Math.random() * 0.8;
                     const delay = Math.random() * 0.4;
-                    assigned.push({
-                        ...effect,
-                        duration: duration,
-                        delay: delay,
-                    });
-                }
-
-                // Barajar asignación
-                for (let i = assigned.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [assigned[i], assigned[j]] = [assigned[j], assigned[i]];
-                }
-
-                allItems.forEach((item, index) => {
-                    const config = assigned[index % assigned.length];
-                    const el = item.element;
 
                     el.style.transition = '';
                     el.style.transform = '';
@@ -489,75 +532,41 @@
                     el.style.transitionDelay = '';
 
                     el.style.transition =
-                        `opacity ${config.duration}s cubic-bezier(0.22,0.61,0.36,1), ` +
-                        `transform ${config.duration}s cubic-bezier(0.22,0.61,0.36,1), ` +
-                        `filter ${config.duration}s cubic-bezier(0.22,0.61,0.36,1)`;
-                    el.style.transitionDelay = config.delay + 's';
+                        `opacity ${duration}s cubic-bezier(0.22,0.61,0.36,1), ` +
+                        `transform ${duration}s cubic-bezier(0.22,0.61,0.36,1), ` +
+                        `filter ${duration}s cubic-bezier(0.22,0.61,0.36,1)`;
+                    el.style.transitionDelay = delay + 's';
 
-                    el.dataset.effectTransform = config.transform;
-                    el.dataset.effectFilter = config.filter;
-                    el.dataset.effectDuration = config.duration;
-                    el.dataset.effectDelay = config.delay;
+                    el.dataset.effectTransform = effect.transform;
+                    el.dataset.effectFilter = effect.filter;
 
                     el.classList.remove('visible');
                     el.style.opacity = '0';
-                    if (config.transform !== 'none') {
-                        el.style.transform = config.transform;
-                    } else {
-                        el.style.transform = 'none';
-                    }
-                    if (config.filter !== 'none') {
-                        el.style.filter = config.filter;
-                    } else {
-                        el.style.filter = 'none';
-                    }
+                    el.style.transform = effect.transform;
+                    el.style.filter = effect.filter;
                 });
             }
 
-            // Activar un slide (mostrar sus elementos con animaciones)
             function activateSlide(index) {
-                const slide = SLIDES[index];
-                const items = slide.querySelectorAll('.anim-item');
-
-                items.forEach((el, i) => {
-                    const baseDelay = 0.1;
-                    const extraDelay = parseFloat(el.dataset.effectDelay) || 0;
-                    const totalDelay = baseDelay + extraDelay;
-
-                    setTimeout(() => {
-                        el.classList.add('visible');
-                    }, totalDelay * 1000);
+                const items = SLIDES[index].querySelectorAll('.anim-item');
+                items.forEach(el => {
+                    const delay = parseFloat(el.style.transitionDelay) || 0;
+                    setTimeout(() => { el.classList.add('visible'); }, (0.1 + delay) * 1000);
                 });
             }
 
-            // Desactivar un slide (ocultar elementos)
             function deactivateSlide(index) {
-                const slide = SLIDES[index];
-                const items = slide.querySelectorAll('.anim-item');
+                const items = SLIDES[index].querySelectorAll('.anim-item');
                 items.forEach(el => {
                     el.classList.remove('visible');
-                    const transform = el.dataset.effectTransform || 'none';
-                    const filter = el.dataset.effectFilter || 'none';
                     el.style.opacity = '0';
-                    if (transform !== 'none') {
-                        el.style.transform = transform;
-                    } else {
-                        el.style.transform = 'none';
-                    }
-                    if (filter !== 'none') {
-                        el.style.filter = filter;
-                    } else {
-                        el.style.filter = 'none';
-                    }
+                    el.style.transform = el.dataset.effectTransform || 'none';
+                    el.style.filter = el.dataset.effectFilter || 'none';
                 });
             }
 
-            // Cambiar al slide indicado
             function goToSlide(index) {
-                if (isTransitioning) return;
-                if (index === current) return;
-                if (index < 0 || index >= TOTAL) return;
-
+                if (isTransitioning || index === current) return;
                 isTransitioning = true;
 
                 deactivateSlide(current);
@@ -567,17 +576,15 @@
                 SLIDES[current].classList.add('active');
                 activateSlide(current);
 
-                updateProgress();
+                const progress = ((current + 1) / TOTAL) * 100;
+                PROGRESS_FILL.style.width = progress + '%';
 
-                const alpha = 0.2 + Math.random() * 0.25;
+                const alpha = 0.1 + Math.random() * 0.2;
                 OVERLAY.style.background = `rgba(10,10,12,${alpha})`;
 
-                setTimeout(() => {
-                    isTransitioning = false;
-                }, 1200);
+                setTimeout(() => { isTransitioning = false; }, 1200);
             }
 
-            // Avanzar al siguiente slide
             function nextSlide() {
                 const next = (current + 1) % TOTAL;
                 goToSlide(next);
@@ -585,73 +592,33 @@
                     cycleCount++;
                     setTimeout(() => {
                         allItems = collectItems();
-                        assignUniqueEffects();
-                        // Re-aplicar estado al slide 0
+                        assignEffects();
                         deactivateSlide(0);
-                        setTimeout(() => {
-                            // Asegurar que los elementos del slide 0 tengan los estilos iniciales correctos
-                            const slide0Items = SLIDES[0].querySelectorAll('.anim-item');
-                            slide0Items.forEach(el => {
-                                const transform = el.dataset.effectTransform || 'none';
-                                const filter = el.dataset.effectFilter || 'none';
-                                el.style.opacity = '0';
-                                if (transform !== 'none') {
-                                    el.style.transform = transform;
-                                } else {
-                                    el.style.transform = 'none';
-                                }
-                                if (filter !== 'none') {
-                                    el.style.filter = filter;
-                                } else {
-                                    el.style.filter = 'none';
-                                }
-                            });
-                            activateSlide(0);
-                        }, 50);
-                    }, 500);
+                        setTimeout(() => { activateSlide(0); }, 100);
+                    }, 600);
                 }
-            }
-
-            function updateProgress() {
-                const progress = ((current + 1) / TOTAL) * 100;
-                PROGRESS_FILL.style.width = progress + '%';
             }
 
             function resetTimer() {
                 if (intervalId) clearInterval(intervalId);
-                const variation = 400 + Math.random() * 600;
-                const duration = BASE_DURATION + variation;
+                const duration = 2800 + Math.random() * 600;
                 intervalId = setInterval(nextSlide, duration);
             }
 
-            // =====================================================
-            // INICIALIZACIÓN
-            // =====================================================
+            // Inicializar
             function init() {
                 allItems = collectItems();
-                assignUniqueEffects();
-
+                assignEffects();
                 SLIDES[0].classList.add('active');
                 activateSlide(0);
-                updateProgress();
+                PROGRESS_FILL.style.width = (1 / TOTAL * 100) + '%';
                 resetTimer();
-
-                OVERLAY.style.background = 'rgba(10,10,12,0.25)';
-
                 console.log('🎬 Windsor Spot — ' + TOTAL + ' slides');
-                console.log('   ' + allItems.length + ' elementos animables');
-                console.log('   Cada elemento tiene su propia animación única');
             }
 
-            // =====================================================
-            // INTERACCIÓN
-            // =====================================================
-            function handleInteraction() {
-                resetTimer();
-            }
-
-            document.addEventListener('click', handleInteraction);
-            document.addEventListener('touchstart', handleInteraction);
+            // Interacción
+            document.addEventListener('click', resetTimer);
+            document.addEventListener('touchstart', resetTimer);
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowRight' || e.key === ' ') {
                     e.preventDefault();
@@ -660,23 +627,14 @@
                 } else if (e.key === 'ArrowLeft') {
                     e.preventDefault();
                     resetTimer();
-                    if (current > 0) {
-                        goToSlide(current - 1);
-                    } else {
-                        goToSlide(TOTAL - 1);
-                    }
+                    if (current > 0) goToSlide(current - 1);
+                    else goToSlide(TOTAL - 1);
                 }
             });
 
             init();
 
-            window.spot = {
-                next: nextSlide,
-                goTo: goToSlide,
-                current: () => current,
-                cycle: () => cycleCount,
-                reAssign: assignUniqueEffects
-            };
+            window.spot = { next: nextSlide, goTo: goToSlide, current: () => current };
 
         })();
     </script>
