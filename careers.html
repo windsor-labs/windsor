@@ -52,6 +52,7 @@
             position: relative;
             z-index: 2;
         }
+
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -69,11 +70,24 @@
             transform: translateY(-6px);
             box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
-        .benefit-item .icon {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
+        .benefit-item .icon-wrap {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 12px;
+            background: rgba(0,0,0,0.04);
+            display: grid;
+            place-items: center;
             color: var(--blue);
-            display: inline-block;
+            border-radius: 50%;
+        }
+        .benefit-item .icon-wrap svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
         .benefit-item h3 {
             font-size: 1.2rem;
@@ -85,6 +99,7 @@
             font-size: 14px;
             line-height: 1.6;
         }
+
         .areas-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -111,6 +126,7 @@
             font-weight: 700;
             color: var(--blue);
         }
+
         .timeline {
             display: flex;
             flex-direction: column;
@@ -142,6 +158,7 @@
             font-size: 14px;
             line-height: 1.6;
         }
+
         @media (max-width: 900px) {
             .benefits-grid { grid-template-columns: repeat(2,1fr); }
             .areas-grid { grid-template-columns: repeat(2,1fr); }
@@ -149,6 +166,8 @@
         @media (max-width: 700px) {
             .careers-hero { padding: 120px 6vw 60px; }
             .benefits-grid { grid-template-columns:1fr; }
+            .benefit-item .icon-wrap { width:48px; height:48px; }
+            .benefit-item .icon-wrap svg { width:24px; height:24px; }
             .areas-grid { grid-template-columns:1fr; }
             .timeline-step { grid-template-columns:1fr; gap:10px; }
         }
@@ -212,24 +231,53 @@
     </div>
 
     <main>
+        <!-- HERO -->
         <section class="careers-hero">
             <div class="hero-noise"></div>
-            <h1>Windsor Careers <em>Talento latinoamericano.</em></h1>
-            <p>Nuestro programa de pasantías 100% remoto para jóvenes profesionales que quieren desarrollar experiencia real dentro de un laboratorio digital.</p>
+            <h1>
+                Windsor Careers
+                <em>Talento latinoamericano.</em>
+            </h1>
+            <p>
+                Nuestro programa de pasantías 100% remoto para jóvenes profesionales
+                que quieren desarrollar experiencia real dentro de un laboratorio digital.
+            </p>
         </section>
 
+        <!-- QUÉ ES -->
         <section class="intro section" id="que-es">
             <div class="section-meta"><span>01</span><span>QUÉ ES</span></div>
             <div class="intro-layout">
-                <h2>Aprendizaje práctico <span>en un entorno real.</span></h2>
+                <h2>
+                    Aprendizaje práctico
+                    <span>en un entorno real.</span>
+                </h2>
                 <div class="intro-copy">
-                    <p>Windsor Careers es un programa de pasantías diseñado para que jóvenes talentos de Latinoamérica desarrollen sus habilidades trabajando en proyectos digitales reales, con acompañamiento profesional y metodología de trabajo ágil.</p>
-                    <p>No es una pasantía tradicional. Es una inmersión en el mundo del diseño, la tecnología y la estrategia, con la libertad de aprender haciendo.</p>
-                    <a href="#beneficios" class="underlined-link">Ver beneficios <span class="arrow-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
+                    <p>
+                        Windsor Careers es un programa de pasantías diseñado para que
+                        jóvenes talentos de Latinoamérica desarrollen sus habilidades
+                        trabajando en proyectos digitales reales, con acompañamiento
+                        profesional y metodología de trabajo ágil.
+                    </p>
+                    <p>
+                        No es una pasantía tradicional. Es una inmersión en el mundo
+                        del diseño, la tecnología y la estrategia, con la libertad
+                        de aprender haciendo.
+                    </p>
+                    <a href="#beneficios" class="underlined-link">
+                        Ver beneficios
+                        <span class="arrow-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7" />
+                                <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </a>
                 </div>
             </div>
         </section>
 
+        <!-- BENEFICIOS CON ICONOS SVG (sin emojis) -->
         <section class="section" id="beneficios" style="background:var(--white);">
             <div class="section-meta"><span>02</span><span>BENEFICIOS</span></div>
             <div class="container">
@@ -238,40 +286,88 @@
                     <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">Windsor Careers?</span>
                 </h2>
                 <div class="benefits-grid">
+
+                    <!-- Proyectos reales -->
                     <div class="benefit-item" data-reveal>
-                        <div class="icon">💼</div>
+                        <div class="icon-wrap">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                        </div>
                         <h3>Proyectos reales</h3>
                         <p>Trabajarás en proyectos con clientes reales, desde la estrategia hasta la entrega.</p>
                     </div>
+
+                    <!-- Aprendizaje continuo -->
                     <div class="benefit-item" data-reveal>
-                        <div class="icon">🧠</div>
+                        <div class="icon-wrap">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
                         <h3>Aprendizaje continuo</h3>
                         <p>Acceso a recursos, mentoría y feedback constante para que crezcas profesionalmente.</p>
                     </div>
+
+                    <!-- 100% remoto -->
                     <div class="benefit-item" data-reveal>
-                        <div class="icon">🌎</div>
+                        <div class="icon-wrap">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
                         <h3>100% remoto</h3>
                         <p>Trabaja desde cualquier lugar de Latinoamérica. Solo necesitas conexión a internet.</p>
                     </div>
+
+                    <!-- Comunidad -->
                     <div class="benefit-item" data-reveal>
-                        <div class="icon">🤝</div>
+                        <div class="icon-wrap">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
                         <h3>Comunidad</h3>
                         <p>Formarás parte de una red de jóvenes profesionales con intereses similares.</p>
                     </div>
+
+                    <!-- Desarrollo de carrera -->
                     <div class="benefit-item" data-reveal>
-                        <div class="icon">📈</div>
+                        <div class="icon-wrap">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                <polyline points="17 6 23 6 23 12"/>
+                            </svg>
+                        </div>
                         <h3>Desarrollo de carrera</h3>
                         <p>Construirás un portafolio sólido y ganarás experiencia para tu futuro profesional.</p>
                     </div>
+
+                    <!-- Horarios flexibles -->
                     <div class="benefit-item" data-reveal>
-                        <div class="icon">⏳</div>
+                        <div class="icon-wrap">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
                         <h3>Horarios flexibles</h3>
                         <p>Conciliamos el aprendizaje con tus otros compromisos. No es una jornada rígida.</p>
                     </div>
+
                 </div>
             </div>
         </section>
 
+        <!-- ÁREAS DE INTERÉS -->
         <section class="section" style="background:var(--cream);">
             <div class="section-meta"><span>03</span><span>ÁREAS DE INTERÉS</span></div>
             <div class="container">
@@ -293,6 +389,7 @@
             </div>
         </section>
 
+        <!-- PROCESO -->
         <section class="section" style="background:var(--white);">
             <div class="section-meta"><span>04</span><span>PROCESO</span></div>
             <div class="container">
@@ -306,24 +403,37 @@
                 <div class="timeline">
                     <div class="timeline-step" data-reveal>
                         <span class="num">01</span>
-                        <div><h3>Postulación</h3><p>Completá el formulario de contacto con tu información y un breve mensaje sobre por qué te interesa Windsor Careers.</p></div>
+                        <div>
+                            <h3>Postulación</h3>
+                            <p>Completá el formulario de contacto con tu información y un breve mensaje sobre por qué te interesa Windsor Careers.</p>
+                        </div>
                     </div>
                     <div class="timeline-step" data-reveal>
                         <span class="num">02</span>
-                        <div><h3>Entrevista</h3><p>Conversaremos para conocer tu perfil, tus intereses y tu disponibilidad. Queremos entender qué te apasiona.</p></div>
+                        <div>
+                            <h3>Entrevista</h3>
+                            <p>Conversaremos para conocer tu perfil, tus intereses y tu disponibilidad. Queremos entender qué te apasiona.</p>
+                        </div>
                     </div>
                     <div class="timeline-step" data-reveal>
                         <span class="num">03</span>
-                        <div><h3>Prueba práctica</h3><p>Te daremos un pequeño desafío relacionado con tu área de interés para conocer tus habilidades en acción.</p></div>
+                        <div>
+                            <h3>Prueba práctica</h3>
+                            <p>Te daremos un pequeño desafío relacionado con tu área de interés para conocer tus habilidades en acción.</p>
+                        </div>
                     </div>
                     <div class="timeline-step" data-reveal>
                         <span class="num">04</span>
-                        <div><h3>Incorporación</h3><p>Si todo fluye, te daremos la bienvenida al equipo y comenzarás tu experiencia en Windsor Careers.</p></div>
+                        <div>
+                            <h3>Incorporación</h3>
+                            <p>Si todo fluye, te daremos la bienvenida al equipo y comenzarás tu experiencia en Windsor Careers.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- TESTIMONIO -->
         <section class="section" style="background:var(--cream);">
             <div class="section-meta"><span>05</span><span>TESTIMONIO</span></div>
             <div class="container">
@@ -336,13 +446,18 @@
             </div>
         </section>
 
+        <!-- CTA FINAL -->
         <div class="container" style="margin:60px auto;">
             <div style="background:var(--black); color:var(--white); padding:40px; display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;">
                 <div>
                     <h3 style="color:var(--green); font-size:1.8rem; line-height:1.1;">¿Querés ser parte de Windsor Careers?</h3>
-                    <p style="color:rgba(255,255,255,0.7); max-width:500px; font-size:14px; line-height:1.6;">Contanos quién sos, qué te apasiona y por qué querés sumarte a nuestro equipo.</p>
+                    <p style="color:rgba(255,255,255,0.7); max-width:500px; font-size:14px; line-height:1.6;">
+                        Contanos quién sos, qué te apasiona y por qué querés sumarte a nuestro equipo.
+                    </p>
                 </div>
-                <a href="contacto.html" style="padding:14px 28px; background:var(--blue); color:var(--white); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.25s; display:inline-flex; align-items:center; gap:12px;">Postularme →</a>
+                <a href="contacto.html" style="padding:14px 28px; background:var(--blue); color:var(--white); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.25s; display:inline-flex; align-items:center; gap:12px;">
+                    Postularme →
+                </a>
             </div>
         </div>
     </main>
