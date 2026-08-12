@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Windsor Careers — Pasantías y talento</title>
-    <meta name="description" content="Windsor Careers es nuestro programa de pasantías 100% remoto para jóvenes profesionales. Desarrolla tu carrera en un laboratorio digital." />
+    <meta name="description" content="Windsor Careers es nuestro programa de pasantías 100% remoto para jóvenes profesionales de todas las áreas. Desarrolla tu carrera en un laboratorio digital." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -102,15 +102,15 @@
 
         .areas-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 1px;
             background: var(--line);
             margin-top: 50px;
         }
         .area-item {
             background: var(--white);
-            padding: 24px 20px;
-            min-height: 120px;
+            padding: 24px 16px;
+            min-height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -121,7 +121,7 @@
             background: var(--cream);
         }
         .area-item h4 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: -0.03em;
             font-weight: 700;
             color: var(--blue);
@@ -236,11 +236,12 @@
             <div class="hero-noise"></div>
             <h1>
                 Windsor Careers
-                <em>Talento latinoamericano.</em>
+                <em>Talento de todas las áreas.</em>
             </h1>
             <p>
-                Nuestro programa de pasantías 100% remoto para jóvenes profesionales
-                que quieren desarrollar experiencia real dentro de un laboratorio digital.
+                Nuestro programa de pasantías 100% remoto está abierto a jóvenes profesionales
+                de cualquier disciplina. Buscamos curiosidad, compromiso y ganas de aprender
+                en un entorno digital real.
             </p>
         </section>
 
@@ -250,19 +251,19 @@
             <div class="intro-layout">
                 <h2>
                     Aprendizaje práctico
-                    <span>en un entorno real.</span>
+                    <span>para cualquier perfil.</span>
                 </h2>
                 <div class="intro-copy">
                     <p>
                         Windsor Careers es un programa de pasantías diseñado para que
-                        jóvenes talentos de Latinoamérica desarrollen sus habilidades
-                        trabajando en proyectos digitales reales, con acompañamiento
-                        profesional y metodología de trabajo ágil.
+                        jóvenes talentos de Latinoamérica —de cualquier área— desarrollen
+                        sus habilidades trabajando en proyectos digitales reales, con
+                        acompañamiento profesional y metodología de trabajo ágil.
                     </p>
                     <p>
-                        No es una pasantía tradicional. Es una inmersión en el mundo
-                        del diseño, la tecnología y la estrategia, con la libertad
-                        de aprender haciendo.
+                        No importa si estudiaste administración, psicología, comunicación,
+                        diseño, ingeniería o cualquier otra disciplina. Lo que valoramos
+                        es tu capacidad de aprender, tu curiosidad y tu compromiso.
                     </p>
                     <a href="#beneficios" class="underlined-link">
                         Ver beneficios
@@ -277,7 +278,7 @@
             </div>
         </section>
 
-        <!-- BENEFICIOS CON ICONOS SVG (sin emojis) -->
+        <!-- BENEFICIOS -->
         <section class="section" id="beneficios" style="background:var(--white);">
             <div class="section-meta"><span>02</span><span>BENEFICIOS</span></div>
             <div class="container">
@@ -336,7 +337,7 @@
                             </svg>
                         </div>
                         <h3>Comunidad</h3>
-                        <p>Formarás parte de una red de jóvenes profesionales con intereses similares.</p>
+                        <p>Formarás parte de una red de jóvenes profesionales con intereses diversos.</p>
                     </div>
 
                     <!-- Desarrollo de carrera -->
@@ -367,25 +368,31 @@
             </div>
         </section>
 
-        <!-- ÁREAS DE INTERÉS -->
+        <!-- ÁREAS DE INTERÉS (ampliadas a todas las disciplinas) -->
         <section class="section" style="background:var(--cream);">
-            <div class="section-meta"><span>03</span><span>ÁREAS DE INTERÉS</span></div>
+            <div class="section-meta"><span>03</span><span>DISCIPLINAS</span></div>
             <div class="container">
                 <h2 style="font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-0.06em; line-height:0.9; margin-bottom:20px;">
-                    ¿Qué te apasiona?
-                    <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">Elige tu área.</span>
+                    Buscamos talento
+                    <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">de todas las áreas.</span>
                 </h2>
                 <p style="color:#555; max-width:600px; font-size:15px; line-height:1.7; margin-bottom:40px;">
-                    Buscamos talento en distintas disciplinas. Todas son igual de valiosas para nosotros.
+                    Desde psicología hasta administración, desde diseño hasta ingeniería.
+                    Si tienes curiosidad y ganas de aprender, hay un lugar para ti en Windsor Careers.
                 </p>
                 <div class="areas-grid">
-                    <div class="area-item" data-reveal><h4>Frontend</h4></div>
-                    <div class="area-item" data-reveal><h4>UX / UI</h4></div>
-                    <div class="area-item" data-reveal><h4>Marketing Digital</h4></div>
-                    <div class="area-item" data-reveal><h4>Backend</h4></div>
-                    <div class="area-item" data-reveal><h4>Project Management</h4></div>
-                    <div class="area-item" data-reveal><h4>Data Analysis</h4></div>
+                    <div class="area-item" data-reveal><h4>Administración</h4></div>
+                    <div class="area-item" data-reveal><h4>Psicología</h4></div>
+                    <div class="area-item" data-reveal><h4>Comunicación</h4></div>
+                    <div class="area-item" data-reveal><h4>Marketing</h4></div>
+                    <div class="area-item" data-reveal><h4>Diseño</h4></div>
+                    <div class="area-item" data-reveal><h4>Ingeniería</h4></div>
+                    <div class="area-item" data-reveal><h4>Datos / Analytics</h4></div>
+                    <div class="area-item" data-reveal><h4>Educación</h4></div>
                 </div>
+                <p style="color:#555; max-width:600px; font-size:14px; line-height:1.6; margin-top:30px; text-align:center;">
+                    ¿Tu área no está en la lista? <strong>Postulá igual.</strong> Valoramos la diversidad de perspectivas.
+                </p>
             </div>
         </section>
 
@@ -453,6 +460,7 @@
                     <h3 style="color:var(--green); font-size:1.8rem; line-height:1.1;">¿Querés ser parte de Windsor Careers?</h3>
                     <p style="color:rgba(255,255,255,0.7); max-width:500px; font-size:14px; line-height:1.6;">
                         Contanos quién sos, qué te apasiona y por qué querés sumarte a nuestro equipo.
+                        No importa tu área de estudio.
                     </p>
                 </div>
                 <a href="contacto.html" style="padding:14px 28px; background:var(--blue); color:var(--white); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.25s; display:inline-flex; align-items:center; gap:12px;">
