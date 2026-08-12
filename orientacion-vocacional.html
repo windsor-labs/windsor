@@ -10,9 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <style>
+        /* =========================================================
+           ORIENTACIÓN VOCACIONAL — ESTILOS ADICIONALES
+        ========================================================== */
         .areas-grid {
             display: grid;
-            grid-template-columns: repeat(5,1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 1px;
             background: var(--line);
             margin-top: 50px;
@@ -22,9 +25,25 @@
             padding: 24px 20px;
             min-height: 140px;
         }
-        .areas-grid .area h4 { font-size:18px; letter-spacing:-0.03em; margin-bottom:8px; }
-        .areas-grid .area p { font-size:12px; color:#666; line-height:1.5; }
-        .areas-grid .area .num { font-size:9px; font-weight:700; color:var(--blue); opacity:0.6; display:block; margin-bottom:12px; }
+        .areas-grid .area h4 {
+            font-size: 18px;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+        .areas-grid .area p {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+        .areas-grid .area .num {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--blue);
+            opacity: 0.6;
+            display: block;
+            margin-bottom: 12px;
+        }
+
         .cta-box {
             background: var(--blue);
             color: var(--white);
@@ -36,8 +55,14 @@
             gap: 30px;
             flex-wrap: wrap;
         }
-        .cta-box h3 { font-size:1.5rem; line-height:1; }
-        .cta-box p { color:rgba(255,255,255,0.8); max-width:500px; }
+        .cta-box h3 {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 500px;
+        }
         .cta-box .btn {
             padding: 14px 28px;
             background: var(--green);
@@ -51,10 +76,29 @@
             align-items: center;
             gap: 12px;
         }
-        .cta-box .btn:hover { transform: scale(1.03); }
-        @media (max-width: 900px) { .areas-grid { grid-template-columns: repeat(3,1fr); } }
-        @media (max-width: 700px) { .areas-grid { grid-template-columns: repeat(2,1fr); } }
-        @media (max-width: 480px) { .areas-grid { grid-template-columns: 1fr; } .cta-box { flex-direction: column; align-items: flex-start; } }
+        .cta-box .btn:hover {
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 900px) {
+            .areas-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 700px) {
+            .areas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .areas-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
@@ -115,12 +159,14 @@
     </div>
 
     <main>
+        <!-- HERO -->
         <section class="hero">
             <h1>Conoce tu <em>perfil vocacional integral</em> con Windsor.</h1>
             <p>El Test de Orientación Vocacional Windsor combina cuatro instrumentos: <strong>Kuder</strong> (intereses), <strong>Herrera y Montes</strong> (preferencias), <strong>Razonamiento abstracto</strong> y <strong>Personalidad</strong> (16 perfiles). Obtén un panorama completo de tus áreas de afinidad.</p>
             <a href="test-vocacional.html" class="cta">Comenzar test →</a>
         </section>
 
+        <!-- QUÉ ES -->
         <section class="section">
             <div class="section-meta"><span>01</span><span>QUÉ ES</span></div>
             <div class="container grid-2">
@@ -140,6 +186,7 @@
             </div>
         </section>
 
+        <!-- MÓDULOS -->
         <section class="section" style="background:var(--white);">
             <div class="section-meta"><span>02</span><span>MÓDULOS</span></div>
             <div class="container">
@@ -157,6 +204,7 @@
             </div>
         </section>
 
+        <!-- CÓMO FUNCIONA -->
         <section class="section">
             <div class="section-meta"><span>03</span><span>MÉTODO</span></div>
             <div class="container grid-2">
@@ -173,6 +221,7 @@
             </div>
         </section>
 
+        <!-- CTA FINAL -->
         <div class="container" style="margin-bottom:60px;">
             <div class="cta-box">
                 <div>
