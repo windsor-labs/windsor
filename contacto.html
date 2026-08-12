@@ -10,14 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <style>
-        /* =========================================================
-           CONTACTO — ESTILOS (estilo Outlook + Windsor)
-        ========================================================== */
         .contact-page-wrapper {
             padding: 120px 6vw 80px;
             background: var(--cream);
         }
-
         .contact-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -26,14 +22,12 @@
             margin: 0 auto;
             align-items: start;
         }
-
         .contact-form h2 {
             font-size: clamp(2rem, 4vw, 3.5rem);
             letter-spacing: -0.06em;
             line-height: 0.9;
             margin-bottom: 8px;
         }
-
         .contact-form h2 em {
             display: block;
             color: var(--blue);
@@ -43,18 +37,13 @@
             text-decoration-thickness: 0.07em;
             text-underline-offset: 0.1em;
         }
-
         .contact-form .subtitle {
             color: #555;
             font-size: 15px;
             line-height: 1.7;
             margin-bottom: 30px;
         }
-
-        .form-group {
-            margin-bottom: 22px;
-        }
-
+        .form-group { margin-bottom: 22px; }
         .form-group label {
             display: block;
             font-size: 11px;
@@ -64,7 +53,6 @@
             color: #666;
             margin-bottom: 4px;
         }
-
         .form-group input,
         .form-group textarea {
             width: 100%;
@@ -78,29 +66,20 @@
             transition: border-color 0.25s ease;
             outline: none;
         }
-
         .form-group input:focus,
-        .form-group textarea:focus {
-            border-bottom-color: var(--blue);
-        }
-
+        .form-group textarea:focus { border-bottom-color: var(--blue); }
         .form-group textarea {
             resize: vertical;
             min-height: 150px;
             border-bottom: 2px solid var(--line);
         }
-
         .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #aaa;
-        }
-
+        .form-group textarea::placeholder { color: #aaa; }
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
         }
-
         .submit-btn {
             display: inline-flex;
             align-items: center;
@@ -117,28 +96,21 @@
             cursor: pointer;
             margin-top: 10px;
         }
-
         .submit-btn:hover {
             background: var(--blue-dark);
             transform: translateX(6px);
         }
-
         .submit-btn .arrow-icon {
             display: inline-flex;
             align-items: center;
             transition: transform 0.25s;
         }
-
-        .submit-btn:hover .arrow-icon {
-            transform: translateX(4px);
-        }
-
+        .submit-btn:hover .arrow-icon { transform: translateX(4px); }
         .submit-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none !important;
         }
-
         .submit-btn .spinner {
             display: none;
             width: 16px;
@@ -147,19 +119,9 @@
             border-top-color: #fff;
             animation: spin 0.8s linear infinite;
         }
-
-        .submit-btn.loading .spinner {
-            display: inline-block;
-        }
-
-        .submit-btn.loading .btn-text {
-            display: none;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
+        .submit-btn.loading .spinner { display: inline-block; }
+        .submit-btn.loading .btn-text { display: none; }
+        @keyframes spin { to { transform: rotate(360deg); } }
         .success-message {
             display: none;
             background: var(--green);
@@ -169,11 +131,7 @@
             font-weight: 600;
             font-size: 14px;
         }
-
-        .success-message.show {
-            display: block;
-        }
-
+        .success-message.show { display: block; }
         .error-message {
             display: none;
             background: #ff6b6b;
@@ -183,28 +141,10 @@
             font-weight: 600;
             font-size: 14px;
         }
-
-        .error-message.show {
-            display: block;
-        }
-
-        /* Información de contacto lateral (simplificada) */
-        .contact-info h3 {
-            font-size: 1.2rem;
-            letter-spacing: -0.03em;
-            margin-bottom: 20px;
-        }
-
-        .contact-info .info-text {
-            color: #555;
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        .contact-info .info-text strong {
-            color: var(--blue);
-        }
-
+        .error-message.show { display: block; }
+        .contact-info h3 { font-size:1.2rem; letter-spacing:-0.03em; margin-bottom:20px; }
+        .contact-info .info-text { color:#555; font-size:15px; line-height:1.7; }
+        .contact-info .info-text strong { color:var(--blue); }
         .contact-info .info-icon {
             display: inline-block;
             margin-bottom: 16px;
@@ -212,7 +152,6 @@
             width: 48px;
             height: 48px;
         }
-
         .contact-info .info-icon svg {
             width: 100%;
             height: 100%;
@@ -222,28 +161,14 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-
         @media (max-width: 800px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .contact-page-wrapper {
-                padding: 100px 5vw 60px;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
+            .contact-grid { grid-template-columns:1fr; gap:40px; }
+            .contact-page-wrapper { padding:100px 5vw 60px; }
+            .form-row { grid-template-columns:1fr; gap:0; }
         }
-
         @media (max-width: 480px) {
-            .contact-form h2 {
-                font-size: 1.8rem;
-            }
-            .contact-info .info-text {
-                font-size: 14px;
-            }
+            .contact-form h2 { font-size:1.8rem; }
+            .contact-info .info-text { font-size:14px; }
         }
     </style>
 </head>
@@ -264,10 +189,13 @@
         </a>
         <nav class="desktop-nav">
             <a href="index.html#servicios">Servicios</a>
-            <a href="index.html#metodo">Método</a>
+            <a href="metodologia.html">Metodología</a>
             <a href="cide.html">CIDE</a>
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html">Recomendados</a>
+            <a href="becas.html">BK2</a>
             <a href="index.html#careers">Careers</a>
             <a href="contacto.html" class="active">Contacto</a>
         </nav>
@@ -289,35 +217,24 @@
             <div class="mobile-menu-label">NAVEGACIÓN</div>
             <a href="index.html">Inicio</a>
             <a href="index.html#servicios">Servicios</a>
-            <a href="index.html#metodo">Método Windsor</a>
+            <a href="metodologia.html">Metodología</a>
             <a href="cide.html">CIDE</a>
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html">Recomendados</a>
+            <a href="becas.html">BK2</a>
             <a href="index.html#careers">Careers</a>
             <a href="contacto.html">Contacto</a>
         </div>
     </div>
 
-    <!-- =====================================================
-         CONTACTO — FORMULARIO
-    ====================================================== -->
     <main class="contact-page-wrapper">
-
         <div class="contact-grid">
-
-            <!-- FORMULARIO -->
             <div class="contact-form">
-                <h2>
-                    Escribinos
-                    <em>un mensaje.</em>
-                </h2>
-                <p class="subtitle">
-                    Completá el formulario y te responderemos a la brevedad.
-                </p>
-
-                <!-- ¡IMPORTANTE! Reemplazar la URL de action con la de tu Google Apps Script -->
+                <h2>Escribinos <em>un mensaje.</em></h2>
+                <p class="subtitle">Completá el formulario y te responderemos a la brevedad.</p>
                 <form id="contactForm" action="https://script.google.com/macros/s/AKfycbyG9GMdyh1PTEvUxutQtD3GjNt2iGei3Iw26fB08ay3Pu89Eliv2pSKJS_ja8LF-glanw/exec" method="POST">
-                    <!-- De (nombre + correo) -->
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nombre">Tu nombre</label>
@@ -328,19 +245,14 @@
                             <input type="email" id="email" name="email" placeholder="ej. maria@ejemplo.com" required />
                         </div>
                     </div>
-
-                    <!-- Asunto -->
                     <div class="form-group">
                         <label for="asunto">Asunto</label>
                         <input type="text" id="asunto" name="asunto" placeholder="¿Sobre qué querés hablar?" required />
                     </div>
-
-                    <!-- Mensaje -->
                     <div class="form-group">
                         <label for="mensaje">Mensaje</label>
                         <textarea id="mensaje" name="mensaje" placeholder="Contanos tu idea, proyecto o consulta..." required></textarea>
                     </div>
-
                     <button type="submit" class="submit-btn" id="submitBtn">
                         <span class="btn-text">Enviar mensaje</span>
                         <span class="spinner"></span>
@@ -352,16 +264,9 @@
                         </span>
                     </button>
                 </form>
-
-                <div id="successMessage" class="success-message">
-                    ✅ ¡Mensaje enviado! Te responderemos pronto.
-                </div>
-                <div id="errorMessage" class="error-message">
-                    ❌ Hubo un error al enviar el mensaje. Intentá de nuevo más tarde.
-                </div>
+                <div id="successMessage" class="success-message">✅ ¡Mensaje enviado! Te responderemos pronto.</div>
+                <div id="errorMessage" class="error-message">❌ Hubo un error al enviar el mensaje. Intentá de nuevo más tarde.</div>
             </div>
-
-            <!-- INFORMACIÓN DE CONTACTO (simplificada: solo formulario) -->
             <div class="contact-info">
                 <h3>¿Cómo contactarnos?</h3>
                 <span class="info-icon">
@@ -370,19 +275,12 @@
                         <path d="M22 2L15 22l-4-9-9-4z"/>
                     </svg>
                 </span>
-                <p class="info-text">
-                    <strong>Este formulario</strong> es el único canal de contacto.<br />
-                    Completalo con tus datos y tu mensaje, y te responderemos lo antes posible.
-                </p>
+                <p class="info-text"><strong>Este formulario</strong> es el único canal de contacto.<br />Completalo con tus datos y tu mensaje, y te responderemos lo antes posible.</p>
             </div>
-
         </div>
-
     </main>
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-logo">
             <span class="logo-symbol">W</span>
@@ -391,10 +289,13 @@
         <div class="footer-links">
             <a href="index.html">Inicio</a>
             <a href="index.html#servicios">Servicios</a>
-            <a href="index.html#metodo">Método</a>
+            <a href="metodologia.html">Metodología</a>
             <a href="cide.html">CIDE</a>
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
+            <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html">Recomendados</a>
+            <a href="becas.html">BK2</a>
             <a href="index.html#careers">Careers</a>
             <a href="contacto.html">Contacto</a>
         </div>
@@ -442,7 +343,7 @@
         }));
         document.addEventListener('keydown', e => { if (e.key === 'Escape') { mobileMenu?.classList.remove('active'); document.body.classList.remove('menu-active'); } });
 
-        // FORMULARIO con envío a Google Apps Script
+        // FORMULARIO
         const form = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
         const successMsg = document.getElementById('successMessage');
@@ -450,12 +351,9 @@
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-
-            // Ocultar mensajes previos
             successMsg.classList.remove('show');
             errorMsg.classList.remove('show');
 
-            // Validación
             const nombre = document.getElementById('nombre').value.trim();
             const email = document.getElementById('email').value.trim();
             const asunto = document.getElementById('asunto').value.trim();
@@ -466,11 +364,9 @@
                 return;
             }
 
-            // Cambiar estado del botón
             submitBtn.classList.add('loading');
             submitBtn.disabled = true;
 
-            // Enviar datos al Google Apps Script
             const formData = new FormData(form);
 
             fetch(form.action, {
@@ -485,27 +381,20 @@
                 if (data.result === 'success') {
                     successMsg.classList.add('show');
                     form.reset();
-                    setTimeout(() => {
-                        successMsg.classList.remove('show');
-                    }, 6000);
+                    setTimeout(() => successMsg.classList.remove('show'), 6000);
                 } else {
                     errorMsg.classList.add('show');
-                    setTimeout(() => {
-                        errorMsg.classList.remove('show');
-                    }, 8000);
+                    setTimeout(() => errorMsg.classList.remove('show'), 8000);
                 }
             })
             .catch(error => {
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
                 errorMsg.classList.add('show');
-                setTimeout(() => {
-                    errorMsg.classList.remove('show');
-                }, 8000);
+                setTimeout(() => errorMsg.classList.remove('show'), 8000);
                 console.error('Error:', error);
             });
         });
     </script>
-
 </body>
 </html>
