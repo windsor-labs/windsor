@@ -10,9 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <style>
-        /* =========================================================
-           METODOLOGÍA — ESTILOS ADICIONALES
-        ========================================================== */
         .metodologia-hero {
             min-height: max(500px, 70vh);
             background: var(--black);
@@ -32,8 +29,6 @@
             background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
             background-size: 5px 5px;
         }
-
-        /* Título "Break The Rules" con animación de quiebre */
         .metodologia-hero .break-title {
             font-size: clamp(3.5rem, 10vw, 8rem);
             line-height: 0.85;
@@ -47,40 +42,18 @@
             animation: breakReveal 2s ease forwards;
             animation-delay: 0.3s;
         }
-
         .metodologia-hero .break-title .char {
             display: inline-block;
             animation: breakChar 1.2s ease forwards;
             opacity: 0;
         }
-
         @keyframes breakChar {
-            0% {
-                transform: translateY(60px) rotate(20deg) scale(0.8);
-                opacity: 0;
-                color: #ff0000;
-            }
-            30% {
-                transform: translateY(-20px) rotate(-10deg) scale(1.1);
-                opacity: 1;
-                color: #ff8800;
-            }
-            60% {
-                transform: translateY(10px) rotate(5deg) scale(0.95);
-                color: #00cc00;
-            }
-            100% {
-                transform: translateY(0) rotate(0deg) scale(1);
-                opacity: 1;
-                color: var(--blue);
-            }
+            0% { transform: translateY(60px) rotate(20deg) scale(0.8); opacity: 0; color: #ff0000; }
+            30% { transform: translateY(-20px) rotate(-10deg) scale(1.1); opacity: 1; color: #ff8800; }
+            60% { transform: translateY(10px) rotate(5deg) scale(0.95); color: #00cc00; }
+            100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; color: var(--blue); }
         }
-
-        @keyframes breakReveal {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
+        @keyframes breakReveal { 0% { opacity: 0; } 100% { opacity: 1; } }
         .metodologia-hero .sub-method {
             font-size: clamp(1.5rem, 3vw, 2.5rem);
             font-weight: 700;
@@ -91,7 +64,6 @@
             animation: fadeUp 1.2s ease forwards;
             animation-delay: 1.2s;
         }
-
         .metodologia-hero .sub-method em {
             display: block;
             color: var(--green);
@@ -102,32 +74,23 @@
             text-underline-offset: 0.1em;
             margin-top: 4px;
         }
-
-        @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
+        @keyframes fadeUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
         .metodologia-hero p {
             max-width: 580px;
             margin-top: 30px;
             color: rgba(255,255,255,0.6);
             font-size: 16px;
             line-height: 1.7;
-            position: relative;
             opacity: 0;
             animation: fadeUp 1.2s ease forwards;
             animation-delay: 1.8s;
         }
-
-        /* Tarjetas estilo Windsor One */
         .metodologia-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-top: 60px;
         }
-
         .metodologia-item {
             background: var(--white);
             padding: 28px 24px 16px 24px;
@@ -137,19 +100,16 @@
             flex-direction: column;
             position: relative;
         }
-
         .metodologia-item:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
-
         .metodologia-item .card-inner {
             display: flex;
             align-items: flex-start;
             gap: 20px;
             flex: 1;
         }
-
         .metodologia-item .icon-wrap {
             flex: 0 0 56px;
             width: 56px;
@@ -159,7 +119,6 @@
             place-items: center;
             color: var(--blue);
         }
-
         .metodologia-item .icon-wrap svg {
             width: 28px;
             height: 28px;
@@ -169,11 +128,9 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-
         .metodologia-item .card-body {
             flex: 1;
         }
-
         .metodologia-item .card-body .num {
             font-size: 9px;
             font-weight: 700;
@@ -183,20 +140,17 @@
             display: block;
             margin-bottom: 4px;
         }
-
         .metodologia-item .card-body h3 {
             font-size: 1.6rem;
             letter-spacing: -0.03em;
             margin-bottom: 6px;
         }
-
         .metodologia-item .card-body p {
             color: #555;
             line-height: 1.7;
             font-size: 15px;
             margin: 0 0 16px 0;
         }
-
         .metodologia-item .card-link {
             display: inline-flex;
             align-items: center;
@@ -208,33 +162,26 @@
             transition: gap 0.25s ease, color 0.25s ease;
             color: var(--blue);
         }
-
         .metodologia-item .card-link .arrow-icon {
             display: inline-flex;
             align-items: center;
             transition: transform 0.25s ease;
         }
-
         .metodologia-item:hover .card-link .arrow-icon {
             transform: translateX(6px);
         }
-
         .metodologia-item:hover .card-link {
             gap: 18px;
         }
-
         .metodologia-item .bottom-bar {
             height: 4px;
             margin-top: 16px;
             transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
             background-color: var(--blue);
         }
-
         .metodologia-item:hover .bottom-bar {
             width: 100% !important;
         }
-
-        /* Responsive */
         @media (max-width: 800px) {
             .metodologia-grid {
                 grid-template-columns: 1fr;
@@ -287,6 +234,8 @@
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html">Recomendados</a>
+            <a href="becas.html">BK2</a>
             <a href="index.html#careers">Careers</a>
             <a href="contacto.html">Contacto</a>
         </nav>
@@ -313,169 +262,79 @@
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html">Recomendados</a>
+            <a href="becas.html">BK2</a>
             <a href="index.html#careers">Careers</a>
             <a href="contacto.html">Contacto</a>
         </div>
     </div>
 
     <main>
-
-        <!-- HERO CON "BREAK THE RULES" ANIMADO -->
         <section class="metodologia-hero">
             <div class="hero-noise"></div>
-
-            <!-- Título "Break The Rules" con letras animadas -->
-            <div class="break-title" id="breakTitle">
-                <span class="char">B</span>
-                <span class="char">r</span>
-                <span class="char">e</span>
-                <span class="char">a</span>
-                <span class="char">k</span>
-                <span class="char" style="margin-left:0.2em;">T</span>
-                <span class="char">h</span>
-                <span class="char">e</span>
-                <span class="char" style="margin-left:0.2em;">R</span>
-                <span class="char">u</span>
-                <span class="char">l</span>
-                <span class="char">e</span>
-                <span class="char">s</span>
+            <div class="break-title">
+                <span class="char">B</span><span class="char">r</span><span class="char">e</span><span class="char">a</span><span class="char">k</span>
+                <span class="char" style="margin-left:0.2em;">T</span><span class="char">h</span><span class="char">e</span>
+                <span class="char" style="margin-left:0.2em;">R</span><span class="char">u</span><span class="char">l</span><span class="char">e</span><span class="char">s</span>
             </div>
-
-            <!-- Subtítulo: Método Windsor / Precisión aplicada. -->
             <div class="sub-method">
                 Método Windsor
                 <em>Precisión aplicada.</em>
             </div>
-
-            <p>
-                Cada proyecto se aborda con método, investigación y sensibilidad estética.
-            </p>
+            <p>Cada proyecto se aborda con método, investigación y sensibilidad estética.</p>
         </section>
 
-        <!-- PASOS -->
         <section class="section" style="background:var(--white);">
-            <div class="section-meta">
-                <span>01</span>
-                <span>NUESTRO PROCESO</span>
-            </div>
+            <div class="section-meta"><span>01</span><span>NUESTRO PROCESO</span></div>
             <div class="container">
                 <h2 style="font-size:clamp(2.5rem,5vw,4rem); letter-spacing:-0.06em; line-height:0.9; margin-bottom:20px;">
                     Cuatro pasos,
                     <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">resultados concretos.</span>
                 </h2>
                 <p style="color:#555; max-width:600px; font-size:15px; line-height:1.7; margin-bottom:40px;">
-                    Nuestra metodología es flexible pero rigurosa. Cada fase está diseñada para
-                    reducir la incertidumbre y aumentar la claridad.
+                    Nuestra metodología es flexible pero rigurosa. Cada fase está diseñada para reducir la incertidumbre y aumentar la claridad.
                 </p>
-
                 <div class="metodologia-grid">
-                    <!-- 1. Entender -->
                     <div class="metodologia-item" data-reveal>
                         <div class="card-inner">
-                            <div class="icon-wrap">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
-                                </svg>
-                            </div>
+                            <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
                             <div class="card-body">
-                                <span class="num">01</span>
-                                <h3>Entender</h3>
+                                <span class="num">01</span><h3>Entender</h3>
                                 <p>Investigamos el contexto, el problema, el mercado y las personas involucradas.</p>
-                                <a href="#" class="card-link">
-                                    <span class="link-text">Conocer más</span>
-                                    <span class="arrow-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7" />
-                                            <polyline points="7 7 17 7 17 17" />
-                                        </svg>
-                                    </span>
-                                </a>
+                                <a href="#" class="card-link"><span class="link-text">Conocer más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
                                 <div class="bottom-bar" style="width:40%;"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 2. Definir -->
                     <div class="metodologia-item" data-reveal>
                         <div class="card-inner">
-                            <div class="icon-wrap">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                    <polyline points="14 2 14 8 20 8"/>
-                                    <line x1="16" y1="13" x2="8" y2="13"/>
-                                    <line x1="16" y1="17" x2="8" y2="17"/>
-                                    <polyline points="10 9 9 9 8 9"/>
-                                </svg>
-                            </div>
+                            <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
                             <div class="card-body">
-                                <span class="num">02</span>
-                                <h3>Definir</h3>
+                                <span class="num">02</span><h3>Definir</h3>
                                 <p>Convertimos información en una dirección estratégica clara.</p>
-                                <a href="#" class="card-link">
-                                    <span class="link-text">Conocer más</span>
-                                    <span class="arrow-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7" />
-                                            <polyline points="7 7 17 7 17 17" />
-                                        </svg>
-                                    </span>
-                                </a>
+                                <a href="#" class="card-link"><span class="link-text">Conocer más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
                                 <div class="bottom-bar" style="width:40%;"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 3. Construir -->
                     <div class="metodologia-item" data-reveal>
                         <div class="card-inner">
-                            <div class="icon-wrap">
-                                <svg viewBox="0 0 24 24">
-                                    <polyline points="16 18 22 12 16 6"/>
-                                    <polyline points="8 6 2 12 8 18"/>
-                                </svg>
-                            </div>
+                            <div class="icon-wrap"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
                             <div class="card-body">
-                                <span class="num">03</span>
-                                <h3>Construir</h3>
+                                <span class="num">03</span><h3>Construir</h3>
                                 <p>Diseñamos y desarrollamos soluciones específicas para cada proyecto.</p>
-                                <a href="#" class="card-link">
-                                    <span class="link-text">Conocer más</span>
-                                    <span class="arrow-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7" />
-                                            <polyline points="7 7 17 7 17 17" />
-                                        </svg>
-                                    </span>
-                                </a>
+                                <a href="#" class="card-link"><span class="link-text">Conocer más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
                                 <div class="bottom-bar" style="width:40%;"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 4. Refinar -->
                     <div class="metodologia-item" data-reveal>
                         <div class="card-inner">
-                            <div class="icon-wrap">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                            </div>
+                            <div class="icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
                             <div class="card-body">
-                                <span class="num">04</span>
-                                <h3>Refinar</h3>
+                                <span class="num">04</span><h3>Refinar</h3>
                                 <p>Revisamos, probamos y mejoramos antes de considerar el proyecto terminado.</p>
-                                <a href="#" class="card-link">
-                                    <span class="link-text">Conocer más</span>
-                                    <span class="arrow-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7" />
-                                            <polyline points="7 7 17 7 17 17" />
-                                        </svg>
-                                    </span>
-                                </a>
+                                <a href="#" class="card-link"><span class="link-text">Conocer más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
                                 <div class="bottom-bar" style="width:40%;"></div>
                             </div>
                         </div>
@@ -484,35 +343,22 @@
             </div>
         </section>
 
-        <!-- MARQUEE DE REAFIRMACIÓN -->
         <div class="statement-marquee" style="background:var(--black); color:var(--white);">
             <div class="statement-track">
-                <span>MÉTODO</span> <b>✦</b>
-                <span>INVESTIGACIÓN</span> <b>✦</b>
-                <span>PRECISIÓN</span> <b>✦</b>
-                <span>SENSIBILIDAD</span> <b>✦</b>
-                <span>MÉTODO</span> <b>✦</b>
-                <span>INVESTIGACIÓN</span> <b>✦</b>
-                <span>PRECISIÓN</span> <b>✦</b>
-                <span>SENSIBILIDAD</span> <b>✦</b>
+                <span>MÉTODO</span> <b>✦</b><span>INVESTIGACIÓN</span> <b>✦</b><span>PRECISIÓN</span> <b>✦</b><span>SENSIBILIDAD</span> <b>✦</b>
+                <span>MÉTODO</span> <b>✦</b><span>INVESTIGACIÓN</span> <b>✦</b><span>PRECISIÓN</span> <b>✦</b><span>SENSIBILIDAD</span> <b>✦</b>
             </div>
         </div>
 
-        <!-- CTA -->
         <div class="container" style="margin:60px auto;">
             <div style="background:var(--blue); color:var(--white); padding:40px; display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;">
                 <div>
                     <h3 style="font-size:1.8rem; line-height:1.1;">¿Listo para aplicar el método?</h3>
-                    <p style="color:rgba(255,255,255,0.8); max-width:500px; font-size:14px; line-height:1.6;">
-                        Contanos tu proyecto y empecemos a trabajar con nuestra metodología.
-                    </p>
+                    <p style="color:rgba(255,255,255,0.8); max-width:500px; font-size:14px; line-height:1.6;">Contanos tu proyecto y empecemos a trabajar con nuestra metodología.</p>
                 </div>
-                <a href="contacto.html" style="padding:14px 28px; background:var(--green); color:var(--black); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.25s; display:inline-flex; align-items:center; gap:12px;">
-                    Iniciar proyecto →
-                </a>
+                <a href="contacto.html" style="padding:14px 28px; background:var(--green); color:var(--black); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.25s; display:inline-flex; align-items:center; gap:12px;">Iniciar proyecto →</a>
             </div>
         </div>
-
     </main>
 
     <!-- FOOTER -->
@@ -529,6 +375,8 @@
             <a href="orientacion-vocacional.html">Orientación</a>
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
+            <a href="recomendados.html">Recomendados</a>
+            <a href="becas.html">BK2</a>
             <a href="index.html#careers">Careers</a>
             <a href="contacto.html">Contacto</a>
         </div>
@@ -536,6 +384,5 @@
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>
