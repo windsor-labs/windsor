@@ -11,8 +11,73 @@
     <link rel="stylesheet" href="styles.css" />
     <style>
         /* =========================================================
-           ORIENTACIÓN VOCACIONAL — ESTILOS ADICIONALES
+           ORIENTACIÓN VOCACIONAL — ESTILOS COMPLETOS
         ========================================================== */
+        /* Hero personalizado (sin usar .hero de styles.css) */
+        .ov-hero {
+            background: var(--black);
+            color: var(--white);
+            padding: 140px 6vw 80px;
+            position: relative;
+            overflow: hidden;
+            min-height: auto;
+        }
+        .ov-hero .hero-noise {
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            pointer-events: none;
+            background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
+            background-size: 5px 5px;
+        }
+        .ov-hero h1 {
+            font-size: clamp(2.625rem, 6vw, 5.25rem);
+            line-height: 0.85;
+            letter-spacing: -0.07em;
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
+        }
+        .ov-hero h1 em {
+            display: block;
+            color: var(--blue);
+            font-family: var(--sans);
+            font-weight: 900;
+            text-decoration: underline;
+            text-decoration-thickness: 0.07em;
+            text-underline-offset: 0.1em;
+        }
+        .ov-hero p {
+            max-width: 580px;
+            margin-top: 30px;
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+        .ov-hero .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 40px;
+            padding: 14px 24px;
+            background: var(--blue);
+            color: var(--white);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: background 0.25s, transform 0.25s;
+            position: relative;
+            z-index: 2;
+        }
+        .ov-hero .cta:hover {
+            background: var(--blue-dark);
+            transform: translateX(6px);
+        }
+
+        /* Grid de áreas */
         .areas-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -60,7 +125,7 @@
             line-height: 1;
         }
         .cta-box p {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255,255,255,0.8);
             max-width: 500px;
         }
         .cta-box .btn {
@@ -80,12 +145,48 @@
             transform: scale(1.03);
         }
 
+        /* Grid-2 reutilizado de styles.css pero con padding */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 5vw;
+            margin-top: 60px;
+            align-items: start;
+        }
+        .grid-2 h2 {
+            font-size: clamp(2.1rem, 3.75vw, 3rem);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+        }
+        .grid-2 h2 span {
+            display: block;
+            font-family: var(--sans);
+            font-weight: 900;
+            text-decoration: underline;
+            text-decoration-thickness: 0.07em;
+            text-underline-offset: 0.1em;
+            color: var(--blue);
+        }
+        .grid-2 p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 15px;
+            margin-top: 20px;
+        }
+
         @media (max-width: 900px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
             .areas-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
         @media (max-width: 700px) {
+            .ov-hero {
+                padding: 120px 6vw 60px;
+            }
             .areas-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -159,8 +260,9 @@
     </div>
 
     <main>
-        <!-- HERO -->
-        <section class="hero">
+        <!-- HERO PERSONALIZADO -->
+        <section class="ov-hero">
+            <div class="hero-noise"></div>
             <h1>Conoce tu <em>perfil vocacional integral</em> con Windsor.</h1>
             <p>El Test de Orientación Vocacional Windsor combina cuatro instrumentos: <strong>Kuder</strong> (intereses), <strong>Herrera y Montes</strong> (preferencias), <strong>Razonamiento abstracto</strong> y <strong>Personalidad</strong> (16 perfiles). Obtén un panorama completo de tus áreas de afinidad.</p>
             <a href="test-vocacional.html" class="cta">Comenzar test →</a>
