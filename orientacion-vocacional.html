@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Windsor — Orientación Vocacional</title>
     <meta name="description" content="Conoce el test vocacional de Windsor: Kuder, Herrera, Razonamiento Abstracto y Personalidad. Descubre tu perfil profesional." />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -69,7 +70,6 @@
             z-index: 2;
         }
         .ov-hero .cta:hover { background: var(--blue-dark); transform: translateX(6px); }
-
         .areas-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -82,25 +82,9 @@
             padding: 24px 20px;
             min-height: 140px;
         }
-        .areas-grid .area h4 {
-            font-size: 18px;
-            letter-spacing: -0.03em;
-            margin-bottom: 8px;
-        }
-        .areas-grid .area p {
-            font-size: 12px;
-            color: #666;
-            line-height: 1.5;
-        }
-        .areas-grid .area .num {
-            font-size: 9px;
-            font-weight: 700;
-            color: var(--blue);
-            opacity: 0.6;
-            display: block;
-            margin-bottom: 12px;
-        }
-
+        .areas-grid .area h4 { font-size:18px; letter-spacing:-0.03em; margin-bottom:8px; }
+        .areas-grid .area p { font-size:12px; color:#666; line-height:1.5; }
+        .areas-grid .area .num { font-size:9px; font-weight:700; color:var(--blue); opacity:0.6; display:block; margin-bottom:12px; }
         .cta-box {
             background: var(--blue);
             color: var(--white);
@@ -128,7 +112,6 @@
             gap: 12px;
         }
         .cta-box .btn:hover { transform: scale(1.03); }
-
         .grid-2 {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
@@ -156,17 +139,16 @@
             font-size: 15px;
             margin-top: 20px;
         }
-
         @media (max-width: 900px) {
-            .grid-2 { grid-template-columns: 1fr; gap: 30px; }
+            .grid-2 { grid-template-columns:1fr; gap:30px; }
             .areas-grid { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 700px) {
-            .ov-hero { padding: 120px 6vw 60px; }
+            .ov-hero { padding:120px 6vw 60px; }
             .areas-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 480px) {
-            .areas-grid { grid-template-columns: 1fr; }
+            .areas-grid { grid-template-columns:1fr; }
             .cta-box { flex-direction: column; align-items: flex-start; }
         }
     </style>
