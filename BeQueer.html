@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BeQueer by Windsor — Diseño y tecnología con identidad</title>
     <meta name="description" content="Diseñamos y desarrollamos proyectos digitales para la comunidad LGBTQ+ y sus aliados. Branding inclusivo, sitios seguros y comunicación con perspectiva." />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -106,14 +107,6 @@
             background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
         }
         .bequeer-card:hover .bottom-bar { width: 100% !important; }
-        .statement-marquee .statement-track span {
-            background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00cc00, #0066ff, #8b00ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-        }
-        .statement-marquee .statement-track b { color: rgba(255,255,255,0.25); font-weight:400; }
         .cta-rainbow {
             background: var(--black);
             color: var(--white);
@@ -154,7 +147,7 @@
         @media (max-width: 480px) { .cta-rainbow h3 { font-size:1.4rem; } .cta-rainbow .btn { width:100%; justify-content:center; } }
     </style>
 </head>
-<body>
+<body class="bequeer-page">
 
     <!-- PRELOADER -->
     <div class="preloader">
@@ -166,7 +159,7 @@
     <!-- HEADER -->
     <header class="header">
         <a href="index.html" class="logo">
-            <span class="logo-symbol">W</span>
+            <img src="assets/favicon.png" alt="Windsor" class="logo-icon" />
             <span class="logo-name">WINDSOR</span>
         </a>
         <nav class="desktop-nav">
@@ -177,6 +170,7 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html" class="active">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
@@ -205,6 +199,7 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
@@ -333,8 +328,8 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-logo">
-            <span class="logo-symbol">W</span>
-            <span>WINDSOR <small>LABORATORIO DIGITAL INDEPENDIENTE</small></span>
+            <img src="assets/favicon.png" alt="Windsor" style="width:34px; height:34px; display:block;" />
+            <span>WINDSOR</span>
         </div>
         <div class="footer-links">
             <a href="index.html">Inicio</a>
@@ -345,6 +340,7 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
