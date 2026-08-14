@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Windsor Careers — Pasantías y talento</title>
     <meta name="description" content="Windsor Careers es nuestro programa de pasantías 100% remoto para jóvenes profesionales de todas las áreas. Desarrolla tu carrera en un laboratorio digital." />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -53,9 +54,6 @@
         img { max-width:100%; display:block; }
         section { scroll-margin-top:82px; }
 
-        /* =========================================================
-           PRELOADER
-        ========================================================== */
         .preloader {
             position:fixed; inset:0; z-index:9999;
             background:var(--black); color:var(--white);
@@ -81,9 +79,6 @@
         @keyframes preloaderLine { to { transform:translateX(0); } }
         @keyframes preloaderPulse { from { transform:scale(0.95); } to { transform:scale(1.05); } }
 
-        /* =========================================================
-           HEADER
-        ========================================================== */
         .header {
             position:fixed; top:0; left:0; width:100%; height:82px;
             padding:0 4vw; display:flex; align-items:center; justify-content:space-between;
@@ -105,10 +100,7 @@
             display:flex; align-items:center; gap:12px;
             font-size:13px; font-weight:700; letter-spacing:0.16em;
         }
-        .logo-symbol {
-            width:34px; height:34px; display:grid; place-items:center;
-            border:1px solid currentColor; font-family:var(--serif); font-size:20px;
-        }
+        .logo-icon { width:34px; height:34px; display:block; }
         .desktop-nav {
             display:flex; align-items:center; gap:32px;
             font-size:10px; text-transform:uppercase; letter-spacing:0.12em;
@@ -139,9 +131,6 @@
         }
         .menu-button span { display:block; width:17px; height:1px; background:currentColor; transition: transform 0.3s ease, opacity 0.3s ease; }
 
-        /* =========================================================
-           MOBILE MENU
-        ========================================================== */
         .mobile-menu {
             position:fixed; inset:0; z-index:450;
             background:var(--black); color:var(--white);
@@ -163,9 +152,6 @@
         .mobile-menu a { font-size:clamp(1.5rem,6vw,3rem); line-height:0.95; letter-spacing:-0.06em; transition:color 0.25s ease; }
         .mobile-menu a:hover { color:var(--green); }
 
-        /* =========================================================
-           SECTIONS
-        ========================================================== */
         .section {
             padding: 110px 6vw;
         }
@@ -176,10 +162,8 @@
             font-size:9px; font-weight:700; letter-spacing:0.16em;
         }
         .section-meta span:last-child { opacity:0.55; }
+        .container { max-width:var(--max-width); margin:0 auto; }
 
-        /* =========================================================
-           CAREERS HERO
-        ========================================================== */
         .careers-hero {
             background: var(--black);
             color: var(--white);
@@ -223,9 +207,6 @@
             z-index: 2;
         }
 
-        /* =========================================================
-           INTRO LAYOUT (reutilizado)
-        ========================================================== */
         .intro-layout {
             max-width: var(--max-width);
             margin: 0 auto;
@@ -281,9 +262,6 @@
             align-items: center;
         }
 
-        /* =========================================================
-           BENEFITS
-        ========================================================== */
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -331,9 +309,6 @@
             line-height: 1.6;
         }
 
-        /* =========================================================
-           AREAS GRID
-        ========================================================== */
         .areas-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -361,9 +336,6 @@
             color: var(--blue);
         }
 
-        /* =========================================================
-           TIMELINE
-        ========================================================== */
         .timeline {
             display: flex;
             flex-direction: column;
@@ -396,32 +368,23 @@
             line-height: 1.6;
         }
 
-        /* =========================================================
-           FOOTER
-        ========================================================== */
         .footer {
             padding:35px 6vw; background:var(--black); color:var(--white);
             display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:40px;
         }
         .footer-logo { display:flex; align-items:center; gap:12px; font-size:12px; font-weight:700; letter-spacing:0.15em; }
-        .footer-logo small { display:block; margin-top:5px; color:rgba(255,255,255,0.4); font-size:7px; letter-spacing:0.12em; }
+        .footer-logo img { width:34px; height:34px; display:block; }
         .footer-links { display:flex; gap:25px; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; }
         .footer-links a { opacity:0.6; transition:opacity 0.25s ease; }
         .footer-links a:hover { opacity:1; }
         .footer-tagline { justify-self:end; color:var(--green); font-family:var(--serif); font-size:16px; }
 
-        /* =========================================================
-           REVEAL ANIMATIONS
-        ========================================================== */
         [data-reveal] {
             opacity:0; transform:translateY(35px);
             transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.8,.2,1);
         }
         [data-reveal].visible { opacity:1; transform:translateY(0); }
 
-        /* =========================================================
-           RESPONSIVE
-        ========================================================== */
         @media (max-width: 900px) {
             .benefits-grid { grid-template-columns: repeat(2,1fr); }
             .areas-grid { grid-template-columns: repeat(2,1fr); }
@@ -445,7 +408,7 @@
         @media (max-width: 520px) {
             .header { height:70px; padding:0 5vw; }
             .logo { font-size:11px; }
-            .logo-symbol { width:30px; height:30px; font-size:18px; }
+            .logo-icon { width:30px; height:30px; }
             .section { padding:65px 6vw; }
             .section-meta { font-size:7px; }
             .careers-hero { padding:110px 6vw 60px; }
@@ -461,21 +424,15 @@
 </head>
 <body>
 
-    <!-- =====================================================
-         PRELOADER
-    ====================================================== -->
     <div class="preloader">
         <div class="preloader-logo">W</div>
         <div class="preloader-line"><span></span></div>
         <div class="preloader-text">WINDSOR</div>
     </div>
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
     <header class="header">
         <a href="index.html" class="logo">
-            <span class="logo-symbol">W</span>
+            <img src="assets/favicon.png" alt="Windsor" class="logo-icon" />
             <span class="logo-name">WINDSOR</span>
         </a>
         <nav class="desktop-nav">
@@ -486,6 +443,7 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html" class="active">Careers</a>
             <a href="contacto.html">Contacto</a>
@@ -502,9 +460,6 @@
         <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
     </header>
 
-    <!-- =====================================================
-         MOBILE MENU
-    ====================================================== -->
     <div class="mobile-menu">
         <div class="mobile-menu-inner">
             <div class="mobile-menu-label">NAVEGACIÓN</div>
@@ -516,18 +471,15 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
         </div>
     </div>
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
     <main>
 
-        <!-- HERO -->
         <section class="careers-hero">
             <div class="hero-noise"></div>
             <h1>
@@ -541,7 +493,6 @@
             </p>
         </section>
 
-        <!-- QUÉ ES -->
         <section class="section" id="que-es">
             <div class="section-meta"><span>01</span><span>QUÉ ES</span></div>
             <div class="intro-layout">
@@ -574,17 +525,14 @@
             </div>
         </section>
 
-        <!-- BENEFICIOS -->
         <section class="section" id="beneficios" style="background:var(--white);">
             <div class="section-meta"><span>02</span><span>BENEFICIOS</span></div>
-            <div class="container" style="max-width:var(--max-width); margin:0 auto;">
+            <div class="container">
                 <h2 style="font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-0.06em; line-height:0.9; margin-bottom:20px;">
                     ¿Por qué ser parte de
                     <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">Windsor Careers?</span>
                 </h2>
                 <div class="benefits-grid">
-
-                    <!-- Proyectos reales -->
                     <div class="benefit-item" data-reveal>
                         <div class="icon-wrap">
                             <svg viewBox="0 0 24 24">
@@ -595,8 +543,6 @@
                         <h3>Proyectos reales</h3>
                         <p>Trabajarás en proyectos con clientes reales, desde la estrategia hasta la entrega.</p>
                     </div>
-
-                    <!-- Aprendizaje continuo -->
                     <div class="benefit-item" data-reveal>
                         <div class="icon-wrap">
                             <svg viewBox="0 0 24 24">
@@ -608,8 +554,6 @@
                         <h3>Aprendizaje continuo</h3>
                         <p>Acceso a recursos, mentoría y feedback constante para que crezcas profesionalmente.</p>
                     </div>
-
-                    <!-- 100% remoto -->
                     <div class="benefit-item" data-reveal>
                         <div class="icon-wrap">
                             <svg viewBox="0 0 24 24">
@@ -621,8 +565,6 @@
                         <h3>100% remoto</h3>
                         <p>Trabaja desde cualquier lugar de Latinoamérica. Solo necesitas conexión a internet.</p>
                     </div>
-
-                    <!-- Comunidad -->
                     <div class="benefit-item" data-reveal>
                         <div class="icon-wrap">
                             <svg viewBox="0 0 24 24">
@@ -635,8 +577,6 @@
                         <h3>Comunidad</h3>
                         <p>Formarás parte de una red de jóvenes profesionales con intereses diversos.</p>
                     </div>
-
-                    <!-- Desarrollo de carrera -->
                     <div class="benefit-item" data-reveal>
                         <div class="icon-wrap">
                             <svg viewBox="0 0 24 24">
@@ -647,8 +587,6 @@
                         <h3>Desarrollo de carrera</h3>
                         <p>Construirás un portafolio sólido y ganarás experiencia para tu futuro profesional.</p>
                     </div>
-
-                    <!-- Horarios flexibles -->
                     <div class="benefit-item" data-reveal>
                         <div class="icon-wrap">
                             <svg viewBox="0 0 24 24">
@@ -659,15 +597,13 @@
                         <h3>Horarios flexibles</h3>
                         <p>Conciliamos el aprendizaje con tus otros compromisos. No es una jornada rígida.</p>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- DISCIPLINAS -->
         <section class="section" style="background:var(--cream);">
             <div class="section-meta"><span>03</span><span>DISCIPLINAS</span></div>
-            <div class="container" style="max-width:var(--max-width); margin:0 auto;">
+            <div class="container">
                 <h2 style="font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-0.06em; line-height:0.9; margin-bottom:20px;">
                     Buscamos talento
                     <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">de todas las áreas.</span>
@@ -692,10 +628,9 @@
             </div>
         </section>
 
-        <!-- PROCESO -->
         <section class="section" style="background:var(--white);">
             <div class="section-meta"><span>04</span><span>PROCESO</span></div>
-            <div class="container" style="max-width:var(--max-width); margin:0 auto;">
+            <div class="container">
                 <h2 style="font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-0.06em; line-height:0.9; margin-bottom:20px;">
                     Así es nuestro
                     <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">proceso de selección.</span>
@@ -736,10 +671,9 @@
             </div>
         </section>
 
-        <!-- TESTIMONIO -->
         <section class="section" style="background:var(--cream);">
             <div class="section-meta"><span>05</span><span>TESTIMONIO</span></div>
-            <div class="container" style="max-width:var(--max-width); margin:0 auto;">
+            <div class="container">
                 <div style="max-width:800px; margin:0 auto; text-align:center; padding:20px;">
                     <blockquote style="font-size:1.4rem; font-style:italic; color:#333; line-height:1.6; font-family:var(--serif);">
                         “Windsor Careers me dio la oportunidad de trabajar en proyectos reales mientras terminaba la universidad. Aprendí más en 6 meses que en 3 años de carrera.”
@@ -749,7 +683,6 @@
             </div>
         </section>
 
-        <!-- CTA FINAL -->
         <div class="container" style="max-width:var(--max-width); margin:60px auto; padding:0 6vw;">
             <div style="background:var(--black); color:var(--white); padding:40px; display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;">
                 <div>
@@ -767,13 +700,10 @@
 
     </main>
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
     <footer class="footer">
         <div class="footer-logo">
-            <span class="logo-symbol">W</span>
-            <span>WINDSOR <small>LABORATORIO DIGITAL INDEPENDIENTE</small></span>
+            <img src="assets/favicon.png" alt="Windsor" />
+            <span>WINDSOR</span>
         </div>
         <div class="footer-links">
             <a href="index.html">Inicio</a>
@@ -784,6 +714,7 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
@@ -791,17 +722,13 @@
         <div class="footer-tagline">Precisión aplicada.</div>
     </footer>
 
-    <!-- =====================================================
-         SCRIPTS
-    ====================================================== -->
     <script>
-        // Preloader
+        // Preloader, header scroll, mobile menu, etc.
         window.addEventListener('load', () => {
             const p = document.querySelector('.preloader');
             if (p) setTimeout(() => p.classList.add('loaded'), 1300);
         });
 
-        // Header scroll + hide
         const header = document.querySelector('.header');
         let lastScrollY = window.scrollY;
         function updateHeader() {
@@ -823,7 +750,6 @@
         window.addEventListener('scroll', updateHeader, { passive: true });
         updateHeader();
 
-        // Mobile menu
         const menuBtn = document.querySelector('.menu-button');
         const mobileMenu = document.querySelector('.mobile-menu');
         function closeMobileMenu() {
@@ -848,7 +774,6 @@
             if (e.key === 'Escape') closeMobileMenu();
         });
 
-        // Scroll reveal
         const revealElements = document.querySelectorAll('[data-reveal]');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if ('IntersectionObserver' in window && !prefersReducedMotion) {
