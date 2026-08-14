@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Windsor — Contacto</title>
     <meta name="description" content="Ponte en contacto con Windsor. Cuéntanos tu proyecto, idea o consulta." />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -174,17 +175,15 @@
 </head>
 <body>
 
-    <!-- PRELOADER -->
     <div class="preloader">
         <div class="preloader-logo">W</div>
         <div class="preloader-line"><span></span></div>
         <div class="preloader-text">WINDSOR</div>
     </div>
 
-    <!-- HEADER -->
     <header class="header">
         <a href="index.html" class="logo">
-            <span class="logo-symbol">W</span>
+            <img src="assets/favicon.png" alt="Windsor" class="logo-icon" />
             <span class="logo-name">WINDSOR</span>
         </a>
         <nav class="desktop-nav">
@@ -195,23 +194,15 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html" class="active">Contacto</a>
         </nav>
-        <a href="contacto.html" class="header-button">
-            Hablemos
-            <span class="arrow-icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
-                </svg>
-            </span>
-        </a>
+        <!-- Botón "Hablemos" ELIMINADO -->
         <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
     </header>
 
-    <!-- MOBILE MENU -->
     <div class="mobile-menu">
         <div class="mobile-menu-inner">
             <div class="mobile-menu-label">NAVEGACIÓN</div>
@@ -223,6 +214,7 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
@@ -280,11 +272,10 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-logo">
-            <span class="logo-symbol">W</span>
-            <span>WINDSOR <small>LABORATORIO DIGITAL INDEPENDIENTE</small></span>
+            <img src="assets/favicon.png" alt="Windsor" style="width:34px; height:34px; display:block;" />
+            <span>WINDSOR</span>
         </div>
         <div class="footer-links">
             <a href="index.html">Inicio</a>
@@ -295,6 +286,7 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
@@ -303,7 +295,7 @@
     </footer>
 
     <script>
-        // Preloader, header, mobile menu y formulario
+        // Preloader, header, mobile menu
         window.addEventListener('load', () => {
             const p = document.querySelector('.preloader');
             if (p) setTimeout(() => p.classList.add('loaded'), 1300);
@@ -340,6 +332,7 @@
         }));
         document.addEventListener('keydown', e => { if (e.key === 'Escape') { mobileMenu?.classList.remove('active'); document.body.classList.remove('menu-active'); } });
 
+        // Formulario
         const form = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
         const successMsg = document.getElementById('successMessage');
