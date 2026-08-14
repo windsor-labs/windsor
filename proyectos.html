@@ -3,96 +3,89 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windsor — Proyectos y casos de éxito</title>
-    <meta name="description" content="Conoce los proyectos que Windsor ha desarrollado junto a sus clientes: branding, estrategia digital, desarrollo web y más." />
+    <title>Windsor — Test en mantenimiento</title>
+    <meta name="description" content="Estamos mejorando el test vocacional. Vuelve pronto." />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <style>
-        .proyectos-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            background: var(--line);
-            margin-top: 60px;
-        }
-        .proyecto-card {
-            background: var(--white);
-            padding: 32px 28px;
-            min-height: 280px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: background 0.25s;
-        }
-        .proyecto-card:hover { background: var(--cream); }
-        .proyecto-card .cliente {
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            color: var(--blue);
-            opacity: 0.7;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-        .proyecto-card h3 {
-            font-size: 1.35rem;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 10px;
-        }
-        .proyecto-card p {
-            color: #555;
-            line-height: 1.6;
-            font-size: 14px;
+        .maintenance {
             flex: 1;
-        }
-        .proyecto-card .tags {
             display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin: 18px 0 20px;
+            align-items: center;
+            justify-content: center;
+            padding: 130px 6vw 80px;
+            text-align: center;
+            min-height: 70vh;
         }
-        .proyecto-card .tags span {
-            padding: 4px 10px;
-            background: var(--cream);
-            font-size: 8px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: #666;
+        .maintenance-content {
+            max-width: 700px;
         }
-        .proyecto-card .link {
+        .spinner {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 35px;
+            border: 5px solid var(--line);
+            border-top: 5px solid var(--blue);
+            border-radius: 50% !important;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .maintenance h1 {
+            font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+            margin-bottom: 20px;
+        }
+        .maintenance h1 em {
+            display: block;
+            color: var(--blue);
+            font-family: var(--sans);
+            font-weight: 900;
+            text-decoration: underline;
+            text-decoration-thickness: 0.07em;
+            text-underline-offset: 0.1em;
+        }
+        .maintenance p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .maintenance p strong { color: var(--black); font-weight: 700; }
+        .btn {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
+            padding: 14px 28px;
+            background: var(--blue);
+            color: var(--white);
             font-size: 9px;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            border-bottom: 2px solid currentColor;
-            padding-bottom: 4px;
-            align-self: flex-start;
-            transition: color 0.25s;
+            transition: background 0.25s, transform 0.25s;
         }
-        .proyecto-card .link:hover { color: var(--blue); }
-        @media (max-width: 800px) { .proyectos-grid { grid-template-columns:1fr; } }
+        .btn:hover { background: var(--blue-dark); transform: translateX(6px); }
+        .btn .arrow-icon { display: inline-flex; align-items: center; }
+        @media (max-width: 700px) {
+            .maintenance { padding: 100px 5vw 60px; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- PRELOADER -->
     <div class="preloader">
         <div class="preloader-logo">W</div>
         <div class="preloader-line"><span></span></div>
         <div class="preloader-text">WINDSOR</div>
     </div>
 
-    <!-- HEADER -->
     <header class="header">
         <a href="index.html" class="logo">
-            <span class="logo-symbol">W</span>
+            <img src="assets/favicon.png" alt="Windsor" class="logo-icon" />
             <span class="logo-name">WINDSOR</span>
         </a>
         <nav class="desktop-nav">
@@ -103,6 +96,7 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
@@ -119,7 +113,6 @@
         <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
     </header>
 
-    <!-- MOBILE MENU -->
     <div class="mobile-menu">
         <div class="mobile-menu-inner">
             <div class="mobile-menu-label">NAVEGACIÓN</div>
@@ -131,87 +124,34 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
         </div>
     </div>
 
-    <main>
-        <section class="hero">
-            <h1>Proyectos que <em>construimos</em> con nuestros clientes.</h1>
-            <p>Cada proyecto es una colaboración única. Aquí mostramos algunos de los casos en los que hemos aplicado estrategia, diseño y tecnología para resolver problemas reales.</p>
-        </section>
-
-        <section class="section">
-            <div class="section-meta"><span>01</span><span>CASOS DE ÉXITO</span></div>
-            <div class="container proyectos-grid">
-                <article class="proyecto-card">
-                    <div>
-                        <div class="cliente">Heliot Media</div>
-                        <h3>Identidad digital y estrategia de comunicación</h3>
-                        <p>Construcción de marca, auditoría digital y desarrollo de una estrategia de contenido para una agencia de comunicación.</p>
-                        <div class="tags"><span>Branding</span><span>Estrategia</span><span>Auditoría</span></div>
-                    </div>
-                    <a href="#" class="link">Ver proyecto →</a>
-                </article>
-                <article class="proyecto-card">
-                    <div>
-                        <div class="cliente">Café Origen</div>
-                        <h3>Posicionamiento de marca para cafetería de especialidad</h3>
-                        <p>Redefinimos la identidad visual, el packaging y la presencia digital para conectar con un público más amplio.</p>
-                        <div class="tags"><span>Branding</span><span>Packaging</span><span>Web</span></div>
-                    </div>
-                    <a href="#" class="link">Ver proyecto →</a>
-                </article>
-                <article class="proyecto-card">
-                    <div>
-                        <div class="cliente">Grupo Nova</div>
-                        <h3>Consultoría en innovación para empresa de servicios</h3>
-                        <p>Identificamos nuevas líneas de negocio y rediseñamos sus procesos internos para mejorar la eficiencia.</p>
-                        <div class="tags"><span>Consultoría</span><span>Innovación</span><span>Procesos</span></div>
-                    </div>
-                    <a href="#" class="link">Ver proyecto →</a>
-                </article>
-                <article class="proyecto-card">
-                    <div>
-                        <div class="cliente">Inversiones El Sol</div>
-                        <h3>Formación corporativa en innovación</h3>
-                        <p>Programa de formación para equipos directivos y mandos medios, con foco en metodologías ágiles y liderazgo.</p>
-                        <div class="tags"><span>Formación</span><span>Liderazgo</span><span>Ágil</span></div>
-                    </div>
-                    <a href="#" class="link">Ver proyecto →</a>
-                </article>
-                <article class="proyecto-card">
-                    <div>
-                        <div class="cliente">EcoFuturo</div>
-                        <h3>Plataforma digital para emprendimiento sostenible</h3>
-                        <p>Desarrollo de un sitio web y una aplicación de gestión para una organización enfocada en energías renovables.</p>
-                        <div class="tags"><span>Web</span><span>App</span><span>UX/UI</span></div>
-                    </div>
-                    <a href="#" class="link">Próximamente →</a>
-                </article>
-                <article class="proyecto-card" style="background:var(--black); color:var(--white);">
-                    <div>
-                        <div class="cliente" style="color:var(--green); opacity:1;">¿El tuyo?</div>
-                        <h3>Tu proyecto puede estar aquí.</h3>
-                        <p style="color:rgba(255,255,255,0.7);">Trabajemos juntos para construir algo significativo. Cuéntanos tu idea.</p>
-                        <div class="tags" style="margin-top:18px;">
-                            <span style="background:rgba(255,255,255,0.15); color:var(--white);">Colaboración</span>
-                            <span style="background:rgba(255,255,255,0.15); color:var(--white);">Innovación</span>
-                        </div>
-                    </div>
-                    <a href="contacto.html" class="link" style="color:var(--green); border-color:var(--green);">Iniciar proyecto →</a>
-                </article>
-            </div>
-        </section>
+    <main class="maintenance">
+        <div class="maintenance-content">
+            <div class="spinner" aria-label="Cargando, página en mantenimiento"></div>
+            <h1>Estamos en <em>mantenimiento</em></h1>
+            <p>Estamos mejorando el test vocacional para ofrecerte una mejor experiencia.<br /><strong>Volvemos muy pronto.</strong></p>
+            <a href="index.html" class="btn">
+                Ir a la página principal
+                <span class="arrow-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                </span>
+            </a>
+        </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-logo">
-            <span class="logo-symbol">W</span>
-            <span>WINDSOR <small>LABORATORIO DIGITAL INDEPENDIENTE</small></span>
+            <img src="assets/favicon.png" alt="Windsor" style="width:34px; height:34px; display:block;" />
+            <span>WINDSOR</span>
         </div>
         <div class="footer-links">
             <a href="index.html">Inicio</a>
@@ -222,6 +162,7 @@
             <a href="windsor-one.html">One</a>
             <a href="BeQueer.html">BeQueer</a>
             <a href="recomendados.html">Recomendados</a>
+            <a href="proyectos.html">Proyectos</a>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
