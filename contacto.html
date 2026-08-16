@@ -10,6 +10,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Forzar fondo oscuro en el header para esta página */
+        .header {
+            background: var(--black) !important;
+            color: var(--white) !important;
+            backdrop-filter: none !important;
+        }
+        .header::before {
+            opacity: 1 !important;
+        }
+        .header.scrolled {
+            background: var(--black) !important;
+        }
+        .header .menu-button {
+            border-color: rgba(255,255,255,0.4);
+        }
+        .header .menu-button span {
+            background: currentColor;
+        }
+        .header .login-btn {
+            color: var(--white);
+            border-color: rgba(255,255,255,0.2);
+        }
+        .header .login-btn:hover {
+            border-color: var(--white);
+            color: var(--green);
+        }
+        .header .header-button {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: var(--white);
+        }
+        .header .header-button:hover {
+            background: var(--green);
+            color: var(--black);
+            border-color: var(--green);
+        }
+        .header .logo-name {
+            color: var(--white);
+        }
+        .header .logo-icon {
+            filter: brightness(1);
+        }
+    </style>
 </head>
 <body>
 
@@ -185,7 +229,7 @@
 
     <script src="script.js"></script>
     <script>
-        // Formulario de contacto (opcional, ya está en script.js pero aquí lo mantenemos por si acaso)
+        // Formulario de contacto
         const form = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
         const successMsg = document.getElementById('successMessage');
