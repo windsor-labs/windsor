@@ -1886,3 +1886,41 @@ section { scroll-margin-top:82px; }
     html { scroll-behavior:auto; }
     *, *::before, *::after { animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
 }
+/* =========================================================
+   BOLA FLOTANTE GLOBAL
+========================================================= */
+#cursor-ball {
+    position: fixed;
+    pointer-events: none;      /* no interfiere con clics */
+    z-index: 9999;
+    width: 20px;               /* tamaño pequeño, simple */
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(0, 109, 255, 0.6);
+    border: 1.5px solid rgba(0, 109, 255, 0.8);
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.2s ease;
+    will-change: transform;
+    box-shadow: 0 0 15px rgba(0, 109, 255, 0.15);
+    opacity: 0;                /* oculta por defecto, se muestra al mover el mouse */
+}
+
+#cursor-ball.visible {
+    opacity: 1;
+}
+
+/* Cuando el mouse pasa sobre elementos interactivos, se agranda un poco */
+#cursor-ball.hover {
+    width: 28px;
+    height: 28px;
+    background: rgba(0, 109, 255, 0.3);
+    border-color: rgba(0, 109, 255, 1);
+    box-shadow: 0 0 30px rgba(0, 109, 255, 0.25);
+}
+
+/* En móviles y pantallas táctiles la ocultamos */
+@media (hover: none) and (pointer: coarse) {
+    #cursor-ball {
+        display: none !important;
+    }
+}
