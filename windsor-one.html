@@ -13,57 +13,83 @@
 </head>
 <body>
 
-    <!-- PRELOADER -->
     <div class="preloader">
         <div class="preloader-logo">W</div>
         <div class="preloader-line"><span></span></div>
         <div class="preloader-text">WINDSOR</div>
     </div>
 
-    <!-- HEADER -->
     <header class="header">
         <a href="index.html" class="logo">
             <img src="assets/favicon.png" alt="Windsor" class="logo-icon" />
             <span class="logo-name">WINDSOR</span>
         </a>
         <nav class="desktop-nav">
-            <a href="index.html#servicios">Servicios</a>
-            <a href="metodologia.html">Metodología</a>
-            <a href="cide.html">CIDE</a>
-            <a href="orientacion-vocacional.html">Orientación</a>
-            <a href="windsor-one.html" class="active">One</a>
-            <a href="BeQueer.html">BeQueer</a>
-            <a href="recomendados.html">Recomendados</a>
-            <a href="proyectos.html">Proyectos</a>
-            <a href="becas.html">BK2</a>
-            <a href="careers.html">Careers</a>
-            <a href="contacto.html">Contacto</a>
+            <ul class="nav-list">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Sobre</a>
+                    <ul class="submenu">
+                        <li><a href="metodologia.html">Metodología</a></li>
+                        <li><a href="inspiracion.html">Inspiración</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="cide.html">CIDE</a></li>
+                        <li><a href="windsor-one.html" class="active">Windsor One</a></li>
+                        <li><a href="BeQueer.html">BeQueer</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Recursos</a>
+                    <ul class="submenu">
+                        <li><a href="orientacion-vocacional.html">Orientación</a></li>
+                        <li><a href="recomendados.html">Recomendados</a></li>
+                        <li><a href="proyectos.html">Proyectos</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Programas</a>
+                    <ul class="submenu">
+                        <li><a href="becas.html">BK2</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
         </nav>
-        <a href="contacto.html" class="header-button">
-            Hablemos
-            <span class="arrow-icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
-                </svg>
-            </span>
-        </a>
+        <div class="header-actions">
+            <a href="contacto.html" class="header-button">
+                Hablemos
+                <span class="arrow-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                </span>
+            </a>
+        </div>
         <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
     </header>
 
-    <!-- MOBILE MENU -->
     <div class="mobile-menu">
         <div class="mobile-menu-inner">
             <div class="mobile-menu-label">NAVEGACIÓN</div>
             <a href="index.html">Inicio</a>
-            <a href="index.html#servicios">Servicios</a>
+            <div class="mobile-group-title">Sobre</div>
             <a href="metodologia.html">Metodología</a>
+            <a href="inspiracion.html">Inspiración</a>
+            <div class="mobile-group-title">Servicios</div>
             <a href="cide.html">CIDE</a>
-            <a href="orientacion-vocacional.html">Orientación</a>
-            <a href="windsor-one.html">One</a>
+            <a href="windsor-one.html">Windsor One</a>
             <a href="BeQueer.html">BeQueer</a>
+            <div class="mobile-group-title">Recursos</div>
+            <a href="orientacion-vocacional.html">Orientación</a>
             <a href="recomendados.html">Recomendados</a>
             <a href="proyectos.html">Proyectos</a>
+            <div class="mobile-group-title">Programas</div>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
@@ -71,8 +97,6 @@
     </div>
 
     <main>
-
-        <!-- HERO -->
         <section class="hero">
             <div class="hero-noise"></div>
             <div class="hero-topline"><span>WINDSOR ONE</span><span>PORTAFOLIO DIGITAL A MEDIDA</span></div>
@@ -102,7 +126,6 @@
             </div>
         </section>
 
-        <!-- PARA QUIÉN -->
         <section class="intro section" id="para-quien">
             <div class="section-meta"><span>01</span><span>PARA QUIÉN</span></div>
             <div class="intro-layout">
@@ -115,7 +138,6 @@
             </div>
         </section>
 
-        <!-- QUÉ INCLUYE (tarjetas) -->
         <section class="section" id="que-incluye" style="background:var(--white);">
             <div class="section-meta"><span>02</span><span>QUÉ INCLUYE</span></div>
             <div class="container">
@@ -124,8 +146,6 @@
                     <p>Un portafolio profesional completo, diseñado y desarrollado con la misma calidad que aplicamos a cualquier proyecto de marca.</p>
                 </div>
                 <div class="one-cards-grid">
-
-                    <!-- 1. Diseño personalizado (azul) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap blue"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
@@ -137,8 +157,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- 2. Hasta 10 proyectos (verde) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap green"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
@@ -150,8 +168,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- 3. Optimizado para móvil (amarillo) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap yellow"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
@@ -163,8 +179,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- 4. SEO básico (púrpura) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap purple"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
@@ -176,8 +190,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- 5. Secciones clave (azul) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap blue"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
@@ -189,8 +201,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- 6. Rendimiento y velocidad (verde) -->
                     <div class="one-card" data-reveal>
                         <div class="card-inner">
                             <div class="icon-wrap green"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
@@ -202,12 +212,10 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- PROCESO -->
         <section class="method section" id="proceso">
             <div class="section-meta"><span>03</span><span>PROCESO WINDSOR</span></div>
             <div class="method-heading">
@@ -222,7 +230,6 @@
             </div>
         </section>
 
-        <!-- FILOSOFÍA -->
         <section class="principles section">
             <div class="section-meta"><span>04</span><span>FILOSOFÍA</span></div>
             <div class="principles-grid">
@@ -233,7 +240,6 @@
             </div>
         </section>
 
-        <!-- CONTACTO -->
         <section class="contact" id="contacto">
             <div class="contact-top"><span>05 / CONTACTO</span><span>WINDSOR ONE</span></div>
             <div class="contact-main">
@@ -252,7 +258,6 @@
             <div class="contact-bottom"><span>PRECISIÓN APLICADA.</span><span>© 2026 WINDSOR</span></div>
         </section>
 
-        <!-- FAQ -->
         <section class="faq section">
             <div class="section-meta"><span>06</span><span>PREGUNTAS</span></div>
             <div class="faq-layout">
@@ -266,33 +271,44 @@
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-logo">
             <img src="assets/favicon.png" alt="Windsor" style="width:34px; height:34px; display:block;" />
             <span>WINDSOR</span>
         </div>
-        <div class="footer-links">
-            <a href="index.html">Inicio</a>
-            <a href="index.html#servicios">Servicios</a>
-            <a href="metodologia.html">Metodología</a>
-            <a href="cide.html">CIDE</a>
-            <a href="orientacion-vocacional.html">Orientación</a>
-            <a href="windsor-one.html">One</a>
-            <a href="BeQueer.html">BeQueer</a>
-            <a href="recomendados.html">Recomendados</a>
-            <a href="proyectos.html">Proyectos</a>
-            <a href="becas.html">BK2</a>
-            <a href="careers.html">Careers</a>
-            <a href="contacto.html">Contacto</a>
+        <div class="footer-groups">
+            <div class="footer-group">
+                <h4>Sobre</h4>
+                <a href="metodologia.html">Metodología</a>
+                <a href="inspiracion.html">Inspiración</a>
+            </div>
+            <div class="footer-group">
+                <h4>Servicios</h4>
+                <a href="cide.html">CIDE</a>
+                <a href="windsor-one.html">Windsor One</a>
+                <a href="BeQueer.html">BeQueer</a>
+            </div>
+            <div class="footer-group">
+                <h4>Recursos</h4>
+                <a href="orientacion-vocacional.html">Orientación</a>
+                <a href="recomendados.html">Recomendados</a>
+                <a href="proyectos.html">Proyectos</a>
+            </div>
+            <div class="footer-group">
+                <h4>Programas</h4>
+                <a href="becas.html">BK2</a>
+                <a href="careers.html">Careers</a>
+            </div>
+            <div class="footer-group">
+                <h4>Contacto</h4>
+                <a href="contacto.html">Contáctanos</a>
+            </div>
         </div>
         <div class="footer-tagline">Precisión aplicada.</div>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>
