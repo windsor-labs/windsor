@@ -74,30 +74,35 @@
             box-shadow: 0 16px 40px rgba(0,0,0,0.08);
         }
         .inspiracion-card .logo-wrap {
-            width: 64px;
-            height: 64px;
-            margin-bottom: 16px;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 8px;
         }
         .inspiracion-card .logo-wrap img {
             max-width: 100%;
             max-height: 100%;
             display: block;
-            object-fit: contain;
+            object-fit: scale-down;
         }
         .inspiracion-card h3 {
             font-size: 1.4rem;
             letter-spacing: -0.03em;
             margin-bottom: 6px;
+            text-align: center;
         }
         .inspiracion-card p {
             color: #555;
             font-size: 14px;
             line-height: 1.6;
             flex: 1;
+            text-align: center;
         }
         .inspiracion-card .tag {
             display: inline-block;
@@ -108,6 +113,8 @@
             text-transform: uppercase;
             color: var(--blue);
             opacity: 0.6;
+            text-align: center;
+            width: 100%;
         }
         .inspiracion-card .bottom-bar {
             height: 4px;
@@ -168,8 +175,8 @@
             .inspiracion-grid { grid-template-columns: 1fr; }
             .valores-grid { grid-template-columns: 1fr; }
             .inspiracion-card .logo-wrap {
-                width: 56px;
-                height: 56px;
+                width: 80px;
+                height: 80px;
             }
         }
     </style>
