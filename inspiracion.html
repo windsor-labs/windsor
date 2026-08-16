@@ -10,6 +10,176 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Estilos específicos para inspiracion.html */
+        .inspiracion-hero {
+            background: var(--black);
+            color: var(--white);
+            padding: 140px 6vw 80px;
+            position: relative;
+            overflow: hidden;
+            min-height: auto;
+        }
+        .inspiracion-hero .hero-noise {
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            pointer-events: none;
+            background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
+            background-size: 5px 5px;
+        }
+        .inspiracion-hero h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 0.85;
+            letter-spacing: -0.07em;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+        .inspiracion-hero h1 em {
+            display: block;
+            color: var(--green);
+            font-family: var(--sans);
+            font-weight: 900;
+            text-decoration: underline;
+            text-decoration-thickness: 0.07em;
+            text-underline-offset: 0.1em;
+        }
+        .inspiracion-hero p {
+            max-width: 580px;
+            margin-top: 30px;
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        .inspiracion-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .inspiracion-card {
+            background: var(--white);
+            padding: 28px 24px 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .inspiracion-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+        }
+        .inspiracion-card .logo-wrap {
+            height: 120px;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: transparent;
+            border-radius: 8px;
+            padding: 4px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .inspiracion-card .logo-wrap img {
+            max-height: 100%;
+            max-width: 100%;
+            display: block;
+            object-fit: contain;
+        }
+        .inspiracion-card h3 {
+            font-size: 1.4rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        .inspiracion-card p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            flex: 1;
+            text-align: center;
+        }
+        .inspiracion-card .tag {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--blue);
+            opacity: 0.6;
+            text-align: center;
+            width: 100%;
+        }
+        .inspiracion-card .bottom-bar {
+            height: 4px;
+            margin-top: 16px;
+            transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
+            background-color: var(--blue);
+        }
+        .inspiracion-card:hover .bottom-bar { width: 100% !important; }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--line);
+            margin-top: 60px;
+        }
+        .valores-grid .valor {
+            background: var(--white);
+            padding: 28px 20px;
+            text-align: center;
+        }
+        .valores-grid .valor .icon-small {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 10px;
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .valores-grid .valor .icon-small svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .valores-grid .valor h4 {
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            color: var(--blue);
+        }
+        .valores-grid .valor p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 900px) {
+            .inspiracion-grid { grid-template-columns: repeat(2, 1fr); }
+            .valores-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 700px) {
+            .inspiracion-hero { padding: 120px 6vw 60px; }
+            .inspiracion-grid { grid-template-columns: 1fr; }
+            .valores-grid { grid-template-columns: 1fr; }
+            .inspiracion-card .logo-wrap { height: 100px; }
+        }
+    </style>
 </head>
 <body>
 
