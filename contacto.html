@@ -10,168 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <style>
-        .contact-page-wrapper {
-            padding: 120px 6vw 80px;
-            background: var(--cream);
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            align-items: start;
-        }
-        .contact-form h2 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            letter-spacing: -0.06em;
-            line-height: 0.9;
-            margin-bottom: 8px;
-        }
-        .contact-form h2 em {
-            display: block;
-            color: var(--blue);
-            font-family: var(--sans);
-            font-weight: 900;
-            text-decoration: underline;
-            text-decoration-thickness: 0.07em;
-            text-underline-offset: 0.1em;
-        }
-        .contact-form .subtitle {
-            color: #555;
-            font-size: 15px;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
-        .form-group { margin-bottom: 22px; }
-        .form-group label {
-            display: block;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #666;
-            margin-bottom: 4px;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px 0;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid var(--line);
-            font-family: var(--body);
-            font-size: 15px;
-            color: var(--black);
-            transition: border-color 0.25s ease;
-            outline: none;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus { border-bottom-color: var(--blue); }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-            border-bottom: 2px solid var(--line);
-        }
-        .form-group input::placeholder,
-        .form-group textarea::placeholder { color: #aaa; }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        .submit-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            padding: 14px 28px;
-            background: var(--blue);
-            color: var(--white);
-            border: none;
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            transition: background 0.25s, transform 0.25s;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .submit-btn:hover {
-            background: var(--blue-dark);
-            transform: translateX(6px);
-        }
-        .submit-btn .arrow-icon {
-            display: inline-flex;
-            align-items: center;
-            transition: transform 0.25s;
-        }
-        .submit-btn:hover .arrow-icon { transform: translateX(4px); }
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-        .submit-btn .spinner {
-            display: none;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-top-color: #fff;
-            animation: spin 0.8s linear infinite;
-        }
-        .submit-btn.loading .spinner { display: inline-block; }
-        .submit-btn.loading .btn-text { display: none; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .success-message {
-            display: none;
-            background: var(--green);
-            color: var(--black);
-            padding: 16px 20px;
-            margin-top: 20px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .success-message.show { display: block; }
-        .error-message {
-            display: none;
-            background: #ff6b6b;
-            color: #fff;
-            padding: 16px 20px;
-            margin-top: 20px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .error-message.show { display: block; }
-        .contact-info h3 { font-size:1.2rem; letter-spacing:-0.03em; margin-bottom:20px; }
-        .contact-info .info-text { color:#555; font-size:15px; line-height:1.7; }
-        .contact-info .info-text strong { color:var(--blue); }
-        .contact-info .info-icon {
-            display: inline-block;
-            margin-bottom: 16px;
-            color: var(--blue);
-            width: 48px;
-            height: 48px;
-        }
-        .contact-info .info-icon svg {
-            width: 100%;
-            height: 100%;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-        @media (max-width: 800px) {
-            .contact-grid { grid-template-columns:1fr; gap:40px; }
-            .contact-page-wrapper { padding:100px 5vw 60px; }
-            .form-row { grid-template-columns:1fr; gap:0; }
-        }
-        @media (max-width: 480px) {
-            .contact-form h2 { font-size:1.8rem; }
-            .contact-info .info-text { font-size:14px; }
-        }
-    </style>
 </head>
 <body>
 
@@ -187,19 +25,52 @@
             <span class="logo-name">WINDSOR</span>
         </a>
         <nav class="desktop-nav">
-            <a href="index.html#servicios">Servicios</a>
-            <a href="metodologia.html">Metodología</a>
-            <a href="cide.html">CIDE</a>
-            <a href="orientacion-vocacional.html">Orientación</a>
-            <a href="windsor-one.html">One</a>
-            <a href="BeQueer.html">BeQueer</a>
-            <a href="recomendados.html">Recomendados</a>
-            <a href="proyectos.html">Proyectos</a>
-            <a href="becas.html">BK2</a>
-            <a href="careers.html">Careers</a>
-            <a href="contacto.html" class="active">Contacto</a>
+            <ul class="nav-list">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Sobre</a>
+                    <ul class="submenu">
+                        <li><a href="metodologia.html">Metodología</a></li>
+                        <li><a href="inspiracion.html">Inspiración</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="cide.html">CIDE</a></li>
+                        <li><a href="windsor-one.html">Windsor One</a></li>
+                        <li><a href="BeQueer.html">BeQueer</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Recursos</a>
+                    <ul class="submenu">
+                        <li><a href="orientacion-vocacional.html">Orientación</a></li>
+                        <li><a href="recomendados.html">Recomendados</a></li>
+                        <li><a href="proyectos.html">Proyectos</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Programas</a>
+                    <ul class="submenu">
+                        <li><a href="becas.html">BK2</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" class="active">Contacto</a></li>
+            </ul>
         </nav>
-        <!-- Botón "Hablemos" ELIMINADO -->
+        <div class="header-actions">
+            <a href="contacto.html" class="header-button">
+                Hablemos
+                <span class="arrow-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                </span>
+            </a>
+        </div>
         <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
     </header>
 
@@ -207,14 +78,18 @@
         <div class="mobile-menu-inner">
             <div class="mobile-menu-label">NAVEGACIÓN</div>
             <a href="index.html">Inicio</a>
-            <a href="index.html#servicios">Servicios</a>
+            <div class="mobile-group-title">Sobre</div>
             <a href="metodologia.html">Metodología</a>
+            <a href="inspiracion.html">Inspiración</a>
+            <div class="mobile-group-title">Servicios</div>
             <a href="cide.html">CIDE</a>
-            <a href="orientacion-vocacional.html">Orientación</a>
-            <a href="windsor-one.html">One</a>
+            <a href="windsor-one.html">Windsor One</a>
             <a href="BeQueer.html">BeQueer</a>
+            <div class="mobile-group-title">Recursos</div>
+            <a href="orientacion-vocacional.html">Orientación</a>
             <a href="recomendados.html">Recomendados</a>
             <a href="proyectos.html">Proyectos</a>
+            <div class="mobile-group-title">Programas</div>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
@@ -277,62 +152,40 @@
             <img src="assets/favicon.png" alt="Windsor" style="width:34px; height:34px; display:block;" />
             <span>WINDSOR</span>
         </div>
-        <div class="footer-links">
-            <a href="index.html">Inicio</a>
-            <a href="index.html#servicios">Servicios</a>
-            <a href="metodologia.html">Metodología</a>
-            <a href="cide.html">CIDE</a>
-            <a href="orientacion-vocacional.html">Orientación</a>
-            <a href="windsor-one.html">One</a>
-            <a href="BeQueer.html">BeQueer</a>
-            <a href="recomendados.html">Recomendados</a>
-            <a href="proyectos.html">Proyectos</a>
-            <a href="becas.html">BK2</a>
-            <a href="careers.html">Careers</a>
-            <a href="contacto.html">Contacto</a>
+        <div class="footer-groups">
+            <div class="footer-group">
+                <h4>Sobre</h4>
+                <a href="metodologia.html">Metodología</a>
+                <a href="inspiracion.html">Inspiración</a>
+            </div>
+            <div class="footer-group">
+                <h4>Servicios</h4>
+                <a href="cide.html">CIDE</a>
+                <a href="windsor-one.html">Windsor One</a>
+                <a href="BeQueer.html">BeQueer</a>
+            </div>
+            <div class="footer-group">
+                <h4>Recursos</h4>
+                <a href="orientacion-vocacional.html">Orientación</a>
+                <a href="recomendados.html">Recomendados</a>
+                <a href="proyectos.html">Proyectos</a>
+            </div>
+            <div class="footer-group">
+                <h4>Programas</h4>
+                <a href="becas.html">BK2</a>
+                <a href="careers.html">Careers</a>
+            </div>
+            <div class="footer-group">
+                <h4>Contacto</h4>
+                <a href="contacto.html">Contáctanos</a>
+            </div>
         </div>
         <div class="footer-tagline">Precisión aplicada.</div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
-        // Preloader, header, mobile menu
-        window.addEventListener('load', () => {
-            const p = document.querySelector('.preloader');
-            if (p) setTimeout(() => p.classList.add('loaded'), 1300);
-        });
-        const header = document.querySelector('.header');
-        let lastScrollY = window.scrollY;
-        function handleHeader() {
-            if (!header) return;
-            const currentScrollY = window.scrollY;
-            if (currentScrollY <= 40) {
-                header.classList.remove('scrolled', 'hidden');
-                lastScrollY = currentScrollY;
-                return;
-            }
-            if (currentScrollY > lastScrollY) header.classList.add('hidden');
-            else header.classList.remove('hidden');
-            header.classList.add('scrolled');
-            lastScrollY = currentScrollY;
-        }
-        window.addEventListener('scroll', handleHeader, { passive: true });
-        handleHeader();
-
-        const menuBtn = document.querySelector('.menu-button');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        menuBtn?.addEventListener('click', () => {
-            const active = mobileMenu.classList.toggle('active');
-            document.body.classList.toggle('menu-active', active);
-            menuBtn.setAttribute('aria-expanded', active);
-            menuBtn.setAttribute('aria-label', active ? 'Cerrar menú' : 'Abrir menú');
-        });
-        document.querySelectorAll('.mobile-menu a').forEach(l => l.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            document.body.classList.remove('menu-active');
-        }));
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') { mobileMenu?.classList.remove('active'); document.body.classList.remove('menu-active'); } });
-
-        // Formulario
+        // Formulario de contacto (opcional, ya está en script.js pero aquí lo mantenemos por si acaso)
         const form = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
         const successMsg = document.getElementById('successMessage');
