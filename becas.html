@@ -10,211 +10,86 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <style>
-        .bk2-hero {
-            background: var(--black);
-            color: var(--white);
-            padding: 140px 6vw 80px;
-            position: relative;
-            overflow: hidden;
-            min-height: auto;
-        }
-        .bk2-hero .hero-noise {
-            position: absolute;
-            inset: 0;
-            opacity: 0.06;
-            pointer-events: none;
-            background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
-            background-size: 5px 5px;
-        }
-        .bk2-hero h1 {
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            line-height: 0.85;
-            letter-spacing: -0.07em;
-            max-width: 900px;
-            position: relative;
-            z-index: 2;
-        }
-        .bk2-hero h1 em {
-            display: block;
-            color: var(--blue);
-            font-family: var(--sans);
-            font-weight: 900;
-            text-decoration: underline;
-            text-decoration-thickness: 0.07em;
-            text-underline-offset: 0.1em;
-        }
-        .bk2-hero .hero-desc {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.85);
-            margin-top: 10px;
-            position: relative;
-            z-index: 2;
-        }
-        .bk2-hero p {
-            max-width: 580px;
-            margin-top: 20px;
-            color: rgba(255,255,255,0.7);
-            font-size: 16px;
-            line-height: 1.7;
-            position: relative;
-            z-index: 2;
-        }
-        .recursos-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 50px;
-        }
-        .recurso-item {
-            background: var(--white);
-            padding: 28px 24px 16px 24px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        .recurso-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-        }
-        .recurso-item .card-inner {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            flex: 1;
-        }
-        .recurso-item .icon-wrap {
-            flex: 0 0 56px;
-            width: 56px;
-            height: 56px;
-            background: rgba(0,0,0,0.04);
-            display: grid;
-            place-items: center;
-            color: var(--blue);
-        }
-        .recurso-item .icon-wrap svg {
-            width: 28px;
-            height: 28px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-        .recurso-item .card-body { flex:1; }
-        .recurso-item .card-body .tag {
-            display: inline-block;
-            font-size: 8px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--blue);
-            opacity: 0.6;
-            margin-bottom: 4px;
-        }
-        .recurso-item .card-body h3 { font-size:1.3rem; letter-spacing:-0.03em; margin-bottom:4px; }
-        .recurso-item .card-body p { color:#555; font-size:14px; line-height:1.6; margin:0 0 16px 0; }
-        .recurso-item .card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: gap 0.25s ease, color 0.25s ease;
-            color: var(--blue);
-        }
-        .recurso-item .card-link .arrow-icon {
-            display: inline-flex;
-            align-items: center;
-            transition: transform 0.25s ease;
-        }
-        .recurso-item:hover .card-link .arrow-icon { transform: translateX(6px); }
-        .recurso-item:hover .card-link { gap: 18px; }
-        .recurso-item .bottom-bar {
-            height: 4px;
-            margin-top: 16px;
-            transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
-            background-color: var(--blue);
-        }
-        .recurso-item:hover .bottom-bar { width: 100% !important; }
-        .disclaimer {
-            background: var(--cream);
-            padding: 30px;
-            margin-top: 50px;
-            font-size: 13px;
-            color: #777;
-            line-height: 1.7;
-            border-left: 4px solid var(--blue);
-        }
-        .disclaimer strong { color: var(--black); }
-        @media (max-width: 800px) {
-            .recursos-grid { grid-template-columns:1fr; gap:20px; }
-            .recurso-item .card-inner { gap:16px; }
-            .recurso-item .icon-wrap { flex:0 0 48px; width:48px; height:48px; }
-            .recurso-item .icon-wrap svg { width:24px; height:24px; }
-            .recurso-item { padding:20px 20px 12px 20px; }
-            .bk2-hero { padding:120px 6vw 60px; }
-        }
-    </style>
 </head>
 <body>
 
-    <!-- PRELOADER -->
     <div class="preloader">
         <div class="preloader-logo">W</div>
         <div class="preloader-line"><span></span></div>
-        <div class="preloader-text">BK2</div>
+        <div class="preloader-text">WINDSOR</div>
     </div>
 
-    <!-- HEADER -->
     <header class="header">
         <a href="index.html" class="logo">
             <img src="assets/favicon.png" alt="Windsor" class="logo-icon" />
             <span class="logo-name">WINDSOR</span>
         </a>
         <nav class="desktop-nav">
-            <a href="index.html#servicios">Servicios</a>
-            <a href="metodologia.html">Metodología</a>
-            <a href="cide.html">CIDE</a>
-            <a href="orientacion-vocacional.html">Orientación</a>
-            <a href="windsor-one.html">One</a>
-            <a href="BeQueer.html">BeQueer</a>
-            <a href="recomendados.html">Recomendados</a>
-            <a href="proyectos.html">Proyectos</a>
-            <a href="becas.html" class="active">BK2</a>
-            <a href="careers.html">Careers</a>
-            <a href="contacto.html">Contacto</a>
+            <ul class="nav-list">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Sobre</a>
+                    <ul class="submenu">
+                        <li><a href="metodologia.html">Metodología</a></li>
+                        <li><a href="inspiracion.html">Inspiración</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="cide.html">CIDE</a></li>
+                        <li><a href="windsor-one.html">Windsor One</a></li>
+                        <li><a href="BeQueer.html">BeQueer</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Recursos</a>
+                    <ul class="submenu">
+                        <li><a href="orientacion-vocacional.html">Orientación</a></li>
+                        <li><a href="recomendados.html">Recomendados</a></li>
+                        <li><a href="proyectos.html">Proyectos</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Programas</a>
+                    <ul class="submenu">
+                        <li><a href="becas.html" class="active">BK2</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
         </nav>
-        <a href="contacto.html" class="header-button">
-            Hablemos
-            <span class="arrow-icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
-                </svg>
-            </span>
-        </a>
+        <div class="header-actions">
+            <a href="contacto.html" class="header-button">
+                Hablemos
+                <span class="arrow-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                </span>
+            </a>
+        </div>
         <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
     </header>
 
-    <!-- MOBILE MENU -->
     <div class="mobile-menu">
         <div class="mobile-menu-inner">
             <div class="mobile-menu-label">NAVEGACIÓN</div>
             <a href="index.html">Inicio</a>
-            <a href="index.html#servicios">Servicios</a>
+            <div class="mobile-group-title">Sobre</div>
             <a href="metodologia.html">Metodología</a>
+            <a href="inspiracion.html">Inspiración</a>
+            <div class="mobile-group-title">Servicios</div>
             <a href="cide.html">CIDE</a>
-            <a href="orientacion-vocacional.html">Orientación</a>
-            <a href="windsor-one.html">One</a>
+            <a href="windsor-one.html">Windsor One</a>
             <a href="BeQueer.html">BeQueer</a>
+            <div class="mobile-group-title">Recursos</div>
+            <a href="orientacion-vocacional.html">Orientación</a>
             <a href="recomendados.html">Recomendados</a>
             <a href="proyectos.html">Proyectos</a>
+            <div class="mobile-group-title">Programas</div>
             <a href="becas.html">BK2</a>
             <a href="careers.html">Careers</a>
             <a href="contacto.html">Contacto</a>
@@ -327,25 +202,38 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-logo">
             <img src="assets/favicon.png" alt="Windsor" style="width:34px; height:34px; display:block;" />
             <span>WINDSOR</span>
         </div>
-        <div class="footer-links">
-            <a href="index.html">Inicio</a>
-            <a href="index.html#servicios">Servicios</a>
-            <a href="metodologia.html">Metodología</a>
-            <a href="cide.html">CIDE</a>
-            <a href="orientacion-vocacional.html">Orientación</a>
-            <a href="windsor-one.html">One</a>
-            <a href="BeQueer.html">BeQueer</a>
-            <a href="recomendados.html">Recomendados</a>
-            <a href="proyectos.html">Proyectos</a>
-            <a href="becas.html">BK2</a>
-            <a href="careers.html">Careers</a>
-            <a href="contacto.html">Contacto</a>
+        <div class="footer-groups">
+            <div class="footer-group">
+                <h4>Sobre</h4>
+                <a href="metodologia.html">Metodología</a>
+                <a href="inspiracion.html">Inspiración</a>
+            </div>
+            <div class="footer-group">
+                <h4>Servicios</h4>
+                <a href="cide.html">CIDE</a>
+                <a href="windsor-one.html">Windsor One</a>
+                <a href="BeQueer.html">BeQueer</a>
+            </div>
+            <div class="footer-group">
+                <h4>Recursos</h4>
+                <a href="orientacion-vocacional.html">Orientación</a>
+                <a href="recomendados.html">Recomendados</a>
+                <a href="proyectos.html">Proyectos</a>
+            </div>
+            <div class="footer-group">
+                <h4>Programas</h4>
+                <a href="becas.html">BK2</a>
+                <a href="careers.html">Careers</a>
+            </div>
+            <div class="footer-group">
+                <h4>Contacto</h4>
+                <a href="contacto.html">Contáctanos</a>
+            </div>
         </div>
         <div class="footer-tagline">Precisión aplicada.</div>
     </footer>
