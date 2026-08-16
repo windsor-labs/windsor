@@ -176,24 +176,6 @@ section { scroll-margin-top:82px; }
     align-items: center;
     gap: 18px;
 }
-.login-btn {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--white);
-    opacity: 0.6;
-    transition: opacity 0.25s, color 0.25s;
-    padding: 8px 12px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: var(--radius-pill);
-}
-.login-btn:hover {
-    opacity: 1;
-    border-color: var(--white);
-    color: var(--green);
-}
-
 .header-button {
     display:inline-flex; align-items:center; gap:15px;
     padding:13px 20px; background:var(--blue); border:1px solid var(--blue);
@@ -1918,7 +1900,7 @@ section { scroll-margin-top:82px; }
     .section { padding:80px 6vw; }
     .desktop-nav .nav-list, .header-button { display:none; }
     .menu-button { display:flex; }
-    .header-actions .login-btn { display:none; } /* Ocultamos login en móvil para no saturar */
+    .header-actions .login-btn { display:none; }
     .hero { min-height:100svh; height:auto; }
     .hero-topline { padding-top:105px; align-items:flex-start; flex-direction:column; gap:8px; }
     .hero-content { margin:0; padding-top:55px; padding-bottom:65px; }
