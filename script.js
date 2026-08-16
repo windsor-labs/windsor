@@ -1,3 +1,10 @@
+// Crear la bola del cursor dinámicamente si no existe
+(function() {
+    if (document.getElementById('cursor-ball')) return;
+    const ball = document.createElement('div');
+    ball.id = 'cursor-ball';
+    document.body.appendChild(ball);
+})();
 /* =========================================================
    WINDSOR
    INTERACTIONS
@@ -190,3 +197,138 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         });
     });
 });
+/* =========================================================
+   BOLA FLOTANTE GLOBAL (cursor personalizado)
+========================================================= */
+(function() {
+    // Crear la bola si no existe
+    let ball = document.getElementById('cursor-ball');
+    if (!ball) {
+        ball = document.createElement('div');
+        ball.id = 'cursor-ball';
+        document.body.appendChild(ball);
+    }
+
+    // Detectar si es dispositivo táctil
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (isTouch) {
+        ball.style.display = 'none';
+        return;
+    }
+
+    let mouseX = -1000, mouseY = -1000;
+    let currentX = -1000, currentY = -1000;
+    let animationFrame = null;
+    let isVisible = false;
+
+    // Posición "retrasada" (offset de 15px)
+    const OFFSET = 15;
+
+    // Actualizar la posición objetivo con el mouse
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!isVisible) {
+            isVisible = true;
+            ball.classList.add('visible');
+        }
+    });
+
+    // Ocultar cuando el mouse sale de la ventana
+    document.addEventListener('mouseleave', () => {
+        isVisible = false;
+        ball.classList.remove('visible');
+    });
+
+    // Función de animación suave con offset
+    function animateBall() {
+        // Calcular la posición con offset (15px hacia abajo y derecha)
+        const targetX = mouseX + OFFSET;
+        const targetY = mouseY + OFFSET;
+
+        // Si el mouse está fuera (-1000), no movemos
+        if (mouseX === -1000 && mouseY === -1000) {
+            animationFrame = requestAnimationFrame(animateBall);
+            return;
+        }
+
+        // Interpolación para movimiento suave
+        const easing = 0.18;
+        currentX += (targetX - currentX) * easing;
+        currentY += (targetY - currentY) * easing;
+
+        // Aplicar posición
+        ball.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
+
+        animationFrame = requestAnimationFrame(animateBall);
+    }
+
+    // Iniciar la animación
+    currentX = mouseX;
+    currentY = mouseY;
+    animateBall();
+
+    // ===== CAMBIO DE COLOR SEGÚN ELEMENTO DEBAJO =====
+    // Usamos un mousemove con `document.elementFromPoint()` para detectar el elemento debajo
+    document.addEventListener('mousemove', (e) => {
+        // Ocultar la bola temporalmente para no interferir con elementFromPoint
+        ball.style.display = 'none';
+        const elem = document.elementFromPoint(e.clientX, e.clientY);
+        ball.style.display = 'block';
+
+        // Determinar color según el elemento
+        let color = '#006dff'; // azul por defecto
+        let border = '#006dff';
+        let bg = 'rgba(0, 109, 255, 0.6)';
+
+        if (elem) {
+            // Enlaces
+            if (elem.tagName === 'A' || elem.closest('a')) {
+                color = '#31e083'; // verde
+                border = '#31e083';
+                bg = 'rgba(49, 224, 131, 0.5)';
+            }
+            // Botones
+            else if (elem.tagName === 'BUTTON' || elem.closest('button')) {
+                color = '#ffc629'; // amarillo
+                border = '#ffc629';
+                bg = 'rgba(255, 198, 41, 0.5)';
+            }
+            // Elementos con clase específica (puedes ampliar)
+            else if (elem.closest('.header-button') || elem.closest('.btn') || elem.closest('.hook-button')) {
+                color = '#31e083';
+                border = '#31e083';
+                bg = 'rgba(49, 224, 131, 0.5)';
+            }
+            else if (elem.closest('.header-login')) {
+                color = '#7c5cff'; // púrpura
+                border = '#7c5cff';
+                bg = 'rgba(124, 92, 255, 0.5)';
+            }
+            // Inputs / formularios
+            else if (elem.tagName === 'INPUT' || elem.tagName === 'TEXTAREA' || elem.closest('form')) {
+                color = '#ffffff';
+                border = '#ffffff';
+                bg = 'rgba(255,255,255,0.3)';
+            }
+            // Imágenes
+            else if (elem.tagName === 'IMG' || elem.closest('img')) {
+                color = '#ff6b6b'; // rojo suave
+                border = '#ff6b6b';
+                bg = 'rgba(255, 107, 107, 0.4)';
+            }
+        }
+
+        // Aplicar el color dinámicamente
+        ball.style.background = bg;
+        ball.style.borderColor = border;
+        // Sombra acorde
+        ball.style.boxShadow = `0 0 25px ${bg}`;
+    });
+
+    // Limpieza
+    window.addEventListener('beforeunload', () => {
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+    });
+
+})();
