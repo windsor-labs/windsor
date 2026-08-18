@@ -9,77 +9,272 @@
 <link href="assets/favicon.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="styles.css" rel="stylesheet"/>
+<style>
+        /* Estilos específicos para inspiracion.html */
+        .inspiracion-hero {
+            background: var(--black);
+            color: var(--white);
+            padding: 140px 6vw 80px;
+            position: relative;
+            overflow: hidden;
+            min-height: auto;
+        }
+        .inspiracion-hero .hero-noise {
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            pointer-events: none;
+            background-image: radial-gradient(rgba(255,255,255,0.8) 0.6px, transparent 0.6px);
+            background-size: 5px 5px;
+        }
+        .inspiracion-hero h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 0.85;
+            letter-spacing: -0.07em;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+        .inspiracion-hero h1 em {
+            display: block;
+            color: var(--green);
+            font-family: var(--sans);
+            font-weight: 900;
+            text-decoration: underline;
+            text-decoration-thickness: 0.07em;
+            text-underline-offset: 0.1em;
+        }
+        .inspiracion-hero p {
+            max-width: 580px;
+            margin-top: 30px;
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        .inspiracion-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .inspiracion-card {
+            background: var(--white);
+            padding: 28px 24px 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .inspiracion-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+        }
+        .inspiracion-card .logo-wrap {
+            height: 120px;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: transparent;
+            border-radius: 8px;
+            padding: 4px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .inspiracion-card .logo-wrap img {
+            max-height: 100%;
+            max-width: 100%;
+            display: block;
+            object-fit: contain;
+        }
+        .inspiracion-card h3 {
+            font-size: 1.4rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        .inspiracion-card p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            flex: 1;
+            text-align: center;
+        }
+        .inspiracion-card .tag {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--blue);
+            opacity: 0.6;
+            text-align: center;
+            width: 100%;
+        }
+        .inspiracion-card .bottom-bar {
+            height: 4px;
+            margin-top: 16px;
+            transition: width 0.4s cubic-bezier(.25,.46,.45,.94);
+            background-color: var(--blue);
+        }
+        .inspiracion-card:hover .bottom-bar { width: 100% !important; }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--line);
+            margin-top: 60px;
+        }
+        .valores-grid .valor {
+            background: var(--white);
+            padding: 28px 20px;
+            text-align: center;
+        }
+        .valores-grid .valor .icon-small {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 10px;
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .valores-grid .valor .icon-small svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .valores-grid .valor h4 {
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            color: var(--blue);
+        }
+        .valores-grid .valor p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 900px) {
+            .inspiracion-grid { grid-template-columns: repeat(2, 1fr); }
+            .valores-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 700px) {
+            .inspiracion-hero { padding: 120px 6vw 60px; }
+            .inspiracion-grid { grid-template-columns: 1fr; }
+            .valores-grid { grid-template-columns: 1fr; }
+            .inspiracion-card .logo-wrap { height: 100px; }
+        }
+    </style>
 </head>
-<body class="page-inspiracion site-page" data-page="inspiracion"><a class="skip-link" href="#contenido">Saltar al contenido</a><div aria-hidden="true" class="preloader"><div class="preloader-mark">W</div><div class="preloader-track"><span></span></div><div class="preloader-word">WINDSOR</div></div><header class="site-header"><div class="shell header-top">
-<span class="announcement-label"><span aria-hidden="true" class="status-dot"></span> WINDSOR / EL SALVADOR · LATINOAMÉRICA</span>
-<a href="contacto.html">Hablemos de tu idea <span aria-hidden="true"><svg aria-hidden="true" class="icon icon-arrow" viewbox="0 0 24 24"><path d="M5 19 19 5M9 5h10v10"></path></svg></span></a>
-</div>
-<div class="shell header-main">
-<a aria-label="Windsor, página de inicio" class="brand" href="index.html">
-<img alt="" class="brand-mark" src="assets/favicon.png"/>
-<span class="brand-name">WINDSOR</span>
+<body>
+<div class="preloader">
+<div class="preloader-logo">W</div>
+<div class="preloader-line"><span></span></div>
+<div class="preloader-text">WINDSOR</div>
+</div><header class="header">
+<a class="logo" href="index.html">
+<img alt="Windsor" class="logo-icon" src="assets/favicon.png"/>
+<span class="logo-name">WINDSOR</span>
 </a>
-<nav aria-label="Navegación principal" class="main-nav">
-<a class="nav-link" data-page="index" href="index.html">Inicio</a>
-<a class="nav-link" data-page="services" href="index.html#servicios">Qué hacemos</a>
-<a class="nav-link" data-page="metodologia" href="metodologia.html">Método</a>
-<a class="nav-link" data-page="proyectos" href="proyectos.html">Proyectos</a>
-<details class="nav-dropdown">
-<summary>Más <span aria-hidden="true"><svg aria-hidden="true" class="icon icon-plus" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
-<div class="nav-menu">
-<a href="inspiracion.html">Inspiración</a>
+<nav class="desktop-nav">
+<ul class="nav-list">
+<li><a href="index.html">Inicio</a></li>
+<li class="dropdown">
+<a href="metodologia.html">Sobre</a>
+<ul class="submenu">
+<li><a href="metodologia.html">Metodología</a></li>
+<li><a class="active" href="inspiracion.html">Inspiración</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a href="cide.html">Servicios</a>
+<ul class="submenu">
+<li><a href="cide.html">CIDE</a></li>
+<li><a href="windsor-one.html">Windsor One</a></li>
+<li><a href="BeQueer.html">BeQueer</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a href="recomendados.html">Recursos</a>
+<ul class="submenu">
+<li><a href="orientacion-vocacional.html">Orientación</a></li>
+<li><a href="recomendados.html">Recomendados</a></li>
+<li><a href="proyectos.html">Proyectos</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a href="becas.html">Programas</a>
+<ul class="submenu">
+<li><a href="becas.html">BK2</a></li>
+<li><a href="careers.html">Careers</a></li>
+</ul>
+</li>
+<li><a href="contacto.html">Contacto</a></li>
+</ul>
+</nav>
+<div class="header-actions">
+<a class="header-button" href="contacto.html">
+                Hablemos
+                <span aria-hidden="true" class="arrow-icon">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16">
+<line x1="7" x2="17" y1="17" y2="7"></line>
+<polyline points="7 7 17 7 17 17"></polyline>
+</svg>
+</span>
+</a>
+</div>
+<button aria-expanded="false" aria-label="Abrir menú" class="menu-button"><span></span><span></span></button>
+</header><div class="mobile-menu">
+<div class="mobile-menu-inner">
+<div class="mobile-menu-label">NAVEGACIÓN</div>
+<a href="index.html">Inicio</a>
+<div class="mobile-group-title">Sobre</div>
+<a href="metodologia.html">Metodología</a>
+<a class="active" href="inspiracion.html">Inspiración</a>
+<div class="mobile-group-title">Servicios</div>
 <a href="cide.html">CIDE</a>
 <a href="windsor-one.html">Windsor One</a>
 <a href="BeQueer.html">BeQueer</a>
+<div class="mobile-group-title">Recursos</div>
 <a href="orientacion-vocacional.html">Orientación</a>
 <a href="recomendados.html">Recomendados</a>
+<a href="proyectos.html">Proyectos</a>
+<div class="mobile-group-title">Programas</div>
 <a href="becas.html">BK2</a>
 <a href="careers.html">Careers</a>
+<a href="contacto.html">Contacto</a>
 </div>
-</details>
-</nav>
-<a class="header-cta" href="contacto.html">Iniciar conversación <span aria-hidden="true"><svg aria-hidden="true" class="icon icon-arrow" viewbox="0 0 24 24"><path d="M5 19 19 5M9 5h10v10"></path></svg></span></a>
-<button aria-controls="mobile-panel" aria-expanded="false" aria-label="Abrir menú" class="menu-toggle" type="button">
-<span></span><span></span>
-</button>
 </div>
-<div aria-hidden="true" class="mobile-panel" id="mobile-panel">
-<div class="mobile-panel-inner">
-<div class="mobile-panel-top"><span>NAVEGACIÓN</span><span>WINDSOR / 2026</span></div>
-<a class="mobile-link" href="index.html">Inicio</a>
-<a class="mobile-link" href="index.html#servicios">Qué hacemos</a>
-<a class="mobile-link" href="metodologia.html">Método</a>
-<a class="mobile-link" href="proyectos.html">Proyectos</a>
-<div class="mobile-label">Explorar</div>
-<div class="mobile-grid">
-<a class="mobile-link small" href="inspiracion.html">Inspiración</a>
-<a class="mobile-link small" href="cide.html">CIDE</a>
-<a class="mobile-link small" href="windsor-one.html">Windsor One</a>
-<a class="mobile-link small" href="BeQueer.html">BeQueer</a>
-<a class="mobile-link small" href="orientacion-vocacional.html">Orientación</a>
-<a class="mobile-link small" href="recomendados.html">Recomendados</a>
-<a class="mobile-link small" href="becas.html">BK2</a>
-<a class="mobile-link small" href="careers.html">Careers</a>
-</div>
-<a class="mobile-contact" href="contacto.html">Hablemos de tu proyecto <span aria-hidden="true"><svg aria-hidden="true" class="icon icon-arrow" viewbox="0 0 24 24"><path d="M5 19 19 5M9 5h10v10"></path></svg></span></a>
-</div>
-</div></header>
-<main class="page-main" id="contenido">
+<main>
 <section class="inspiracion-hero">
 <div class="hero-noise"></div>
 <h1>Nuestra <em>inspiración.</em></h1>
 <p>Marcas, instituciones y referentes que nos impulsan a hacer las cosas con excelencia, creatividad y propósito.</p>
 </section>
-<section class="section">
+<section class="section" style="background:var(--cream);">
 <div class="section-meta"><span>01</span><span>REFERENTES</span></div>
-<div class="container">
-<h2>
+<div class="container" style="max-width:var(--max-width); margin:0 auto; padding-top:60px;">
+<h2 style="font-size:clamp(2.4rem,4.5vw,4rem); letter-spacing:-0.06em; line-height:0.9; max-width:900px;">
                     Lo que admiramos
-                    <span>y nos mueve.</span>
+                    <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">y nos mueve.</span>
 </h2>
-<p>
+<p style="color:#555; max-width:600px; font-size:15px; line-height:1.7; margin-top:20px;">
                     Estas marcas e instituciones representan valores que compartimos: audacia, calidad, compromiso con la formación y una visión de futuro.
                 </p>
 <div class="inspiracion-grid">
@@ -90,7 +285,7 @@
 <h3>Versace</h3>
 <p>La excelencia en el diseño, la audacia en la comunicación y una identidad inconfundible que trasciende generaciones.</p>
 <span class="tag">Diseño · Identidad</span>
-<div class="bottom-bar"></div>
+<div class="bottom-bar" style="width:40%;"></div>
 </div>
 <div class="inspiracion-card" data-reveal="">
 <div class="logo-wrap">
@@ -99,7 +294,7 @@
 <h3>Key Institute</h3>
 <p>Innovación educativa, formación práctica y un enfoque en las habilidades del futuro que transforma vidas.</p>
 <span class="tag">Educación · Innovación</span>
-<div class="bottom-bar"></div>
+<div class="bottom-bar" style="width:40%;"></div>
 </div>
 <div class="inspiracion-card" data-reveal="">
 <div class="logo-wrap">
@@ -108,7 +303,7 @@
 <h3>UNIVO</h3>
 <p>La Universidad de Oriente representa el talento salvadoreño, la investigación aplicada y el vínculo con el desarrollo regional.</p>
 <span class="tag">Academia · Investigación</span>
-<div class="bottom-bar"></div>
+<div class="bottom-bar" style="width:40%;"></div>
 </div>
 <div class="inspiracion-card" data-reveal="">
 <div class="logo-wrap">
@@ -117,7 +312,7 @@
 <h3>UGB</h3>
 <p>La Universidad Gerardo Barrios es un pilar de la educación superior en el oriente del país, con una sólida trayectoria y proyección social.</p>
 <span class="tag">Formación · Comunidad</span>
-<div class="bottom-bar"></div>
+<div class="bottom-bar" style="width:40%;"></div>
 </div>
 <div class="inspiracion-card" data-reveal="">
 <div class="logo-wrap">
@@ -126,7 +321,7 @@
 <h3>Innovadores digitales</h3>
 <p>Startups y laboratorios de toda Latinoamérica que están redefiniendo la manera de hacer tecnología con propósito.</p>
 <span class="tag">Tecnología · Emprendimiento</span>
-<div class="bottom-bar"></div>
+<div class="bottom-bar" style="width:40%;"></div>
 </div>
 <div class="inspiracion-card" data-reveal="">
 <div class="logo-wrap">
@@ -135,17 +330,17 @@
 <h3>Fundación Gloria Kriete</h3>
 <p>Comprometida con el desarrollo social, la educación y el bienestar de las comunidades en El Salvador.</p>
 <span class="tag">Impacto Social · Educación</span>
-<div class="bottom-bar"></div>
+<div class="bottom-bar" style="width:40%;"></div>
 </div>
 </div>
 </div>
 </section>
-<section class="section">
+<section class="section" style="background:var(--white);">
 <div class="section-meta"><span>02</span><span>QUÉ NOS INSPIRA</span></div>
 <div class="container">
-<h2>
+<h2 style="font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-0.06em; line-height:0.9; margin-bottom:20px;">
                     Valores que compartimos
-                    <span>con nuestros referentes.</span>
+                    <span style="display:block; font-family:var(--sans); font-weight:900; text-decoration:underline; text-decoration-thickness:0.07em; text-underline-offset:0.1em; color:var(--blue);">con nuestros referentes.</span>
 </h2>
 <div class="valores-grid">
 <div class="valor">
@@ -192,40 +387,54 @@
 </div>
 </div>
 </section>
-<div class="container">
+<div class="container" style="max-width:var(--max-width); margin:0 auto 60px; padding:0 6vw;">
+<div style="background:var(--black); color:var(--white); padding:40px; display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;">
 <div>
-<div>
-<h3>¿Compartes nuestra inspiración?</h3>
-<p>
+<h3 style="color:var(--green); font-size:1.6rem; line-height:1.1;">¿Compartes nuestra inspiración?</h3>
+<p style="color:rgba(255,255,255,0.7); max-width:500px; font-size:14px; line-height:1.6;">
                         Si te identificas con estos valores, nos encantaría conocerte y colaborar contigo.
                     </p>
 </div>
-<a href="contacto.html">
-                    Hablemos <svg aria-hidden="true" class="icon icon-arrow" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-                </a>
+<a href="contacto.html" style="padding:14px 28px; background:var(--blue); color:var(--white); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.25s; display:inline-flex; align-items:center; gap:12px;">
+                    Hablemos <svg aria-hidden="true" class="svg-icon svg-arrow" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
 </div>
 </div>
-</main><footer class="site-footer">
-<div class="shell">
-<div class="footer-lead">
-<div>
-<span class="eyebrow">WINDSOR / PRECISIÓN APLICADA</span>
-<h2>De la idea<br/><em>a lo posible.</em></h2>
+</main><footer class="footer">
+<div class="footer-logo">
+<img alt="Windsor" src="assets/favicon.png" style="width:34px; height:34px; display:block;"/>
+<span>WINDSOR</span>
 </div>
-<a class="footer-cta" href="contacto.html">Cuéntanos tu idea <span aria-hidden="true"><svg aria-hidden="true" class="icon icon-arrow" viewbox="0 0 24 24"><path d="M5 19 19 5M9 5h10v10"></path></svg></span></a>
+<div class="footer-groups">
+<div class="footer-group">
+<h4>Sobre</h4>
+<a href="metodologia.html">Metodología</a>
+<a class="active" href="inspiracion.html">Inspiración</a>
 </div>
-<div class="footer-grid">
-<div class="footer-brand-block">
-<a class="brand footer-brand" href="index.html"><img alt="" class="brand-mark" src="assets/favicon.png"/><span class="brand-name">WINDSOR</span></a>
-<p>Laboratorio digital independiente para ideas que necesitan dirección, identidad y movimiento.</p>
-<span class="footer-location">El Salvador · Latinoamérica</span>
+<div class="footer-group">
+<h4>Servicios</h4>
+<a href="cide.html">CIDE</a>
+<a href="windsor-one.html">Windsor One</a>
+<a href="BeQueer.html">BeQueer</a>
 </div>
-<div class="footer-column"><span class="footer-label">Navegar</span><a href="index.html">Inicio</a><a href="index.html#servicios">Qué hacemos</a><a href="metodologia.html">Método</a><a href="proyectos.html">Proyectos</a></div>
-<div class="footer-column"><span class="footer-label">Explorar</span><a href="cide.html">CIDE</a><a href="windsor-one.html">Windsor One</a><a href="BeQueer.html">BeQueer</a><a href="inspiracion.html">Inspiración</a></div>
-<div class="footer-column"><span class="footer-label">Recursos</span><a href="orientacion-vocacional.html">Orientación</a><a href="recomendados.html">Recomendados</a><a href="becas.html">BK2</a><a href="careers.html">Careers</a></div>
+<div class="footer-group">
+<h4>Recursos</h4>
+<a href="orientacion-vocacional.html">Orientación</a>
+<a href="recomendados.html">Recomendados</a>
+<a href="proyectos.html">Proyectos</a>
 </div>
-<div class="footer-bottom"><span>© 2026 Windsor</span><span>Idea <svg aria-hidden="true" class="icon icon-arrow" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg> Estrategia <svg aria-hidden="true" class="icon icon-arrow" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg> Proyecto</span><a href="contacto.html">Contacto <svg aria-hidden="true" class="icon icon-arrow" viewbox="0 0 24 24"><path d="M5 19 19 5M9 5h10v10"></path></svg></a></div>
+<div class="footer-group">
+<h4>Programas</h4>
+<a href="becas.html">BK2</a>
+<a href="careers.html">Careers</a>
 </div>
+<div class="footer-group">
+<h4>Contacto</h4>
+<a href="contacto.html">Contáctanos</a>
+</div>
+</div>
+<div class="footer-tagline">Precisión aplicada.</div>
 </footer>
-<script src="script.js"></script></body>
+<script src="script.js"></script>
+</body>
 </html>
