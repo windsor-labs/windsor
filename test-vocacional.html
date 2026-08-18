@@ -1,154 +1,114 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windsor — Test en mantenimiento</title>
-    <meta name="description" content="Estamos mejorando el test vocacional. Vuelve pronto." />
-    <link rel="icon" href="assets/favicon.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Windsor — Test en mantenimiento</title>
+<meta content="Estamos mejorando el test vocacional. Vuelve pronto." name="description"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
 </head>
-<body>
+<body class="page-test-vocacional site-page" data-page="test-vocacional"><a class="skip-link" href="#contenido">Saltar al contenido</a><div aria-hidden="true" class="preloader"><div class="preloader-mark">W</div><div class="preloader-track"><span></span></div><div class="preloader-word">WINDSOR</div></div><div class="announcement-bar">
+<div class="shell announcement-inner">
+<span class="announcement-label"><span aria-hidden="true" class="status-dot"></span> WINDSOR / EL SALVADOR · LATINOAMÉRICA</span>
+<a href="contacto.html">Hablemos de tu idea <span aria-hidden="true">↗</span></a>
+</div>
+</div><header class="site-header">
+<div class="shell header-main">
+<a aria-label="Windsor, página de inicio" class="brand" href="index.html">
+<img alt="" class="brand-mark" src="assets/favicon.png"/>
+<span class="brand-name">WINDSOR</span>
+</a>
+<nav aria-label="Navegación principal" class="main-nav">
+<a class="nav-link" data-page="index" href="index.html">Inicio</a>
+<a class="nav-link" data-page="services" href="index.html#servicios">Qué hacemos</a>
+<a class="nav-link" data-page="metodologia" href="metodologia.html">Método</a>
+<a class="nav-link" data-page="proyectos" href="proyectos.html">Proyectos</a>
+<details class="nav-dropdown">
+<summary>Más <span aria-hidden="true">+</span></summary>
+<div class="nav-menu">
+<a href="inspiracion.html">Inspiración</a>
+<a href="cide.html">CIDE</a>
+<a href="windsor-one.html">Windsor One</a>
+<a href="BeQueer.html">BeQueer</a>
+<a href="orientacion-vocacional.html">Orientación</a>
+<a href="recomendados.html">Recomendados</a>
+<a href="becas.html">BK2</a>
+<a href="careers.html">Careers</a>
+</div>
+</details>
+</nav>
+<a class="header-cta" href="contacto.html">Iniciar conversación <span aria-hidden="true">↗</span></a>
+<button aria-controls="mobile-panel" aria-expanded="false" aria-label="Abrir menú" class="menu-toggle" type="button">
+<span></span><span></span>
+</button>
+</div>
+</header><div aria-hidden="true" class="mobile-panel" id="mobile-panel">
+<div class="mobile-panel-inner">
+<div class="mobile-panel-top"><span>NAVEGACIÓN</span><span>WINDSOR / 2026</span></div>
+<a class="mobile-link" href="index.html">Inicio</a>
+<a class="mobile-link" href="index.html#servicios">Qué hacemos</a>
+<a class="mobile-link" href="metodologia.html">Método</a>
+<a class="mobile-link" href="proyectos.html">Proyectos</a>
+<div class="mobile-label">Explorar</div>
+<div class="mobile-grid">
+<a class="mobile-link small" href="inspiracion.html">Inspiración</a>
+<a class="mobile-link small" href="cide.html">CIDE</a>
+<a class="mobile-link small" href="windsor-one.html">Windsor One</a>
+<a class="mobile-link small" href="BeQueer.html">BeQueer</a>
+<a class="mobile-link small" href="orientacion-vocacional.html">Orientación</a>
+<a class="mobile-link small" href="recomendados.html">Recomendados</a>
+<a class="mobile-link small" href="becas.html">BK2</a>
+<a class="mobile-link small" href="careers.html">Careers</a>
+</div>
+<a class="mobile-contact" href="contacto.html">Hablemos de tu proyecto <span aria-hidden="true">↗</span></a>
+</div>
+</div>
 
-    <div class="preloader">
-        <div class="preloader-logo">W</div>
-        <div class="preloader-line"><span></span></div>
-        <div class="preloader-text">WINDSOR</div>
-    </div>
 
-    <header class="header">
-        <a href="index.html" class="logo">
-            <img src="assets/favicon.png" alt="Windsor" class="logo-icon" />
-            <span class="logo-name">WINDSOR</span>
-        </a>
-        <nav class="desktop-nav">
-            <ul class="nav-list">
-                <li><a href="index.html">Inicio</a></li>
-                <li class="dropdown">
-                    <a href="#">Sobre</a>
-                    <ul class="submenu">
-                        <li><a href="metodologia.html">Metodología</a></li>
-                        <li><a href="inspiracion.html">Inspiración</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Servicios</a>
-                    <ul class="submenu">
-                        <li><a href="cide.html">CIDE</a></li>
-                        <li><a href="windsor-one.html">Windsor One</a></li>
-                        <li><a href="BeQueer.html">BeQueer</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Recursos</a>
-                    <ul class="submenu">
-                        <li><a href="orientacion-vocacional.html">Orientación</a></li>
-                        <li><a href="recomendados.html">Recomendados</a></li>
-                        <li><a href="proyectos.html">Proyectos</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Programas</a>
-                    <ul class="submenu">
-                        <li><a href="becas.html">BK2</a></li>
-                        <li><a href="careers.html">Careers</a></li>
-                    </ul>
-                </li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <a href="contacto.html" class="header-button">
-                Hablemos
-                <span class="arrow-icon" aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="7" y1="17" x2="17" y2="7" />
-                        <polyline points="7 7 17 7 17 17" />
-                    </svg>
-                </span>
-            </a>
-        </div>
-        <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
-    </header>
 
-    <div class="mobile-menu">
-        <div class="mobile-menu-inner">
-            <div class="mobile-menu-label">NAVEGACIÓN</div>
-            <a href="index.html">Inicio</a>
-            <div class="mobile-group-title">Sobre</div>
-            <a href="metodologia.html">Metodología</a>
-            <a href="inspiracion.html">Inspiración</a>
-            <div class="mobile-group-title">Servicios</div>
-            <a href="cide.html">CIDE</a>
-            <a href="windsor-one.html">Windsor One</a>
-            <a href="BeQueer.html">BeQueer</a>
-            <div class="mobile-group-title">Recursos</div>
-            <a href="orientacion-vocacional.html">Orientación</a>
-            <a href="recomendados.html">Recomendados</a>
-            <a href="proyectos.html">Proyectos</a>
-            <div class="mobile-group-title">Programas</div>
-            <a href="becas.html">BK2</a>
-            <a href="careers.html">Careers</a>
-            <a href="contacto.html">Contacto</a>
-        </div>
-    </div>
-
-    <main class="maintenance">
-        <div class="maintenance-content">
-            <div class="spinner" aria-label="Cargando, página en mantenimiento"></div>
-            <h1>Estamos en <em>mantenimiento</em></h1>
-            <p>Estamos mejorando el test vocacional para ofrecerte una mejor experiencia.<br /><strong>Volvemos muy pronto.</strong></p>
-            <a href="index.html" class="btn">
+<main class="maintenance page-main" id="contenido">
+<div class="maintenance-content">
+<div aria-label="Cargando, página en mantenimiento" class="spinner"></div>
+<h1>Estamos en <em>mantenimiento</em></h1>
+<p>Estamos mejorando el test vocacional para ofrecerte una mejor experiencia.<br/><strong>Volvemos muy pronto.</strong></p>
+<a class="btn" href="index.html">
                 Ir a la página principal
-                <span class="arrow-icon" aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="7" y1="17" x2="17" y2="7" />
-                        <polyline points="7 7 17 7 17 17" />
-                    </svg>
-                </span>
-            </a>
-        </div>
-    </main>
+                <span aria-hidden="true" class="arrow-icon">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16">
+<line x1="7" x2="17" y1="17" y2="7"></line>
+<polyline points="7 7 17 7 17 17"></polyline>
+</svg>
+</span>
+</a>
+</div>
+</main><footer class="site-footer">
+<div class="shell">
+<div class="footer-lead">
+<div>
+<span class="eyebrow">WINDSOR / PRECISIÓN APLICADA</span>
+<h2>De la idea<br/><em>a lo posible.</em></h2>
+</div>
+<a class="footer-cta" href="contacto.html">Cuéntanos tu idea <span aria-hidden="true">↗</span></a>
+</div>
+<div class="footer-grid">
+<div class="footer-brand-block">
+<a class="brand footer-brand" href="index.html"><img alt="" class="brand-mark" src="assets/favicon.png"/><span class="brand-name">WINDSOR</span></a>
+<p>Laboratorio digital independiente para ideas que necesitan dirección, identidad y movimiento.</p>
+<span class="footer-location">El Salvador · Latinoamérica</span>
+</div>
+<div class="footer-column"><span class="footer-label">Navegar</span><a href="index.html">Inicio</a><a href="index.html#servicios">Qué hacemos</a><a href="metodologia.html">Método</a><a href="proyectos.html">Proyectos</a></div>
+<div class="footer-column"><span class="footer-label">Explorar</span><a href="cide.html">CIDE</a><a href="windsor-one.html">Windsor One</a><a href="BeQueer.html">BeQueer</a><a href="inspiracion.html">Inspiración</a></div>
+<div class="footer-column"><span class="footer-label">Recursos</span><a href="orientacion-vocacional.html">Orientación</a><a href="recomendados.html">Recomendados</a><a href="becas.html">BK2</a><a href="careers.html">Careers</a></div>
+</div>
+<div class="footer-bottom"><span>© 2026 Windsor</span><span>Idea → Estrategia → Proyecto</span><a href="contacto.html">Contacto ↗</a></div>
+</div>
+</footer>
 
-    <footer class="footer">
-        <div class="footer-logo">
-            <img src="assets/favicon.png" alt="Windsor" style="width:34px; height:34px; display:block;" />
-            <span>WINDSOR</span>
-        </div>
-        <div class="footer-groups">
-            <div class="footer-group">
-                <h4>Sobre</h4>
-                <a href="metodologia.html">Metodología</a>
-                <a href="inspiracion.html">Inspiración</a>
-            </div>
-            <div class="footer-group">
-                <h4>Servicios</h4>
-                <a href="cide.html">CIDE</a>
-                <a href="windsor-one.html">Windsor One</a>
-                <a href="BeQueer.html">BeQueer</a>
-            </div>
-            <div class="footer-group">
-                <h4>Recursos</h4>
-                <a href="orientacion-vocacional.html">Orientación</a>
-                <a href="recomendados.html">Recomendados</a>
-                <a href="proyectos.html">Proyectos</a>
-            </div>
-            <div class="footer-group">
-                <h4>Programas</h4>
-                <a href="becas.html">BK2</a>
-                <a href="careers.html">Careers</a>
-            </div>
-            <div class="footer-group">
-                <h4>Contacto</h4>
-                <a href="contacto.html">Contáctanos</a>
-            </div>
-        </div>
-        <div class="footer-tagline">Precisión aplicada.</div>
-    </footer>
 
-    <script src="script.js"></script>
-</body>
+<script src="script.js"></script></body>
 </html>

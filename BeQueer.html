@@ -1,256 +1,211 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BeQueer by Windsor — Diseño y tecnología con identidad</title>
-    <meta name="description" content="Diseñamos y desarrollamos proyectos digitales para la comunidad LGBTQ+ y sus aliados. Branding inclusivo, sitios seguros y comunicación con perspectiva." />
-    <link rel="icon" href="assets/favicon.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeQueer by Windsor — Diseño y tecnología con identidad</title>
+<meta content="Diseñamos y desarrollamos proyectos digitales para la comunidad LGBTQ+ y sus aliados. Branding inclusivo, sitios seguros y comunicación con perspectiva." name="description"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
 </head>
-<body class="bequeer-page">
+<body class="bequeer-page page-bequeer site-page" data-page="BeQueer"><a class="skip-link" href="#contenido">Saltar al contenido</a><div aria-hidden="true" class="preloader"><div class="preloader-mark">W</div><div class="preloader-track"><span></span></div><div class="preloader-word">WINDSOR</div></div><div class="announcement-bar">
+<div class="shell announcement-inner">
+<span class="announcement-label"><span aria-hidden="true" class="status-dot"></span> WINDSOR / EL SALVADOR · LATINOAMÉRICA</span>
+<a href="contacto.html">Hablemos de tu idea <span aria-hidden="true">↗</span></a>
+</div>
+</div><header class="site-header">
+<div class="shell header-main">
+<a aria-label="Windsor, página de inicio" class="brand" href="index.html">
+<img alt="" class="brand-mark" src="assets/favicon.png"/>
+<span class="brand-name">WINDSOR</span>
+</a>
+<nav aria-label="Navegación principal" class="main-nav">
+<a class="nav-link" data-page="index" href="index.html">Inicio</a>
+<a class="nav-link" data-page="services" href="index.html#servicios">Qué hacemos</a>
+<a class="nav-link" data-page="metodologia" href="metodologia.html">Método</a>
+<a class="nav-link" data-page="proyectos" href="proyectos.html">Proyectos</a>
+<details class="nav-dropdown">
+<summary>Más <span aria-hidden="true">+</span></summary>
+<div class="nav-menu">
+<a href="inspiracion.html">Inspiración</a>
+<a href="cide.html">CIDE</a>
+<a href="windsor-one.html">Windsor One</a>
+<a href="BeQueer.html">BeQueer</a>
+<a href="orientacion-vocacional.html">Orientación</a>
+<a href="recomendados.html">Recomendados</a>
+<a href="becas.html">BK2</a>
+<a href="careers.html">Careers</a>
+</div>
+</details>
+</nav>
+<a class="header-cta" href="contacto.html">Iniciar conversación <span aria-hidden="true">↗</span></a>
+<button aria-controls="mobile-panel" aria-expanded="false" aria-label="Abrir menú" class="menu-toggle" type="button">
+<span></span><span></span>
+</button>
+</div>
+</header><div aria-hidden="true" class="mobile-panel" id="mobile-panel">
+<div class="mobile-panel-inner">
+<div class="mobile-panel-top"><span>NAVEGACIÓN</span><span>WINDSOR / 2026</span></div>
+<a class="mobile-link" href="index.html">Inicio</a>
+<a class="mobile-link" href="index.html#servicios">Qué hacemos</a>
+<a class="mobile-link" href="metodologia.html">Método</a>
+<a class="mobile-link" href="proyectos.html">Proyectos</a>
+<div class="mobile-label">Explorar</div>
+<div class="mobile-grid">
+<a class="mobile-link small" href="inspiracion.html">Inspiración</a>
+<a class="mobile-link small" href="cide.html">CIDE</a>
+<a class="mobile-link small" href="windsor-one.html">Windsor One</a>
+<a class="mobile-link small" href="BeQueer.html">BeQueer</a>
+<a class="mobile-link small" href="orientacion-vocacional.html">Orientación</a>
+<a class="mobile-link small" href="recomendados.html">Recomendados</a>
+<a class="mobile-link small" href="becas.html">BK2</a>
+<a class="mobile-link small" href="careers.html">Careers</a>
+</div>
+<a class="mobile-contact" href="contacto.html">Hablemos de tu proyecto <span aria-hidden="true">↗</span></a>
+</div>
+</div>
 
-    <div class="preloader">
-        <div class="preloader-logo">W</div>
-        <div class="preloader-line"><span></span></div>
-        <div class="preloader-text">BEQUEER</div>
-    </div>
 
-    <header class="header">
-        <a href="index.html" class="logo">
-            <img src="assets/favicon.png" alt="Windsor" class="logo-icon" />
-            <span class="logo-name">WINDSOR</span>
-        </a>
-        <nav class="desktop-nav">
-            <ul class="nav-list">
-                <li><a href="index.html">Inicio</a></li>
-                <li class="dropdown">
-                    <a href="#">Sobre</a>
-                    <ul class="submenu">
-                        <li><a href="metodologia.html">Metodología</a></li>
-                        <li><a href="inspiracion.html">Inspiración</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Servicios</a>
-                    <ul class="submenu">
-                        <li><a href="cide.html">CIDE</a></li>
-                        <li><a href="windsor-one.html">Windsor One</a></li>
-                        <li><a href="BeQueer.html" class="active">BeQueer</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Recursos</a>
-                    <ul class="submenu">
-                        <li><a href="orientacion-vocacional.html">Orientación</a></li>
-                        <li><a href="recomendados.html">Recomendados</a></li>
-                        <li><a href="proyectos.html">Proyectos</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Programas</a>
-                    <ul class="submenu">
-                        <li><a href="becas.html">BK2</a></li>
-                        <li><a href="careers.html">Careers</a></li>
-                    </ul>
-                </li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <a href="contacto.html" class="header-button">
-                Hablemos
-                <span class="arrow-icon" aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="7" y1="17" x2="17" y2="7" />
-                        <polyline points="7 7 17 7 17 17" />
-                    </svg>
-                </span>
-            </a>
-        </div>
-        <button class="menu-button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
-    </header>
 
-    <div class="mobile-menu">
-        <div class="mobile-menu-inner">
-            <div class="mobile-menu-label">NAVEGACIÓN</div>
-            <a href="index.html">Inicio</a>
-            <div class="mobile-group-title">Sobre</div>
-            <a href="metodologia.html">Metodología</a>
-            <a href="inspiracion.html">Inspiración</a>
-            <div class="mobile-group-title">Servicios</div>
-            <a href="cide.html">CIDE</a>
-            <a href="windsor-one.html">Windsor One</a>
-            <a href="BeQueer.html">BeQueer</a>
-            <div class="mobile-group-title">Recursos</div>
-            <a href="orientacion-vocacional.html">Orientación</a>
-            <a href="recomendados.html">Recomendados</a>
-            <a href="proyectos.html">Proyectos</a>
-            <div class="mobile-group-title">Programas</div>
-            <a href="becas.html">BK2</a>
-            <a href="careers.html">Careers</a>
-            <a href="contacto.html">Contacto</a>
-        </div>
-    </div>
-
-    <main>
-        <section class="hero hero-rainbow">
-            <div class="hero-noise"></div>
-            <div class="hero-topline"><span>BEQUEER BY WINDSOR</span><span>DISEÑO · TECNOLOGÍA · IDENTIDAD</span></div>
-            <div class="hero-content">
-                <div class="hero-small"><span class="green-dot"></span>ORGULLO · VISIBILIDAD · AUTENTICIDAD</div>
-                <h1>Diseño y tecnología <em><span class="rainbow-text">con identidad.</span></em></h1>
-                <div class="hero-bottom">
-                    <p>Construimos proyectos digitales para la comunidad LGBTQ+ y sus aliados. Branding inclusivo, sitios web seguros y comunicación con perspectiva.<br /><br /><strong style="color:var(--white);">BeQueer by Windsor.</strong></p>
-                    <a href="#servicios" class="circle-button"><span>Explorar</span><strong>↓</strong></a>
-                </div>
-            </div>
-            <div class="rainbow-bar"></div>
-        </section>
-
-        <section class="intro section" id="intro">
-            <div class="section-meta"><span>01</span><span>QUÉ ES BEQUEER</span></div>
-            <div class="intro-layout">
-                <h2>Un espacio para <span class="rainbow-title">proyectos con orgullo.</span></h2>
-                <div class="intro-copy">
-                    <p>BeQueer es la extensión de Windsor dedicada a acompañar a la comunidad LGBTQ+ en la construcción de su presencia digital. Entendemos que cada proyecto tiene una historia, una identidad y una voz que merece ser contada con autenticidad.</p>
-                    <p>Trabajamos con organizaciones, colectivos, emprendedores y profesionales que quieren visibilizar su trabajo y conectar con su audiencia desde el respeto y la diversidad.</p>
-                    <a href="#servicios" class="underlined-link">Ver servicios <span class="arrow-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="servicios" style="background:var(--white);">
-            <div class="section-meta"><span>02</span><span>SERVICIOS</span></div>
-            <div class="container">
-                <div class="services-heading" style="padding-top:0;">
-                    <h2>Lo que hacemos <span class="rainbow-title">por y para la comunidad.</span></h2>
-                    <p>Ofrecemos soluciones digitales diseñadas con sensibilidad, inclusión y un profundo respeto por la diversidad.</p>
-                </div>
-                <div class="bequeer-grid">
-                    <div class="bequeer-card" data-reveal>
-                        <div class="card-inner">
-                            <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-                            <div class="card-body">
-                                <h3>Branding inclusivo</h3>
-                                <p>Construimos identidades visuales que reflejan la autenticidad de organizaciones, colectivos y emprendedores LGBTQ+.</p>
-                                <a href="#" class="card-link"><span class="link-text">Ver más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
-                                <div class="bottom-bar" style="width:40%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bequeer-card" data-reveal>
-                        <div class="card-inner">
-                            <div class="icon-wrap"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-                            <div class="card-body">
-                                <h3>Sitios web seguros</h3>
-                                <p>Desarrollamos plataformas digitales con altos estándares de seguridad y privacidad para proteger a tu comunidad.</p>
-                                <a href="#" class="card-link"><span class="link-text">Ver más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
-                                <div class="bottom-bar" style="width:40%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bequeer-card" data-reveal>
-                        <div class="card-inner">
-                            <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-                            <div class="card-body">
-                                <h3>Comunicación con perspectiva</h3>
-                                <p>Estrategias de contenido y redes sociales que visibilizan tu mensaje desde el respeto y la diversidad.</p>
-                                <a href="#" class="card-link"><span class="link-text">Ver más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
-                                <div class="bottom-bar" style="width:40%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bequeer-card" data-reveal>
-                        <div class="card-inner">
-                            <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-                            <div class="card-body">
-                                <h3>Consultoría en diversidad</h3>
-                                <p>Acompañamos a empresas y organizaciones a construir espacios digitales más inclusivos y auténticos.</p>
-                                <a href="#" class="card-link"><span class="link-text">Ver más</span><span class="arrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></span></a>
-                                <div class="bottom-bar" style="width:40%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="statement-marquee" style="background:var(--black); color:var(--white);">
-            <div class="statement-track">
-                <span>VISIBILIDAD</span> <b>✦</b><span>AUTENTICIDAD</span> <b>✦</b><span>ORGULLO</span> <b>✦</b><span>DIVERSIDAD</span> <b>✦</b>
-                <span>VISIBILIDAD</span> <b>✦</b><span>AUTENTICIDAD</span> <b>✦</b><span>ORGULLO</span> <b>✦</b><span>DIVERSIDAD</span> <b>✦</b>
-            </div>
-        </div>
-
-        <section class="principles section">
-            <div class="section-meta"><span>03</span><span>NUESTRA FILOSOFÍA</span></div>
-            <div class="principles-grid">
-                <div><span>01</span><h3>Identidad</h3><p>Cada proyecto es único y merece un diseño que refleje su esencia y su historia.</p></div>
-                <div><span>02</span><h3>Seguridad</h3><p>Protegemos los datos de tu comunidad con los más altos estándares de privacidad.</p></div>
-                <div><span>03</span><h3>Visibilidad</h3><p>Ayudamos a que tu mensaje llegue a quienes más lo necesitan, con claridad y respeto.</p></div>
-                <div><span>04</span><h3>Autenticidad</h3><p>No hay plantillas. Construimos desde la escucha, el diálogo y el entendimiento profundo.</p></div>
-            </div>
-        </section>
-
-        <div class="container" style="margin-bottom:60px;">
-            <div class="cta-rainbow" data-reveal>
-                <div>
-                    <h3>¿Tenés un proyecto LGBTQ+?</h3>
-                    <p>Contanos tu idea, tu colectivo o tu organización. Empecemos a construir juntos.</p>
-                </div>
-                <a href="contacto.html" class="btn">
+<main class="page-main" id="contenido">
+<section class="hero hero-rainbow">
+<div class="hero-noise"></div>
+<div class="hero-topline"><span>BEQUEER BY WINDSOR</span><span>DISEÑO · TECNOLOGÍA · IDENTIDAD</span></div>
+<div class="hero-content">
+<div class="hero-small"><span class="green-dot"></span>ORGULLO · VISIBILIDAD · AUTENTICIDAD</div>
+<h1>Diseño y tecnología <em><span class="rainbow-text">con identidad.</span></em></h1>
+<div class="hero-bottom">
+<p>Construimos proyectos digitales para la comunidad LGBTQ+ y sus aliados. Branding inclusivo, sitios web seguros y comunicación con perspectiva.<br/><br/><strong>BeQueer by Windsor.</strong></p>
+<a class="circle-button" href="#servicios"><span>Explorar</span><strong>↓</strong></a>
+</div>
+</div>
+<div class="rainbow-bar"></div>
+</section>
+<section class="intro section" id="intro">
+<div class="section-meta"><span>01</span><span>QUÉ ES BEQUEER</span></div>
+<div class="intro-layout">
+<h2>Un espacio para <span class="rainbow-title">proyectos con orgullo.</span></h2>
+<div class="intro-copy">
+<p>BeQueer es la extensión de Windsor dedicada a acompañar a la comunidad LGBTQ+ en la construcción de su presencia digital. Entendemos que cada proyecto tiene una historia, una identidad y una voz que merece ser contada con autenticidad.</p>
+<p>Trabajamos con organizaciones, colectivos, emprendedores y profesionales que quieren visibilizar su trabajo y conectar con su audiencia desde el respeto y la diversidad.</p>
+<a class="underlined-link" href="#servicios">Ver servicios <span aria-hidden="true" class="arrow-icon"><svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
+</div>
+</div>
+</section>
+<section class="section" id="servicios">
+<div class="section-meta"><span>02</span><span>SERVICIOS</span></div>
+<div class="container">
+<div class="services-heading">
+<h2>Lo que hacemos <span class="rainbow-title">por y para la comunidad.</span></h2>
+<p>Ofrecemos soluciones digitales diseñadas con sensibilidad, inclusión y un profundo respeto por la diversidad.</p>
+</div>
+<div class="bequeer-grid">
+<div class="bequeer-card" data-reveal="">
+<div class="card-inner">
+<div class="icon-wrap"><svg viewbox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+<div class="card-body">
+<h3>Branding inclusivo</h3>
+<p>Construimos identidades visuales que reflejan la autenticidad de organizaciones, colectivos y emprendedores LGBTQ+.</p>
+<a class="card-link" data-fallback-link="true" href="contacto.html"><span class="link-text">Ver más</span><span class="arrow-icon"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
+<div class="bottom-bar"></div>
+</div>
+</div>
+</div>
+<div class="bequeer-card" data-reveal="">
+<div class="card-inner">
+<div class="icon-wrap"><svg viewbox="0 0 24 24"><rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+<div class="card-body">
+<h3>Sitios web seguros</h3>
+<p>Desarrollamos plataformas digitales con altos estándares de seguridad y privacidad para proteger a tu comunidad.</p>
+<a class="card-link" data-fallback-link="true" href="contacto.html"><span class="link-text">Ver más</span><span class="arrow-icon"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
+<div class="bottom-bar"></div>
+</div>
+</div>
+</div>
+<div class="bequeer-card" data-reveal="">
+<div class="card-inner">
+<div class="icon-wrap"><svg viewbox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+<div class="card-body">
+<h3>Comunicación con perspectiva</h3>
+<p>Estrategias de contenido y redes sociales que visibilizan tu mensaje desde el respeto y la diversidad.</p>
+<a class="card-link" data-fallback-link="true" href="contacto.html"><span class="link-text">Ver más</span><span class="arrow-icon"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
+<div class="bottom-bar"></div>
+</div>
+</div>
+</div>
+<div class="bequeer-card" data-reveal="">
+<div class="card-inner">
+<div class="icon-wrap"><svg viewbox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+<div class="card-body">
+<h3>Consultoría en diversidad</h3>
+<p>Acompañamos a empresas y organizaciones a construir espacios digitales más inclusivos y auténticos.</p>
+<a class="card-link" data-fallback-link="true" href="contacto.html"><span class="link-text">Ver más</span><span class="arrow-icon"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a>
+<div class="bottom-bar"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="statement-marquee">
+<div class="statement-track">
+<span>VISIBILIDAD</span> <b>✦</b><span>AUTENTICIDAD</span> <b>✦</b><span>ORGULLO</span> <b>✦</b><span>DIVERSIDAD</span> <b>✦</b>
+<span>VISIBILIDAD</span> <b>✦</b><span>AUTENTICIDAD</span> <b>✦</b><span>ORGULLO</span> <b>✦</b><span>DIVERSIDAD</span> <b>✦</b>
+</div>
+</div>
+<section class="principles section">
+<div class="section-meta"><span>03</span><span>NUESTRA FILOSOFÍA</span></div>
+<div class="principles-grid">
+<div><span>01</span><h3>Identidad</h3><p>Cada proyecto es único y merece un diseño que refleje su esencia y su historia.</p></div>
+<div><span>02</span><h3>Seguridad</h3><p>Protegemos los datos de tu comunidad con los más altos estándares de privacidad.</p></div>
+<div><span>03</span><h3>Visibilidad</h3><p>Ayudamos a que tu mensaje llegue a quienes más lo necesitan, con claridad y respeto.</p></div>
+<div><span>04</span><h3>Autenticidad</h3><p>No hay plantillas. Construimos desde la escucha, el diálogo y el entendimiento profundo.</p></div>
+</div>
+</section>
+<div class="container">
+<div class="cta-rainbow" data-reveal="">
+<div>
+<h3>¿Tenés un proyecto LGBTQ+?</h3>
+<p>Contanos tu idea, tu colectivo o tu organización. Empecemos a construir juntos.</p>
+</div>
+<a class="btn" href="contacto.html">
                     Hablemos
-                    <span class="arrow-icon" aria-hidden="true">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7" />
-                            <polyline points="7 7 17 7 17 17" />
-                        </svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </main>
+                    <span aria-hidden="true" class="arrow-icon">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18">
+<line x1="7" x2="17" y1="17" y2="7"></line>
+<polyline points="7 7 17 7 17 17"></polyline>
+</svg>
+</span>
+</a>
+</div>
+</div>
+</main><footer class="site-footer">
+<div class="shell">
+<div class="footer-lead">
+<div>
+<span class="eyebrow">WINDSOR / PRECISIÓN APLICADA</span>
+<h2>De la idea<br/><em>a lo posible.</em></h2>
+</div>
+<a class="footer-cta" href="contacto.html">Cuéntanos tu idea <span aria-hidden="true">↗</span></a>
+</div>
+<div class="footer-grid">
+<div class="footer-brand-block">
+<a class="brand footer-brand" href="index.html"><img alt="" class="brand-mark" src="assets/favicon.png"/><span class="brand-name">WINDSOR</span></a>
+<p>Laboratorio digital independiente para ideas que necesitan dirección, identidad y movimiento.</p>
+<span class="footer-location">El Salvador · Latinoamérica</span>
+</div>
+<div class="footer-column"><span class="footer-label">Navegar</span><a href="index.html">Inicio</a><a href="index.html#servicios">Qué hacemos</a><a href="metodologia.html">Método</a><a href="proyectos.html">Proyectos</a></div>
+<div class="footer-column"><span class="footer-label">Explorar</span><a href="cide.html">CIDE</a><a href="windsor-one.html">Windsor One</a><a href="BeQueer.html">BeQueer</a><a href="inspiracion.html">Inspiración</a></div>
+<div class="footer-column"><span class="footer-label">Recursos</span><a href="orientacion-vocacional.html">Orientación</a><a href="recomendados.html">Recomendados</a><a href="becas.html">BK2</a><a href="careers.html">Careers</a></div>
+</div>
+<div class="footer-bottom"><span>© 2026 Windsor</span><span>Idea → Estrategia → Proyecto</span><a href="contacto.html">Contacto ↗</a></div>
+</div>
+</footer>
 
-    <footer class="footer">
-        <div class="footer-logo">
-            <img src="assets/favicon.png" alt="Windsor" style="width:34px; height:34px; display:block;" />
-            <span>WINDSOR</span>
-        </div>
-        <div class="footer-groups">
-            <div class="footer-group">
-                <h4>Sobre</h4>
-                <a href="metodologia.html">Metodología</a>
-                <a href="inspiracion.html">Inspiración</a>
-            </div>
-            <div class="footer-group">
-                <h4>Servicios</h4>
-                <a href="cide.html">CIDE</a>
-                <a href="windsor-one.html">Windsor One</a>
-                <a href="BeQueer.html">BeQueer</a>
-            </div>
-            <div class="footer-group">
-                <h4>Recursos</h4>
-                <a href="orientacion-vocacional.html">Orientación</a>
-                <a href="recomendados.html">Recomendados</a>
-                <a href="proyectos.html">Proyectos</a>
-            </div>
-            <div class="footer-group">
-                <h4>Programas</h4>
-                <a href="becas.html">BK2</a>
-                <a href="careers.html">Careers</a>
-            </div>
-            <div class="footer-group">
-                <h4>Contacto</h4>
-                <a href="contacto.html">Contáctanos</a>
-            </div>
-        </div>
-        <div class="footer-tagline">Precisión aplicada.</div>
-    </footer>
 
-    <script src="script.js"></script>
-</body>
+<script src="script.js"></script></body>
 </html>
